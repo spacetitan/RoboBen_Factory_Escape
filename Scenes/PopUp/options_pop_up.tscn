@@ -1,0 +1,144 @@
+[gd_scene load_steps=2 format=3 uid="uid://dme6cvljdluco"]
+
+[ext_resource type="Script" uid="uid://6j1jaqywuifs" path="res://Scripts/PopUp/OptionsPopUpView.cs" id="1_cfkkt"]
+
+[node name="OptionsPopUp" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cfkkt")
+viewID = &"options"
+
+[node name="TitlePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = -0.05
+anchor_right = 0.6
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicPanel" type="Panel" parent="OptionsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="OptionsContainer/MusicPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.15
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLevelLabel" type="RichTextLabel" parent="OptionsContainer/MusicPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 0.95
+anchor_bottom = 1.0
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="OptionsContainer/MusicPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.75
+
+[node name="SFXPanel" type="Panel" parent="OptionsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="OptionsContainer/SFXPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.15
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXLevelLabel" type="RichTextLabel" parent="OptionsContainer/SFXPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 0.95
+anchor_bottom = 1.0
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="OptionsContainer/SFXPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.75
+
+[node name="SaveButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.85
+anchor_right = 0.48
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save"
+
+[node name="CloseButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52
+anchor_top = 0.85
+anchor_right = 0.65
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"

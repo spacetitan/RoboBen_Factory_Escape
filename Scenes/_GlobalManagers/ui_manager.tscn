@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bph1tfufn4nu2"]
+
+[ext_resource type="Script" uid="uid://b33ejphwxx2kb" path="res://Scripts/_GlobalManagers/UIManager.cs" id="1_c4t2g"]
+[ext_resource type="PackedScene" uid="uid://b0kkisie7f3xc" path="res://Scenes/PopUp/pop_up_model.tscn" id="1_nvxgx"]
+[ext_resource type="PackedScene" uid="uid://dmb7sf1h5yyn" path="res://Scenes/VFX/vfx_model.tscn" id="2_rky0f"]
+[ext_resource type="PackedScene" uid="uid://cqltwrfb6nesi" path="res://Scenes/Background/background_model.tscn" id="2_sghk5"]
+[ext_resource type="PackedScene" uid="uid://btjqxf8mi142h" path="res://Scenes/Start/start_model.tscn" id="2_sktho"]
+
+[node name="UIManager" type="Node"]
+script = ExtResource("1_c4t2g")
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="BackgroundModel" parent="Background" instance=ExtResource("2_sghk5")]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="StartModel" parent="Menu" instance=ExtResource("2_sktho")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PopUp" type="CanvasLayer" parent="."]
+
+[node name="PopUpModel" parent="PopUp" instance=ExtResource("1_nvxgx")]
+
+[node name="VFX" type="CanvasLayer" parent="."]
+
+[node name="VFXModel" parent="VFX" instance=ExtResource("2_rky0f")]
+mouse_filter = 2

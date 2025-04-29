@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmb7sf1h5yyn"]
+
+[ext_resource type="Script" uid="uid://dt77n0nrvf56y" path="res://Scripts/VFX/VFXModel.cs" id="1_b02cw"]
+[ext_resource type="PackedScene" uid="uid://bj0gp1ank2igm" path="res://Scenes/VFX/curtain.tscn" id="2_itvkc"]
+
+[node name="VFXModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_b02cw")
+
+[node name="Curtain" parent="." instance=ExtResource("2_itvkc")]
+unique_name_in_owner = true
+layout_mode = 1
+mouse_filter = 1

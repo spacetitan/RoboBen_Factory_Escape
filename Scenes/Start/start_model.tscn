@@ -1,0 +1,199 @@
+[gd_scene load_steps=6 format=3 uid="uid://btjqxf8mi142h"]
+
+[ext_resource type="Script" uid="uid://bmsmbfch0jj8n" path="res://Scripts/Start/StartModel.cs" id="1_5lcfb"]
+[ext_resource type="Script" uid="uid://cy7m4rmgwe5dn" path="res://Scripts/Start/TitleView.cs" id="2_jmlli"]
+[ext_resource type="Script" uid="uid://dpt3jhuw1ou13" path="res://Scripts/Start/PlayView.cs" id="3_jmlli"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1eim1"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_1laj6"]
+
+[node name="StartModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5lcfb")
+state = 1
+
+[node name="TitleView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_jmlli")
+viewID = &"title"
+
+[node name="TitlePanel" type="Panel" parent="TitleView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.2
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitleView/TitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RoboBen: Factory Escape!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPanel" type="Panel" parent="TitleView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.25
+anchor_bottom = 0.9
+
+[node name="ButtonContainer" type="VBoxContainer" parent="TitleView/ButtonPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="CollectionsButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Collections"
+
+[node name="OptionsButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[node name="PlayView" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_jmlli")
+viewID = &"play"
+
+[node name="NewRunButton" type="Button" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.2
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1eim1")
+text = "New Run"
+
+[node name="ContinueButton" type="Button" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.2
+anchor_right = 0.2
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_1laj6")
+text = "Continue"
+
+[node name="StartButton" type="Button" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.7
+anchor_right = 0.95
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="CancelButton" type="Button" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.85
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+
+[node name="PlayInfoPanel" type="Panel" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoContainer" type="HBoxContainer" parent="PlayView/PlayInfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CharPickerPanel" type="Panel" parent="PlayView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.55
+anchor_right = 0.75
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PickerContainer" type="HBoxContainer" parent="PlayView/CharPickerPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+alignment = 1

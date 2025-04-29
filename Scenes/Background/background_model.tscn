@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqltwrfb6nesi"]
+
+[ext_resource type="Script" uid="uid://bp8arhfmwywsq" path="res://Scripts/Background/BackgroundModel.cs" id="1_bk56l"]
+[ext_resource type="Texture2D" uid="uid://c4muhj3f7nqml" path="res://Art/Sprites/Backgrounds/Title.png" id="2_sbpxb"]
+
+[node name="BackgroundModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bk56l")
+backgroundTextures = Array[Texture2D]([ExtResource("2_sbpxb")])
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = -0.05
+anchor_right = 1.05
+anchor_bottom = 1.05
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 5

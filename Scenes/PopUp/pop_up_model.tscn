@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0kkisie7f3xc"]
+
+[ext_resource type="Script" uid="uid://xfxewfpqulcq" path="res://Scripts/PopUp/PopUpModel.cs" id="1_b5b85"]
+[ext_resource type="PackedScene" uid="uid://cb78614yrfdy0" path="res://Scenes/PopUp/generic_pop_up.tscn" id="2_mwesn"]
+[ext_resource type="PackedScene" uid="uid://dme6cvljdluco" path="res://Scenes/PopUp/options_pop_up.tscn" id="3_mjcro"]
+
+[node name="PopUpModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_b5b85")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="GenericPopUp" parent="." instance=ExtResource("2_mwesn")]
+visible = false
+layout_mode = 1
+mouse_filter = 1
+
+[node name="OptionsPopUp" parent="." instance=ExtResource("3_mjcro")]
+visible = false
+layout_mode = 1
