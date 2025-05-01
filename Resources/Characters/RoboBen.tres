@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://bjmu08b0ucamj"]
+
+[ext_resource type="Resource" uid="uid://b84ri2r1nufos" path="res://Resources/Abilities/HealSpray.tres" id="1_mh8lx"]
+[ext_resource type="Script" uid="uid://dml35riw5jfux" path="res://Scripts/Characters/Player/PlayerData.cs" id="1_vkl8v"]
+[ext_resource type="Texture2D" uid="uid://civ1cdmq6kikk" path="res://Art/Sprites/Characters/roboben.png" id="3_8aqo7"]
+[ext_resource type="Resource" uid="uid://dqep2ndtl3xud" path="res://Resources/PowerUps/secondWind.tres" id="3_7717i"]
+[ext_resource type="Resource" uid="uid://ddwq4row1qtkf" path="res://Resources/CardPiles/RoboBenStarter.tres" id="4_7717i"]
+
+[resource]
+script = ExtResource("1_vkl8v")
+id = &"roboBen"
+name = &"RoboBen"
+texture = ExtResource("3_8aqo7")
+maxHealth = 10
+handSize = 5
+ability = ExtResource("1_mh8lx")
+starterPowerUp = ExtResource("3_7717i")
+startingDeck = ExtResource("4_7717i")
+metadata/_custom_type_script = "uid://dml35riw5jfux"

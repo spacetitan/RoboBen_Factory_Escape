@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://ctu5sybglhaxs"]
+
+[ext_resource type="Texture2D" uid="uid://dxjw0xydoaa3i" path="res://Art/Sprites/Cards/sword-icon.png" id="1_3sdka"]
+[ext_resource type="Script" uid="uid://dhpykw8im33u7" path="res://Scripts/_Resources/Cards/Attack.cs" id="1_rloft"]
+
+[resource]
+script = ExtResource("1_rloft")
+id = &"attack"
+cardName = "Attack"
+cardDesc = ""
+Texture = ExtResource("1_3sdka")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"

@@ -12,9 +12,17 @@ public partial class RunManager : Node
 			instance = this;
 		}
 	}
+	
+	public Run currentRun = null;
 
 	public override void _Ready()
 	{
 		init();
+	}
+
+	public void NewRun(PlayerData playerData)
+	{
+		this.currentRun = new Run(playerData);
+		GameManager.instance.SaveGame();
 	}
 }

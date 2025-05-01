@@ -21,6 +21,8 @@ audioManager="*res://Scenes/_GlobalManagers/audio_manager.tscn"
 gameManager="*res://Scenes/_GlobalManagers/game_manager.tscn"
 resourceManager="*res://Scenes/_GlobalManagers/resource_manager.tscn"
 uiManager="*res://Scenes/_GlobalManagers/ui_manager.tscn"
+runManager="*res://Scenes/_GlobalManagers/run_manager.tscn"
+eventManager="*res://Scenes/_GlobalManagers/event_manager.tscn"
 
 [display]
 

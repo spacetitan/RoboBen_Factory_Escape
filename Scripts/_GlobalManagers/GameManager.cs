@@ -57,4 +57,10 @@ public partial class GameManager : Node
 		AudioManager.instance.musicPlayer.SetVolume((double)settings.GetValue("Settings", "music")); 
 		AudioManager.instance.sfxPlayer.SetVolume((double)settings.GetValue("Settings", "sfx")); 
 	}
+
+	public void SaveGame()
+	{
+		string json = Json.Stringify(RunManager.instance.currentRun.saveRun());
+		GD.Print("Save data: " + json);
+	}
 }
