@@ -25,8 +25,8 @@ public partial class Status : Resource
 
     public int amount { get; private set; } = 0;
 
-    public virtual void InitializeStatus(Node target) { return; }
-    public virtual void ApplyStatus(Node target) 
+    public virtual void InitializeStatus(Character target) { return; }
+    public virtual void ApplyStatus(Character target) 
     {
         GD.Print("Apply: " + id);
         EmitSignal(SignalName.StatusApplied, this);

@@ -3,12 +3,8 @@ using System;
 using System.Collections.Generic;
 
 [GlobalClass]
-public partial class PlayerData : Resource
+public partial class PlayerData : CharacterData
 {
-    [Export] public StringName id = "";
-    [Export] public StringName name = "";
-    [Export] public Texture2D texture = null;
-    [Export] public int maxHealth = 1;
     [Export] public int handSize = 1;
     
     [Export] public Ability ability { get; private set; }
@@ -21,7 +17,7 @@ public partial class PlayerData : Resource
         instance.id = id;
         instance.name = name;
         instance.texture = texture;
-        instance.maxHealth = maxHealth;
+        instance.maxHealth = instance.health = maxHealth;
         instance.handSize = handSize;
 
         return instance;
@@ -31,10 +27,11 @@ public partial class PlayerData : Resource
     {
         return new Godot.Collections.Dictionary<StringName, Variant>()
         {
-            {"id", id},
-            {"texture", texture},
-            {"maxHealth", maxHealth},
-            {"handSize", handSize},
+            {"id", this.id},
+            {"texture", this.texture},
+            {"health", this.health},
+            {"maxHealth", this.maxHealth},
+            {"handSize", this.handSize},
         };
     }
 }

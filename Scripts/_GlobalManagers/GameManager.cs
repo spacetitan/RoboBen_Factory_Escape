@@ -60,7 +60,7 @@ public partial class GameManager : Node
 
 	public void SaveGame()
 	{
-		string json = Json.Stringify(RunManager.instance.currentRun.saveRun());
+		string json = Json.Stringify(RunManager.instance.currentRun.saveRun(), "", false, true);
 		GD.Print("Save data: " + json);
 	}
 }

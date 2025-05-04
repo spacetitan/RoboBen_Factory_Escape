@@ -12,8 +12,9 @@ public partial class RunManager : Node
 			instance = this;
 		}
 	}
-	
-	public Run currentRun = null;
+
+	public Run currentRun { get; private set; } = null;
+	public MapGenerator mapGenerator { get; private set; } = new MapGenerator();
 
 	public override void _Ready()
 	{
@@ -23,6 +24,12 @@ public partial class RunManager : Node
 	public void NewRun(PlayerData playerData)
 	{
 		this.currentRun = new Run(playerData);
-		GameManager.instance.SaveGame();
+		this.currentRun.SetMapData(this.mapGenerator.GenerateNewMap());
+		//GameManager.instance.SaveGame();
+	}
+
+	public void SelectRoom(RoomData roomData)
+	{
+		this.currentRun.ClimbFloor();
 	}
 }

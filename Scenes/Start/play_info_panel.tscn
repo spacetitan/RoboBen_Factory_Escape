@@ -1,12 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://che2ssv2yf87s"]
+[gd_scene load_steps=7 format=3 uid="uid://che2ssv2yf87s"]
 
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_5jpi7"]
 [ext_resource type="Script" uid="uid://cwbd1fkrq6qdh" path="res://Scripts/Start/PlayInfoPanel.cs" id="1_chie1"]
+[ext_resource type="Theme" uid="uid://bv223uoj2p40q" path="res://Themes/Start/PlayInfoPanel/PlayInfo.tres" id="1_rwksr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcce6"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajron"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yhw2"]
+bg_color = Color(1, 0.243137, 0.298039, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
 
 [node name="PlayInfoPanel" type="Control"]
-custom_minimum_size = Vector2(245, 345)
+custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_rwksr")
 script = ExtResource("1_chie1")
 
 [node name="Panel" type="Panel" parent="."]
@@ -23,10 +46,10 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.05
-anchor_right = 0.8
-anchor_bottom = 0.65
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_5jpi7")
@@ -42,6 +65,7 @@ anchor_right = 0.95
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bcce6")
 
 [node name="Panel" type="Panel" parent="Panel/PanelBackgrounds"]
 layout_mode = 1
@@ -51,6 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajron")
 
 [node name="TitleLabel" type="RichTextLabel" parent="Panel"]
 unique_name_in_owner = true
@@ -63,6 +88,7 @@ anchor_bottom = 0.65
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -90,6 +116,7 @@ anchor_right = 0.85
 anchor_bottom = 1.05
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yhw2")
 
 [node name="TypeLabel" type="RichTextLabel" parent="Panel/TypePanel"]
 unique_name_in_owner = true

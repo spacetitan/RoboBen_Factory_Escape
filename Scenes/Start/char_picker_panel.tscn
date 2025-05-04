@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://byljm8ujxv75b"]
+[gd_scene load_steps=5 format=3 uid="uid://byljm8ujxv75b"]
 
 [ext_resource type="Script" uid="uid://b7huh6df1aaof" path="res://Scripts/Start/CharPickerPanel.cs" id="1_04qoj"]
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_d554y"]
-[ext_resource type="Theme" uid="uid://ddfiha7i7lqty" path="res://Themes/Start/CharPickerPanel.tres" id="3_uome1"]
+[ext_resource type="Theme" uid="uid://ddfiha7i7lqty" path="res://Themes/Start/CharPicker/CharPickerPanel.tres" id="3_uome1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d554y"]
+bg_color = Color(1, 0.243137, 0.298039, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
 
 [node name="CharPickerPanel" type="Panel"]
 custom_minimum_size = Vector2(225, 250)
@@ -17,6 +26,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_uome1")
 script = ExtResource("1_04qoj")
 
 [node name="PickerTexture" type="TextureRect" parent="."]
@@ -45,6 +55,7 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d554y")
 
 [node name="TitleLabel" type="RichTextLabel" parent="TitlePanel"]
 unique_name_in_owner = true

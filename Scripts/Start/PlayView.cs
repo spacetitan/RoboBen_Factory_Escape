@@ -46,6 +46,7 @@ public partial class PlayView : UIView
                 if (this.playerData != null)
                 {
                     RunManager.instance.NewRun(this.playerData);
+                    UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
                 }
             }
             else if (this.continueButton.ButtonPressed)

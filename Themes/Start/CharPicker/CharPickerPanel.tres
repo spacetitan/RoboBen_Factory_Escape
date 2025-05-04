@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=8 format=4 uid="uid://ddfiha7i7lqty"]
+[gd_resource type="Theme" load_steps=9 format=4 uid="uid://ddfiha7i7lqty"]
+
+[ext_resource type="StyleBox" uid="uid://to0k6gi5nirs" path="res://Themes/Start/CharPicker/CharPickerStyleBox.tres" id="1_byu6h"]
 
 [sub_resource type="Image" id="Image_5158h"]
 data = {
@@ -951,3 +953,4 @@ Button/styles/focus = SubResource("StyleBoxFlat_5xosi")
 Button/styles/hover = SubResource("StyleBoxFlat_jvlf6")
 Button/styles/normal = SubResource("StyleBoxFlat_gguua")
 Button/styles/pressed = SubResource("StyleBoxFlat_26ohh")
+Panel/styles/panel = ExtResource("1_byu6h")

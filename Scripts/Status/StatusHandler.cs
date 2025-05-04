@@ -8,9 +8,9 @@ public partial class StatusHandler : RefCounted
     [Signal] public delegate void StatusesAppliedEventHandler(Status.TriggerType type);
     public List<Status> statuses { get; private set; } = new List<Status>();
     const float STATUS_APPLY_INTERVAL = .25f;
-    public Node owner { get; private set; }
+    public Character owner { get; private set; }
 
-    public StatusHandler(Node owner)
+    public StatusHandler(Character owner)
     {
         this.owner = owner;
     }
