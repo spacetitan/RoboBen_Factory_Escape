@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bxe10bjl0ijk5"]
+
+[ext_resource type="Script" uid="uid://b28o7rfd5su00" path="res://Scripts/Characters/Enemy/EnemyData.cs" id="1_re7jk"]
+[ext_resource type="Texture2D" uid="uid://d1kyfia0wha60" path="res://Art/Sprites/Enemies/Snakefly.png" id="2_blkvj"]
+
+[resource]
+script = ExtResource("1_re7jk")
+actions = null
+attack = 2
+defense = 1
+id = &"grubbfly"
+name = &"Grubbfly"
+texture = ExtResource("2_blkvj")
+health = 0
+maxHealth = 8
+armor = 0
+metadata/_custom_type_script = "uid://b28o7rfd5su00"

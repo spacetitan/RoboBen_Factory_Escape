@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://o66oc0d71wet"]
+
+[ext_resource type="Script" uid="uid://b28o7rfd5su00" path="res://Scripts/Characters/Enemy/EnemyData.cs" id="1_nh7wf"]
+[ext_resource type="Texture2D" uid="uid://kgekl536ry0m" path="res://Art/Sprites/Enemies/toirtibug.png" id="2_g1k3w"]
+
+[resource]
+script = ExtResource("1_nh7wf")
+actions = null
+attack = 1
+defense = 4
+id = &"tortigrubb"
+name = &"Tortigrubb"
+texture = ExtResource("2_g1k3w")
+health = 0
+maxHealth = 15
+armor = 0
+metadata/_custom_type_script = "uid://b28o7rfd5su00"

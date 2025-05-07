@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://o5a6lxfp35t4"]
+
+[ext_resource type="Script" uid="uid://dqu05knvmxc8b" path="res://Scripts/Battle/BattleModel.cs" id="1_fp264"]
+[ext_resource type="PackedScene" uid="uid://dqp4daiviobax" path="res://Scenes/Battle/battle_view.tscn" id="2_ft16u"]
+
+[node name="BattleModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fp264")
+state = 3
+
+[node name="BattleView" parent="." instance=ExtResource("2_ft16u")]
+layout_mode = 1

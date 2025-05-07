@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class Character : Node
+public partial class Character : Control
 {
     [Signal] public delegate void StatsChangedEventHandler();
     

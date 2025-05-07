@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqp4daiviobax"]
+
+[ext_resource type="Script" uid="uid://buo6od1wcg6ee" path="res://Scripts/Battle/BattleView.cs" id="1_jtq21"]
+
+[node name="BattleView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtq21")
+viewID = &"battle"
+
+[node name="PlayerSpawn" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.325
+anchor_right = 0.35
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySpawn" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.4
+anchor_top = 0.375
+anchor_right = 0.6
+anchor_bottom = 0.775
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySpawn2" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.6
+anchor_top = 0.325
+anchor_right = 0.8
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySpawn3" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.8
+anchor_top = 0.325
+anchor_right = 1.0
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2

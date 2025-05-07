@@ -27,7 +27,7 @@ public partial class Run
         this.playerDeck.SetDeck(this.playerData.startingDeck);
         
         this.powerUpHandler = new PowerUpHandler();
-        this.powerUpHandler.powerUps.Add(this.playerData.starterPowerUp);
+        this.powerUpHandler.AddPowerUp(this.playerData.starterPowerUp);
 
         //GD.Print("Starting new run!");
     }

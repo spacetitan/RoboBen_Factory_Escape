@@ -24,14 +24,26 @@ public partial class HUDModel : UIModel
         {
             case UIManager.UIState.RUN:
                 this.views["roomHUD"].HideView();
-                //this.views["battleHUD"].HideView();
+                this.views["battleHUD"].HideView();
                 
                 this.views["runHUD"].ShowView();
                 break;
             
             case UIManager.UIState.BATTLE:
+                this.views["roomHUD"].HideView();
+                this.views["runHUD"].HideView();
+                
+                this.views["battleHUD"].ShowView();
+                break;
+                
             default:
                 break;
         }
+    }
+
+    public void SetPlayerData(Player player)
+    {
+        BattleHUDView hud = this.views["battleHUD"] as BattleHUDView;
+        hud.SetData(player);
     }
 }

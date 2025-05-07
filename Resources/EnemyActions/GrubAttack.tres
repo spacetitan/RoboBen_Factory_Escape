@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyAttack" load_steps=2 format=3 uid="uid://uksuhsmohk0"]
+
+[ext_resource type="Script" uid="uid://c6qotuj1h5afd" path="res://Scripts/_Resources/EnemyActions/EnemyAttack.cs" id="1_akuxd"]
+
+[resource]
+script = ExtResource("1_akuxd")
+numOfAtt = 1
+hpThreshold = 0
+type = 2
+value = 1
+chanceWeight = 2
+metadata/_custom_type_script = "uid://c6qotuj1h5afd"

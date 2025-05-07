@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmdl4q5mlvh53"]
+
+[ext_resource type="StyleBox" uid="uid://to0k6gi5nirs" path="res://Themes/Start/CharPicker/CharPickerStyleBox.tres" id="1_86vu2"]
+[ext_resource type="Script" uid="uid://bi55jkjyniumg" path="res://Scripts/HUD/AbilityInfoPanel.cs" id="2_ayggk"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="3_70xaq"]
+
+[node name="AbilityInfoPanel" type="Panel"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.45
+anchor_right = 0.975
+anchor_bottom = 0.675
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_86vu2")
+script = ExtResource("2_ayggk")
+
+[node name="AbilityTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_70xaq")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
+text = "Title"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="DescLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Desc"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

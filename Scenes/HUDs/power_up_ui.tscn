@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbu2oyxcm7ri8"]
+
+[ext_resource type="Script" uid="uid://b8ymq6lvt3rmf" path="res://Scripts/PowerUps/PowerUpUI.cs" id="1_omika"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_pq5nq"]
+[ext_resource type="PackedScene" uid="uid://chekjngyobghn" path="res://Scenes/HUDs/power_up_info_panel.tscn" id="3_pq5nq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omika"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a72in"]
+bg_color = Color(0.105882, 0.172549, 0.243137, 0.607843)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PowerUpUI" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omika")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_omika")
+
+[node name="PowerUpTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pq5nq")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LabelPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.6
+anchor_right = 0.9
+anchor_bottom = 0.9
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a72in")
+
+[node name="PowerUpLabel" type="RichTextLabel" parent="LabelPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerUpAP" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="PowerUpInfoPanelInv" parent="." instance=ExtResource("3_pq5nq")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="PowerUpInfoPanel" parent="." instance=ExtResource("3_pq5nq")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 1.1
+anchor_right = 3.0
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

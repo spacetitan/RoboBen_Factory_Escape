@@ -10,6 +10,7 @@ public partial class RoomData : Node
     [Export] public int column;
     [Export] public bool selected = false;
     public List<int> nextRoomNumber = new List<int>();
+    public BattleData battleData = null;
     
     public String toString()
     {
@@ -25,15 +26,17 @@ public partial class RoomData : Node
             {"column", this.column},
         };
 
+        Godot.Collections.Dictionary<StringName, Variant> nextRoomData = new Godot.Collections.Dictionary<StringName, Variant>();
         if (nextRoomNumber.Count > 0)
         {
-            Godot.Collections.Dictionary<StringName, Variant> nextRoomData = new Godot.Collections.Dictionary<StringName, Variant>();
             for(int i = 0; i < this.nextRoomNumber.Count; i++)
             {
                 nextRoomData.Add("Next Room " + i, this.nextRoomNumber[i]);
             }
-            data.Add("Next Rooms", nextRoomData);
         }
+        data.Add("Next Rooms", nextRoomData);
+
+        data.Add("Battle Data", this.battleData);
 
         return data;
     }

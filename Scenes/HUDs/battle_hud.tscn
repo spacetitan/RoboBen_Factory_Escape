@@ -1,0 +1,283 @@
+[gd_scene load_steps=17 format=3 uid="uid://gh8ljiv7ps7k"]
+
+[ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_y5i83"]
+[ext_resource type="Script" uid="uid://wsolebailkly" path="res://Scripts/HUD/BattleHUDView.cs" id="2_sxrd0"]
+[ext_resource type="PackedScene" uid="uid://jdjydaqh07rn" path="res://Scenes/HUDs/deck_button.tscn" id="3_261qm"]
+[ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="3_tbp6t"]
+[ext_resource type="Texture2D" uid="uid://cil2d8w5xsk47" path="res://Art/Sprites/CardPile/deck-icon.png" id="4_ajpk0"]
+[ext_resource type="PackedScene" uid="uid://dhoqwn8106lqt" path="res://Scenes/HUDs/health_ui.tscn" id="5_ajpk0"]
+[ext_resource type="Texture2D" uid="uid://b6at263q1uag1" path="res://Art/Sprites/CardPile/deck-icon-inv.png" id="5_tbp6t"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="8_1bodp"]
+[ext_resource type="PackedScene" uid="uid://cmdl4q5mlvh53" path="res://Scenes/HUDs/ability_info_panel.tscn" id="9_a8n4k"]
+[ext_resource type="Texture2D" uid="uid://veakbgeaanxy" path="res://Art/Sprites/Battle/energy-icon.png" id="11_6lrue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxrd0"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_bottom = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_261qm"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emp6f"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_top = 5
+border_width_right = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bbrp"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbf4e"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rjmy"]
+radius = 56.0
+height = 154.0
+
+[node name="BattleHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y5i83")
+script = ExtResource("2_sxrd0")
+viewID = &"battleHUD"
+
+[node name="TopPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sxrd0")
+
+[node name="Panel" type="Panel" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.66
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_261qm")
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="TopPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.65
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoneyDisplay" parent="TopPanel" instance=ExtResource("3_tbp6t")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.1
+anchor_right = 0.77
+anchor_bottom = 0.9
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="QuitButton" type="Button" parent="TopPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="OptionsButton" type="Button" parent="TopPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78
+anchor_top = 0.1
+anchor_right = 0.88
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="LeftPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 0.3
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_emp6f")
+
+[node name="DiscardButton" parent="LeftPanel" instance=ExtResource("3_261qm")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+buttonTexture = ExtResource("4_ajpk0")
+
+[node name="HealthUI" parent="LeftPanel" instance=ExtResource("5_ajpk0")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.65
+anchor_bottom = 0.7
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bbrp")
+
+[node name="DeckButton" parent="RightPanel" instance=ExtResource("3_261qm")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.3
+anchor_bottom = 0.9
+buttonTexture = ExtResource("5_tbp6t")
+
+[node name="MapButton" parent="RightPanel" instance=ExtResource("8_1bodp")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.725
+anchor_top = 0.7
+anchor_right = 0.975
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="AbilityButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ability"
+
+[node name="EndTurnButton" type="Button" parent="ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "End Turn"
+
+[node name="AbilityInfoPanel" parent="." instance=ExtResource("9_a8n4k")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="GenPanel" type="Panel" parent="." groups=["Burner"]]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.6
+anchor_right = 0.15
+anchor_bottom = 0.825
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbf4e")
+
+[node name="TextureRect2" type="TextureRect" parent="GenPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_6lrue")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Area2D" type="Area2D" parent="GenPanel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GenPanel/Area2D"]
+position = Vector2(97, 129)
+shape = SubResource("CapsuleShape2D_0rjmy")
+
+[node name="EnergyLabel" type="RichTextLabel" parent="GenPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175
+anchor_top = 0.6
+anchor_right = 0.3
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseEntered"]
+[connection signal="mouse_exited" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseExited"]

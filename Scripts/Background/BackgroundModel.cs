@@ -38,6 +38,14 @@ public partial class BackgroundModel : UIModel
                 this.backgroundTexture.Texture = backgroundTextures[0];
                 break;
             
+            case UIManager.UIState.BATTLE:
+                this.backgroundTexture.Texture = backgroundTextures[1];
+                break;
+            
+            case UIManager.UIState.RUN:
+                this.backgroundTexture.Texture = backgroundTextures[2];
+                break;
+            
             case UIManager.UIState.NONE:
             default:
                 

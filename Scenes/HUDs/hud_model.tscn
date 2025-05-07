@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmxct0at6mn6e"]
+[gd_scene load_steps=5 format=3 uid="uid://dmxct0at6mn6e"]
 
 [ext_resource type="PackedScene" uid="uid://deh2pldkcqf23" path="res://Scenes/HUDs/run_hud_view.tscn" id="1_6e22i"]
 [ext_resource type="Script" uid="uid://dvgat7csqhn36" path="res://Scripts/HUD/HUDModel.cs" id="1_07s1l"]
 [ext_resource type="PackedScene" uid="uid://c3a2ujcg68h0f" path="res://Scenes/HUDs/room_hud.tscn" id="2_07s1l"]
+[ext_resource type="PackedScene" uid="uid://gh8ljiv7ps7k" path="res://Scenes/HUDs/battle_hud.tscn" id="4_sl4mv"]
 
 [node name="HUDModel" type="Control"]
 layout_mode = 3
@@ -22,3 +23,7 @@ layout_mode = 1
 unique_name_in_owner = true
 layout_mode = 1
 viewID = &"roomHUD"
+
+[node name="BattleHUD" parent="." instance=ExtResource("4_sl4mv")]
+unique_name_in_owner = true
+layout_mode = 1

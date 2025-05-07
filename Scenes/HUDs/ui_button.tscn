@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw4n6u6lgdrng"]
+
+[ext_resource type="Script" uid="uid://d0r6mexs8ftw2" path="res://Scripts/UI/UIButton.cs" id="1_vs2jq"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_uw8wm"]
+
+[node name="UIButton" type="Control"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vs2jq")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="ButtonTexture" type="TextureRect" parent="UIContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("2_uw8wm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ButtonLabel" type="RichTextLabel" parent="UIContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Button"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

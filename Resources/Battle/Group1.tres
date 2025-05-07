@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleData" load_steps=2 format=3 uid="uid://bkcj3l0ucpksn"]
+
+[ext_resource type="Script" uid="uid://d0k3xhyyekgcl" path="res://Scripts/Battle/BattleData.cs" id="1_p5ws4"]
+
+[resource]
+script = ExtResource("1_p5ws4")
+enemyIDList = PackedStringArray("grubboid", "grubboid", "grubboid")
+tier = 0
+weight = 1.0
+money = 10
+metadata/_custom_type_script = "uid://d0k3xhyyekgcl"

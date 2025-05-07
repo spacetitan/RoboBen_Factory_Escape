@@ -7,7 +7,7 @@ public partial class RoomPanel : Panel
     [Export] public TextureRect texture;
     [Export] public AnimationPlayer animationPlayer;
 
-    bool available = false;
+    bool isAvailable = false;
     private bool isDisplay = false;
     public RoomData data = null;
     
@@ -24,7 +24,7 @@ public partial class RoomPanel : Panel
     
     public void OnInputEvent(InputEvent inputEvent)
     {
-        if(inputEvent.IsActionPressed("LeftMouse") && this.available && !isDisplay)
+        if(inputEvent.IsActionPressed("LeftMouse") && this.isAvailable && !isDisplay)
         {
             this.data.selected = true;
             this.animationPlayer.Play("select");
@@ -47,29 +47,25 @@ public partial class RoomPanel : Panel
         {
             this.animationPlayer.Play("selected");
         }
+        SetAvailability(false);
     }
     
-    // public void PlayAnimation(string anim)
-    // {
-    //     this.animationPlayer.Play(anim);
-    // }
-    //
-    // public void SetAvailability(bool availability)
-    // {
-    //     this.available = availability;
-    //
-    //     if(this.available)
-    //     {
-    //         this.animationPlayer.Play("highlight");
-    //     }
-    //     else
-    //     {
-    //         this.animationPlayer.Play("RESET");
-    //     }
-    // }
-    //
-    // public void ShowSelected()
-    // {
-    //     this.line2D.Modulate = new Godot.Color(255,255,255);
-    // }
+    public void SetAvailability(bool availability)
+    {
+        this.isAvailable = availability;
+    
+        if(this.isAvailable)
+        {
+            this.animationPlayer.Play("highlight");
+        }
+        else
+        {
+            this.animationPlayer.Play("RESET");
+        }
+    }
+    
+    public void ShowSelected()
+    {
+        //this.line2D.Modulate = new Godot.Color(255,255,255);
+    }
 }

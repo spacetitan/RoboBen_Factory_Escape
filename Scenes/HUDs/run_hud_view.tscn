@@ -1,7 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://deh2pldkcqf23"]
+[gd_scene load_steps=9 format=3 uid="uid://deh2pldkcqf23"]
 
+[ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_f4jiy"]
 [ext_resource type="Script" uid="uid://lruaxvlxp0ga" path="res://Scripts/HUD/RunHUDView.cs" id="1_huvjm"]
 [ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="2_wm4rk"]
+[ext_resource type="PackedScene" uid="uid://jdjydaqh07rn" path="res://Scenes/HUDs/deck_button.tscn" id="3_7igj7"]
+[ext_resource type="Texture2D" uid="uid://cil2d8w5xsk47" path="res://Art/Sprites/CardPile/deck-icon.png" id="4_f4jiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4jiy"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_right = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdixu"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_left = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xce7t"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
 
 [node name="RunHUDView" type="Control"]
 layout_mode = 3
@@ -11,6 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_f4jiy")
 script = ExtResource("1_huvjm")
 viewID = &"runHUD"
 
@@ -22,6 +45,7 @@ anchor_right = 0.15
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f4jiy")
 
 [node name="NameDisplay" parent="LeftPanel" instance=ExtResource("2_wm4rk")]
 unique_name_in_owner = true
@@ -87,7 +111,18 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="DeckButton" parent="LeftPanel" instance=ExtResource("3_7igj7")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.775
+anchor_right = 0.9
+anchor_bottom = 0.975
+buttonTexture = ExtResource("4_f4jiy")
+
 [node name="RightPanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.85
@@ -95,3 +130,52 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdixu")
+
+[node name="PowerUpPanel" type="Panel" parent="RightPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.725
+offset_left = 4.76837e-05
+offset_right = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xce7t")
+
+[node name="PowerUpContainer" type="GridContainer" parent="RightPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.725
+offset_left = 4.76837e-05
+offset_right = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsButton" type="Button" parent="RightPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.75
+anchor_right = 0.9
+anchor_bottom = 0.85
+offset_left = 4.76837e-05
+offset_right = 3.05176e-05
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="RightPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.875
+anchor_right = 0.9
+anchor_bottom = 0.975
+text = "Quit"

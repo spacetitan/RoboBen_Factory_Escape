@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BattleData" load_steps=2 format=3 uid="uid://jj6l8vl03c4q"]
+
+[ext_resource type="Script" uid="uid://d0k3xhyyekgcl" path="res://Scripts/Battle/BattleData.cs" id="1_ymcw2"]
+
+[resource]
+script = ExtResource("1_ymcw2")
+battleID = "boss1"
+enemyIDList = PackedStringArray("grubbmantis")
+tier = 2
+weight = 1.0
+money = 0
+metadata/_custom_type_script = "uid://d0k3xhyyekgcl"

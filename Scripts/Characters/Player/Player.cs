@@ -6,8 +6,22 @@ public partial class Player : Character
 {
     public PlayerData playerData = null;
     
-    public int energy = 0;
+    public TextureRect playerTexture = null;
     
+    public int energy = 0;
+
+    public void GetSceneNodes()
+    {
+        this.playerTexture = this.GetNode<TextureRect>("PlayerTexture");
+    }
+
+    public void SetPlayerData(PlayerData playerData)
+    {
+        this.playerData = playerData;
+        this.playerTexture.Texture = this.playerData.texture;
+        this.energy = 0;
+    }
+
     public override void TakeDamage(int amount, Modifier.Type type = Modifier.Type.DMG_TAKEN)
     {
         if(this.health <= 0 || amount <= 0) { return; }

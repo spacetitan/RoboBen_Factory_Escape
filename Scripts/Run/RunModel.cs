@@ -8,7 +8,6 @@ public partial class RunModel : UIModel
 
     private List<RoomPanel> roomList = new List<RoomPanel>();
     private List<RoomPanel> selectedRooms = new List<RoomPanel>();
-    private int floorsClimbed = 0;
     private RoomPanel currentRoom = null;
     private RoomPanel lastRoom = null;
     
@@ -24,10 +23,10 @@ public partial class RunModel : UIModel
     {
         this.mapScrollContainer = GetNode<ScrollContainer>("%MapScrollContainer");
         this.mapScrollContainer.ClipContents = false;
-        // this.mapScrollContainer.GetVScrollBar().Changed += () =>
-        // {
-        //     this.mapScrollContainer.ScrollVertical = (int)this.mapScrollContainer.GetVScrollBar().MaxValue; 
-        // };
+        this.mapScrollContainer.GetVScrollBar().Changed += () =>
+        {
+            this.mapScrollContainer.ScrollVertical = (int)this.mapScrollContainer.GetVScrollBar().MaxValue; 
+        };
 
         this.mapContainer = this.mapScrollContainer.GetNode<VBoxContainer>("%MapContainer");
     }
@@ -37,30 +36,19 @@ public partial class RunModel : UIModel
         if (this.roomList == null || this.roomList.Count == 0)
         {
             CreateMap();
+            UnlockFloor(RunManager.instance.currentRun.floorsClimbed);
         }
         else
         {
+            UnlockNextRooms();
             
+            double max = this.mapScrollContainer.GetVScrollBar().GetMax() - (this.mapScrollContainer.Size.Y);
+            int num = (int)(max * FloorToScroll());
+            this.mapScrollContainer.SetVScroll(num);
+            
+            Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
+            tween.TweenProperty(this.mapScrollContainer, "scroll_vertical", num, 1f);
         }
-        // if(this.mapData == null || !this.mapData.Any())
-        // {
-        //     GenerateNewMap();
-        //     UnlockFloor(this.floorsClimbed);
-        // }
-        // else
-        // {
-        //     this.floorsClimbed = RunManager.instance.currentRun.floorsClimbed;
-        //     this.lastRoom = RunManager.instance.currentRun.lastRoom;
-        //     UnlockNextRooms();
-			     //
-        //     double max = this.scrollContainer.GetVScrollBar().GetMax() - (this.scrollContainer.Size.Y);
-        //     int num = (int)(max * FloorToScroll());
-        //     this.scrollContainer.SetVScroll(num);
-				    //
-        //     Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
-        //     tween.TweenProperty(this.scrollContainer, "scroll_vertical", num, 1f);
-        // }
-        // GameManager.instance.SaveGame();
     }
     
     void CreateMap()
@@ -148,4 +136,47 @@ public partial class RunModel : UIModel
         return null;
     }
     
+    void UnlockFloor(int whichFloor = -1)
+    {
+        if(whichFloor == -1)
+        {
+            whichFloor = RunManager.instance.currentRun.floorsClimbed;
+        }
+
+        foreach(RoomPanel room in this.roomList)
+        {
+            if(room.data.row == whichFloor)
+            {
+                room.SetAvailability(true);
+            }
+            else
+            {
+                room.SetAvailability(false);
+            }
+        }
+    }
+    
+    void UnlockNextRooms()
+    {
+        foreach(RoomPanel room in this.roomList)
+        {
+            if (room.data.row == RunManager.instance.currentRun.floorsClimbed + 1)
+            {
+                if (this.lastRoom.data.nextRoomNumber.Contains(room.data.column))
+                {
+                    room.SetAvailability(true);
+                }
+            }
+
+            if(this.selectedRooms.Contains(room))
+            {
+                room.ShowSelected();
+            }
+        }
+    }
+    
+    public float FloorToScroll()
+    {
+        return ((float)(RunManager.instance.mapGenerator.floors - RunManager.instance.currentRun.floorsClimbed) / (float)RunManager.instance.mapGenerator.floors);
+    }
 }

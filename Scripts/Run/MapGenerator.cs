@@ -163,7 +163,7 @@ public partial class MapGenerator : Node
         int middle = Mathf.FloorToInt(MAP_WIDTH /2);
         RoomData bossRoom = this.mapData[this.floors-1][middle] as RoomData;
         bossRoom.type = RoomData.Type.COMBAT;
-        //bossRoom.battleData = RunManager.instance.GetRandomBattleforTier(2);
+        bossRoom.battleData = RunManager.instance.GetRandomBattleforTier(2);
 
         for(int j = 0; j < MAP_WIDTH; j++)
         {
@@ -195,7 +195,7 @@ public partial class MapGenerator : Node
             if(room.nextRoomNumber.Count > 0)
             {
                 room.type = RoomData.Type.COMBAT;
-                //room.battleData = RunManager.instance.GetRandomBattleforTier(0);
+                room.battleData = RunManager.instance.GetRandomBattleforTier(0);
             }
         }
 
@@ -265,7 +265,7 @@ public partial class MapGenerator : Node
                 tier++;
             }
             
-            //room.battleData = RunManager.instance.GetRandomBattleforTier(tier);
+            room.battleData = RunManager.instance.GetRandomBattleforTier(tier);
         }
     }
     

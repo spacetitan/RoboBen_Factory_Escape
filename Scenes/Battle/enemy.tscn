@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ksedg5yips63"]
+
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_r2c81"]
+[ext_resource type="Script" uid="uid://8d638uapjugo" path="res://Scripts/Characters/Enemy/Enemy.cs" id="1_u0uup"]
+
+[node name="Enemy" type="Control" groups=["Enemy"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u0uup")
+
+[node name="EnemyTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r2c81")
+expand_mode = 5
+stretch_mode = 5

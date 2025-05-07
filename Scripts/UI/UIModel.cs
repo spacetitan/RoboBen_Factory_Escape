@@ -6,8 +6,6 @@ public partial class UIModel : Control
 {
     [Export] public UIManager.UIState state = UIManager.UIState.NONE;
     public Dictionary<string, UIView> views { get; private set; } = new Dictionary<string, UIView>();
-    protected UIView currentView = null;
-    protected UIView lastView = null;
     
     public virtual void InitializeModel()
     {

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhoqwn8106lqt"]
+
+[ext_resource type="Script" uid="uid://b2in3be2mqc2n" path="res://Scripts/HUD/HealthUI.cs" id="1_acsct"]
+[ext_resource type="Texture2D" uid="uid://b46uvarj5kv4o" path="res://Art/Sprites/HUD/healthIcon.png" id="1_jkgvo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acsct"]
+bg_color = Color(0.240347, 1.97035e-07, 0.0248003, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do075"]
+bg_color = Color(0.6015, 0, 0.115817, 1)
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="HealthUI" type="Control"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 50.0
+script = ExtResource("1_acsct")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_acsct")
+theme_override_styles/fill = SubResource("StyleBoxFlat_do075")
+step = 0.1
+value = 50.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.1
+anchor_top = -0.2
+anchor_right = 0.2
+anchor_bottom = 1.2
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jkgvo")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HealthLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 10"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
