@@ -19,8 +19,8 @@ public partial class GuardEffect : Effect
 
         if(target is Enemy)
         {
-            // Enemy enemy = (Enemy)target;
-            // enemy.data.AddArmor(amount);
+            Enemy enemy = (Enemy)target;
+            enemy.AddArmor(amount);
         }
         else if(target is Player)
         {
@@ -32,7 +32,7 @@ public partial class GuardEffect : Effect
 
     public override void Execute(List<Character> targets)
     {
-        foreach (Node target in targets)
+        foreach (Character target in targets)
         {
             if(target == null)
             {
@@ -41,8 +41,8 @@ public partial class GuardEffect : Effect
 
             if(target is Enemy)
             {
-                // Enemy enemy = (Enemy)target;
-                // enemy.data.AddArmor(amount);
+                Enemy enemy = (Enemy)target;
+                enemy.AddArmor(amount);
             }
             else if(target is Player)
             {

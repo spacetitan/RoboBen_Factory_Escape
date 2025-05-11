@@ -12,6 +12,11 @@ public partial class EnemyAttack : EnemyAction
 	{
 		base.InitializeAction(enemy);
 	}
+	
+	public override string GetIntent()
+	{
+		return this.value.ToString() + " X " + numOfAtt.ToString();
+	}
 
 	public override bool IsPerformable()
 	{
@@ -24,13 +29,13 @@ public partial class EnemyAttack : EnemyAction
 		return base.IsPerformable();
 	}
 
-	public override void PerformAction(Character target)
+	public override void PerformAction(Action callback = null)
 	{
 		//GD.Print(enemy.data.name + " attacks!");
 		Vector2 start = this.owner.GlobalPosition;
-		Vector2 end = target.GlobalPosition + new Vector2(0,-target.Size.Y/2);
+		Vector2 end = this.target.GlobalPosition + new Vector2(this.target.Size.X/2, 0);
 		DamageEffect damage = new DamageEffect(this.owner.GetModifiedAttack(this.value), this.sound);
-		List<Character> targetList = new List<Character>(){target};
+		List<Character> targetList = new List<Character>(){this.target};
 
 		Tween tween = this.owner.CreateTween().SetTrans(Tween.TransitionType.Quint);
 		tween.TweenProperty(this.owner, "global_position", end, .4);
@@ -50,7 +55,8 @@ public partial class EnemyAttack : EnemyAction
 
 		tween.Finished += () => 
 		{
-			base.PerformAction(target);
+			callback?.Invoke();
+			base.PerformAction();
 		};
 	}
 }

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b84ri2r1nufos"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b84ri2r1nufos"]
 
 [ext_resource type="Texture2D" uid="uid://cbc8ion1w77xj" path="res://Art/Sprites/Abilities/healspray.png" id="1_cmrfd"]
-[ext_resource type="Script" uid="uid://dqn4d1g70k1r3" path="res://Scripts/Characters/Player/Ability.cs" id="1_u6gra"]
+[ext_resource type="Script" uid="uid://cejjtpxxnt3m0" path="res://Scripts/_Resources/Abilities/HealSpray.cs" id="1_yt8ee"]
 
 [resource]
-script = ExtResource("1_u6gra")
+script = ExtResource("1_yt8ee")
 name = "Heal Spray"
 desc = "Heals {value} "
 value = 1

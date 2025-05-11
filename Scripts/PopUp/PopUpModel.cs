@@ -20,11 +20,18 @@ public partial class PopUpModel : UIModel
         this.views[viewID].ShowView();
     }
 
-    public void OpenGenericPopup(GenericPopUpView.GenericPopUpData data)
+    public void OpenGenericPopUp(GenericPopUpView.GenericPopUpData data)
     {
         this.ShowModel();
         GenericPopUpView popUpView = this.views["Generic"] as GenericPopUpView;
         popUpView.OpenPopUp(data);
+    }
+
+    public void OpenDeckPopUp(CardPile deck, string title)
+    {
+        this.ShowModel();
+        DeckPopUpView popUpView = this.views["deck"] as DeckPopUpView;
+        popUpView.OpenPopUp(deck, title);
     }
 
     public void ClosePopup(string popupName)

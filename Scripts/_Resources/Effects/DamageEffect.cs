@@ -24,15 +24,15 @@ public partial class DamageEffect : Effect
 
         if(target is Enemy)
         {
-            // Enemy enemy = (Enemy)target;
-            // if (isDirect)
-            // {
-            //     enemy.TakeDirectDamage(amount, receivermodifierType);
-            // }
-            // else
-            // {
-            //     enemy.TakeDamage(amount, receivermodifierType);
-            // }
+            Enemy enemy = (Enemy)target;
+            if (isDirect)
+            {
+                enemy.TakeDirectDamage(amount, receivermodifierType);
+            }
+            else
+            {
+                enemy.TakeDamage(amount, receivermodifierType);
+            }
         }
         else if(target is Player)
         {
@@ -52,7 +52,7 @@ public partial class DamageEffect : Effect
 
     public override void Execute(List<Character> targets)
     {
-        foreach (Node target in targets)
+        foreach (Character target in targets)
         {
             if(target == null)
             {
@@ -61,13 +61,27 @@ public partial class DamageEffect : Effect
 
             if(target is Enemy)
             {
-                // Enemy enemy = (Enemy)target;
-                // enemy.TakeDamage(amount, receivermodifierType);
+                Enemy enemy = (Enemy)target;
+                if (isDirect)
+                {
+                    enemy.TakeDirectDamage(amount, receivermodifierType);
+                }
+                else
+                {
+                    enemy.TakeDamage(amount, receivermodifierType);
+                }
             }
             else if(target is Player)
             {
                 Player player = target as Player;
-                player.TakeDamage(amount, receivermodifierType);
+                if (isDirect)
+                {
+                    player.TakeDirectDamage(amount, receivermodifierType);
+                }
+                else
+                {
+                    player.TakeDamage(amount, receivermodifierType);
+                }
             }
             AudioManager.instance.sfxPlayer.Play(this.sfx);
         }

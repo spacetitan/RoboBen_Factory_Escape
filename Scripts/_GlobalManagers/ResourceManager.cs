@@ -20,15 +20,19 @@ public partial class ResourceManager : Node
 	public PackedScene playerScene = null;
 	
 	public Dictionary<StringName, EnemyData> enemies = new Dictionary<StringName, EnemyData>();
+	public Dictionary<StringName, Texture2D> intentIcons = new Dictionary<StringName, Texture2D>();
 	public PackedScene enemyScene = null;
 	
 	public Dictionary<StringName, Status> statuses = new Dictionary<StringName, Status>();
 	
 	public Dictionary<StringName, CardData> cards = new Dictionary<StringName, CardData>();
+	public Dictionary<StringName, PowerUp> powerUps = new Dictionary<StringName, PowerUp>();
+	public PackedScene displayCard = null;
+	
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
 	public Dictionary<StringName, Texture2D> HUDIcons = new Dictionary<StringName, Texture2D>();
 	
-	public Dictionary<StringName, Shader> shaders = new Dictionary<StringName, Shader>();
+	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
 
 	public override void _Ready()
 	{
@@ -54,7 +58,16 @@ public partial class ResourceManager : Node
 			{"tortigrubb", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Tortigrubb.tres")},
 			{"grubbmantis", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Grubbmantis.tres")},
 		};
+		this.intentIcons = new Dictionary<StringName, Texture2D>()
+		{
+			{"attack", ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/sword-icon.png")},
+			{"armor", ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/armor-icon.png")},
+		};
 		this.enemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/enemy.tscn");
+
+		this.cards = new Dictionary<StringName, CardData>() { };
+		this.powerUps = new Dictionary<StringName, PowerUp>() { };
+		this.displayCard = ResourceLoader.Load<PackedScene>("res://Scenes/UI/card_display_ui.tscn");
 
 		this.runIcons = new Dictionary<RoomData.Type, Texture2D>()
 		{
@@ -74,9 +87,10 @@ public partial class ResourceManager : Node
 			{"powerUp",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/powerup-icon.png")},
 		};
 
-		this.shaders = new Dictionary<StringName, Shader>()
+		this.shaders = new Dictionary<StringName, Material>()
 		{
-			{"overlayFlash", ResourceLoader.Load<Shader>("res://Art/Materials/FlashingOverlay/FlashingOverlay.gdshader")}
+			{"heal", ResourceLoader.Load<Material>("res://Art/Materials/HealVFX/HealMaterial.tres")},
+			{"damage", ResourceLoader.Load<Material>("res://Art/Materials/DamageVFX/DamageMaterial.tres")},
 		};
 	}
 }

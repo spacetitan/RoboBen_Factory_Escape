@@ -60,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_y5i83")
 script = ExtResource("2_sxrd0")
 viewID = &"battleHUD"
@@ -227,8 +228,10 @@ text = "End Turn"
 unique_name_in_owner = true
 layout_mode = 1
 
-[node name="GenPanel" type="Panel" parent="." groups=["Burner"]]
+[node name="GenPanel" type="Panel" parent="."]
 unique_name_in_owner = true
+z_index = -1
+z_as_relative = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -248,7 +251,7 @@ texture = ExtResource("11_6lrue")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Area2D" type="Area2D" parent="GenPanel"]
+[node name="Area2D" type="Area2D" parent="GenPanel" groups=["Burner"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GenPanel/Area2D"]
 position = Vector2(97, 129)

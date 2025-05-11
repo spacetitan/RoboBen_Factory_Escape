@@ -61,7 +61,6 @@ public partial class UIManager : Node
 						
 						case VFXModel:
 							this.vfxModel = model as VFXModel;
-							this.vfxModel.OpenCurtain();
 							break;
 						
 						case BackgroundModel:
@@ -76,13 +75,14 @@ public partial class UIManager : Node
 			}
 		}
 		
-		this.currentModel = this.models[UIState.START];
 		this.backgroundModel.ChangeBackgroundTexture(UIState.START);
+		this.currentModel = this.models[UIState.START];
+		this.currentModel.Enter();
 	}
 	
 	public void ChangeStateTo(UIState panelState)
 	{
-		GD.Print(this.currentModel.state.ToString() + " -> " + panelState.ToString());
+		//GD.Print(this.currentModel.state.ToString() + " -> " + panelState.ToString());
 		
 		this.vfxModel.CloseCurtain(() =>
 		{
@@ -110,10 +110,5 @@ public partial class UIManager : Node
 				this.currentModel.ShowModel();
 			}
 		});
-	}
-
-	private void ChangeState(UIState panelState)
-	{
-		
 	}
 }

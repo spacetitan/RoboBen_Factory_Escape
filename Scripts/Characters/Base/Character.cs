@@ -15,7 +15,6 @@ public partial class Character : Control
         EVERYONE
     }
     
-    public int health = 0;
     public int armor = 0;
     
     public ModifierHandler modifierHandler = null;
@@ -34,25 +33,22 @@ public partial class Character : Control
     
     protected void SetHealth(int value)
     {
-        this.health = value;
         EmitSignal(SignalName.StatsChanged);
     }
     
     public virtual void TakeDamage(int amount, Modifier.Type type = Modifier.Type.DMG_TAKEN)
     {
-        if(this.health <= 0 || amount <= 0) { return; }
+        if(amount <= 0) { return; }
 
         int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
-        this.health -= modifiedAmount;
         EmitSignal(SignalName.StatsChanged);
     }
 
     public virtual void Heal(int amount, Modifier.Type type = Modifier.Type.HEALED)
     {
-        if(this.health <= 0 || amount <= 0) { return; }
+        if(amount <= 0) { return; }
 
         int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
-        this.health += modifiedAmount;
         EmitSignal(SignalName.StatsChanged);
 
     }
@@ -78,5 +74,10 @@ public partial class Character : Control
     {
         this.armor = 0;
         EmitSignal(SignalName.StatsChanged);
+    }
+
+    public virtual void ShowTargeted(bool show)
+    {
+        
     }
 }

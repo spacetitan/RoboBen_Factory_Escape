@@ -55,9 +55,6 @@ public partial class RunManager : Node
 				UIManager.instance.ChangeStateTo(UIManager.UIState.BATTLE);
 				break;
 			
-			case RoomData.Type.EVENT:
-				break;
-			
 			case RoomData.Type.REST:
 				break;
 			
@@ -65,6 +62,9 @@ public partial class RunManager : Node
 				break;
 			
 			case RoomData.Type.TREASURE:
+				break;
+			
+			case RoomData.Type.EVENT:
 				break;
 		}
 	}

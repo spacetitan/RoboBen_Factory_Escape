@@ -6,7 +6,9 @@ public partial class BattleView : UIView
 {
     public Control playerSpawn { get; private set; } = null;
     public Player player { get; private set; } = null;
+    public List<Enemy> enemies { get; private set; } = new List<Enemy>();
     public List<Control> enemySpawns { get; private set; } = new List<Control>();
+    public TargetSelector targetSelector { get; private set; } = null;
 
     public override void _Ready()
     {
@@ -20,14 +22,16 @@ public partial class BattleView : UIView
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn"));
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn2"));
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn3"));
+        
+        this.targetSelector = this.GetNode<TargetSelector>("%TargetSelector");
     }
 
     public void SetData(BattleData battleData)
     {
         this.player = ResourceManager.instance.playerScene.Instantiate() as Player;
         this.player.GetSceneNodes();
-        this.player.SetPlayerData(RunManager.instance.currentRun.playerData);
         this.playerSpawn.AddChild(this.player);
+        this.player.SetPlayerData(RunManager.instance.currentRun);
 
         UIManager.instance.hudModel.SetPlayerData(player);
         
@@ -35,13 +39,14 @@ public partial class BattleView : UIView
         {
             Enemy enemy = ResourceManager.instance.enemyScene.Instantiate() as Enemy;
             enemy.GetSceneNodes();
-            enemy.SetData(ResourceManager.instance.enemies[battleData.enemyIDList[i]]);
             this.enemySpawns[i].AddChild(enemy);
+            enemy.SetData(ResourceManager.instance.enemies[battleData.enemyIDList[i]]);
+            this.enemies.Add(enemy);
         }
     }
 
-    public void Enter()
+    public override void Enter()
     {
-        
+        UIManager.instance.vfxModel.OpenCurtain();
     }
 }

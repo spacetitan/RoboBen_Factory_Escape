@@ -11,6 +11,7 @@ public partial class EnemyAction : Resource
     [Export] public ActionType type;
     [Export] public int value = 0;
     [Export(PropertyHint.Range, "0,10")] public int chanceWeight = 0;
+    [Export] public StringName intentKey = "";
     [Export] public AudioStream sound;
     
     public float accumulatedweight = 0;
@@ -23,6 +24,11 @@ public partial class EnemyAction : Resource
     {
         this.owner = enemy;
         return;
+    }
+
+    public virtual string GetIntent()
+    {
+        return this.value.ToString();
     }
 
     public virtual bool IsPerformable()
@@ -40,9 +46,9 @@ public partial class EnemyAction : Resource
         return false;
     }
 
-    public virtual void PerformAction(Character target)
+    public virtual void PerformAction(Action callback = null)
     {
-        if(this.owner == null || target == null)
+        if(this.owner == null || this.target == null)
         {
             if(this.owner == null)
             {
@@ -64,8 +70,7 @@ public partial class EnemyAction : Resource
             isUsed = true;
         }
         
-        this.target = target;
-        //EmitSignal(SignalName.OnActionComplete);
+        callback?.Invoke();
     }
 
     public virtual EnemyAction CreateInstance()

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class PowerUpHandler : Node
 {
@@ -9,10 +10,58 @@ public partial class PowerUpHandler : Node
     public List<PowerUp> powerUps = new List<PowerUp>();
     private List<PowerUpUI> powerUpUI = new List<PowerUpUI>();
     
+    private float applyInterval = 1f;
+    
     public void AddPowerUp(PowerUp powerUp)
     {
         this.powerUps.Add(powerUp);
         powerUp.InitializePowerUp(this);
+    }
+    
+    public void ActivatePowerUpsByType(PowerUp.ActivateType powerUpType, Action callback = null)
+    {
+        if(powerUpType == PowerUp.ActivateType.EVENT)
+        {
+            return;
+        }
+
+        List<PowerUpUI> powerUpQueue = new List<PowerUpUI>();
+
+        foreach(PowerUpUI powerUpUI in this.powerUpUI)
+        {
+            if(powerUpUI.powerUp.activateType == powerUpType)
+            {
+                powerUpQueue.Add(powerUpUI);
+            }
+        }
+
+        if(!powerUpQueue.Any())
+        {
+            //EmitSignal(SignalName.PowerUpsActivated, (int)powerUpType);
+            callback?.Invoke();
+            return;
+        }
+
+        Tween tween = CreateTween();
+        foreach(PowerUpUI powerUpUI in powerUpQueue)
+        {
+            tween.TweenCallback(Callable.From(() => { powerUpUI.powerUp.ActivatePowerUp(); }));
+            tween.TweenInterval(this.applyInterval);
+        }
+        tween.Finished += () => { callback?.Invoke(); };
+    }
+
+    public bool hasPowerUp(String id)
+    {
+        foreach(PowerUpUI powerUpUI in powerUpUI)
+        {
+            if(powerUpUI.powerUp.id == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void SpawnUI(GridContainer parentContainer)

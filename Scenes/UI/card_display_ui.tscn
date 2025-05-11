@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=3 uid="uid://nc5h26ien4xx"]
+
+[ext_resource type="Theme" uid="uid://b8wu370uusg0u" path="res://Themes/Card/Card.tres" id="1_0xnsc"]
+[ext_resource type="Script" uid="uid://bwqfryai3clcl" path="res://Scripts/Cards/CardDisplayUI.cs" id="1_mvcct"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_mf84n"]
+[ext_resource type="StyleBox" uid="uid://bbjslqbl6nefl" path="res://Themes/Card/CardInfoPanel.tres" id="4_xq6pm"]
+[ext_resource type="StyleBox" uid="uid://c73ybb6sthfwc" path="res://Themes/Card/CardInfoDescPanel.tres" id="5_2e58d"]
+
+[node name="CardDisplayUI" type="Panel"]
+z_index = 1
+custom_minimum_size = Vector2(100, 140)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0xnsc")
+script = ExtResource("1_mvcct")
+
+[node name="CardTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mf84n")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_xq6pm")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.3
+anchor_right = 0.99
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_2e58d")
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.6
+text = "Title"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.65
+anchor_right = 0.9
+anchor_bottom = 0.9
+text = "Desc"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.3
+anchor_bottom = 0.15
+text = "Cost: 0"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GenLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 0.25
+anchor_bottom = 0.3
+text = "Gen: 0"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypeLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = -0.15
+anchor_right = 1.25
+rotation = 0.523599
+text = "_______"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardButton" type="Button" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.00392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

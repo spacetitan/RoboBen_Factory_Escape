@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://wjhy5b2funu8"]
+
+[ext_resource type="Shader" uid="uid://cyhqow14rt6g1" path="res://Art/Materials/DamageVFX/DamageVignette.gdshader" id="1_73a5b"]
+[ext_resource type="Script" uid="uid://dm0yns3dsg83e" path="res://Scripts/VFX/VignetteView.cs" id="2_ejxcw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpuf7"]
+shader = ExtResource("1_73a5b")
+shader_parameter/outerRadius = 2.5
+shader_parameter/MainAlpha = 0.25
+shader_parameter/vignette_color = Color(0.6015, 0, 0.115817, 1)
+
+[node name="VignetteView" type="ColorRect"]
+material = SubResource("ShaderMaterial_xpuf7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.243137, 0.298039, 1)
+script = ExtResource("2_ejxcw")
+viewID = &"vignette"
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true

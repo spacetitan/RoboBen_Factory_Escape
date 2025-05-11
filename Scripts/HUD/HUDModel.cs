@@ -25,6 +25,7 @@ public partial class HUDModel : UIModel
             case UIManager.UIState.RUN:
                 this.views["roomHUD"].HideView();
                 this.views["battleHUD"].HideView();
+                this.views["hand"].HideView();
                 
                 this.views["runHUD"].ShowView();
                 break;
@@ -33,6 +34,7 @@ public partial class HUDModel : UIModel
                 this.views["roomHUD"].HideView();
                 this.views["runHUD"].HideView();
                 
+                this.views["hand"].ShowView();
                 this.views["battleHUD"].ShowView();
                 break;
                 
@@ -45,5 +47,8 @@ public partial class HUDModel : UIModel
     {
         BattleHUDView hud = this.views["battleHUD"] as BattleHUDView;
         hud.SetData(player);
+        
+        HandView hand = this.views["hand"] as HandView;
+        hand.SetData(player);
     }
 }

@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://7pjr85qavyui"]
+
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_2jvo3"]
+[ext_resource type="Script" uid="uid://buet6524ta8o7" path="res://Scripts/Cards/CardUI.cs" id="1_ofwbo"]
+[ext_resource type="Theme" uid="uid://b8wu370uusg0u" path="res://Themes/Card/Card.tres" id="1_q2suf"]
+[ext_resource type="StyleBox" uid="uid://bbjslqbl6nefl" path="res://Themes/Card/CardInfoPanel.tres" id="4_rk44c"]
+[ext_resource type="StyleBox" uid="uid://c73ybb6sthfwc" path="res://Themes/Card/CardInfoDescPanel.tres" id="5_v6fwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvo3"]
+size = Vector2(69, 126)
+
+[node name="CardUI" type="Panel"]
+visibility_layer = 2
+z_index = 10
+z_as_relative = false
+custom_minimum_size = Vector2(100, 140)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q2suf")
+script = ExtResource("1_ofwbo")
+
+[node name="CardTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2jvo3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_rk44c")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.3
+anchor_right = 0.99
+anchor_bottom = 0.925
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_v6fwq")
+
+[node name="TitleLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.5
+anchor_right = 0.9
+anchor_bottom = 0.6
+mouse_filter = 2
+text = "Title"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.65
+anchor_right = 0.9
+anchor_bottom = 0.9
+mouse_filter = 2
+text = "Desc"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.5
+anchor_bottom = 0.15
+mouse_filter = 2
+text = "Cost: 0"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GenLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.175
+anchor_right = 0.4
+anchor_bottom = 0.275
+mouse_filter = 2
+text = "Gen: 0"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea2D"]
+position = Vector2(50.5, 70)
+shape = SubResource("RectangleShape2D_2jvo3")
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
+[connection signal="area_entered" from="PlayArea2D" to="." method="OnPlayAreaEntered"]
+[connection signal="area_exited" from="PlayArea2D" to="." method="OnPlayAreaExited"]

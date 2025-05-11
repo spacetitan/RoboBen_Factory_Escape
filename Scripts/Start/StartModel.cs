@@ -15,4 +15,9 @@ public partial class StartModel : UIModel
             }
         }
     }
+
+    public override void Enter()
+    {
+        UIManager.instance.vfxModel.OpenCurtain();
+    }
 }

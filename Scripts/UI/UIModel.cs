@@ -21,7 +21,9 @@ public partial class UIModel : Control
         HideModel();
     }
 
-    public virtual void Enter() { }
+    public virtual void Enter()
+    {
+    }
 
     public virtual void Exit() { }
 

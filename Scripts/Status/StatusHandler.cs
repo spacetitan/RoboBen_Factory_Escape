@@ -15,7 +15,7 @@ public partial class StatusHandler : RefCounted
         this.owner = owner;
     }
 
-    private bool HasStatus(StringName id)
+    public bool HasStatus(StringName id)
 	{
 		foreach(Status status in this.statuses)
 		{
@@ -82,7 +82,7 @@ public partial class StatusHandler : RefCounted
 		}
 	}
 
-    public void ApplyStatusByType(Status.TriggerType triggerType)
+    public void ApplyStatusByType(Status.TriggerType triggerType, Action callback = null)
 	{
 		if(triggerType == Status.TriggerType.EVENT) { return; }
 
@@ -91,6 +91,7 @@ public partial class StatusHandler : RefCounted
 		if(statuses == null || !statuses.Any())
 		{
 			EmitSignal(SignalName.StatusesApplied, (int)triggerType);
+			callback?.Invoke();
 			return;
 		}
 
@@ -101,7 +102,11 @@ public partial class StatusHandler : RefCounted
 			tween.TweenInterval(STATUS_APPLY_INTERVAL);
 		}
 
-		tween.Finished += () => {EmitSignal(SignalName.StatusesApplied, (int)triggerType); };
+		tween.Finished += () =>
+		{
+			callback?.Invoke();
+			EmitSignal(SignalName.StatusesApplied, (int)triggerType);
+		};
 	}
 
     private void OnStatusApplied(Status status)

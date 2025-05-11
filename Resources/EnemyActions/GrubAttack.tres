@@ -9,4 +9,5 @@ hpThreshold = 0
 type = 2
 value = 1
 chanceWeight = 2
+intentKey = &"attack"
 metadata/_custom_type_script = "uid://c6qotuj1h5afd"

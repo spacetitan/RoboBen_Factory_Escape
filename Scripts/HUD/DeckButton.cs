@@ -6,7 +6,9 @@ public partial class DeckButton : Control
     private TextureRect deckTexture = null;
     private RichTextLabel deckLabel = null;
     private Button button = null;
-    private CardPile cardPile = null;
+    private CardPile cardPile = new CardPile();
+    
+    private string popUpTitle = null;
     
     [Export] public Texture2D buttonTexture { get; set; } = null;
 
@@ -29,14 +31,16 @@ public partial class DeckButton : Control
         {
             if (this.cardPile != null)
             {
-                
+                UIManager.instance.popUpModel.OpenDeckPopUp(this.cardPile, this.popUpTitle);
             }
         };
     }
 
-    public void SetData(CardPile cardPile)
+    public void SetData(CardPile cardPile, string popUpTitle = "Deck")
     {
-        this.cardPile = cardPile;
+        this.cardPile = new CardPile();
+        this.cardPile.SetDeck(cardPile);
         this.deckLabel.Text = this.cardPile.cards.Count.ToString();
+        this.popUpTitle = popUpTitle;
     }
 }

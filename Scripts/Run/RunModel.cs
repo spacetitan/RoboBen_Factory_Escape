@@ -49,6 +49,8 @@ public partial class RunModel : UIModel
             Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
             tween.TweenProperty(this.mapScrollContainer, "scroll_vertical", num, 1f);
         }
+        
+        UIManager.instance.vfxModel.OpenCurtain();
     }
     
     void CreateMap()

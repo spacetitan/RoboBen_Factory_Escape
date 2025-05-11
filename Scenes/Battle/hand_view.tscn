@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cypkwpsccacf"]
+
+[ext_resource type="Script" uid="uid://dyxecsj8jsy7k" path="res://Scripts/Battle/HandView.cs" id="1_8jq2s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jq2s"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="Curve" id="Curve_8jq2s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_lsb0r"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="HandView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8jq2s")
+script = ExtResource("1_8jq2s")
+handCurve = SubResource("Curve_8jq2s")
+rotationCurve = SubResource("Curve_lsb0r")
+xSep = -30.0
+yMin = 15.0
+yMax = -30.0
+viewID = &"hand"
+
+[connection signal="child_order_changed" from="." to="." method="OnChildOrderChanged"]

@@ -22,8 +22,6 @@ public partial class CurtainView : UIView
         {
             this.onClosed();
         }
-        
-        this.HideView(1f);
     }
 
     public override void Exit()

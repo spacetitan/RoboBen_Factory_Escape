@@ -6,7 +6,7 @@ using System.Linq;
 [GlobalClass]
 public partial class CardPile : Resource
 {
-    [Signal] public delegate void CardPileSizeChangedEventHandler(int cardsAmount);
+    [Signal] public delegate void CardPileSizeChangedEventHandler();
     [Export] private CardData[] cardData;
     
     public List<CardData> cards { get; private set; } = new List<CardData>();
@@ -30,27 +30,27 @@ public partial class CardPile : Resource
 
         this.cards.RemoveAt(0);
 
-        EmitSignal(SignalName.CardPileSizeChanged, cards.Count);
+        EmitSignal(SignalName.CardPileSizeChanged);
         return drawnCard;
     }
     
     public void AddCard(CardData card)
     {
         this.cards.Add(card);
-        EmitSignal(SignalName.CardPileSizeChanged, cards.Count);
+        EmitSignal(SignalName.CardPileSizeChanged);
     }
 
     public void RemoveCard(CardData card)
     {
         this.cards.Remove(card);
-        EmitSignal(SignalName.CardPileSizeChanged, cards.Count);
+        EmitSignal(SignalName.CardPileSizeChanged);
     }
 
     public void RemoveRandomCard()
     {
         CardData card = this.cards.OrderBy(x => this.random.Next()).First();
         this.cards.Remove(card);
-        EmitSignal(SignalName.CardPileSizeChanged, cards.Count);
+        EmitSignal(SignalName.CardPileSizeChanged);
     }
 
     public void Shuffle()
@@ -61,7 +61,7 @@ public partial class CardPile : Resource
     public void Clear()
     {
         this.cards.Clear();
-        EmitSignal(SignalName.CardPileSizeChanged, cards.Count);
+        EmitSignal(SignalName.CardPileSizeChanged);
     }
     
     public void LoadDataToDeck()

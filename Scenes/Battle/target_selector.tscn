@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cixa28ltgkd6e"]
+
+[ext_resource type="Script" uid="uid://noyvf7ly2nfd" path="res://Scripts/Battle/TargetSelector.cs" id="1_d7y6q"]
+[ext_resource type="Texture2D" uid="uid://eghh3q13oai1" path="res://Art/Sprites/Battle/crosshair038.png" id="1_u6yr3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7y6q"]
+radius = 108.56
+
+[node name="TargetSelector" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_d7y6q")
+
+[node name="SelectorTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.440385, 0.901758, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u6yr3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SelectorArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectorArea2D"]
+shape = SubResource("CircleShape2D_d7y6q")
+
+[node name="SelectorLine2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0)
+default_color = Color(0.440385, 0.901758, 1, 1)
+
+[connection signal="area_entered" from="SelectorArea2D" to="." method="OnArea2DEntered"]
+[connection signal="area_exited" from="SelectorArea2D" to="." method="OnArea2DExited"]

@@ -30,16 +30,17 @@ public partial class PowerUpUI : Control
 
     public void SetData(PowerUp powerUp, bool inv = false)
     {
-        this.powerUpTexture.Texture = powerUp.texture;
+        this.powerUp = powerUp;
+        this.powerUpTexture.Texture = this.powerUp.texture;
         this.isInv = inv;
-        if (powerUp.Value > 0)
+        if (this.powerUp.Value > 0)
         {
             this.labelPanel.Show();
-            this.powerUpLabel.Text = powerUp.Value.ToString();
+            this.powerUpLabel.Text = this.powerUp.Value.ToString();
         }
         
-        powerUpInfo.SetData(powerUp);
-        powerUpInfoInv.SetData(powerUp);
+        powerUpInfo.SetData(this.powerUp);
+        powerUpInfoInv.SetData(this.powerUp);
     }
     
     public void Flash()

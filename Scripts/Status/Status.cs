@@ -4,7 +4,7 @@ using System;
 [GlobalClass]
 public partial class Status : Resource
 {
-    public enum TriggerType { NONE, EVENT, TIME};
+    public enum TriggerType { NONE, EVENT, START_OF_TURN, END_OF_TURN};
     public enum StackType { NONE, INTENSITY, DURATION};
 
     [Signal] public delegate void StatusAppliedEventHandler(Status status);

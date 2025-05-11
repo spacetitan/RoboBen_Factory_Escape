@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceud4sa0kkks7"]
+
+[ext_resource type="Script" uid="uid://d0d8osolh3e1l" path="res://Scripts/PopUp/DeckPopUpView.cs" id="1_yhi22"]
+
+[node name="DeckPopUpView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yhi22")
+viewID = &"deck"
+
+[node name="TitlePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = -0.05
+anchor_right = 0.6
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitlePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Title"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardScrollContainer" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.775
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CardScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+
+[node name="CardContainer" type="GridContainer" parent="CardScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 7
+
+[node name="CloseButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.425
+anchor_top = 0.8
+anchor_right = 0.575
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
