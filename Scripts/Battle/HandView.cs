@@ -15,6 +15,7 @@ public partial class HandView : UIView
     [Export] private float yMax = -15.0f;
     
     public Player player { get; private set; }
+    public List<CardUI> cards { get; private set; } = new List<CardUI>();
     
     public override void _Ready()
     {
@@ -28,7 +29,16 @@ public partial class HandView : UIView
         this.player = player;
         this.player.hand = this;
     }
-    
+
+    public override void Exit()
+    {
+        foreach (CardUI card in this.cards)
+        {
+            card.DestroyCard();
+        }
+        this.cards.Clear();
+    }
+
     public void AddCard(CardData cardData)
     {
         CardUI newCardUI = this.cardScene.Instantiate() as CardUI;
@@ -37,17 +47,20 @@ public partial class HandView : UIView
         float size = this.Size.X / 4;
         newCardUI.SetSize(new Vector2(size, size*1.4f));
         AddChild(newCardUI);
+        this.cards.Add(newCardUI);
         UpdateHand();
     }
 
     public void BurnCard(CardUI card)
     {
         this.player.AddEnergy(card.data.cardGen);
+        EventManager.instance.EmitSignal(EventManager.SignalName.CardBurned);
         this.player.DiscardCard(card);
     }
 
     public void DiscardCard(CardUI card)
     {
+        this.cards.Remove(card);
         card.DestroyCard();
     }
 

@@ -38,12 +38,12 @@ public partial class Player : Character
 
     public void ConnectEventSignals()
     {
-        EventManager.instance.ResetAbility += ResetAbility;
+        EventManager.instance.PlayerTurnStarted += ResetAbility;
     }
     
     public void DisconnectEventSignals()
     {
-        EventManager.instance.ResetAbility -= ResetAbility;
+        EventManager.instance.PlayerTurnStarted -= ResetAbility;
     }
 
     public void SetPlayerData(Run run)
@@ -53,6 +53,14 @@ public partial class Player : Character
         this.energy = 0;
         
         this.deck.SetDeck(run.playerDeck);
+        this.deck.Shuffle();
+    }
+
+    public void DestroyPlayer()
+    {
+        this.StatsChanged -= UpdateUI;
+        DisconnectEventSignals();
+        this.QueueFree();
     }
 
     public override void TakeDamage(int amount, Modifier.Type type = Modifier.Type.DMG_TAKEN)
@@ -86,7 +94,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                //DestroyPlayer();
+                UIManager.instance.ChangeStateTo(UIManager.UIState.START);
             }
         };
     }
@@ -112,7 +120,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                //DestroyPlayer();
+                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
             }
         };
     }
@@ -137,7 +145,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                //DestroyPlayer();
+                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
             }
         };
     }
@@ -161,7 +169,7 @@ public partial class Player : Character
     {
         ResetArmor();
         ResetEnergy();
-        EventManager.instance.EmitSignal(EventManager.SignalName.ResetAbility);
+        EventManager.instance.EmitSignal(EventManager.SignalName.PlayerTurnStarted);
     }
 
     private void SetEnergy(int value)
@@ -221,7 +229,7 @@ public partial class Player : Character
     {
         ReshuffleDeck();
         this.hand.AddCard(this.deck.DrawCard());
-        this.EmitSignal(Player.SignalName.StatsChanged);
+        this.EmitSignal(SignalName.StatsChanged);
     }
     
     public void DrawCards(int amount = 1, Action callback = null)
@@ -246,23 +254,30 @@ public partial class Player : Character
         ReshuffleDeck();
         this.discard.AddCard(card.data);
         this.hand.DiscardCard(card);
-        this.EmitSignal(Player.SignalName.StatsChanged);	
+        this.EmitSignal(SignalName.StatsChanged);	
     }
 
     public void DiscardCards(List<CardUI> cards, Action callback = null)
     {
-        Tween tween = CreateTween();
-
-        foreach (CardUI card in cards)
+        if (cards.Count > 0)
         {
-            tween.TweenCallback(Callable.From(() => { DiscardCard(card); }));
-            tween.TweenInterval(HAND_DRAW_INTERVAL);
-        }
+            Tween tween = CreateTween();
 
-        tween.Finished += () => 
+            foreach (CardUI card in cards)
+            {
+                tween.TweenCallback(Callable.From(() => { DiscardCard(card); }));
+                tween.TweenInterval(HAND_DRAW_INTERVAL);
+            }
+
+            tween.Finished += () => 
+            {
+                callback?.Invoke();
+            };
+        }
+        else
         {
             callback?.Invoke();
-        };
+        }
     }
 
     public void ReshuffleDeck()
@@ -275,7 +290,7 @@ public partial class Player : Character
         while(!this.discard.isEmpty())
         {
             this.deck.AddCard(this.discard.DrawCard());
-            this.EmitSignal(Player.SignalName.StatsChanged);
+            this.EmitSignal(SignalName.StatsChanged);
         }
 
         this.deck.Shuffle();

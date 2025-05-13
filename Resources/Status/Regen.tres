@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Regen" load_steps=3 format=3 uid="uid://ckgj5574oa1e4"]
+
+[ext_resource type="Script" uid="uid://v8w6cymmvvqe" path="res://Scripts/_Resources/Status/Regen.cs" id="1_7hijc"]
+[ext_resource type="Texture2D" uid="uid://d14vu2f7fwbi0" path="res://Art/Sprites/Status/regenIcon.png" id="2_lgquh"]
+
+[resource]
+script = ExtResource("1_7hijc")
+id = &"regen"
+name = &"Regen"
+triggerType = 2
+stackType = 1
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_lgquh")
+desc = " Heals 1 per stack at the start of the turn"
+metadata/_custom_type_script = "uid://v8w6cymmvvqe"

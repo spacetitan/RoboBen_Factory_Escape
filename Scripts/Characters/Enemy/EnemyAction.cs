@@ -76,10 +76,10 @@ public partial class EnemyAction : Resource
     public virtual EnemyAction CreateInstance()
     {
         EnemyAction instance = (EnemyAction) this.Duplicate();
-
-        //instance.intent = this.intent;
+        
         instance.type = this.type;
         instance.chanceWeight = this.chanceWeight;
+        instance.intentKey = this.intentKey;
         instance.sound = this.sound;
         instance.accumulatedweight = this.accumulatedweight;
 

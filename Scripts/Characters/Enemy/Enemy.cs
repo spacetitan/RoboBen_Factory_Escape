@@ -11,6 +11,7 @@ public partial class Enemy : Character
     public RichTextLabel armorLabel = null;
     public TextureRect intentTexture = null;
     public RichTextLabel intentLabel = null;
+    public GridContainer statusContainer = null;
     public Area2D enemyArea { get; private set; } = null;
     public HealthUI healthUI { get; private set; } = null;
     
@@ -26,6 +27,7 @@ public partial class Enemy : Character
         this.armorLabel = this.armorTexture.GetNode<RichTextLabel>("%ArmorLabel");
         this.intentTexture = this.GetNode<TextureRect>("%IntentTexture");
         this.intentLabel = this.GetNode<RichTextLabel>("%IntentLabel");
+        this.statusContainer = this.GetNode<GridContainer>("%StatusContainer");
         this.enemyArea = this.GetNode<Area2D>("%TargetArea2D");
         this.healthUI = this.GetNode<HealthUI>("%HealthUI");
     }
@@ -38,11 +40,20 @@ public partial class Enemy : Character
         this.StatsChanged += UpdateEnemy;
         this.StatsChanged += UpdateUI;
         
+        this.statusHandler.SetContainer(this.statusContainer);
+        
         this.actionHandler = new EnemyActionHandler(this);
         UpdateEnemy();
         UpdateUI();
         
         SetTargetSize();
+    }
+
+    public void DestroyEnemy()
+    {
+        this.StatsChanged -= UpdateEnemy;
+        this.StatsChanged -= UpdateUI;
+        this.QueueFree();
     }
 
     public void TakeTurn(Action callback = null)
@@ -72,7 +83,7 @@ public partial class Enemy : Character
         if (this.currentAction != null)
         {
             this.intentTexture.Texture = ResourceManager.instance.intentIcons[this.currentAction.intentKey];
-            this.intentLabel.Text = this.currentAction.value.ToString();
+            this.intentLabel.Text = GetModifiedAttack(this.currentAction.value).ToString();
         }
     }
 
@@ -81,7 +92,7 @@ public partial class Enemy : Character
         this.currentAction = value;
         if(this.currentAction != null)
         {
-            //UpdateIntent();
+            UpdateUI();
         }
         else
         {
@@ -103,6 +114,7 @@ public partial class Enemy : Character
     {
         if(this.data.health <= 0 || amount <= 0) { return; }
         
+        GD.Print(amount);
         int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
         int initial_dmg = modifiedAmount;
         
@@ -123,7 +135,7 @@ public partial class Enemy : Character
 
             if(data.health <=0)
             {
-                //DestroyPlayer();
+                EventManager.instance.EmitSignal(EventManager.SignalName.EnemyDied, this);
             }
         };
     }
@@ -147,7 +159,7 @@ public partial class Enemy : Character
 
             if(data.health <=0)
             {
-                //DestroyPlayer();
+                EventManager.instance.EmitSignal(EventManager.SignalName.EnemyDied, this);
             }
         };
     }
@@ -167,11 +179,6 @@ public partial class Enemy : Character
         tween.Finished += ()=>
         {
             this.texture.Material = null;
-
-            if(data.health <=0)
-            {
-                //DestroyPlayer();
-            }
         };
     }
 

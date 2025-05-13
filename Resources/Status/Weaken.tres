@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weaken" load_steps=3 format=3 uid="uid://d2be3b30mc4fi"]
+
+[ext_resource type="Script" uid="uid://ym07li2n3okb" path="res://Scripts/_Resources/Status/Weaken.cs" id="1_mik6m"]
+[ext_resource type="Texture2D" uid="uid://ik87ax4i0d30" path="res://Art/Sprites/Status/weakenIcon.png" id="2_b2q5c"]
+
+[resource]
+script = ExtResource("1_mik6m")
+id = &"weaken"
+name = &"Weaken"
+triggerType = 2
+stackType = 2
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_b2q5c")
+desc = "Lose 10% attack per stack (max 80%)"
+metadata/_custom_type_script = "uid://ym07li2n3okb"

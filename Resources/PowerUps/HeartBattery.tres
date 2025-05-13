@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HeartBattery" load_steps=3 format=3 uid="uid://cqw8snlwd8yxu"]
+
+[ext_resource type="Script" uid="uid://kiur5f76g86u" path="res://Scripts/_Resources/PowerUps/HeartBattery.cs" id="1_7yqeh"]
+[ext_resource type="Texture2D" uid="uid://clc8q2jco4t7p" path="res://Art/Sprites/PowerUps/heartBattery.png" id="2_oegp7"]
+
+[resource]
+script = ExtResource("1_7yqeh")
+id = &"heartBattery"
+name = "Heart Battery"
+description = "10% chance to heal 3 when burning a card"
+texture = ExtResource("2_oegp7")
+rarity = 2
+activateType = 5
+value = 3
+metadata/_custom_type_script = "uid://kiur5f76g86u"

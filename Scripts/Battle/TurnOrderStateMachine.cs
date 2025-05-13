@@ -110,14 +110,24 @@ public partial class TurnOrderStateMachine : Node
     }
     
     public void EndTurn()
-    {
-        GD.Print("Ending turn.");
+    {  //GD.Print("Ending turn.");
        this.OnTurnEnd?.Invoke();
     }
 
-    public void EndBattle(bool playerWin)
+    public void EndBattle(bool playerWin, BattleData data)
     {
         this.currentPhaseState = PhaseState.BATTLE_END;
+        this.currentCharacter = null;
+        this.currentState = null;
+
+        if (playerWin)
+        {
+            UIManager.instance.popUpModel.OpenBattleWinView(data.money);
+        }
+        else
+        {
+            UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+        }
 
         //GD.Print("Ending Battle!");
     }

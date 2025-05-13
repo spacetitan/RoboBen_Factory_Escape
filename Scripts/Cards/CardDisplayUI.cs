@@ -3,6 +3,9 @@ using System;
 
 public partial class CardDisplayUI : Control
 {
+    private StyleBox defaultStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Card/CardPanel.tres");
+    private StyleBox hoverStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Card/CardPanelUIHover.tres");
+    
     private TextureRect textureRect = null;
     private RichTextLabel titleLabel = null;
     private RichTextLabel descLabel = null;
@@ -13,9 +16,12 @@ public partial class CardDisplayUI : Control
     
     private Action onClick = null;
     
+    public CardData cardData = null;
+    public PowerUp powerUp = null;
+    
     public override void _Ready()
     {
-        GetSceneNodes();
+       
     }
 
     public void GetSceneNodes()
@@ -27,28 +33,28 @@ public partial class CardDisplayUI : Control
         this.genLabel = this.GetNode<RichTextLabel>("%GenLabel");
         this.typeLabel = this.GetNode<RichTextLabel>("%TypeLabel");
         this.cardButton = this.GetNode<Button>("%CardButton");
-        // this.cardButton.Pressed += () =>
-        // {
-        //     if (this.onClick != null)
-        //     {
-        //         this.onClick.Invoke();
-        //     }
-        // };
+        this.cardButton.Pressed += () =>
+        {
+            this.onClick?.Invoke();
+        };
+        this.AddThemeStyleboxOverride("panel", defaultStyleBox);
     }
 
     public void SetData(CardData data, Action onClick = null)
     {
         this.textureRect.Texture = data.Texture;
         this.titleLabel.Text = data.cardName;
-        this.descLabel.Text = data.cardDesc;
-        this.costLabel.Text = data.cardCost.ToString();
-        this.genLabel.Text = data.cardGen.ToString();
+        this.descLabel.Text = data.GetDefaultToolip();
+        this.costLabel.Text = "Cost: " + data.cardCost.ToString();
+        this.genLabel.Text = "Gen: " + data.cardGen.ToString();
         this.typeLabel.Text = "Card";
 
         if (onClick != null)
         {
             this.onClick = onClick;
         }
+        
+        this.cardData = data;
     }
     
     public void SetData(PowerUp data, Action onClick = null)
@@ -64,5 +70,17 @@ public partial class CardDisplayUI : Control
         {
             this.onClick = onClick;
         }
+
+        this.powerUp = data;
+    }
+
+    public void OnMouseEntered()
+    {
+        this.AddThemeStyleboxOverride("panel", hoverStyleBox);
+    }
+
+    public void OnMouseExited()
+    {
+        this.AddThemeStyleboxOverride("panel", defaultStyleBox);
     }
 }

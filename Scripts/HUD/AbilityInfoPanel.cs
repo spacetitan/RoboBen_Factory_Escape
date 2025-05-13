@@ -25,4 +25,11 @@ public partial class AbilityInfoPanel : UIView
         this.abilityTitle.Text = data.ability.name;
         this.abilityDesc.Text = data.ability.desc;
     }
+    
+    public void SetData(Status data)
+    {
+        this.abilityTexture.Texture = data.statusIcon;
+        this.abilityTitle.Text = data.name;
+        this.abilityDesc.Text = data.desc;
+    }
 }

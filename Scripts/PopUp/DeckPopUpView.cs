@@ -7,7 +7,7 @@ public partial class DeckPopUpView : UIView
     private RichTextLabel titleLabel = null;
     private ScrollContainer scrollContainer = null;
     private GridContainer cardContainer = null;
-    private Button closeButton = null;
+    private UIButton closeButton = null;
     
     private List<CardDisplayUI> cards = new List<CardDisplayUI>();
     
@@ -21,8 +21,9 @@ public partial class DeckPopUpView : UIView
         this.titleLabel = this.GetNode<Panel>("%TitlePanel").GetNode<RichTextLabel>("%TitleLabel");
         this.scrollContainer = this.GetNode<ScrollContainer>("%CardScrollContainer");
         this.cardContainer = this.scrollContainer.GetNode<GridContainer>("%CardContainer");
-        this.closeButton = this.GetNode<Button>("%CloseButton");
-        this.closeButton.Pressed += () =>
+        this.closeButton = this.GetNode<UIButton>("%CloseButton");
+        this.closeButton.SetData("Close");
+        this.closeButton.button.Pressed += () =>
         {
             UIManager.instance.popUpModel.ClosePopup("deck");
         };
@@ -38,7 +39,7 @@ public partial class DeckPopUpView : UIView
             CardDisplayUI display = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
             display.GetSceneNodes();
             display.SetData(card);
-            display.SetCustomMinimumSize(new Vector2(this.cardContainer.Size.X/8, (this.cardContainer.Size.X/8) * 1.4f));
+            display.SetCustomMinimumSize(new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f));
             this.cards.Add(display);
             this.cardContainer.AddChild(display);
         }

@@ -8,7 +8,6 @@ public partial class BattleView : UIView
     public Player player { get; private set; } = null;
     public List<Enemy> enemies { get; private set; } = new List<Enemy>();
     public List<Control> enemySpawns { get; private set; } = new List<Control>();
-    public TargetSelector targetSelector { get; private set; } = null;
 
     public override void _Ready()
     {
@@ -22,8 +21,6 @@ public partial class BattleView : UIView
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn"));
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn2"));
         this.enemySpawns.Add(this.GetNode<Control>("%EnemySpawn3"));
-        
-        this.targetSelector = this.GetNode<TargetSelector>("%TargetSelector");
     }
 
     public void SetData(BattleData battleData)
@@ -40,7 +37,7 @@ public partial class BattleView : UIView
             Enemy enemy = ResourceManager.instance.enemyScene.Instantiate() as Enemy;
             enemy.GetSceneNodes();
             this.enemySpawns[i].AddChild(enemy);
-            enemy.SetData(ResourceManager.instance.enemies[battleData.enemyIDList[i]]);
+            enemy.SetData(ResourceManager.instance.enemies[battleData.enemyIDList[i]].CreateInstance());
             this.enemies.Add(enemy);
         }
     }
@@ -48,5 +45,21 @@ public partial class BattleView : UIView
     public override void Enter()
     {
         UIManager.instance.vfxModel.OpenCurtain();
+    }
+
+    public override void Exit()
+    {
+        if (this.player != null)
+        {
+            this.player.DestroyPlayer();
+        }
+        
+        foreach (Enemy enemy in this.enemies)
+        {
+            if (enemy != null)
+            {
+                enemy.DestroyEnemy();
+            }
+        }
     }
 }

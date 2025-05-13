@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Poison" load_steps=3 format=3 uid="uid://3is56js27t4f"]
+
+[ext_resource type="Script" uid="uid://d0gmh6bc8fmf3" path="res://Scripts/_Resources/Status/Poison.cs" id="1_a2x6o"]
+[ext_resource type="Texture2D" uid="uid://bponymnruoq3r" path="res://Art/Sprites/Status/poison-icon.png" id="2_nov8x"]
+
+[resource]
+script = ExtResource("1_a2x6o")
+id = &"poison"
+name = &"Poison"
+triggerType = 2
+stackType = 1
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_nov8x")
+desc = "Deals 1 dmg per stack at the start of the turn"
+metadata/_custom_type_script = "uid://d0gmh6bc8fmf3"

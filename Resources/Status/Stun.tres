@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Stun" load_steps=3 format=3 uid="uid://d0extvmqwtvvy"]
+
+[ext_resource type="Script" uid="uid://c2pqr33uq55r0" path="res://Scripts/_Resources/Status/Stun.cs" id="1_3nnqp"]
+[ext_resource type="Texture2D" uid="uid://o5cp5k87kdp5" path="res://Art/Sprites/Status/stunIcon.png" id="2_afmej"]
+
+[resource]
+script = ExtResource("1_3nnqp")
+id = &"stun"
+name = &"Stun"
+triggerType = 3
+stackType = 1
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_afmej")
+desc = "Disables the turn"
+metadata/_custom_type_script = "uid://c2pqr33uq55r0"

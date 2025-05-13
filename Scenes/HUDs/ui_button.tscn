@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_uw8wm"]
 
 [node name="UIButton" type="Control"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(175, 75)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_vs2jq")

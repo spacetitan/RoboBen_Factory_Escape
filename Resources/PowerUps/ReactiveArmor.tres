@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ReactiveArmor" load_steps=3 format=3 uid="uid://d18hfurlqmkks"]
+
+[ext_resource type="Script" uid="uid://dq7desvj0ra7n" path="res://Scripts/_Resources/PowerUps/ReactiveArmor.cs" id="1_ekyb6"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_8v3o5"]
+
+[resource]
+script = ExtResource("1_ekyb6")
+id = &"reactArmor"
+name = "Reactive Armor"
+description = "Generates armor when damaged"
+texture = ExtResource("2_8v3o5")
+rarity = 2
+activateType = 5
+value = 1
+metadata/_custom_type_script = "uid://dq7desvj0ra7n"

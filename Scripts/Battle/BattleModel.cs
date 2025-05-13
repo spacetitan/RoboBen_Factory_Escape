@@ -11,6 +11,23 @@ public partial class BattleModel : UIModel
     public BattleData battleData = null;
     public TurnOrderStateMachine turnOrderStateMachine = null;
 
+    public override void _Ready()
+    {
+        ConnectEventSignals();
+    }
+
+    public void ConnectEventSignals()
+    {
+        EventManager.instance.PlayerDied += OnPlayerDeath;
+        EventManager.instance.EnemyDied += OnEnemyDeath;
+    }
+    
+    public void DisconnectEventSignals()
+    {
+        EventManager.instance.PlayerDied -= OnPlayerDeath;
+        EventManager.instance.EnemyDied -= OnEnemyDeath;
+    }
+
     public override void Enter()
     {
         this.turnOrderStateMachine = new TurnOrderStateMachine();
@@ -22,6 +39,14 @@ public partial class BattleModel : UIModel
         view.ShowView();
         
         this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn);
+    }
+
+    public override void Exit()
+    {
+        foreach (KeyValuePair<string, UIView> view in this.views)
+        {
+            view.Value.Exit();
+        }
     }
 
     public void EndTurn()
@@ -48,6 +73,42 @@ public partial class BattleModel : UIModel
         else
         {
             this.turnOrderStateMachine.ChangeCharacter(player);
+        }
+    }
+
+    public void OnPlayerDeath()
+    {
+        this.turnOrderStateMachine.EndBattle(false, this.battleData);
+    }
+
+    public void OnEnemyDeath(Enemy enemy)
+    {
+        if (this.activeEnemies.Contains(enemy))
+        {
+            this.activeEnemies.Remove(enemy);
+        }
+        
+        this.enemies.Remove(enemy);
+        enemy.DestroyEnemy();
+
+        if (this.enemies.Count <= 0)
+        {
+            this.turnOrderStateMachine.EndBattle(true, this.battleData);
+        }
+        
+        if (this.turnOrderStateMachine.currentCharacter == enemy)
+        {
+            if (this.activeEnemies.Count > 0)
+            {
+                Enemy newEnemy = this.activeEnemies[0];
+                this.activeEnemies.Remove(newEnemy);
+            
+                this.turnOrderStateMachine.ChangeCharacter(newEnemy);
+            }
+            else
+            {
+                this.turnOrderStateMachine.ChangeCharacter(player);
+            }
         }
     }
 }

@@ -5,8 +5,8 @@ public partial class BattleHUDView : UIView
 {
     private HBoxContainer powerUpContainer = null;
     private UIDisplay moneyDisplay = null;
-    private Button optionsButton = null;
-    private Button quitButton = null;
+    private UIButton optionsButton = null;
+    private UIButton quitButton = null;
     
     private HealthUI healthUI = null;
     private DeckButton discardButton = null;
@@ -14,8 +14,8 @@ public partial class BattleHUDView : UIView
     private DeckButton deckButton = null;
     private UIButton mapButton = null;
     
-    private Button abilityButton = null;
-    private Button endTurnButton = null;
+    private UIButton abilityButton = null;
+    private UIButton endTurnButton = null;
     private AbilityInfoPanel abilityInfoPanel = null;
     
     private Panel genPanel = null;
@@ -37,13 +37,15 @@ public partial class BattleHUDView : UIView
        Panel topPanel = GetNode<Panel>("%TopPanel");
        this.powerUpContainer = topPanel.GetNode<HBoxContainer>("%PowerUpContainer");
        this.moneyDisplay = topPanel.GetNode<UIDisplay>("%MoneyDisplay");
-       this.optionsButton = topPanel.GetNode<Button>("%OptionsButton");
-       this.optionsButton.Pressed += () =>
+       this.optionsButton = topPanel.GetNode<UIButton>("%OptionsButton");
+       this.optionsButton.SetData("Options");
+       this.optionsButton.button.Pressed += () =>
        {
            UIManager.instance.popUpModel.OpenPopUp("options");
        };
-       this.quitButton = topPanel.GetNode<Button>("%QuitButton");
-       this.quitButton.Pressed += () =>
+       this.quitButton = topPanel.GetNode<UIButton>("%QuitButton");
+       this.quitButton.SetData("Quit");
+       this.quitButton.button.Pressed += () =>
        {
            this.GetTree().Quit();
        };
@@ -57,10 +59,12 @@ public partial class BattleHUDView : UIView
        this.mapButton = rightPanel.GetNode<UIButton>("%MapButton");
 
        HBoxContainer buttonContainer = this.GetNode<HBoxContainer>("%ButtonContainer");
-       this.abilityButton = buttonContainer.GetNode<Button>("%AbilityButton");
-       this.abilityButton.Pressed += ActivateAbility;
-       this.endTurnButton = buttonContainer.GetNode<Button>("%EndTurnButton");
-       this.endTurnButton.Pressed += EndTurn;
+       this.abilityButton = buttonContainer.GetNode<UIButton>("%AbilityButton");
+       this.abilityButton.SetData("Ability");
+       this.abilityButton.button.Pressed += ActivateAbility;
+       this.endTurnButton = buttonContainer.GetNode<UIButton>("%EndTurnButton");
+       this.endTurnButton.SetData("End Turn");
+       this.endTurnButton.button.Pressed += EndTurn;
 
        this.abilityInfoPanel = this.GetNode<AbilityInfoPanel>("%AbilityInfoPanel");
        
@@ -70,17 +74,18 @@ public partial class BattleHUDView : UIView
     
     public void ConnectEventSignals()
     {
-        EventManager.instance.ResetAbility += ResetAbility;
+        EventManager.instance.PlayerTurnStarted += ResetAbility;
     }
     
     public void DisconnectEventSignals()
     {
-        EventManager.instance.ResetAbility -= ResetAbility;
+        EventManager.instance.PlayerTurnStarted -= ResetAbility;
     }
 
     public void SetData(Player player)
     {
         this.player = player;
+        this.player.statusHandler.SetContainer(this.statusContainer);
         this.player.StatsChanged += UpdateStats;
         this.player.deck.CardPileSizeChanged += UpdateDeck;
         this.player.discard.CardPileSizeChanged += UpdateDiscard;
@@ -89,11 +94,11 @@ public partial class BattleHUDView : UIView
 
         if (this.player.playerData.ability.targetType == Character.TargetType.SINGLE)
         {
-            this.abilityButton.ToggleMode = true;
+            this.abilityButton.button.ToggleMode = true;
         }
         else
         {
-            this.abilityButton.ToggleMode = false;
+            this.abilityButton.button.ToggleMode = false;
         }
 
         UpdateStats();
@@ -121,7 +126,8 @@ public partial class BattleHUDView : UIView
     public override void Enter()
     {
         Run run = RunManager.instance.currentRun;
-        run.powerUpHandler.SpawnUI(this.powerUpContainer);
+        run.powerUpHandler.SetContainer(this.powerUpContainer);
+        run.powerUpHandler.SpawnAllUI();
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
         this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons["map"]);
     }
@@ -155,13 +161,13 @@ public partial class BattleHUDView : UIView
                 EventManager.instance.EmitSignal(EventManager.SignalName.AbilityAimStarted, this.player);
             }
 
-            this.abilityButton.Disabled = true;
+            this.abilityButton.button.Disabled = true;
         }
     }
 
     public void ResetAbility()
     {
-        this.abilityButton.Disabled = false;
+        this.abilityButton.button.Disabled = false;
     }
 
     public void EndTurn()

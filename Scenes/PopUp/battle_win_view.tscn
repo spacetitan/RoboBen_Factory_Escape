@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkw6nlgx5l7b2"]
+
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_4jaxb"]
+[ext_resource type="Script" uid="uid://c1tncs0ga3fy3" path="res://Scripts/PopUp/BattleWinView.cs" id="1_jtvnw"]
+[ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_fqrw8"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="4_seo5g"]
+
+[node name="BattleWinView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4jaxb")
+theme_override_styles/panel = ExtResource("2_fqrw8")
+script = ExtResource("1_jtvnw")
+viewID = &"battleWin"
+
+[node name="TitlePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = -0.05
+anchor_right = 0.7
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitlePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Win!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="ButtonPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="ContinueButton" parent="." instance=ExtResource("4_seo5g")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.825
+anchor_right = 0.7
+anchor_bottom = 0.925
+grow_horizontal = 2
+grow_vertical = 2

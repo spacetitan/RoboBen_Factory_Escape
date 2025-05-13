@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Muscle" load_steps=3 format=3 uid="uid://dl2xuk56imef6"]
+
+[ext_resource type="Script" uid="uid://dhb7tbif1qwe2" path="res://Scripts/_Resources/Status/Muscle.cs" id="1_mduoc"]
+[ext_resource type="Texture2D" uid="uid://d1n2unc5ug5xb" path="res://Art/Sprites/Status/muscle-icon.png" id="2_h64hd"]
+
+[resource]
+script = ExtResource("1_mduoc")
+id = &"muscle"
+name = &"Muscle"
+triggerType = 2
+stackType = 2
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_h64hd")
+desc = ""
+metadata/_custom_type_script = "uid://dhb7tbif1qwe2"

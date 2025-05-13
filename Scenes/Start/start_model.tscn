@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cy7m4rmgwe5dn" path="res://Scripts/Start/TitleView.cs" id="2_jmlli"]
 [ext_resource type="Theme" uid="uid://5sb34o6tm732" path="res://Themes/Start/Model/StartModel.tres" id="3_1laj6"]
 [ext_resource type="Script" uid="uid://dpt3jhuw1ou13" path="res://Scripts/Start/PlayView.cs" id="3_jmlli"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="4_rh0x2"]
+[ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="5_aoebx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1laj6"]
 bg_color = Color(0.105205, 0.171276, 0.242047, 1)
@@ -13,10 +15,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 4
 shadow_offset = Vector2(0, 4)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_1eim1"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_1laj6"]
 
 [node name="StartModel" type="Control"]
 layout_mode = 3
@@ -55,6 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 48
 text = "RoboBen: Factory Escape!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -80,29 +79,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="PlayButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+[node name="PlayButton" parent="TitleView/ButtonPanel/ButtonContainer" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Play"
+theme = ExtResource("5_aoebx")
 
-[node name="CollectionsButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+[node name="CollectionsButton" parent="TitleView/ButtonPanel/ButtonContainer" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Collections"
+theme = ExtResource("5_aoebx")
 
-[node name="OptionsButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+[node name="OptionsButton" parent="TitleView/ButtonPanel/ButtonContainer" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Options"
+theme = ExtResource("5_aoebx")
 
-[node name="QuitButton" type="Button" parent="TitleView/ButtonPanel/ButtonContainer"]
+[node name="QuitButton" parent="TitleView/ButtonPanel/ButtonContainer" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Quit"
+theme = ExtResource("5_aoebx")
 
 [node name="PlayView" type="Panel" parent="."]
 layout_mode = 1
@@ -117,7 +116,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1laj6")
 script = ExtResource("3_jmlli")
 viewID = &"play"
 
-[node name="NewRunButton" type="Button" parent="PlayView"]
+[node name="NewRunButton" parent="PlayView" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -125,13 +124,13 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.2
 anchor_bottom = 0.15
+offset_left = 2.28882e-05
+offset_right = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_1eim1")
-text = "New Run"
+theme = ExtResource("5_aoebx")
 
-[node name="ContinueButton" type="Button" parent="PlayView"]
+[node name="ContinueButton" parent="PlayView" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -139,13 +138,13 @@ anchor_left = 0.05
 anchor_top = 0.2
 anchor_right = 0.2
 anchor_bottom = 0.3
+offset_left = 2.28882e-05
+offset_right = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_1laj6")
-text = "Continue"
+theme = ExtResource("5_aoebx")
 
-[node name="StartButton" type="Button" parent="PlayView"]
+[node name="StartButton" parent="PlayView" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -153,11 +152,13 @@ anchor_left = 0.8
 anchor_top = 0.7
 anchor_right = 0.95
 anchor_bottom = 0.8
+offset_left = 2.28882e-05
+offset_right = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start"
+theme = ExtResource("5_aoebx")
 
-[node name="CancelButton" type="Button" parent="PlayView"]
+[node name="CancelButton" parent="PlayView" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -165,9 +166,11 @@ anchor_left = 0.8
 anchor_top = 0.85
 anchor_right = 0.95
 anchor_bottom = 0.95
+offset_left = 2.28882e-05
+offset_right = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
-text = "Cancel"
+theme = ExtResource("5_aoebx")
 
 [node name="PlayInfoPanel" type="Panel" parent="PlayView"]
 unique_name_in_owner = true

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dme6cvljdluco"]
+[gd_scene load_steps=5 format=3 uid="uid://dme6cvljdluco"]
 
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_8moqm"]
 [ext_resource type="Script" uid="uid://6j1jaqywuifs" path="res://Scripts/PopUp/OptionsPopUpView.cs" id="1_cfkkt"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="3_08h5v"]
+[ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="4_wfdfo"]
 
 [node name="OptionsPopUp" type="Panel"]
 anchors_preset = -1
@@ -10,6 +13,7 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8moqm")
 script = ExtResource("1_cfkkt")
 viewID = &"options"
 
@@ -59,6 +63,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Music"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -67,9 +72,10 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
-anchor_right = 0.95
+anchor_right = 0.99
 anchor_bottom = 1.0
 text = "100%"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -104,9 +110,10 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
-anchor_right = 0.95
+anchor_right = 0.99
 anchor_bottom = 1.0
 text = "100%"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -119,7 +126,7 @@ anchor_top = 0.25
 anchor_right = 0.9
 anchor_bottom = 0.75
 
-[node name="SaveButton" type="Button" parent="."]
+[node name="SaveButton" parent="." instance=ExtResource("3_08h5v")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -129,9 +136,9 @@ anchor_right = 0.48
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
-text = "Save"
+theme = ExtResource("4_wfdfo")
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="CloseButton" parent="." instance=ExtResource("3_08h5v")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -141,4 +148,4 @@ anchor_right = 0.65
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
-text = "Close"
+theme = ExtResource("4_wfdfo")

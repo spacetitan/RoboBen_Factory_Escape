@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ExplodingBarrel" load_steps=3 format=3 uid="uid://b06cfwgq2ev6f"]
+
+[ext_resource type="Script" uid="uid://ou22cs101vmg" path="res://Scripts/_Resources/PowerUps/ExplodingBarrel.cs" id="1_v4y0c"]
+[ext_resource type="Texture2D" uid="uid://c15bbnjjs02p4" path="res://Art/Sprites/PowerUps/barrel.png" id="2_3080a"]
+
+[resource]
+script = ExtResource("1_v4y0c")
+id = &"explodingBarrel"
+name = "Exploding Barrel"
+description = "Deals damage at the start of combat"
+texture = ExtResource("2_3080a")
+rarity = 3
+activateType = 1
+value = 0
+metadata/_custom_type_script = "uid://ou22cs101vmg"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RepairTools" load_steps=3 format=3 uid="uid://b7b8ugbknt3ms"]
+
+[ext_resource type="Script" uid="uid://ck2df0k2yk0x8" path="res://Scripts/_Resources/PowerUps/RepairTool.cs" id="1_iggru"]
+[ext_resource type="Texture2D" uid="uid://dvthbbefsgjqu" path="res://Art/Sprites/PowerUps/repairtool.png" id="2_3ktc0"]
+
+[resource]
+script = ExtResource("1_iggru")
+id = &"repairTool"
+name = "Repair Tool"
+description = "Heals when combat ends"
+texture = ExtResource("2_3ktc0")
+rarity = 1
+activateType = 2
+value = 4
+metadata/_custom_type_script = "uid://ck2df0k2yk0x8"

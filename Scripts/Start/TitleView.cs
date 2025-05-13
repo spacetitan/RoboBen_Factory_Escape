@@ -3,10 +3,10 @@ using System;
 
 public partial class TitleView : UIView
 {
-    private Button playButton = null;
-    private Button collectionsButton = null;
-    private Button optionsButton = null;
-    private Button quitButton = null;
+    private UIButton playButton = null;
+    private UIButton collectionsButton = null;
+    private UIButton optionsButton = null;
+    private UIButton quitButton = null;
     
     public override void InitializeView(UIModel owner)
     {
@@ -22,26 +22,30 @@ public partial class TitleView : UIView
     {
         VBoxContainer buttonContainer = this.GetNode<Panel>("%ButtonPanel").GetNode<VBoxContainer>("%ButtonContainer");
         
-        this.playButton = buttonContainer.GetNode<Button>("%PlayButton");
-        this.playButton.Pressed += () =>
+        this.playButton = buttonContainer.GetNode<UIButton>("%PlayButton");
+        this.playButton.SetData("Play");
+        this.playButton.button.Pressed += () =>
         {
             this.owner.views["play"].ShowView();
         };
         
-        this.collectionsButton = buttonContainer.GetNode<Button>("%CollectionsButton");
-        this.collectionsButton.Pressed += () =>
+        this.collectionsButton = buttonContainer.GetNode<UIButton>("%CollectionsButton");
+        this.collectionsButton.SetData("Collections");
+        this.collectionsButton.button.Pressed += () =>
         {
             
         };
         
-        this.optionsButton = buttonContainer.GetNode<Button>("%OptionsButton");
-        this.optionsButton.Pressed += () =>
+        this.optionsButton = buttonContainer.GetNode<UIButton>("%OptionsButton");
+        this.optionsButton.SetData("Options");
+        this.optionsButton.button.Pressed += () =>
         {
             UIManager.instance.popUpModel.OpenPopUp("options");
         };
         
-        this.quitButton = buttonContainer.GetNode<Button>("%QuitButton");
-        this.quitButton.Pressed += () =>
+        this.quitButton = buttonContainer.GetNode<UIButton>("%QuitButton");
+        this.quitButton.SetData("Quit");
+        this.quitButton.button.Pressed += () =>
         {
             this.GetTree().Quit();
         };

@@ -13,4 +13,15 @@ public partial class CharacterData : Resource
     {
         this.health = health;
     }
+    
+    public virtual CharacterData CreateInstance()
+    {
+        CharacterData instance = (CharacterData)this.Duplicate();
+        instance.id = id;
+        instance.name = name;
+        instance.texture = texture;
+        instance.maxHealth = instance.health = maxHealth;
+
+        return instance;
+    }
 }

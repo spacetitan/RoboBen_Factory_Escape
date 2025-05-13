@@ -92,11 +92,12 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="StatusContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = -0.4
+anchor_top = -0.1
 anchor_right = 0.9
 grow_horizontal = 2
 grow_vertical = 2
@@ -120,7 +121,7 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.1
-anchor_top = 0.1
+anchor_top = 0.2
 anchor_right = 0.05
 anchor_bottom = 0.3
 grow_horizontal = 2

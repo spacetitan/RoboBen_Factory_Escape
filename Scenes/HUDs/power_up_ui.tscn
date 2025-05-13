@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbu2oyxcm7ri8"]
+[gd_scene load_steps=11 format=3 uid="uid://bbu2oyxcm7ri8"]
 
 [ext_resource type="Script" uid="uid://b8ymq6lvt3rmf" path="res://Scripts/PowerUps/PowerUpUI.cs" id="1_omika"]
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_pq5nq"]
+[ext_resource type="Shader" uid="uid://bf6e30tnql4yq" path="res://Art/Materials/DamageVFX/DamageShader.gdshader" id="3_a72in"]
 [ext_resource type="PackedScene" uid="uid://chekjngyobghn" path="res://Scenes/HUDs/power_up_info_panel.tscn" id="3_pq5nq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omika"]
@@ -20,6 +21,70 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="Animation" id="Animation_xvvcn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PowerUpTexture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PowerUpTexture:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dx4lo"]
+shader = ExtResource("3_a72in")
+
+[sub_resource type="Animation" id="Animation_3jb18"]
+resource_name = "flash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PowerUpTexture:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PowerUpTexture:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [null, SubResource("ShaderMaterial_dx4lo"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wxdy"]
+_data = {
+&"RESET": SubResource("Animation_xvvcn"),
+&"flash": SubResource("Animation_3jb18")
+}
+
 [node name="PowerUpUI" type="Control"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
@@ -28,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -75.0
-offset_right = -25.0
-offset_bottom = -25.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_omika")
@@ -57,6 +122,7 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(40, 40)
 texture = ExtResource("2_pq5nq")
 expand_mode = 5
 stretch_mode = 5
@@ -82,23 +148,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 text = "0"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PowerUpAP" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7wxdy")
+}
 
 [node name="PowerUpInfoPanelInv" parent="." instance=ExtResource("3_pq5nq")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+anchor_left = -2.4
+anchor_bottom = 1.5
 
 [node name="PowerUpInfoPanel" parent="." instance=ExtResource("3_pq5nq")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchor_left = 1.1
-anchor_right = 3.0
+anchor_right = 3.4
+anchor_bottom = 1.5
 
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

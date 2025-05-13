@@ -162,12 +162,16 @@ public partial class RunModel : UIModel
     {
         foreach(RoomPanel room in this.roomList)
         {
-            if (room.data.row == RunManager.instance.currentRun.floorsClimbed + 1)
+            if (room.data.row == RunManager.instance.currentRun.floorsClimbed)
             {
                 if (this.lastRoom.data.nextRoomNumber.Contains(room.data.column))
                 {
                     room.SetAvailability(true);
                 }
+            }
+            else
+            {
+                room.SetAvailability(false);
             }
 
             if(this.selectedRooms.Contains(room))
@@ -176,7 +180,12 @@ public partial class RunModel : UIModel
             }
         }
     }
-    
+
+    public void SetLastRoom(RoomData data)
+    {
+        this.lastRoom = GetRoomPanel(data);
+    }
+
     public float FloorToScroll()
     {
         return ((float)(RunManager.instance.mapGenerator.floors - RunManager.instance.currentRun.floorsClimbed) / (float)RunManager.instance.mapGenerator.floors);

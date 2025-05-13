@@ -50,7 +50,7 @@ public partial class CardUI : Panel
         
         this.cardTexture.Texture = data.Texture;
         this.titleLabel.Text = data.cardName;
-        this.descLabel.Text = data.cardDesc;
+        this.descLabel.Text = data.GetDefaultToolip();
         this.costLabel.Text = "Cost: " + data.cardCost.ToString();
         this.genLabel.Text = "Gen: " + data.cardGen.ToString();
         
@@ -119,6 +119,7 @@ public partial class CardUI : Panel
     
         this.player.AddEnergy(-this.data.cardCost);
         data.ApplyEffects(this.targets, this.player.playerData, player.modifierHandler);
+        EventManager.instance.EmitSignal(EventManager.SignalName.CardPlayed);
         this.player.DiscardCard(this);
     }
 

@@ -13,7 +13,7 @@ public partial class PowerUp : Resource
     [Export] public AudioStream playSFX { get; private set;}
     [Export] public Rarity rarity { get; private set; } = Rarity.NONE;
     [Export] public ActivateType activateType { get; private set; } = ActivateType.NONE;
-    [Export] public int Value { get; private set; } = 1;
+    [Export] public int value { get; private set; } = 1;
     protected PowerUpHandler owner = null;
 
     public virtual void InitializePowerUp(PowerUpHandler owner)
@@ -52,7 +52,7 @@ public partial class PowerUp : Resource
         instance.playSFX = this.playSFX;
         instance.rarity = this.rarity;
         instance.activateType = this.activateType;
-        instance.Value = this.Value;
+        instance.value = this.value;
         
         return instance;
     }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://deh2pldkcqf23"]
+[gd_scene load_steps=10 format=3 uid="uid://deh2pldkcqf23"]
 
 [ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_f4jiy"]
 [ext_resource type="Script" uid="uid://lruaxvlxp0ga" path="res://Scripts/HUD/RunHUDView.cs" id="1_huvjm"]
 [ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="2_wm4rk"]
 [ext_resource type="PackedScene" uid="uid://jdjydaqh07rn" path="res://Scenes/HUDs/deck_button.tscn" id="3_7igj7"]
 [ext_resource type="Texture2D" uid="uid://cil2d8w5xsk47" path="res://Art/Sprites/CardPile/deck-icon.png" id="4_f4jiy"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="6_hdixu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4jiy"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
@@ -158,7 +159,7 @@ offset_right = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionsButton" type="Button" parent="RightPanel"]
+[node name="OptionsButton" parent="RightPanel" instance=ExtResource("6_hdixu")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -166,11 +167,10 @@ anchor_left = 0.1
 anchor_top = 0.75
 anchor_right = 0.9
 anchor_bottom = 0.85
-offset_left = 4.76837e-05
-offset_right = 3.05176e-05
-text = "Options"
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="QuitButton" type="Button" parent="RightPanel"]
+[node name="QuitButton" parent="RightPanel" instance=ExtResource("6_hdixu")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -178,4 +178,5 @@ anchor_left = 0.1
 anchor_top = 0.875
 anchor_right = 0.9
 anchor_bottom = 0.975
-text = "Quit"
+grow_horizontal = 2
+grow_vertical = 2

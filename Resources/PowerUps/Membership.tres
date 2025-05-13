@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Membership" load_steps=3 format=3 uid="uid://dagoiqknm6u7i"]
+
+[ext_resource type="Script" uid="uid://rs24dpdiilti" path="res://Scripts/_Resources/PowerUps/Membership.cs" id="1_q633i"]
+[ext_resource type="Texture2D" uid="uid://dab0jih6rv2ty" path="res://Art/Sprites/PowerUps/membership.png" id="2_c1ttq"]
+
+[resource]
+script = ExtResource("1_q633i")
+id = &"membership"
+name = "Membership"
+description = "Get a 20% discount at the shop!"
+texture = ExtResource("2_c1ttq")
+rarity = 2
+activateType = 5
+value = 1
+metadata/_custom_type_script = "uid://rs24dpdiilti"

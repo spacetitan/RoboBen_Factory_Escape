@@ -32,11 +32,12 @@ public partial class PowerUpUI : Control
     {
         this.powerUp = powerUp;
         this.powerUpTexture.Texture = this.powerUp.texture;
+        this.powerUpTexture.SetPivotOffset(new Vector2(this.powerUpTexture.Size.X/2 , this.powerUpTexture.Size.Y/2));
         this.isInv = inv;
-        if (this.powerUp.Value > 0)
+        if (this.powerUp.value > 0)
         {
             this.labelPanel.Show();
-            this.powerUpLabel.Text = this.powerUp.Value.ToString();
+            this.powerUpLabel.Text = this.powerUp.value.ToString();
         }
         
         powerUpInfo.SetData(this.powerUp);

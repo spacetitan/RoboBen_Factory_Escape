@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Heal" load_steps=3 format=3 uid="uid://iduk11b55ply"]
+
+[ext_resource type="Texture2D" uid="uid://c5cyxav8m7pt0" path="res://Art/Sprites/Cards/repairKit.png" id="1_wv13h"]
+[ext_resource type="Script" uid="uid://bf0ckqrs0qb2r" path="res://Scripts/_Resources/Cards/Heal.cs" id="2_6naa7"]
+
+[resource]
+script = ExtResource("2_6naa7")
+id = &"repair"
+cardName = "Repair Kit"
+cardDesc = "heals {value}"
+Texture = ExtResource("1_wv13h")
+rarity = 3
+targetType = 2
+cardValue = 2
+cardCost = 0
+cardGen = 0
+isExhaust = false
+metadata/_custom_type_script = "uid://bf0ckqrs0qb2r"

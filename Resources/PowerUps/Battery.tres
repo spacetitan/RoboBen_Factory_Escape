@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Battery" load_steps=3 format=3 uid="uid://u0l5si1hwcm2"]
+
+[ext_resource type="Script" uid="uid://ccruahsqhgqah" path="res://Scripts/_Resources/PowerUps/Battery.cs" id="1_jhyc7"]
+[ext_resource type="Texture2D" uid="uid://dyo1805rrgpaa" path="res://Art/Sprites/PowerUps/battery.png" id="2_tytcj"]
+
+[resource]
+script = ExtResource("1_jhyc7")
+id = &"battery"
+name = "Battery"
+description = "Add 1 energy at the start of turn"
+texture = ExtResource("2_tytcj")
+rarity = 1
+activateType = 3
+Value = 1
+metadata/_custom_type_script = "uid://ccruahsqhgqah"

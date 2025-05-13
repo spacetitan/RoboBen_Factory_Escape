@@ -8,10 +8,10 @@ public partial class PlayView : UIView
     
     private PackedScene charPickerPanelScene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/char_picker_panel.tscn");
     
-    private Button newRunButton;
-    private Button continueButton;
-    private Button startButton;
-    private Button cancelButton;
+    private UIButton newRunButton;
+    private UIButton continueButton;
+    private UIButton startButton;
+    private UIButton cancelButton;
     
     private HBoxContainer InfoContainer = null;
     private HBoxContainer pickerContainer = null;
@@ -24,24 +24,29 @@ public partial class PlayView : UIView
 
     public void GetSceneNodes()
     {
-        this.newRunButton = this.GetNode<Button>("%NewRunButton");
-        this.newRunButton.ButtonPressed = true;
-        this.newRunButton.Pressed += () =>
+        this.newRunButton = this.GetNode<UIButton>("%NewRunButton");
+        this.newRunButton.SetData("New Run");
+        this.newRunButton.button.ToggleMode = true;
+        this.newRunButton.button.ButtonPressed = true;
+        this.newRunButton.button.Pressed += () =>
         {
             
         };
         
-        this.continueButton = this.GetNode<Button>("%ContinueButton");
-        this.continueButton.Pressed += () =>
+        this.continueButton = this.GetNode<UIButton>("%ContinueButton");
+        this.continueButton.SetData("Continue");
+        this.continueButton.button.ToggleMode = true;
+        this.continueButton.button.Pressed += () =>
         {
             
         };
-        this.continueButton.SetDisabled(true);
+        this.continueButton.button.SetDisabled(true);
         
-        this.startButton = this.GetNode<Button>("%StartButton");
-        this.startButton.Pressed += () =>
+        this.startButton = this.GetNode<UIButton>("%StartButton");
+        this.startButton.SetData("Start!");
+        this.startButton.button.Pressed += () =>
         {
-            if (this.newRunButton.ButtonPressed)
+            if (this.newRunButton.button.ButtonPressed)
             {
                 if (this.playerData != null)
                 {
@@ -49,15 +54,16 @@ public partial class PlayView : UIView
                     UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
                 }
             }
-            else if (this.continueButton.ButtonPressed)
+            else if (this.continueButton.button.ButtonPressed)
             {
                 
             }
         };
-        this.startButton.SetDisabled(true);
+        this.startButton.button.SetDisabled(true);
         
-        this.cancelButton = this.GetNode<Button>("%CancelButton");
-        this.cancelButton.Pressed += () =>
+        this.cancelButton = this.GetNode<UIButton>("%CancelButton");
+        this.cancelButton.SetData("Cancel");
+        this.cancelButton.button.Pressed += () =>
         {
             this.HideView();
         };
@@ -109,7 +115,7 @@ public partial class PlayView : UIView
             {
                 SetInfoPanels(kvp.Value);
                 this.playerData = kvp.Value;
-                this.startButton.SetDisabled(false);
+                this.startButton.button.SetDisabled(false);
             };
             this.pickerContainer.AddChild(pickerPanel);
         }
@@ -171,8 +177,8 @@ public partial class PlayView : UIView
 
     public override void Exit()
     {
-        this.newRunButton.ButtonPressed = true;
-        this.startButton.SetDisabled(true);
+        this.newRunButton.button.ButtonPressed = true;
+        this.startButton.button.SetDisabled(true);
         ResetInfoPanels();
     }
 }

@@ -3,6 +3,7 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class _CLASS_ : PowerUp
 {
     public override void InitializePowerUp(PowerUpHandler owner)

@@ -13,8 +13,8 @@ public partial class OptionsPopUpView : UIView
     private HSlider sfxSlider = null;
     private RichTextLabel sfxLabel = null;
     
-    private Button saveButton = null;
-    private Button closeButton = null;
+    private UIButton saveButton = null;
+    private UIButton closeButton = null;
     
     public override void _Ready()
     {
@@ -48,13 +48,15 @@ public partial class OptionsPopUpView : UIView
         };
         
         
-        this.saveButton = this.GetNode<Button>("%SaveButton");
-        this.saveButton.Pressed += () =>
+        this.saveButton = this.GetNode<UIButton>("%SaveButton");
+        this.saveButton.SetData("Save");
+        this.saveButton.button.Pressed += () =>
         {
             GameManager.instance.SaveSettings();
         };
-        this.closeButton = this.GetNode<Button>("%CloseButton");
-        this.closeButton.Pressed += () =>
+        this.closeButton = this.GetNode<UIButton>("%CloseButton");
+        this.closeButton.SetData("Close");
+        this.closeButton.button.Pressed += () =>
         {
             UIManager.instance.popUpModel.ClosePopup("options");
         };

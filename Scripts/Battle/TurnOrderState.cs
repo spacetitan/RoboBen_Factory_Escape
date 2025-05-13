@@ -35,6 +35,8 @@ public partial class StartPowerUpState : TurnOrderState
 
     public override void Enter(Character character)
     {
+        if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
+
         if(character is Player)
         {
             Player player = character as Player;
@@ -71,6 +73,8 @@ public partial class StartEffectState : TurnOrderState
 
     public override void Enter(Character character)
     {
+        if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
+        
         character.statusHandler.ApplyStatusByType(Status.TriggerType.START_OF_TURN, () =>
         {
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.CHAR_TURN);
@@ -95,6 +99,8 @@ public partial class CharacterTurnState : TurnOrderState
 
     public override void Enter(Character character)
     {
+        if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
+        
         if (character.statusHandler.HasStatus("stun"))
         {
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.END_POWERUPS);
@@ -136,6 +142,8 @@ public partial class EndPowerUpState : TurnOrderState
 
     public override void Enter(Character character)
     {
+        if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
+        
         if(character is Player)
         {
             RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_TURN, () => 
@@ -172,6 +180,8 @@ public partial class EndEffectState : TurnOrderState
 
     public override void Enter(Character character)
     {
+        if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
+        
         character.statusHandler.ApplyStatusByType(Status.TriggerType.END_OF_TURN, () =>
         {
             this.stateMachine.EndTurn();

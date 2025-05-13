@@ -11,7 +11,8 @@ public partial class Status : Resource
     [Signal] public delegate void StatusChangedEventHandler();
 
     [ExportGroup("Status Data")]
-    [Export] public StringName id { get; private set; }
+    [Export] public StringName id { get; private set; } 
+    [Export] public StringName name { get; private set; }
     [Export] public TriggerType triggerType { get; private set; }
     [Export] public StackType stackType { get; private set; }
     [Export] public bool canExpire { get; private set; }

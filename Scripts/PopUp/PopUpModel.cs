@@ -34,9 +34,37 @@ public partial class PopUpModel : UIModel
         popUpView.OpenPopUp(deck, title);
     }
 
-    public void ClosePopup(string popupName)
+    public void OpenBattleWinView(int money)
+    {
+        this.ShowModel();
+        BattleWinView battleWinView = this.views["battleWin"] as BattleWinView;
+        battleWinView.OpenPopUp(money);
+    }
+
+    public void OpenRewardDraft(RewardDraftView.Type rewardType, bool isLayered = false)
+    {
+        this.ShowModel();
+        RewardDraftView rewardDraftView = this.views["rewardDraft"] as RewardDraftView;
+        rewardDraftView.OpenPopUp(rewardType, isLayered);
+    }
+
+    public void ClosePopup(string popupName, bool isLayered = false)
     {
         this.views[popupName].HideView();
-        this.HideModel();
+        
+        if (!isLayered)
+        {
+            this.HideModel();
+        }
+    }
+    
+    public void CloseRewardDraft(bool isLayered = false)
+    {
+        this.views["rewardDraft"].HideView();
+
+        if (!isLayered)
+        {
+            this.HideModel();
+        }
     }
 }

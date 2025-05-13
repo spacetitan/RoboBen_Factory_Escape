@@ -14,6 +14,7 @@ public partial class BattleData : Resource
     {
         this.tier = battleData.tier;
         this.weight = battleData.weight;
+        this.money = battleData.money;
 
         this.enemyIDList = new String[battleData.enemyIDList.Length];
         for (int i = 0; i < battleData.enemyIDList.Length; i++)

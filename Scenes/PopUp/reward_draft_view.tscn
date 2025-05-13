@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://wuuks2rie0iy"]
+
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_gyuk2"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="1_n0xyj"]
+[ext_resource type="Script" uid="uid://bftnu6mpnp7bq" path="res://Scripts/PopUp/RewardDraftView.cs" id="1_wrn5n"]
+[ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_avbts"]
+
+[node name="RewardDraftView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gyuk2")
+theme_override_styles/panel = ExtResource("2_avbts")
+script = ExtResource("1_wrn5n")
+viewID = &"rewardDraft"
+
+[node name="TitlePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = -0.05
+anchor_right = 0.7
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Choose a Reward!"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.2
+anchor_right = 0.85
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="CloseButton" parent="." instance=ExtResource("1_n0xyj")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.95
+offset_left = 3.05176e-05
+offset_right = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReRollButton" parent="." instance=ExtResource("1_n0xyj")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.8
+anchor_right = 0.85
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2

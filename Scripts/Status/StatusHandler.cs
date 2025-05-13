@@ -6,13 +6,21 @@ using System.Linq;
 public partial class StatusHandler : RefCounted
 {
     [Signal] public delegate void StatusesAppliedEventHandler(Status.TriggerType type);
+    private PackedScene statusUIScene = ResourceLoader.Load<PackedScene>("res://Scenes/UI/status_ui.tscn");
     public List<Status> statuses { get; private set; } = new List<Status>();
+    public List<StatusUI> statusUIs { get; private set; } = new List<StatusUI>();
     const float STATUS_APPLY_INTERVAL = .25f;
     public Character owner { get; private set; }
+    public GridContainer container { get; private set; }
 
     public StatusHandler(Character owner)
     {
         this.owner = owner;
+    }
+
+    public void SetContainer(GridContainer container)
+    {
+	    this.container = container;
     }
 
     public bool HasStatus(StringName id)
@@ -53,6 +61,25 @@ public partial class StatusHandler : RefCounted
 
 		return statuses;
 	}
+	
+	public void SpawnUI(Status status)
+	{
+		StatusUI ui = this.statusUIScene.Instantiate() as StatusUI;
+		this.container.AddChild(ui);
+		ui.GetSceneNodes();
+		ui.SetData(status);
+		ui.SetCustomMinimumSize(new Vector2(this.container.GetRect().Size.X / 4, this.container.GetRect().Size.X / 4));
+		this.statusUIs.Add(ui);
+	}
+	
+	public void ClearUI()
+	{
+		foreach (StatusUI status in this.statusUIs)
+		{
+			status.QueueFree();
+		}
+		this.statusUIs.Clear();
+	}
 
     public void AddStatus(Status status)
 	{
@@ -66,6 +93,7 @@ public partial class StatusHandler : RefCounted
 		{
             status.StatusApplied += OnStatusApplied;
             this.statuses.Add(status);
+            SpawnUI(status);
 			return;
 		}
 

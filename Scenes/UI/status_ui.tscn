@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dggfsvdr7yxha"]
+
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_fsla4"]
+[ext_resource type="Script" uid="uid://biy58g1bf1hpi" path="res://Scripts/Status/StatusUI.cs" id="1_jqcwh"]
+[ext_resource type="StyleBox" uid="uid://to0k6gi5nirs" path="res://Themes/Start/CharPicker/CharPickerStyleBox.tres" id="1_yabmb"]
+[ext_resource type="PackedScene" uid="uid://chekjngyobghn" path="res://Scenes/HUDs/power_up_info_panel.tscn" id="2_g66ud"]
+
+[node name="StatusUI" type="Panel"]
+custom_minimum_size = Vector2(150, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00292, 1.00971)
+theme_override_styles/panel = ExtResource("1_yabmb")
+script = ExtResource("1_jqcwh")
+
+[node name="StatusTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_fsla4")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="StatusLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "0"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoPanel" parent="." instance=ExtResource("2_g66ud")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = -0.2
+anchor_top = -1.1
+anchor_right = 1.2
+anchor_bottom = -0.1
+
+[node name="InfoPanelInv" parent="." instance=ExtResource("2_g66ud")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = -0.2
+anchor_top = 1.1
+anchor_right = 1.2
+anchor_bottom = 2.1
+
+[connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

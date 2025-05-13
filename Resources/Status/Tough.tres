@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Tough" load_steps=3 format=3 uid="uid://1sr00te7x31b"]
+
+[ext_resource type="Script" uid="uid://dtsfaevkexvk" path="res://Scripts/_Resources/Status/Tough.cs" id="1_4j8iw"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_cje57"]
+
+[resource]
+script = ExtResource("1_4j8iw")
+id = &"tough"
+name = &"Tough"
+triggerType = 2
+stackType = 2
+canExpire = true
+duration = 0
+stacks = 0
+statusIcon = ExtResource("2_cje57")
+desc = ""
+metadata/_custom_type_script = "uid://dtsfaevkexvk"

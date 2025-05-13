@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb78614yrfdy0"]
+[gd_scene load_steps=4 format=3 uid="uid://cb78614yrfdy0"]
 
 [ext_resource type="Script" uid="uid://bh12jw687i44w" path="res://Scripts/PopUp/GenericPopUpView.cs" id="1_ivjaj"]
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_wue4j"]
+[ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_wvwwr"]
 
 [node name="GenericPopUp" type="Panel"]
 anchors_preset = -1
@@ -8,6 +10,8 @@ anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.8
+theme = ExtResource("1_wue4j")
+theme_override_styles/panel = ExtResource("2_wvwwr")
 script = ExtResource("1_ivjaj")
 viewID = &"generic"
 

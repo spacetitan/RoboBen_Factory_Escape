@@ -18,10 +18,14 @@ public partial class EventManager : Node
 	[Signal] public delegate void PlayerTurnStartedEventHandler();
 	[Signal] public delegate void PlayerTurnEndedEventHandler();
 	
+	[Signal] public delegate void CardPlayedEventHandler();
+	[Signal] public delegate void CardBurnedEventHandler();
+	
 	[Signal] public delegate void PlayerDamagedEventHandler();
 	[Signal] public delegate void PlayerHealedEventHandler();
 	
-	[Signal] public delegate void ResetAbilityEventHandler();
+	[Signal] public delegate void PlayerDiedEventHandler();
+	[Signal] public delegate void EnemyDiedEventHandler(Enemy enemy);
 	
 	[Signal] public delegate void CardAimStartedEventHandler(CardUI card);
 	[Signal] public delegate void AbilityAimStartedEventHandler(Player player);

@@ -20,10 +20,9 @@ public partial class SecondWind : PowerUp
     {
         if(this.ready && UIManager.instance.currentModel.state == UIManager.UIState.BATTLE)
         {
-            Player player = this.owner.GetTree().GetFirstNodeInGroup("Player") as Player;
-            player.DrawCard();
-        
-            base.ActivatePowerUp();
+            BattleModel model = UIManager.instance.currentModel as BattleModel;
+            model.player.DrawCard();
+            
             this.ready = false;
         }
     }

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ReinforcedArmor" load_steps=3 format=3 uid="uid://chc824dy5xa74"]
+
+[ext_resource type="Script" uid="uid://6vgg8pk25va5" path="res://Scripts/_Resources/PowerUps/ReinforcedArmor.cs" id="1_4eepl"]
+[ext_resource type="Texture2D" uid="uid://bf5r8o8dcmrcn" path="res://Art/Sprites/PowerUps/armorplate.png" id="2_pip7m"]
+
+[resource]
+script = ExtResource("1_4eepl")
+id = &"reinforcedArmor"
+name = "Reinforced Armor"
+description = "Adds armor at the end of turn"
+texture = ExtResource("2_pip7m")
+rarity = 1
+activateType = 4
+value = 2
+metadata/_custom_type_script = "uid://6vgg8pk25va5"

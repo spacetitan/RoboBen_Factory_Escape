@@ -42,6 +42,44 @@ public partial class Run
         this.floorsClimbed++;
     }
 
+    public void AddMoney(int amount)
+    {
+        this.gold += amount;
+    }
+
+    public void SpendReRoll()
+    {
+        this.reRolls--;
+
+        if (this.reRolls < 0)
+        {
+            this.reRolls = 0;
+        }
+    }
+
+    public void TakeMoney(int amount)
+    {
+        this.gold -= amount;
+
+        if (this.gold < 0)
+        {
+            this.gold = 0;
+        }
+    }
+
+    public bool ContainsPowerUp(StringName id)
+    {
+        foreach (PowerUp powerUp in this.powerUpHandler.powerUps)
+        {
+            if (powerUp.id == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public Godot.Collections.Dictionary<StringName, Variant> saveRun()
     {
         Godot.Collections.Dictionary<StringName, Variant> runData = new Godot.Collections.Dictionary<StringName, Variant>()

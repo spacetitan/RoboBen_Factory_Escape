@@ -22,4 +22,10 @@ public partial class PowerUpInfo : UIView
         this.titleLabel.Text = data.name;
         this.descLabel.Text = data.description;
     }
+    
+    public void SetData(Status data)
+    {
+        this.titleLabel.Text = data.name;
+        this.descLabel.Text = data.desc;
+    }
 }

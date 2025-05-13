@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://gh8ljiv7ps7k"]
+[gd_scene load_steps=18 format=3 uid="uid://gh8ljiv7ps7k"]
 
 [ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_y5i83"]
 [ext_resource type="Script" uid="uid://wsolebailkly" path="res://Scripts/HUD/BattleHUDView.cs" id="2_sxrd0"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="8_1bodp"]
 [ext_resource type="PackedScene" uid="uid://cmdl4q5mlvh53" path="res://Scenes/HUDs/ability_info_panel.tscn" id="9_a8n4k"]
 [ext_resource type="Texture2D" uid="uid://veakbgeaanxy" path="res://Art/Sprites/Battle/energy-icon.png" id="11_6lrue"]
+[ext_resource type="PackedScene" uid="uid://cixa28ltgkd6e" path="res://Scenes/Battle/target_selector.tscn" id="11_tbf4e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxrd0"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
@@ -110,19 +111,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="QuitButton" type="Button" parent="TopPanel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.89
-anchor_top = 0.1
-anchor_right = 0.99
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit"
-
-[node name="OptionsButton" type="Button" parent="TopPanel"]
+[node name="OptionsButton" parent="TopPanel" instance=ExtResource("8_1bodp")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -132,7 +121,17 @@ anchor_right = 0.88
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
-text = "Options"
+
+[node name="QuitButton" parent="TopPanel" instance=ExtResource("8_1bodp")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LeftPanel" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -212,17 +211,15 @@ grow_vertical = 2
 theme_override_constants/separation = 35
 alignment = 1
 
-[node name="AbilityButton" type="Button" parent="ButtonContainer"]
+[node name="AbilityButton" parent="ButtonContainer" instance=ExtResource("8_1bodp")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Ability"
 
-[node name="EndTurnButton" type="Button" parent="ButtonContainer"]
+[node name="EndTurnButton" parent="ButtonContainer" instance=ExtResource("8_1bodp")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "End Turn"
 
 [node name="AbilityInfoPanel" parent="." instance=ExtResource("9_a8n4k")]
 unique_name_in_owner = true
@@ -265,6 +262,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 54
 text = "0"
 fit_content = true
 scroll_active = false
@@ -281,6 +279,9 @@ anchor_right = 0.3
 anchor_bottom = 0.825
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TargetSelector" parent="." instance=ExtResource("11_tbf4e")]
+layout_mode = 1
 
 [connection signal="mouse_entered" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseEntered"]
 [connection signal="mouse_exited" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseExited"]

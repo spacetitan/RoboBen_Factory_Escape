@@ -12,8 +12,8 @@ public partial class RunHUDView : UIView
     private DeckButton deckButton = null;
 
     private GridContainer powerUpContainer = null;
-    private Button optionsButton = null;
-    private Button quitButton = null;
+    private UIButton optionsButton = null;
+    private UIButton quitButton = null;
     
     public override void _Ready()
     {
@@ -27,13 +27,15 @@ public partial class RunHUDView : UIView
         
         Panel rightPanel = GetNode<Panel>("%RightPanel");
         this.powerUpContainer = rightPanel.GetNode<GridContainer>("%PowerUpContainer");
-        this.optionsButton = rightPanel.GetNode<Button>("%OptionsButton");
-        this.optionsButton.Pressed += () =>
+        this.optionsButton = rightPanel.GetNode<UIButton>("%OptionsButton");
+        this.optionsButton.SetData("Options");
+        this.optionsButton.button.Pressed += () =>
         {
             UIManager.instance.popUpModel.OpenPopUp("options");
         };
-        this.quitButton = rightPanel.GetNode<Button>("%QuitButton");
-        this.quitButton.Pressed += () =>
+        this.quitButton = rightPanel.GetNode<UIButton>("%QuitButton");
+        this.quitButton.SetData("Quit");
+        this.quitButton.button.Pressed += () =>
         {
             this.GetTree().Quit();
         };
@@ -49,6 +51,16 @@ public partial class RunHUDView : UIView
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
         this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons["reRoll"]);
         this.deckButton.SetData(run.playerDeck);
-        run.powerUpHandler.SpawnUI(this.powerUpContainer);
+        run.powerUpHandler.SetContainer(this.powerUpContainer);
+        run.powerUpHandler.SpawnAllUI();
+    }
+
+    public override void Exit()
+    {
+        Run run = RunManager.instance.currentRun;
+        if (run != null)
+        {
+            run.powerUpHandler.ClearUI();
+        }
     }
 }

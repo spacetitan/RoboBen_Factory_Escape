@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnergyCard" load_steps=3 format=3 uid="uid://di0okxt7mfg3"]
+
+[ext_resource type="Script" uid="uid://bbxhy4aapyjr4" path="res://Scripts/_Resources/PowerUps/EnergyCard.cs" id="1_afqom"]
+[ext_resource type="Texture2D" uid="uid://b41e3c2joy654" path="res://Art/Sprites/PowerUps/energyCard.png" id="2_yqubx"]
+
+[resource]
+script = ExtResource("1_afqom")
+id = &"energyCard"
+name = "Energy Card"
+description = "Generate 1 energy after burning 2 cards"
+texture = ExtResource("2_yqubx")
+rarity = 1
+activateType = 5
+Value = 1
+metadata/_custom_type_script = "uid://bbxhy4aapyjr4"
