@@ -37,6 +37,14 @@ public partial class HUDModel : UIModel
                 this.views["hand"].ShowView();
                 this.views["battleHUD"].ShowView();
                 break;
+            
+            case UIManager.UIState.TREASURE:
+            case UIManager.UIState.REST:
+            case UIManager.UIState.SHOP:
+                this.views["runHUD"].HideView();
+                
+                this.views["roomHUD"].ShowView();
+                break;
                 
             default:
                 break;

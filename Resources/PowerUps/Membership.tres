@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_q633i")
-id = &"membership"
+id = 6
 name = "Membership"
 description = "Get a 20% discount at the shop!"
 texture = ExtResource("2_c1ttq")

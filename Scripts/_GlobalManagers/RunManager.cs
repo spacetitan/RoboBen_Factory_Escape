@@ -47,12 +47,12 @@ public partial class RunManager : Node
 	{
 		this.currentRun = new Run(playerData);
 
-		foreach (KeyValuePair<StringName, CardData> card in ResourceManager.instance.cards)
+		foreach (KeyValuePair<CardData.CardID, CardData> card in ResourceManager.instance.cards)
 		{
 			this.availableCards.Add(card.Value);
 		}
 		
-		foreach (KeyValuePair<StringName, PowerUp> powerUp in ResourceManager.instance.powerUps)
+		foreach (KeyValuePair<PowerUp.PowerUpID, PowerUp> powerUp in ResourceManager.instance.powerUps)
 		{
 			this.availablePowerUps.Add(powerUp.Value);
 		}
@@ -83,12 +83,15 @@ public partial class RunManager : Node
 				break;
 			
 			case RoomData.Type.REST:
+				UIManager.instance.ChangeStateTo(UIManager.UIState.REST);
 				break;
 			
 			case RoomData.Type.SHOP:
+				UIManager.instance.ChangeStateTo(UIManager.UIState.SHOP);
 				break;
 			
 			case RoomData.Type.TREASURE:
+				UIManager.instance.ChangeStateTo(UIManager.UIState.TREASURE);
 				break;
 			
 			case RoomData.Type.EVENT:
@@ -298,5 +301,15 @@ public partial class RunManager : Node
 
 		GD.Print("Cannot get random card, returning null");
 		return null;
+	}
+
+	public void Rest()
+	{
+		this.currentRun.Rest();
+	}
+
+	public void FullHeal()
+	{
+		this.currentRun.FullHeal();
 	}
 }

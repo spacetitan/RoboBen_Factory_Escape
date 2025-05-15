@@ -6,12 +6,22 @@ public partial class Status : Resource
 {
     public enum TriggerType { NONE, EVENT, START_OF_TURN, END_OF_TURN};
     public enum StackType { NONE, INTENSITY, DURATION};
+    public enum StatusID
+    {
+        NONE,
+        MUSCLE,
+        POISON,
+        REGEN,
+        STUN,
+        TOUGH,
+        WEAKEN
+    }
 
     [Signal] public delegate void StatusAppliedEventHandler(Status status);
     [Signal] public delegate void StatusChangedEventHandler();
 
     [ExportGroup("Status Data")]
-    [Export] public StringName id { get; private set; } 
+    [Export] public StatusID id { get; private set; } 
     [Export] public StringName name { get; private set; }
     [Export] public TriggerType triggerType { get; private set; }
     [Export] public StackType stackType { get; private set; }

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_6wueg")
-id = &"goldCrown"
+id = 4
 name = "Gold Crown"
 description = "15% increase to money obtained from monters"
 texture = ExtResource("2_ghl6h")

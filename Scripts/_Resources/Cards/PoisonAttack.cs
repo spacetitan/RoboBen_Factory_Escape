@@ -11,7 +11,7 @@ public partial class PoisonAttack : CardData
 		DamageEffect damageEffect = new DamageEffect(modifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT), this.playSFX);
 		damageEffect.Execute(targets);
 		
-		Poison poison = ResourceManager.instance.statuses["poison"].Duplicate() as Poison;
+		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].Duplicate() as Poison;
 		poison.SetStacks(this.stacks);
 
 		StatusEffect statusEffect = new StatusEffect(poison, null);

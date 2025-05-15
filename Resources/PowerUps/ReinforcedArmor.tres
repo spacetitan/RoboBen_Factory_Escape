@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_4eepl")
-id = &"reinforcedArmor"
+id = 9
 name = "Reinforced Armor"
 description = "Adds armor at the end of turn"
 texture = ExtResource("2_pip7m")

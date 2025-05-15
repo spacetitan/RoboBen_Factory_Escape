@@ -3,8 +3,11 @@ using System;
 
 public partial class CharacterData : Resource
 {
-    [Export] public StringName id = "";
+    public enum CharacterID { NONE, ROBOBEN, GRUBBOID, GRUBBIG, GRUBBFLY, TORTIGRUB, GRUBBMANTIS }
+    
+    [Export] public CharacterID id = CharacterID.NONE;
     [Export] public StringName name = "";
+    [Export] public string desc = "";
     [Export] public Texture2D texture = null;
     [Export] public int health = 0;
     [Export] public int maxHealth = 1;

@@ -11,6 +11,8 @@ public partial class RewardDraftView : UIView
     private bool isLayered = false;
     private Type rewardType = Type.CARD;
     
+    private Vector2 rewardSize = Vector2.Zero;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -23,7 +25,10 @@ public partial class RewardDraftView : UIView
         this.closeButton.SetData("Close");
         this.closeButton.button.Pressed += ClosePopUp;
         this.reRollButton = this.GetNode<UIButton>("%ReRollButton");
+        this.reRollButton.SetData("Re-Roll ()", ResourceManager.instance.HUDIcons["reRoll"]);
         this.reRollButton.button.Pressed += ReRoll;
+
+        this.rewardSize = new Vector2(this.rewardContainer.Size.X / 4, this.rewardContainer.Size.Y * 0.7f);
     }
     
     public override void Exit()
@@ -36,7 +41,7 @@ public partial class RewardDraftView : UIView
 
     public void OpenPopUp(Type type, bool isLayered)
     {
-        this.reRollButton.SetData("Re-Rolls (" + RunManager.instance.currentRun.reRolls + ")");
+        this.reRollButton.SetData("Re-Roll (" + RunManager.instance.currentRun.reRolls + ")");
         SpawnRewards(type);
         this.isLayered = isLayered;
         this.rewardType = type;
@@ -56,7 +61,7 @@ public partial class RewardDraftView : UIView
             CardDisplayUI displayUi = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
             this.rewardContainer.AddChild(displayUi);
             displayUi.GetSceneNodes();
-            displayUi.SetCustomMinimumSize(new Vector2(this.rewardContainer.Size.X / 3, this.rewardContainer.Size.Y));
+            displayUi.SetCustomMinimumSize(this.rewardSize);
             
             switch (type)
             {

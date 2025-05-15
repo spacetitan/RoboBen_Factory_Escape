@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_2kr0h")
 stacks = 3
-id = &"poisonAtt"
+id = 3
 cardName = "Poison Attack"
 cardDesc = "Deal {value} dmg and apply {stacks} poison to a single enemy"
 Texture = ExtResource("1_mmjgi")

@@ -4,9 +4,17 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class CardData : Resource
 {
+    public enum CardID
+    {
+        NONE,
+        ATTACK,
+        GUARD,
+        POISONATTACK,
+        REPAIRKIT
+    }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE};
 
-    [Export] public StringName id = "";
+    [Export] public CardID id = CardID.NONE;
     [Export] public string cardName { get; private set; } = "";
     [Export(PropertyHint.MultilineText)] public string cardDesc { get; private set; } = "";
     

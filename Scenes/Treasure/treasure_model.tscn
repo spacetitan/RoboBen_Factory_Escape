@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsemsnu67qsgd"]
+
+[ext_resource type="Script" uid="uid://drycoh3crvg30" path="res://Scripts/Treasure/TreasureModel.cs" id="1_8lkth"]
+[ext_resource type="Script" uid="uid://q2tua6youj4g" path="res://Scripts/Treasure/TreasureView.cs" id="2_l8nym"]
+[ext_resource type="Texture2D" uid="uid://dfarvthv4tcqu" path="res://Art/Sprites/Treasure/treasure.png" id="2_rj8uv"]
+[ext_resource type="Texture2D" uid="uid://b2wx16yqi847" path="res://Art/Sprites/Treasure/treasureGlow.png" id="4_l2w8u"]
+[ext_resource type="Texture2D" uid="uid://ducn6j8280wpe" path="res://Art/Sprites/Treasure/treasureOpen.png" id="5_qn55n"]
+
+[node name="TreasureModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lkth")
+
+[node name="TreasureView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_l8nym")
+treasure = ExtResource("2_rj8uv")
+treasureGlow = ExtResource("4_l2w8u")
+treasureOpen = ExtResource("5_qn55n")
+viewID = &"treasure"
+
+[node name="TreasureTexture" type="TextureRect" parent="TreasureView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.45
+anchor_right = 0.75
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rj8uv")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PlayerSpawn" type="Control" parent="TreasureView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.325
+anchor_right = 0.35
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="TreasureView/TreasureTexture" to="TreasureView" method="OnGuiInput"]
+[connection signal="mouse_entered" from="TreasureView/TreasureTexture" to="TreasureView" method="OnMouseEntered"]
+[connection signal="mouse_exited" from="TreasureView/TreasureTexture" to="TreasureView" method="OnMouseExited"]

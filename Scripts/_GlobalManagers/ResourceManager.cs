@@ -17,17 +17,20 @@ public partial class ResourceManager : Node
 	public Texture2D debugIcon = null;
 	public PackedScene uiButtonScene = null;
 	
-	public Dictionary<StringName, PlayerData> characters = new Dictionary<StringName, PlayerData>();
+	public Dictionary<CharacterData.CharacterID, PlayerData> characters = new Dictionary<CharacterData.CharacterID, PlayerData>();
 	public PackedScene playerScene = null;
 	
-	public Dictionary<StringName, EnemyData> enemies = new Dictionary<StringName, EnemyData>();
+	public Dictionary<CharacterData.CharacterID, EnemyData> enemies = new Dictionary<CharacterData.CharacterID, EnemyData>();
 	public Dictionary<StringName, Texture2D> intentIcons = new Dictionary<StringName, Texture2D>();
 	public PackedScene enemyScene = null;
 	
-	public Dictionary<StringName, Status> statuses = new Dictionary<StringName, Status>();
+	public Dictionary<BattleData.BattleID, BattleData> battles = new Dictionary<BattleData.BattleID,BattleData>();
 	
-	public Dictionary<StringName, CardData> cards = new Dictionary<StringName, CardData>();
-	public Dictionary<StringName, PowerUp> powerUps = new Dictionary<StringName, PowerUp>();
+	public Dictionary<Status.StatusID, Status> statuses = new Dictionary<Status.StatusID, Status>();
+	
+	public Dictionary<CardData.CardID, CardData> cards = new Dictionary<CardData.CardID, CardData>();
+	
+	public Dictionary<PowerUp.PowerUpID, PowerUp> powerUps = new Dictionary<PowerUp.PowerUpID, PowerUp>();
 	public PackedScene displayCard = null;
 	
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
@@ -45,21 +48,22 @@ public partial class ResourceManager : Node
 	{
 		this.debugIcon = ResourceLoader.Load<Texture2D>("res://icon.svg");
 		this.uiButtonScene = ResourceLoader.Load<PackedScene>("res://Scenes/HUDs/ui_button.tscn");
-		
-		this.characters = new Dictionary<StringName, PlayerData>()
+	
+		string path = "res://Resources/Characters/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
 		{
-			{"roboBen", ResourceLoader.Load<PlayerData>("res://Resources/Characters/RoboBen.tres")},
-		};
+			PlayerData data = ResourceLoader.Load<PlayerData>(path + fileName);
+			this.characters.Add(data.id, data);
+		}
 		this.playerScene = ResourceLoader.Load<PackedScene>("res://Scenes/Player/player.tscn");
 		
-		this.enemies = new Dictionary<StringName, EnemyData>()
+		path = "res://Resources/Enemies/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
 		{
-			{"grubboid", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Grubboid.tres")},
-			{"grubbig", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Grubbig.tres")},
-			{"grubbfly", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Grubbfly.tres")},
-			{"tortigrubb", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Tortigrubb.tres")},
-			{"grubbmantis", ResourceLoader.Load<EnemyData>("res://Resources/Enemies/Grubbmantis.tres")},
-		};
+			EnemyData data = ResourceLoader.Load<EnemyData>(path + fileName);
+			this.enemies.Add(data.id, data);
+		}
+		
 		this.intentIcons = new Dictionary<StringName, Texture2D>()
 		{
 			{"attack", ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/sword-icon.png")},
@@ -67,36 +71,33 @@ public partial class ResourceManager : Node
 		};
 		this.enemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/enemy.tscn");
 
-		this.statuses = new Dictionary<StringName, Status>()
+		path = "res://Resources/Battle/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
 		{
-			{"muscle", ResourceLoader.Load<Status>("res://Resources/Status/Muscle.tres")},
-			{"poison", ResourceLoader.Load<Status>("res://Resources/Status/Poison.tres")},
-			{"regen", ResourceLoader.Load<Status>("res://Resources/Status/Regen.tres")},
-			{"stun", ResourceLoader.Load<Status>("res://Resources/Status/Stun.tres")},
-			{"tough", ResourceLoader.Load<Status>("res://Resources/Status/Tough.tres")},
-			{"weaken", ResourceLoader.Load<Status>("res://Resources/Status/Weaken.tres")},
-		};
+			BattleData data = ResourceLoader.Load<BattleData>(path + fileName);
+			this.battles.Add(data.battleID, data);
+		}
 		
-		this.cards = new Dictionary<StringName, CardData>()
+		path = "res://Resources/Status/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
 		{
-			{"attack", ResourceLoader.Load<CardData>("res://Resources/Cards/Attack.tres")},
-			{"guard", ResourceLoader.Load<CardData>("res://Resources/Cards/Guard.tres")},
-			{"poisonAtt", ResourceLoader.Load<CardData>("res://Resources/Cards/PoisonAttack.tres")},
-			{"repair", ResourceLoader.Load<CardData>("res://Resources/Cards/RepairKit.tres")},
-		};
-		this.powerUps = new Dictionary<StringName, PowerUp>()
+			Status data = ResourceLoader.Load<Status>(path + fileName);
+			this.statuses.Add(data.id, data);
+		}
+		
+		path = "res://Resources/Cards/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
 		{
-			{"battery", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/Battery.tres")},
-			{"energyCard", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/EnergyCard.tres")},
-			{"explodingBarrel", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/ExplodingBarrel.tres")},
-			{"goldCrown", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/GoldCrown.tres")},
-			{"heartBattery", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/HeartBattery.tres")},
-			{"membership", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/Membership.tres")},
-			{"muscleCard", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/MuscleCard.tres")},
-			{"reactArmor", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/ReactiveArmor.tres")},
-			{"reinforcedArmor", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/ReinforcedArmor.tres")},
-			{"repairTool", ResourceLoader.Load<PowerUp>("res://Resources/PowerUps/RepairTool.tres")},
-		};
+			CardData data = ResourceLoader.Load<CardData>(path + fileName);
+			this.cards.Add(data.id, data);
+		}
+		
+		path = "res://Resources/PowerUps/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
+		{
+			PowerUp data = ResourceLoader.Load<PowerUp>(path + fileName);
+			this.powerUps.Add(data.id, data);
+		}
 		this.displayCard = ResourceLoader.Load<PackedScene>("res://Scenes/UI/card_display_ui.tscn");
 
 		this.runIcons = new Dictionary<RoomData.Type, Texture2D>()

@@ -1,13 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bph1tfufn4nu2"]
+[gd_scene load_steps=12 format=3 uid="uid://bph1tfufn4nu2"]
 
 [ext_resource type="Script" uid="uid://b33ejphwxx2kb" path="res://Scripts/_GlobalManagers/UIManager.cs" id="1_c4t2g"]
 [ext_resource type="PackedScene" uid="uid://b0kkisie7f3xc" path="res://Scenes/PopUp/pop_up_model.tscn" id="1_nvxgx"]
 [ext_resource type="PackedScene" uid="uid://dmb7sf1h5yyn" path="res://Scenes/VFX/vfx_model.tscn" id="2_rky0f"]
 [ext_resource type="PackedScene" uid="uid://cqltwrfb6nesi" path="res://Scenes/Background/background_model.tscn" id="2_sghk5"]
 [ext_resource type="PackedScene" uid="uid://btjqxf8mi142h" path="res://Scenes/Start/start_model.tscn" id="2_sktho"]
+[ext_resource type="PackedScene" uid="uid://016u3ak3h7t" path="res://Scenes/Rest/rest_model.tscn" id="3_el5ad"]
 [ext_resource type="PackedScene" uid="uid://dgfwxq107anql" path="res://Scenes/Run/run_model.tscn" id="4_lplpk"]
 [ext_resource type="PackedScene" uid="uid://o5a6lxfp35t4" path="res://Scenes/Battle/battle_model.tscn" id="5_4aleu"]
 [ext_resource type="PackedScene" uid="uid://dmxct0at6mn6e" path="res://Scenes/HUDs/hud_model.tscn" id="5_pto7s"]
+[ext_resource type="PackedScene" uid="uid://dsemsnu67qsgd" path="res://Scenes/Treasure/treasure_model.tscn" id="6_t6h3n"]
+[ext_resource type="PackedScene" uid="uid://txtru12wbmsn" path="res://Scenes/Shop/shop_model.tscn" id="8_f4wdt"]
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_c4t2g")
@@ -23,6 +26,13 @@ script = ExtResource("1_c4t2g")
 [node name="RunModel" parent="Menu" instance=ExtResource("4_lplpk")]
 
 [node name="BattleModel" parent="Menu" instance=ExtResource("5_4aleu")]
+
+[node name="TreasureModel" parent="Menu" instance=ExtResource("6_t6h3n")]
+state = 4
+
+[node name="RestModel" parent="Menu" instance=ExtResource("3_el5ad")]
+
+[node name="ShopModel" parent="Menu" instance=ExtResource("8_f4wdt")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_56vyl")
-id = &"guard"
+id = 2
 cardName = "Guard"
 cardDesc = "Generates {value} armor"
 Texture = ExtResource("1_be2tn")

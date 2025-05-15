@@ -57,6 +57,7 @@ public partial class BattleHUDView : UIView
        Panel rightPanel = GetNode<Panel>("%RightPanel");
        this.deckButton = rightPanel.GetNode<DeckButton>("%DeckButton");
        this.mapButton = rightPanel.GetNode<UIButton>("%MapButton");
+       this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons["map"]);
 
        HBoxContainer buttonContainer = this.GetNode<HBoxContainer>("%ButtonContainer");
        this.abilityButton = buttonContainer.GetNode<UIButton>("%AbilityButton");
@@ -111,6 +112,11 @@ public partial class BattleHUDView : UIView
         this.healthUI.SetData(this.player.playerData);
         this.abilityInfoPanel.SetData(this.player.playerData);
         this.energyLabel.Text = this.player.energy.ToString();
+    }
+
+    public void UpdateMoney()
+    {
+        this.moneyDisplay.SetData(RunManager.instance.currentRun.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
     }
 
     public void UpdateDeck()

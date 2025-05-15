@@ -33,6 +33,7 @@ public partial class UIButton : Control
         {
             this.texture.Texture = texture;
             this.texture.Show();
+            this.label.HorizontalAlignment = HorizontalAlignment.Left;
         }
     }
 }

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_ekyb6")
-id = &"reactArmor"
+id = 8
 name = "Reactive Armor"
 description = "Generates armor when damaged"
 texture = ExtResource("2_8v3o5")

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_mduoc")
-id = &"muscle"
+id = 1
 name = &"Muscle"
 triggerType = 2
 stackType = 2

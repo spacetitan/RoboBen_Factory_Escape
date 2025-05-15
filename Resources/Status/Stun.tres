@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3nnqp")
-id = &"stun"
+id = 4
 name = &"Stun"
 triggerType = 3
 stackType = 1

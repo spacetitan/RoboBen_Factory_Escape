@@ -23,7 +23,7 @@ public partial class StatusHandler : RefCounted
 	    this.container = container;
     }
 
-    public bool HasStatus(StringName id)
+    public bool HasStatus(Status.StatusID id)
 	{
 		foreach(Status status in this.statuses)
 		{
@@ -36,7 +36,7 @@ public partial class StatusHandler : RefCounted
 		return false;
 	}
 
-	private Status GetStatus(StringName id)
+	private Status GetStatus(Status.StatusID id)
 	{
 		foreach(Status status in this.statuses)
 		{

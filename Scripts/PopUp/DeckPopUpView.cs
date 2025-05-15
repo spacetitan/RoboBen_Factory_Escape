@@ -10,6 +10,7 @@ public partial class DeckPopUpView : UIView
     private UIButton closeButton = null;
     
     private List<CardDisplayUI> cards = new List<CardDisplayUI>();
+    private Vector2 cardSize = new Vector2();
     
     public override void _Ready()
     {
@@ -27,6 +28,8 @@ public partial class DeckPopUpView : UIView
         {
             UIManager.instance.popUpModel.ClosePopup("deck");
         };
+        
+        this.cardSize = new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f);
     }
 
     public void OpenPopUp(CardPile data, string title)
@@ -39,7 +42,7 @@ public partial class DeckPopUpView : UIView
             CardDisplayUI display = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
             display.GetSceneNodes();
             display.SetData(card);
-            display.SetCustomMinimumSize(new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f));
+            display.SetCustomMinimumSize(this.cardSize);
             this.cards.Add(display);
             this.cardContainer.AddChild(display);
         }

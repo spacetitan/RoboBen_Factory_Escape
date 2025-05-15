@@ -17,7 +17,7 @@ public partial class UIManager : Node
 	public enum UILayer { NONE, BACKGROUNDS, MENU, HUD, POPUP, VFX };
 	public Dictionary<UILayer, CanvasLayer> layers { get; private set; } = new Dictionary<UILayer, CanvasLayer>();
 
-	public enum UIState { NONE, START, RUN, BATTLE, };
+	public enum UIState { NONE, START, RUN, BATTLE, TREASURE, SHOP, REST, EVENT};
 	public Dictionary<UIState, UIModel> models { get; private set; } = new Dictionary<UIState, UIModel>();
 	
 	public UIModel currentModel { get; private set; } = null;

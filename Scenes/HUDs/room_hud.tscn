@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3a2ujcg68h0f"]
+[gd_scene load_steps=12 format=3 uid="uid://c3a2ujcg68h0f"]
 
+[ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_0ljo3"]
 [ext_resource type="Script" uid="uid://rvbsrig1b8nd" path="res://Scripts/HUD/RoomHUDView.cs" id="1_w6byr"]
+[ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="3_ubupk"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="4_getg1"]
+[ext_resource type="PackedScene" uid="uid://dhoqwn8106lqt" path="res://Scenes/HUDs/health_ui.tscn" id="5_7p3xh"]
+[ext_resource type="PackedScene" uid="uid://jdjydaqh07rn" path="res://Scenes/HUDs/deck_button.tscn" id="6_eysoa"]
+[ext_resource type="Texture2D" uid="uid://b6at263q1uag1" path="res://Art/Sprites/CardPile/deck-icon-inv.png" id="7_ww2tn"]
+[ext_resource type="Theme" uid="uid://cqx0acj3dnur5" path="res://Themes/HUD/MapButtonTheme.tres" id="8_ubupk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6byr"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
 border_width_bottom = 5
 border_color = Color(0.105205, 0.171276, 0.242047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n14kw"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_daej0"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
@@ -20,9 +36,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_0ljo3")
 script = ExtResource("1_w6byr")
 
 [node name="TopPanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -31,7 +49,65 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w6byr")
 
+[node name="Panel" type="Panel" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.66
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n14kw")
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="TopPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.65
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoneyDisplay" parent="TopPanel" instance=ExtResource("3_ubupk")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.1
+anchor_right = 0.77
+anchor_bottom = 0.9
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="OptionsButton" parent="TopPanel" instance=ExtResource("4_getg1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78
+anchor_top = 0.1
+anchor_right = 0.88
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitButton" parent="TopPanel" instance=ExtResource("4_getg1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="BottomPanel" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.85
@@ -40,3 +116,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_daej0")
+
+[node name="HealthUI" parent="BottomPanel" instance=ExtResource("5_7p3xh")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.3
+anchor_right = 0.21
+anchor_bottom = 0.7
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeckButton" parent="BottomPanel" instance=ExtResource("6_eysoa")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.725
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.9
+buttonTexture = ExtResource("7_ww2tn")
+
+[node name="MapButton" parent="BottomPanel" instance=ExtResource("4_getg1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.825
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
+theme = ExtResource("8_ubupk")
+
+[node name="LeaveButton" parent="." instance=ExtResource("4_getg1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.7
+anchor_right = 0.95
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2

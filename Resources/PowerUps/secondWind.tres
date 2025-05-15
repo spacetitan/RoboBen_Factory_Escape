@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_ibwsb")
-id = &"secondWind"
+id = 11
 name = "Second Wind"
 description = "Draw a card when you are healed (Limit 1 per turn)."
 texture = ExtResource("2_3h8je")
 rarity = 3
 activateType = 5
-Value = 1
+value = 1
 metadata/_custom_type_script = "uid://u26ed1d3nmcs"

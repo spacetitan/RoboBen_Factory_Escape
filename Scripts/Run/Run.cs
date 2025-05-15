@@ -57,6 +57,21 @@ public partial class Run
         }
     }
 
+    public void Rest()
+    {
+        float val = playerData.maxHealth * .3f;
+        val = Mathf.RoundToInt(val);
+        
+        this.playerData.health = Math.Clamp(this.playerData.health + (int)val, 0, this.playerData.maxHealth);
+    }
+
+    public void FullHeal()
+    {
+        TakeMoney(10);
+        
+        this.playerData.health = this.playerData.maxHealth;
+    }
+
     public void TakeMoney(int amount)
     {
         this.gold -= amount;
@@ -67,7 +82,7 @@ public partial class Run
         }
     }
 
-    public bool ContainsPowerUp(StringName id)
+    public bool ContainsPowerUp(PowerUp.PowerUpID id)
     {
         foreach (PowerUp powerUp in this.powerUpHandler.powerUps)
         {

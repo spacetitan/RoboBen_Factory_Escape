@@ -4,7 +4,16 @@ using System;
 [GlobalClass]
 public partial class BattleData : Resource
 {
-    [Export] public string[] enemyIDList;
+    public enum BattleID
+    {
+        NONE,
+        GROUP1,
+        GROUP2,
+        GROUP3,
+        BOSS1,
+    }
+    [Export] public BattleID battleID = BattleID.NONE;
+    [Export] public EnemyData[] enemyList;
     [Export] public int tier = 0;
     [Export] public float weight = 0.0f;
     [Export] public int money = 0;
@@ -16,10 +25,10 @@ public partial class BattleData : Resource
         this.weight = battleData.weight;
         this.money = battleData.money;
 
-        this.enemyIDList = new String[battleData.enemyIDList.Length];
-        for (int i = 0; i < battleData.enemyIDList.Length; i++)
+        this.enemyList = new EnemyData[battleData.enemyList.Length];
+        for (int i = 0; i < battleData.enemyList.Length; i++)
         {
-            this.enemyIDList[i] = battleData.enemyIDList[i];
+            this.enemyList[i] = battleData.enemyList[i];
         }
         
         this.accumilatedWeight = battleData.accumilatedWeight;
@@ -29,15 +38,8 @@ public partial class BattleData : Resource
     {
         Godot.Collections.Dictionary<StringName, Variant> data = new Godot.Collections.Dictionary<StringName, Variant>()
         {
-            {"tier", this.tier},
-            {"weight", this.weight},
-            {"money", this.money},
+            {"BattleID", (int) this.battleID},
         };
-
-        for (int i = 0; i < this.enemyIDList.Length; i++)
-        {
-            data.Add("Enemy ID " + i, enemyIDList[i]);
-        }
         
         return data;
     }

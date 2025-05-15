@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_6naa7")
-id = &"repair"
+id = 4
 cardName = "Repair Kit"
 cardDesc = "heals {value}"
 Texture = ExtResource("1_wv13h")

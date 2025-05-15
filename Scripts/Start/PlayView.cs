@@ -106,7 +106,7 @@ public partial class PlayView : UIView
         this.infoPanels.Add(infoPanel);
         
         this.pickerContainer = this.GetNode<Panel>("%CharPickerPanel").GetNode<HBoxContainer>("%PickerContainer");
-        foreach (KeyValuePair<StringName, PlayerData> kvp in ResourceManager.instance.characters)
+        foreach (KeyValuePair<CharacterData.CharacterID, PlayerData> kvp in ResourceManager.instance.characters)
         {
             CharPickerPanel pickerPanel = charPickerPanelScene.Instantiate() as CharPickerPanel;
             pickerPanel.GetSceneNodes();
@@ -127,7 +127,7 @@ public partial class PlayView : UIView
         {
             texture = data.texture,
             title = data.name,
-            body = data.id,
+            body = data.desc,
             type = "Character"
         });
         

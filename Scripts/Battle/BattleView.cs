@@ -32,12 +32,12 @@ public partial class BattleView : UIView
 
         UIManager.instance.hudModel.SetPlayerData(player);
         
-        for (int i = 0; i < battleData.enemyIDList.Length; i++)
+        for (int i = 0; i < battleData.enemyList.Length; i++)
         {
             Enemy enemy = ResourceManager.instance.enemyScene.Instantiate() as Enemy;
             enemy.GetSceneNodes();
             this.enemySpawns[i].AddChild(enemy);
-            enemy.SetData(ResourceManager.instance.enemies[battleData.enemyIDList[i]].CreateInstance());
+            enemy.SetData(battleData.enemyList[i].CreateInstance());
             this.enemies.Add(enemy);
         }
     }

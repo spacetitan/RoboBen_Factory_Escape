@@ -27,6 +27,8 @@ public partial class PowerUpHandler : Node
     
     public void SetContainer(Container container)
     {
+        ClearUI();
+        
         this.container = container;
     }
     
@@ -66,7 +68,7 @@ public partial class PowerUpHandler : Node
         tween.Finished += () => { callback?.Invoke(); };
     }
 
-    public bool hasPowerUp(String id)
+    public bool hasPowerUp(PowerUp.PowerUpID id)
     {
         foreach(PowerUpUI powerUpUI in powerUpUIs)
         {
@@ -79,7 +81,7 @@ public partial class PowerUpHandler : Node
         return false;
     }
 
-    public PowerUpUI GetPowerUpUI(String id)
+    public PowerUpUI GetPowerUpUI(PowerUp.PowerUpID id)
     {
         foreach(PowerUpUI powerUpUI in powerUpUIs)
         {
@@ -156,7 +158,7 @@ public partial class PowerUpHandler : Node
         Godot.Collections.Dictionary<StringName, Variant> data = new Godot.Collections.Dictionary<StringName, Variant>();
         for (int i = 0; i < powerUps.Count; i++)
         {
-            data.Add("Power up " + i, powerUps[i].id);
+            data.Add("Power up " + i, (int) powerUps[i].id);
         }
         return data;
     }

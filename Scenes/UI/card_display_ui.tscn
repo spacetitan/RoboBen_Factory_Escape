@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_mf84n")
-expand_mode = 5
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="."]

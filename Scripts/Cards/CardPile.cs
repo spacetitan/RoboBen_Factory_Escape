@@ -87,7 +87,7 @@ public partial class CardPile : Resource
 
         for (int i = 0; i < this.cards.Count; i++)
         {
-            data.Add("Card " + i.ToString(), cards[i].id);   
+            data.Add("Card " + i.ToString(),(int) cards[i].id);   
         }
         
         return data;

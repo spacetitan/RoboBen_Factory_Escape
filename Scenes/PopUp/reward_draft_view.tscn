@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://wuuks2rie0iy"]
+[gd_scene load_steps=6 format=3 uid="uid://wuuks2rie0iy"]
 
 [ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_gyuk2"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="1_n0xyj"]
 [ext_resource type="Script" uid="uid://bftnu6mpnp7bq" path="res://Scripts/PopUp/RewardDraftView.cs" id="1_wrn5n"]
 [ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_avbts"]
+[ext_resource type="Theme" uid="uid://cqx0acj3dnur5" path="res://Themes/HUD/MapButtonTheme.tres" id="5_7c5ne"]
 
 [node name="RewardDraftView" type="Panel"]
 anchors_preset = -1
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 42
 text = "Choose a Reward!"
 fit_content = true
 scroll_active = false
@@ -51,7 +53,8 @@ anchor_right = 0.85
 anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
+alignment = 1
 
 [node name="CloseButton" parent="." instance=ExtResource("1_n0xyj")]
 unique_name_in_owner = true
@@ -76,3 +79,4 @@ anchor_right = 0.85
 anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_7c5ne")

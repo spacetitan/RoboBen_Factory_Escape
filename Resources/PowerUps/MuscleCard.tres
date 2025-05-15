@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_xw5fl")
-id = &"muscleCard"
+id = 7
 name = "Muscle Card"
 description = "Generates 2 muscle after playing 3 cards"
 texture = ExtResource("2_gjckl")

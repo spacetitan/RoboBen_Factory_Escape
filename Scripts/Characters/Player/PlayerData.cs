@@ -27,7 +27,7 @@ public partial class PlayerData : CharacterData
     {
         return new Godot.Collections.Dictionary<StringName, Variant>()
         {
-            {"id", this.id},
+            {"id",(int) this.id},
             {"texture", this.texture},
             {"health", this.health},
             {"maxHealth", this.maxHealth},

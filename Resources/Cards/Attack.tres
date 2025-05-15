@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rloft")
-id = &"attack"
+id = 1
 cardName = "Attack"
 cardDesc = "Deals {value} dmg"
 Texture = ExtResource("1_3sdka")

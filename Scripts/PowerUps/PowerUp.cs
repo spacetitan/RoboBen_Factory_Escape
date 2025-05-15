@@ -4,9 +4,24 @@ using System;
 public partial class PowerUp : Resource
 {
     [Signal] public delegate void PowerUpActivatedEventHandler();
+    public enum PowerUpID
+    {
+        NONE,
+        BATTERY,
+        ECARD,
+        EBARREL,
+        CROWN,
+        HBATTERY,
+        MEMBERSHIP,
+        MCARD,
+        REACTARMOR,
+        REINFARMOR,
+        REPAIRTOOL,
+        SECONDWIND,
+    }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE}
     public enum ActivateType { NONE, START_OF_COMBAT, END_OF_COMBAT, START_OF_TURN, END_OF_TURN, EVENT}
-    [Export] public StringName id { get; private set; } = null;
+    [Export] public PowerUpID id { get; private set; } = PowerUpID.NONE;
     [Export] public String name { get; private set; } = "";
     [Export(PropertyHint.MultilineText)] public String description { get; private set; } = "";
     [Export] public Texture2D texture { get; private set; } = null;

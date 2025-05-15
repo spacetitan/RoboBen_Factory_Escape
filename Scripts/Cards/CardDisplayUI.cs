@@ -19,9 +19,11 @@ public partial class CardDisplayUI : Control
     public CardData cardData = null;
     public PowerUp powerUp = null;
     
+    public bool glowDisabled = false;
+    
     public override void _Ready()
     {
-       
+        
     }
 
     public void GetSceneNodes()
@@ -40,7 +42,7 @@ public partial class CardDisplayUI : Control
         this.AddThemeStyleboxOverride("panel", defaultStyleBox);
     }
 
-    public void SetData(CardData data, Action onClick = null)
+    public void SetData(CardData data, Action onClick = null, bool glowDisabled = false)
     {
         this.textureRect.Texture = data.Texture;
         this.titleLabel.Text = data.cardName;
@@ -55,9 +57,10 @@ public partial class CardDisplayUI : Control
         }
         
         this.cardData = data;
+        this.glowDisabled = glowDisabled;
     }
     
-    public void SetData(PowerUp data, Action onClick = null)
+    public void SetData(PowerUp data, Action onClick = null, bool glowDisabled = false)
     {
         this.textureRect.Texture = data.texture;
         this.titleLabel.Text = data.name;
@@ -72,15 +75,22 @@ public partial class CardDisplayUI : Control
         }
 
         this.powerUp = data;
+        this.glowDisabled = glowDisabled;
     }
 
     public void OnMouseEntered()
     {
-        this.AddThemeStyleboxOverride("panel", hoverStyleBox);
+        if (!this.glowDisabled)
+        {
+            this.AddThemeStyleboxOverride("panel", hoverStyleBox);   
+        }
     }
 
     public void OnMouseExited()
     {
-        this.AddThemeStyleboxOverride("panel", defaultStyleBox);
+        if (!this.glowDisabled)
+        {
+            this.AddThemeStyleboxOverride("panel", defaultStyleBox);   
+        }
     }
 }

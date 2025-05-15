@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b2edi868d35tv"]
+
+[ext_resource type="Shader" uid="uid://bnycrdjoanw6k" path="res://Art/Materials/FlashingOverlay/FlashingOverlay.gdshader" id="1_mh54g"]
+
+[resource]
+shader = ExtResource("1_mh54g")
+shader_parameter/color_a = Color(0.701961, 0.701961, 0.701961, 0)
+shader_parameter/color_b = Color(1, 1, 1, 1)
+shader_parameter/colors_affect_alpha = false
+shader_parameter/flash_amount = 1.0
+shader_parameter/flash_speed = 1.0
+shader_parameter/transparency = 1.0
+shader_parameter/intensity = 0.5

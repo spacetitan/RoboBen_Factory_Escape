@@ -43,6 +43,9 @@ public partial class BattleWinView : UIView
         {
             RunManager.instance.currentRun.AddMoney(money);
             moneyButton.QueueFree();
+            
+            BattleHUDView view = UIManager.instance.hudModel.views["battleHUD"] as BattleHUDView;
+            view.UpdateMoney();
         };
         
         UIButton rewardButton = ResourceManager.instance.uiButtonScene.Instantiate() as UIButton;
@@ -69,8 +72,6 @@ public partial class BattleWinView : UIView
                 rewardButton.QueueFree();
             };
         }
-
-        
         
         this.ShowView();
     }

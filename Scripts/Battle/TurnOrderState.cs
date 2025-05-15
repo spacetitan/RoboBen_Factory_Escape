@@ -101,7 +101,7 @@ public partial class CharacterTurnState : TurnOrderState
     {
         if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
         
-        if (character.statusHandler.HasStatus("stun"))
+        if (character.statusHandler.HasStatus(Status.StatusID.STUN))
         {
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.END_POWERUPS);
         }
