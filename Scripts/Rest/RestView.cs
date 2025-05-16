@@ -45,8 +45,9 @@ public partial class RestView : UIView
         Player player = ResourceManager.instance.playerScene.Instantiate() as Player;
         player.GetSceneNodes();
         this.playerSpawn.AddChild(player);
-        this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT]);
         player.SetPlayerData(RunManager.instance.currentRun);
+        
+        this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT]);
 
         this.restButton.button.Disabled = false;
         if (RunManager.instance.currentRun.gold > 10)

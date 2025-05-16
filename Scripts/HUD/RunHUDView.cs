@@ -47,9 +47,9 @@ public partial class RunHUDView : UIView
         Run run = RunManager.instance.currentRun;
         this.nameDisplay.SetData(run.playerData.name);
         this.textureDisplay.SetData(null, run.playerData.texture);
-        this.healthDisplay.SetData(run.playerData.health.ToString() + " / " + run.playerData.maxHealth, ResourceManager.instance.HUDIcons["health"]);
-        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
-        this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons["reRoll"]);
+        this.healthDisplay.SetData(run.playerData.health.ToString() + " / " + run.playerData.maxHealth, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.HEALTH]);
+        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
+        this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         this.deckButton.SetData(run.playerDeck);
         run.powerUpHandler.SetContainer(this.powerUpContainer);
         run.powerUpHandler.SpawnAllUI();

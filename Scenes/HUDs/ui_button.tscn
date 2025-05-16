@@ -46,7 +46,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 text = "Button"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

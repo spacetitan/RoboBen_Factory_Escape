@@ -6,7 +6,7 @@ public partial class BattleWinView : UIView
     public VBoxContainer buttonContainer = null;
     public UIButton continueButton = null;
     
-    
+    Vector2 buttonSize = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -23,6 +23,8 @@ public partial class BattleWinView : UIView
             UIManager.instance.popUpModel.ClosePopup(this.viewID);
             UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
         };
+        
+        this.buttonSize = new Vector2(this.continueButton.Size.Y, this.continueButton.Size.Y);
     }
 
     public override void Exit()
@@ -38,7 +40,8 @@ public partial class BattleWinView : UIView
         UIButton moneyButton = ResourceManager.instance.uiButtonScene.Instantiate() as UIButton;
         this.buttonContainer.AddChild(moneyButton);
         moneyButton.GetSceneNodes();
-        moneyButton.SetData("Money: " + money, ResourceManager.instance.HUDIcons["money"]);
+        moneyButton.SetCustomMinimumSize(this.buttonSize);
+        moneyButton.SetData("Money: " + money, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         moneyButton.button.Pressed += () =>
         {
             RunManager.instance.currentRun.AddMoney(money);
@@ -51,12 +54,13 @@ public partial class BattleWinView : UIView
         UIButton rewardButton = ResourceManager.instance.uiButtonScene.Instantiate() as UIButton;
         this.buttonContainer.AddChild(rewardButton);
         rewardButton.GetSceneNodes();
+        rewardButton.SetCustomMinimumSize(this.buttonSize);
         
         float roll = RunManager.instance.currentRun.rng.RandfRange(0.0f, 1.0f);
 
         if (roll < 0.3f)
         {
-            rewardButton.SetData("Power-Up", ResourceManager.instance.HUDIcons["powerUp"]);
+            rewardButton.SetData("Power-Up", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.POWERUP]);
             rewardButton.button.Pressed += () =>
             {
                 UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.POWERUP, true);
@@ -65,7 +69,7 @@ public partial class BattleWinView : UIView
         }
         else
         {
-            rewardButton.SetData("Card", ResourceManager.instance.HUDIcons["card"]);
+            rewardButton.SetData("Card", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.CARD]);
             rewardButton.button.Pressed += () =>
             {
                 UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.CARD, true);

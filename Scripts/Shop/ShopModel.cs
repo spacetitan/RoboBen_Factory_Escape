@@ -7,6 +7,7 @@ public partial class ShopModel : UIModel
     public override void Enter()
     {
         ShopView view = this.views["shop"] as ShopView;
+        view.SetData();
         view.ShowView();
         
         UIManager.instance.vfxModel.OpenCurtain();

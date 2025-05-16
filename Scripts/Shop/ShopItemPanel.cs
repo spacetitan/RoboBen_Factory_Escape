@@ -11,6 +11,8 @@ public partial class ShopItemPanel : UIView
     
     private float cost = 0;
     
+    public Action onBuyCallback = null;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -41,7 +43,20 @@ public partial class ShopItemPanel : UIView
         
         this.buyButton.SetData("Purchased");
         this.buyButton.button.Disabled = true;
+        this.onBuyCallback?.Invoke();
         //darken card display
+    }
+
+    public void UpdateData()
+    {
+        if (RunManager.instance.currentRun.gold >= this.cost)
+        {
+            this.buyButton.button.Disabled = false;
+        }
+        else
+        {
+            this.buyButton.button.Disabled = true;
+        }
     }
 
     public void ResetData()
@@ -49,10 +64,9 @@ public partial class ShopItemPanel : UIView
         this.buyButton.button.Disabled = false;
         this.powerUp = null;
         this.cardData = null;
-        
     }
 
-    public void SetData(PowerUp powerUp)
+    public void SetData(PowerUp powerUp, Action callback = null)
     {
         this.itemDisplay.SetData(powerUp, null, true);
         this.powerUp = powerUp;
@@ -84,9 +98,20 @@ public partial class ShopItemPanel : UIView
         }
         
         this.buyButton.SetData("Cost: " + this.cost);
+
+        if (RunManager.instance.currentRun.gold >= this.cost)
+        {
+            this.buyButton.button.Disabled = false;
+        }
+        else
+        {
+            this.buyButton.button.Disabled = true;
+        }
+
+        this.onBuyCallback = callback;
     }
     
-    public void SetData(CardData card)
+    public void SetData(CardData card, Action callback = null)
     {
         this.itemDisplay.SetData(card, null, true);
         this.cardData = card;
@@ -118,5 +143,16 @@ public partial class ShopItemPanel : UIView
         }
         
         this.buyButton.SetData("Cost: " + this.cost);
+        
+        if (RunManager.instance.currentRun.gold >= this.cost)
+        {
+            this.buyButton.button.Disabled = false;
+        }
+        else
+        {
+            this.buyButton.button.Disabled = true;
+        }
+        
+        this.onBuyCallback = callback;
     }
 }

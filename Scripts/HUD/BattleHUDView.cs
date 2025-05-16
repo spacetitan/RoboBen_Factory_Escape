@@ -57,7 +57,7 @@ public partial class BattleHUDView : UIView
        Panel rightPanel = GetNode<Panel>("%RightPanel");
        this.deckButton = rightPanel.GetNode<DeckButton>("%DeckButton");
        this.mapButton = rightPanel.GetNode<UIButton>("%MapButton");
-       this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons["map"]);
+       this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
 
        HBoxContainer buttonContainer = this.GetNode<HBoxContainer>("%ButtonContainer");
        this.abilityButton = buttonContainer.GetNode<UIButton>("%AbilityButton");
@@ -116,7 +116,7 @@ public partial class BattleHUDView : UIView
 
     public void UpdateMoney()
     {
-        this.moneyDisplay.SetData(RunManager.instance.currentRun.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
+        this.moneyDisplay.SetData(RunManager.instance.currentRun.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
     }
 
     public void UpdateDeck()
@@ -134,8 +134,8 @@ public partial class BattleHUDView : UIView
         Run run = RunManager.instance.currentRun;
         run.powerUpHandler.SetContainer(this.powerUpContainer);
         run.powerUpHandler.SpawnAllUI();
-        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
-        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons["map"]);
+        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
+        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
     }
 
     public override void Exit()

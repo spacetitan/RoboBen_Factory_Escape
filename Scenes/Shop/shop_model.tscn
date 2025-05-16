@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://txtru12wbmsn"]
+[gd_scene load_steps=7 format=3 uid="uid://txtru12wbmsn"]
 
+[ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_dieus"]
 [ext_resource type="Script" uid="uid://u0wavjjexcro" path="res://Scripts/Shop/ShopModel.cs" id="1_qdfee"]
 [ext_resource type="Script" uid="uid://b4dm3wi4y480j" path="res://Scripts/Shop/ShopView.cs" id="2_c0e83"]
 [ext_resource type="PackedScene" uid="uid://qs6binjssm21" path="res://Scenes/Shop/shop_item_panel.tscn" id="3_c0e83"]
 [ext_resource type="Texture2D" uid="uid://bjc26entwcfys" path="res://Art/Sprites/Shop/RoboDev2.png" id="4_562v3"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="5_68jpw"]
 
 [node name="ShopModel" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_dieus")
 script = ExtResource("1_qdfee")
 state = 5
 
@@ -25,54 +28,12 @@ grow_vertical = 2
 script = ExtResource("2_c0e83")
 viewID = &"shop"
 
-[node name="GridContainer" type="GridContainer" parent="ShopView"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.3
-anchor_right = 0.775
-anchor_bottom = 0.8
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 20
-columns = 3
-
-[node name="ShopItemPanel" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ShopItemPanel2" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ShopItemPanel3" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ShopItemPanel4" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ShopItemPanel5" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ShopItemPanel6" parent="ShopView/GridContainer" instance=ExtResource("3_c0e83")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="PlayerSpawn" type="Control" parent="ShopView"]
 unique_name_in_owner = true
 layout_mode = 1
-anchor_left = 0.15
+anchor_left = 0.05
 anchor_top = 0.325
-anchor_right = 0.35
+anchor_right = 0.25
 anchor_bottom = 0.725
 grow_horizontal = 2
 grow_vertical = 2
@@ -80,12 +41,70 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="ShopView"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35
+anchor_left = 0.225
 anchor_top = 0.325
-anchor_right = 0.475
+anchor_right = 0.45
 anchor_bottom = 0.725
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_562v3")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="CardContainer" type="HBoxContainer" parent="ShopView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.475
+anchor_top = 0.175
+anchor_right = 0.9
+anchor_bottom = 0.475
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="ShopItemPanel" parent="ShopView/CardContainer" instance=ExtResource("3_c0e83")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShopItemPanel2" parent="ShopView/CardContainer" instance=ExtResource("3_c0e83")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShopItemPanel3" parent="ShopView/CardContainer" instance=ExtResource("3_c0e83")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="ShopView"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.525
+anchor_right = 0.775
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="ShopItemPanel" parent="ShopView/PowerUpContainer" instance=ExtResource("3_c0e83")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShopItemPanel3" parent="ShopView/PowerUpContainer" instance=ExtResource("3_c0e83")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ReRollButton" parent="ShopView" instance=ExtResource("5_68jpw")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.55
+anchor_right = 0.95
+anchor_bottom = 0.675

@@ -57,6 +57,7 @@ public partial class RunManager : Node
 			this.availablePowerUps.Add(powerUp.Value);
 		}
 		
+		AddPowerUp(playerData.starterPowerUp);
 		this.currentRun.SetMapData(this.mapGenerator.GenerateNewMap());
 		//GameManager.instance.SaveGame();
 	}

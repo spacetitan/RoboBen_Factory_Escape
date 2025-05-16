@@ -21,8 +21,10 @@ public partial class ResourceManager : Node
 	public PackedScene playerScene = null;
 	
 	public Dictionary<CharacterData.CharacterID, EnemyData> enemies = new Dictionary<CharacterData.CharacterID, EnemyData>();
-	public Dictionary<StringName, Texture2D> intentIcons = new Dictionary<StringName, Texture2D>();
 	public PackedScene enemyScene = null;
+
+	public enum IntentID { NONE, }
+	public Dictionary<StringName, Texture2D> intentIcons = new Dictionary<StringName, Texture2D>();
 	
 	public Dictionary<BattleData.BattleID, BattleData> battles = new Dictionary<BattleData.BattleID,BattleData>();
 	
@@ -34,7 +36,9 @@ public partial class ResourceManager : Node
 	public PackedScene displayCard = null;
 	
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
-	public Dictionary<StringName, Texture2D> HUDIcons = new Dictionary<StringName, Texture2D>();
+	
+	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, }
+	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
 
@@ -109,14 +113,14 @@ public partial class ResourceManager : Node
 			{RoomData.Type.TREASURE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/TreasureCentered.png")},
 		};
 
-		this.HUDIcons = new Dictionary<StringName, Texture2D>()
+		this.HUDIcons = new Dictionary<HUDIconID, Texture2D>()
 		{
-			{"health",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/healthIcon.png")},
-			{"money",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/money-icon.png")},
-			{"reRoll",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/rerollicon.png")},
-			{"map",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/map-icon.png")},
-			{"powerUp",ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/powerup-icon.png")},
-			{"card",ResourceLoader.Load<Texture2D>("res://Art/Sprites/CardPile/card-icon.png")},
+			{HUDIconID.HEALTH, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/healthIcon.png")},
+			{HUDIconID.MONEY, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/money-icon.png")},
+			{HUDIconID.REROLL, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/rerollicon.png")},
+			{HUDIconID.MAP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/map-icon.png")},
+			{HUDIconID.POWERUP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/powerup-icon.png")},
+			{HUDIconID.CARD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/CardPile/card-icon.png")},
 		};
 
 		this.shaders = new Dictionary<StringName, Material>()

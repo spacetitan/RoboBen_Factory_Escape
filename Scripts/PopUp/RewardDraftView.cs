@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class RewardDraftView : UIView
 {
@@ -25,7 +26,6 @@ public partial class RewardDraftView : UIView
         this.closeButton.SetData("Close");
         this.closeButton.button.Pressed += ClosePopUp;
         this.reRollButton = this.GetNode<UIButton>("%ReRollButton");
-        this.reRollButton.SetData("Re-Roll ()", ResourceManager.instance.HUDIcons["reRoll"]);
         this.reRollButton.button.Pressed += ReRoll;
 
         this.rewardSize = new Vector2(this.rewardContainer.Size.X / 4, this.rewardContainer.Size.Y * 0.7f);
@@ -41,7 +41,7 @@ public partial class RewardDraftView : UIView
 
     public void OpenPopUp(Type type, bool isLayered)
     {
-        this.reRollButton.SetData("Re-Roll (" + RunManager.instance.currentRun.reRolls + ")");
+        this.reRollButton.SetData("Re-Roll (" + RunManager.instance.currentRun.reRolls + ")", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         SpawnRewards(type);
         this.isLayered = isLayered;
         this.rewardType = type;
@@ -56,6 +56,12 @@ public partial class RewardDraftView : UIView
 
     public void SpawnRewards(Type type)
     {
+        List<PowerUp> powerUps = null;
+        if (type == Type.POWERUP)
+        {
+            powerUps = RunManager.instance.GetAvailablePowerUps(3);
+        }
+
         for (int i = 0; i < 3; i++)
         {
             CardDisplayUI displayUi = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
@@ -66,7 +72,7 @@ public partial class RewardDraftView : UIView
             switch (type)
             {
                 case Type.POWERUP:
-                    displayUi.SetData(RunManager.instance.GetAvailablePowerUp(), () =>
+                    displayUi.SetData(powerUps[i], () =>
                     {
                         OnRewardButtonPressed(displayUi);
                     });

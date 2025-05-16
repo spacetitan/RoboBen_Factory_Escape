@@ -31,9 +31,9 @@ public partial class UIButton : Control
 
         if (texture != null)
         {
+            this.label.HorizontalAlignment = HorizontalAlignment.Left;
             this.texture.Texture = texture;
             this.texture.Show();
-            this.label.HorizontalAlignment = HorizontalAlignment.Left;
         }
     }
 }

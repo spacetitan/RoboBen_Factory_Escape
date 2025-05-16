@@ -35,7 +35,7 @@ public partial class RoomHUDView : UIView
         this.healthUI = bottomPanel.GetNode<HealthUI>("%HealthUI");
         this.deckButton = bottomPanel.GetNode<DeckButton>("%DeckButton");
         this.mapButton = bottomPanel.GetNode<UIButton>("%MapButton");
-        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons["map"]);
+        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
 
         this.leaveButton = this.GetNode<UIButton>("%LeaveButton");
         this.leaveButton.SetData("Leave");
@@ -49,7 +49,7 @@ public partial class RoomHUDView : UIView
         run.powerUpHandler.SetContainer(this.powerUpContainer);
         run.powerUpHandler.SpawnAllUI();
         
-        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
+        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.healthUI.SetData(run.playerData);
         this.deckButton.SetData(run.playerDeck);
     }
@@ -57,7 +57,7 @@ public partial class RoomHUDView : UIView
     public void UpdateHealthUI()
     {
         this.healthUI.SetData(RunManager.instance.currentRun.playerData);
-        this.moneyDisplay.SetData(RunManager.instance.currentRun.gold.ToString(), ResourceManager.instance.HUDIcons["money"]);
+        this.moneyDisplay.SetData(RunManager.instance.currentRun.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
     }
 
     public void UpdateDeckButton()
