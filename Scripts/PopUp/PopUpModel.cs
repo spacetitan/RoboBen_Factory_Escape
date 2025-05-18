@@ -48,6 +48,13 @@ public partial class PopUpModel : UIModel
         rewardDraftView.OpenPopUp(rewardType, isLayered);
     }
 
+    public void OpenMapPopUp()
+    {
+        this.ShowModel();
+        MapView view = this.views["map"] as MapView;
+        view.OpenPopUp();
+    }
+
     public void ClosePopup(string popupName, bool isLayered = false)
     {
         this.views[popupName].HideView();

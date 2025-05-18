@@ -58,6 +58,7 @@ public partial class BattleHUDView : UIView
        this.deckButton = rightPanel.GetNode<DeckButton>("%DeckButton");
        this.mapButton = rightPanel.GetNode<UIButton>("%MapButton");
        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
+       this.mapButton.button.Pressed += () => { UIManager.instance.popUpModel.OpenMapPopUp(); };
 
        HBoxContainer buttonContainer = this.GetNode<HBoxContainer>("%ButtonContainer");
        this.abilityButton = buttonContainer.GetNode<UIButton>("%AbilityButton");

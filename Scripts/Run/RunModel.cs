@@ -7,12 +7,13 @@ public partial class RunModel : UIModel
     private PackedScene MAP_ROOM = ResourceLoader.Load<PackedScene>("res://Scenes/Run/room_panel.tscn");
 
     private List<RoomPanel> roomList = new List<RoomPanel>();
-    private List<RoomPanel> selectedRooms = new List<RoomPanel>();
     private RoomPanel currentRoom = null;
     private RoomPanel lastRoom = null;
     
     private ScrollContainer mapScrollContainer = null;
     private VBoxContainer mapContainer = null;
+    
+    private Vector2 panelSize = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -29,6 +30,8 @@ public partial class RunModel : UIModel
         };
 
         this.mapContainer = this.mapScrollContainer.GetNode<VBoxContainer>("%MapContainer");
+        
+        this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 7, this.mapScrollContainer.Size.X / 7);
     }
     
     public override void Enter()
@@ -60,7 +63,7 @@ public partial class RunModel : UIModel
             HBoxContainer boxContainer = new HBoxContainer();
             boxContainer.Alignment = BoxContainer.AlignmentMode.Center;
             boxContainer.SetAnchorsAndOffsetsPreset(LayoutPreset.Center);
-            boxContainer.AddThemeConstantOverride("separation", RunManager.instance.currentRun.rng.RandiRange(50,125)); 
+            boxContainer.AddThemeConstantOverride("separation", RunManager.instance.currentRun.rng.RandiRange(25,100)); 
             this.mapContainer.AddChild(boxContainer);
             this.mapContainer.MoveChild(boxContainer, 0);
 
@@ -83,7 +86,8 @@ public partial class RunModel : UIModel
         RoomPanel roomPanel = this.MAP_ROOM.Instantiate() as RoomPanel;
         roomPanel.GetSceneNodes();
         roomPanel.SetRoom(room);
-        roomPanel.PivotOffset = new Vector2(roomPanel.GetRect().Size.X/2, roomPanel.GetRect().Size.Y/2);
+        roomPanel.SetCustomMinimumSize(this.panelSize);
+        roomPanel.PivotOffset = new Vector2(this.panelSize.X/2, this.panelSize.Y/2);
         this.roomList.Add(roomPanel);
         floor.AddChild(roomPanel);
     }
@@ -104,7 +108,7 @@ public partial class RunModel : UIModel
                 HBoxContainer thisFloor = roomPanel.GetParent() as HBoxContainer;
                 HBoxContainer nextFloor = nextMapRoom.GetParent() as HBoxContainer;
 				
-                Vector2 position = new Vector2(nextMapRoom.Position.X - roomPanel.Position.X + roomPanel.PivotOffset.X, nextFloor.Position.Y - thisFloor.Position.Y + roomPanel.PivotOffset.Y);
+                Vector2 position = new Vector2(nextMapRoom.Position.X - roomPanel.Position.X + roomPanel.PivotOffset.Y, nextFloor.Position.Y - thisFloor.Position.Y + roomPanel.PivotOffset.Y);
                 mapLine.AddPoint(position);
             }
         }
@@ -174,7 +178,7 @@ public partial class RunModel : UIModel
                 room.SetAvailability(false);
             }
 
-            if(this.selectedRooms.Contains(room))
+            if(room.data.selected)
             {
                 room.ShowSelected();
             }
@@ -183,7 +187,8 @@ public partial class RunModel : UIModel
 
     public void SetLastRoom(RoomData data)
     {
-        this.lastRoom = GetRoomPanel(data);
+        RoomPanel roomPanel = GetRoomPanel(data);
+        this.lastRoom = roomPanel;
     }
 
     public float FloorToScroll()

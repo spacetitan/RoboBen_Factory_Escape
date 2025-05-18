@@ -36,6 +36,7 @@ public partial class ResourceManager : Node
 	public PackedScene displayCard = null;
 	
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
+	public Dictionary<RoomData.Type, Texture2D> runGlowIcons = new Dictionary<RoomData.Type, Texture2D>();
 	
 	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, }
 	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
@@ -111,6 +112,15 @@ public partial class ResourceManager : Node
 			{RoomData.Type.REST, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/rest-icon.png")},
 			{RoomData.Type.SHOP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/ShopIcon.png")},
 			{RoomData.Type.TREASURE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/TreasureCentered.png")},
+		};
+		
+		this.runGlowIcons = new Dictionary<RoomData.Type, Texture2D>()
+		{
+			{RoomData.Type.COMBAT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/combatHighlight.png")},
+			{RoomData.Type.EVENT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/eventHighlight.png")},
+			{RoomData.Type.REST, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/restGlow.png")},
+			{RoomData.Type.SHOP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/shopHighlight.png")},
+			{RoomData.Type.TREASURE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/treasureCenteredHighlight.png")},
 		};
 
 		this.HUDIcons = new Dictionary<HUDIconID, Texture2D>()

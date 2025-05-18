@@ -37,9 +37,10 @@ public partial class ShopItemPanel : UIView
         else if(this.cardData != null)
         {
             RunManager.instance.AddCard(this.cardData);
-            RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
-            hud.UpdateDeckButton();
         }
+        
+        RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+        hud.UpdateData();
         
         this.buyButton.SetData("Purchased");
         this.buyButton.button.Disabled = true;

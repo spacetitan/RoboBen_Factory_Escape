@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhoyxxnyhj7th"]
+
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_j5yvo"]
+[ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_3litq"]
+[ext_resource type="Script" uid="uid://bwrd3fpkrf5cq" path="res://Scripts/Map/MapView.cs" id="2_byb7y"]
+[ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="3_byb7y"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="4_1r4r7"]
+
+[node name="MapView" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j5yvo")
+script = ExtResource("2_byb7y")
+
+[node name="TitlePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = -0.05
+anchor_right = 0.7
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitlePanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 56
+text = "Map"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.925
+theme_override_styles/panel = ExtResource("2_3litq")
+
+[node name="MapScrollContainer" type="ScrollContainer" parent="MapPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MapPanel/MapScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MapContainer" type="VBoxContainer" parent="MapPanel/MapScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LegendContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.375
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="UIDisplay" parent="LegendContainer" instance=ExtResource("3_byb7y")]
+layout_mode = 2
+
+[node name="UIDisplay2" parent="LegendContainer" instance=ExtResource("3_byb7y")]
+layout_mode = 2
+
+[node name="UIDisplay3" parent="LegendContainer" instance=ExtResource("3_byb7y")]
+layout_mode = 2
+
+[node name="UIDisplay4" parent="LegendContainer" instance=ExtResource("3_byb7y")]
+layout_mode = 2
+
+[node name="UIDisplay5" parent="LegendContainer" instance=ExtResource("3_byb7y")]
+layout_mode = 2
+
+[node name="CloseButton" parent="." instance=ExtResource("4_1r4r7")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.95
+anchor_right = 0.65
+anchor_bottom = 1.05
+grow_horizontal = 2
+grow_vertical = 2

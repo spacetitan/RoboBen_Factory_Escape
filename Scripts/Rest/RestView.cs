@@ -22,7 +22,7 @@ public partial class RestView : UIView
             RunManager.instance.Rest();
             this.restButton.button.Disabled = true;
             RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
-            hud.UpdateHealthUI();
+            hud.UpdateData();
         };
 
         this.fullHealButton = this.GetNode<UIButton>("FullHealButton");
@@ -32,7 +32,7 @@ public partial class RestView : UIView
             RunManager.instance.FullHeal();
             this.fullHealButton.button.Disabled = true;
             RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
-            hud.UpdateHealthUI();
+            hud.UpdateData();
         };
         
         this.itemPanel = this.GetNode<ShopItemPanel>("%ShopItemPanel");

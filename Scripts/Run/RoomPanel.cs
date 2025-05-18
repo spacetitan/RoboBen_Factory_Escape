@@ -66,6 +66,22 @@ public partial class RoomPanel : Panel
     
     public void ShowSelected()
     {
-        //this.line2D.Modulate = new Godot.Color(255,255,255);
+        this.texture.Texture = ResourceManager.instance.runGlowIcons[this.data.type];
+    }
+
+    public void OnMouseEntered()
+    {
+        if (!this.isDisplay && this.isAvailable)
+        {
+            this.texture.Texture = ResourceManager.instance.runGlowIcons[this.data.type];
+        }
+    }
+
+    public void OnMouseExited()
+    {
+        if (!this.isDisplay && !this.data.selected && this.isAvailable)
+        {
+            this.texture.Texture = ResourceManager.instance.runIcons[this.data.type];
+        }
     }
 }
