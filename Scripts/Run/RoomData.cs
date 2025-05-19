@@ -11,6 +11,7 @@ public partial class RoomData : Node
     [Export] public bool selected = false;
     public List<int> nextRoomNumber = new List<int>();
     public BattleData battleData = null;
+    public EventData eventData = null;
     
     public String toString()
     {
@@ -36,7 +37,23 @@ public partial class RoomData : Node
         }
         data.Add("Next Rooms", nextRoomData);
 
-        data.Add("Battle Data", this.battleData);
+        if (this.battleData != null)
+        {
+            data.Add("Battle Data", (int) this.battleData.battleID);
+        }
+        else
+        {
+            data.Add("Battle Data", -1);
+        }
+
+        if (this.eventData != null)
+        {
+            data.Add("Event Data", (int) this.eventData.id);
+        }
+        else
+        {
+            data.Add("Event Data", -1);
+        }
 
         return data;
     }

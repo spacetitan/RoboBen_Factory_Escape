@@ -121,7 +121,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayArea2D" type="Area2D" parent="."]
+[node name="PlayArea2D" type="Area2D" parent="." groups=["Card"]]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea2D"]

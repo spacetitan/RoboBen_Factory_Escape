@@ -11,9 +11,9 @@ public partial class RoomHUDView : UIView
     private HealthUI healthUI = null;
     private DeckButton deckButton = null;
     private UIButton mapButton = null;
-    
-    private UIButton leaveButton = null;
-    
+
+    public UIButton leaveButton { get; private set; } = null;
+
     public override void _Ready()
     {
         GetSceneNodes();
@@ -62,5 +62,17 @@ public partial class RoomHUDView : UIView
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.healthUI.SetData(run.playerData);
         this.deckButton.SetData(run.playerDeck);
+    }
+
+    public void ToggleLeaveButton(bool isOn)
+    {
+        if (isOn)
+        {
+            this.leaveButton.button.Disabled = false;
+        }
+        else
+        {
+            this.leaveButton.button.Disabled = true;
+        }
     }
 }

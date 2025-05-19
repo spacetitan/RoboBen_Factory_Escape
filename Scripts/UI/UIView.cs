@@ -4,6 +4,7 @@ using System;
 [GlobalClass]
 public partial class UIView : Control
 {
+    [Export] public UIModel.ViewID Id = UIModel.ViewID.NONE;
     [Export] public StringName viewID { get; private set; } = "";
     protected UIModel owner = null;
 

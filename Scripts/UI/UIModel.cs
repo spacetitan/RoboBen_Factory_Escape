@@ -4,6 +4,7 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class UIModel : Control
 {
+	public enum ViewID { NONE, RUN_HUD, ROOM_HUD, BATTLE_HUD, HAND}
     [Export] public UIManager.UIState state = UIManager.UIState.NONE;
     public Dictionary<string, UIView> views { get; private set; } = new Dictionary<string, UIView>();
     

@@ -42,6 +42,7 @@ public partial class BackgroundModel : UIModel
             case UIManager.UIState.TREASURE:
             case UIManager.UIState.REST:
             case UIManager.UIState.SHOP:
+            case UIManager.UIState.EVENT:
                 this.backgroundTexture.Texture = backgroundTextures[1];
                 break;
             

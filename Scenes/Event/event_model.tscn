@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://blnc6le3dwr8y"]
+
+[ext_resource type="Script" uid="uid://u8g4a0ne3uvc" path="res://Scripts/Event/EventModel.cs" id="1_cn7no"]
+[ext_resource type="Theme" uid="uid://5sb34o6tm732" path="res://Themes/Start/Model/StartModel.tres" id="1_gaoi1"]
+[ext_resource type="StyleBox" uid="uid://tu23vthlovps" path="res://Themes/UI/UIDisplayPanel.tres" id="2_jdpq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaoi1"]
+bg_color = Color(0.384314, 0.529412, 0.686275, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[node name="EventModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gaoi1")
+script = ExtResource("1_cn7no")
+state = 7
+
+[node name="TextPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.65
+anchor_right = 0.75
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_jdpq3")
+
+[node name="TitlePanel" type="Panel" parent="TextPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = -0.2
+anchor_right = 0.65
+anchor_bottom = 0.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gaoi1")
+
+[node name="TitleLabel" type="RichTextLabel" parent="TextPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = -0.2
+anchor_right = 0.65
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 42
+text = "Title"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BodyLabel" type="RichTextLabel" parent="TextPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Body"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerSpawn" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.325
+anchor_right = 0.35
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EventTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.325
+anchor_right = 0.85
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.679
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 2

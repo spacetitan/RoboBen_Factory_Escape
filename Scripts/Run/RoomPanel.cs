@@ -67,6 +67,7 @@ public partial class RoomPanel : Panel
     public void ShowSelected()
     {
         this.texture.Texture = ResourceManager.instance.runGlowIcons[this.data.type];
+        this.animationPlayer.Play("selected");
     }
 
     public void OnMouseEntered()

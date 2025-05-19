@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Waterfall" load_steps=2 format=3 uid="uid://bwpbad3fuerkd"]
+
+[ext_resource type="Script" uid="uid://besa3d2fvu2n3" path="res://Scripts/_Resources/Events/Waterfall.cs" id="1_3cc03"]
+
+[resource]
+script = ExtResource("1_3cc03")
+id = 5
+tier = 0
+weight = 30.0
+title = "Waterfall?!"
+body = "A mysterious waterfall! There might be something behind it!"
+canRepeat = false
+metadata/_custom_type_script = "uid://besa3d2fvu2n3"

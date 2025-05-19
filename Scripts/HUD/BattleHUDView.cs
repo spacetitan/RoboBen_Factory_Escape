@@ -3,6 +3,9 @@ using System;
 
 public partial class BattleHUDView : UIView
 {
+    private StyleBox genPanelStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Battle/GenPanel.tres");
+    private StyleBox genGlowPanelStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Battle/GenGlowPanel.tres");
+    
     private HBoxContainer powerUpContainer = null;
     private UIDisplay moneyDisplay = null;
     private UIButton optionsButton = null;
@@ -182,16 +185,16 @@ public partial class BattleHUDView : UIView
         this.OnEndTurn?.Invoke();
     }
 
-    void OnPlayAreaEntered(Area2D area)
+    void OnGenAreaEntered(Area2D area)
     {
-        // if (area.IsInGroup("Card"))
-        // {
-        //     this.energyPanel.AddThemeStyleboxOverride("panel", this.glowStylebox);
-        // }
+        if (area.IsInGroup("Card") || area.IsInGroup("Targeter"))
+        {
+            this.genPanel.AddThemeStyleboxOverride("panel", this.genGlowPanelStyleBox);
+        }
     }
-    void OnPlayAreaExited(Area2D area)
+    void OnGenAreaExited(Area2D area)
     {
-        //this.energyPanel.AddThemeStyleboxOverride("panel", this.defaultStylebox);
+        this.genPanel.AddThemeStyleboxOverride("panel", this.genPanelStyleBox);
     }
 
     public void OnAbilityMouseEntered()

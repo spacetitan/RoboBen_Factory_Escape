@@ -41,6 +41,7 @@ public partial class HUDModel : UIModel
             case UIManager.UIState.TREASURE:
             case UIManager.UIState.REST:
             case UIManager.UIState.SHOP:
+            case UIManager.UIState.EVENT:
                 this.views["runHUD"].HideView();
                 
                 this.views["roomHUD"].ShowView();

@@ -43,6 +43,8 @@ Player=""
 Enemy=""
 Burner=""
 PlayArea=""
+Card=""
+Targeter=""
 
 [input]
 

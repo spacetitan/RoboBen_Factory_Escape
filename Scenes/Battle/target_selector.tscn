@@ -35,7 +35,7 @@ texture = ExtResource("1_u6yr3")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="SelectorArea2D" type="Area2D" parent="."]
+[node name="SelectorArea2D" type="Area2D" parent="." groups=["Targeter"]]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectorArea2D"]

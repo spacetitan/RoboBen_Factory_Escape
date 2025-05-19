@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventData" load_steps=2 format=3 uid="uid://ck2fhg4ij5my6"]
+
+[ext_resource type="Script" uid="uid://dqk04pxjrrovf" path="res://Scripts/Event/EventData.cs" id="1_7ajje"]
+
+[resource]
+script = ExtResource("1_7ajje")
+id = 4
+tier = 0
+weight = 1.0
+metadata/_custom_type_script = "uid://dqk04pxjrrovf"

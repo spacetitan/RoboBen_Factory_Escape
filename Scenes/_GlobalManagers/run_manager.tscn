@@ -1,10 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ojwl26g05nue"]
+[gd_scene load_steps=2 format=3 uid="uid://ojwl26g05nue"]
 
 [ext_resource type="Script" uid="uid://dpirrwjkb1sey" path="res://Scripts/_GlobalManagers/RunManager.cs" id="1_cwqq4"]
-[ext_resource type="Resource" uid="uid://bkcj3l0ucpksn" path="res://Resources/Battle/Group1.tres" id="2_huppq"]
-[ext_resource type="Resource" uid="uid://cc6bdwx7godd7" path="res://Resources/Battle/Group2.tres" id="3_3xgt3"]
-[ext_resource type="Resource" uid="uid://jj6l8vl03c4q" path="res://Resources/Battle/Boss1.tres" id="4_exdvo"]
 
 [node name="RunManager" type="Node"]
 script = ExtResource("1_cwqq4")
-battleDataPool = Array[Object]([ExtResource("2_huppq"), ExtResource("3_3xgt3"), ExtResource("4_exdvo")])

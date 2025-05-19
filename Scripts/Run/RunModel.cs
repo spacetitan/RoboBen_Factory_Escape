@@ -88,6 +88,7 @@ public partial class RunModel : UIModel
         roomPanel.SetRoom(room);
         roomPanel.SetCustomMinimumSize(this.panelSize);
         roomPanel.PivotOffset = new Vector2(this.panelSize.X/2, this.panelSize.Y/2);
+        roomPanel.texture.PivotOffset = roomPanel.PivotOffset;
         this.roomList.Add(roomPanel);
         floor.AddChild(roomPanel);
     }

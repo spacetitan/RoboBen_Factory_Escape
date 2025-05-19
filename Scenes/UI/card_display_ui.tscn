@@ -75,7 +75,7 @@ text = "Title"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="DescLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true

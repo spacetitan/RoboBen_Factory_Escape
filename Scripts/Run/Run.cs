@@ -71,6 +71,12 @@ public partial class Run
         this.playerData.health = this.playerData.maxHealth;
     }
 
+    public void AddMaxHealth(int amount)
+    {
+        this.playerData.maxHealth += amount;
+        this.playerData.health += amount;
+    }
+
     public void TakeMoney(int amount)
     {
         this.gold -= amount;

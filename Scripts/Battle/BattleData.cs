@@ -4,14 +4,7 @@ using System;
 [GlobalClass]
 public partial class BattleData : Resource
 {
-    public enum BattleID
-    {
-        NONE,
-        GROUP1,
-        GROUP2,
-        GROUP3,
-        BOSS1,
-    }
+    public enum BattleID { NONE, GROUP1, GROUP2, GROUP3, BOSS1, }
     [Export] public BattleID battleID = BattleID.NONE;
     [Export] public EnemyData[] enemyList;
     [Export] public int tier = 0;
@@ -21,6 +14,7 @@ public partial class BattleData : Resource
     
     public void SetData(BattleData battleData)
     {
+        this.battleID = battleData.battleID;
         this.tier = battleData.tier;
         this.weight = battleData.weight;
         this.money = battleData.money;

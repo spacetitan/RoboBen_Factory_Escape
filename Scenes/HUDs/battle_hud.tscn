@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="8_1bodp"]
 [ext_resource type="PackedScene" uid="uid://cmdl4q5mlvh53" path="res://Scenes/HUDs/ability_info_panel.tscn" id="9_a8n4k"]
 [ext_resource type="Theme" uid="uid://cqx0acj3dnur5" path="res://Themes/HUD/MapButtonTheme.tres" id="9_tbf4e"]
+[ext_resource type="StyleBox" uid="uid://bwbd2eulhbyub" path="res://Themes/Battle/GenPanel.tres" id="11_0rjmy"]
 [ext_resource type="Texture2D" uid="uid://veakbgeaanxy" path="res://Art/Sprites/Battle/energy-icon.png" id="11_6lrue"]
 [ext_resource type="PackedScene" uid="uid://cixa28ltgkd6e" path="res://Scenes/Battle/target_selector.tscn" id="11_tbf4e"]
 
@@ -38,18 +39,6 @@ bg_color = Color(0.384314, 0.529412, 0.686275, 1)
 border_width_left = 5
 border_width_top = 5
 border_color = Color(0.105205, 0.171276, 0.242047, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbf4e"]
-bg_color = Color(0.384314, 0.529412, 0.686275, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.105205, 0.171276, 0.242047, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rjmy"]
 radius = 56.0
@@ -237,7 +226,7 @@ anchor_left = 0.05
 anchor_top = 0.6
 anchor_right = 0.15
 anchor_bottom = 0.825
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbf4e")
+theme_override_styles/panel = ExtResource("11_0rjmy")
 
 [node name="TextureRect2" type="TextureRect" parent="GenPanel"]
 layout_mode = 1
@@ -287,3 +276,5 @@ layout_mode = 1
 
 [connection signal="mouse_entered" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseEntered"]
 [connection signal="mouse_exited" from="ButtonContainer/AbilityButton" to="." method="OnAbilityMouseExited"]
+[connection signal="area_entered" from="GenPanel/Area2D" to="." method="OnGenAreaEntered"]
+[connection signal="area_exited" from="GenPanel/Area2D" to="." method="OnGenAreaExited"]

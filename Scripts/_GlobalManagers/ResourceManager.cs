@@ -28,6 +28,8 @@ public partial class ResourceManager : Node
 	
 	public Dictionary<BattleData.BattleID, BattleData> battles = new Dictionary<BattleData.BattleID,BattleData>();
 	
+	public Dictionary<EventData.EventID, EventData> events = new Dictionary<EventData.EventID, EventData>();
+	
 	public Dictionary<Status.StatusID, Status> statuses = new Dictionary<Status.StatusID, Status>();
 	
 	public Dictionary<CardData.CardID, CardData> cards = new Dictionary<CardData.CardID, CardData>();
@@ -81,6 +83,14 @@ public partial class ResourceManager : Node
 		{
 			BattleData data = ResourceLoader.Load<BattleData>(path + fileName);
 			this.battles.Add(data.battleID, data);
+		}
+		
+		path = "res://Resources/Events/";
+		foreach (string fileName in DirAccess.GetFilesAt(path))
+		{
+			EventData data = ResourceLoader.Load<EventData>(path + fileName);
+			data.InitializeEvent();
+			this.events.Add(data.id, data);
 		}
 		
 		path = "res://Resources/Status/";
