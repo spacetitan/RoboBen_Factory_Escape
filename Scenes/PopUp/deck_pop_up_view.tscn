@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceud4sa0kkks7"]
+[gd_scene load_steps=5 format=3 uid="uid://ceud4sa0kkks7"]
 
 [ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_rnl6j"]
 [ext_resource type="Script" uid="uid://d0d8osolh3e1l" path="res://Scripts/PopUp/DeckPopUpView.cs" id="1_yhi22"]
+[ext_resource type="StyleBox" uid="uid://tu23vthlovps" path="res://Themes/UI/UIDisplayPanel.tres" id="2_hoqbe"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="3_qg6ux"]
 
 [node name="DeckPopUpView" type="Panel"]
@@ -13,8 +14,9 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rnl6j")
+theme_override_styles/panel = ExtResource("2_hoqbe")
 script = ExtResource("1_yhi22")
-viewID = &"deck"
+ID = 13
 
 [node name="TitlePanel" type="Panel" parent="."]
 unique_name_in_owner = true

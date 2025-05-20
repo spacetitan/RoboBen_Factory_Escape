@@ -51,7 +51,6 @@ public partial class PowerUp : Resource
             case 'I':
             case 'O':
                 return true;
-                break;
         }
 
         return false;

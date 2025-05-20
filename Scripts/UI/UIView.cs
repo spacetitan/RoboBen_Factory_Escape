@@ -4,8 +4,7 @@ using System;
 [GlobalClass]
 public partial class UIView : Control
 {
-    [Export] public UIModel.ViewID Id = UIModel.ViewID.NONE;
-    [Export] public StringName viewID { get; private set; } = "";
+    [Export] public UIModel.ViewID ID = UIModel.ViewID.NONE;
     protected UIModel owner = null;
 
     public virtual void InitializeView(UIModel owner)

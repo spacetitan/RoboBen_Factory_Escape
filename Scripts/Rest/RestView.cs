@@ -21,7 +21,7 @@ public partial class RestView : UIView
         {
             RunManager.instance.Rest();
             this.restButton.button.Disabled = true;
-            RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+            RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
             hud.UpdateData();
         };
 
@@ -31,7 +31,7 @@ public partial class RestView : UIView
         {
             RunManager.instance.FullHeal();
             this.fullHealButton.button.Disabled = true;
-            RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+            RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
             hud.UpdateData();
         };
         
@@ -60,7 +60,7 @@ public partial class RestView : UIView
         }
     }
 
-    public void Exit()
+    public override void Exit()
     {
         if (this.playerSpawn.GetChildren().Count > 0)
         {

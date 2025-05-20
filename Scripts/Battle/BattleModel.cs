@@ -32,7 +32,7 @@ public partial class BattleModel : UIModel
     {
         this.turnOrderStateMachine = new TurnOrderStateMachine();
         
-        BattleView view = this.views["battle"] as BattleView;
+        BattleView view = this.views[ViewID.BATTLE] as BattleView;
         view.SetData(battleData);
         this.player = view.player;
         this.enemies = view.enemies;
@@ -43,7 +43,7 @@ public partial class BattleModel : UIModel
 
     public override void Exit()
     {
-        foreach (KeyValuePair<string, UIView> view in this.views)
+        foreach (KeyValuePair<ViewID, UIView> view in this.views)
         {
             view.Value.Exit();
         }

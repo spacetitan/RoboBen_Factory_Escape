@@ -23,7 +23,7 @@ public partial class SitUnderWater : EventChoice
 	public override void Outcome()
 	{
 		RunManager.instance.currentRun.AddMaxHealth(3);
-		RoomHUDView roomHUD = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+		RoomHUDView roomHUD = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
 		roomHUD.UpdateData();
 	}
 }
@@ -69,7 +69,7 @@ public partial class CheckBehindWaterfall : EventChoice
 			}
             
 			RunManager.instance.AddCard(cardStats);
-			RoomHUDView roomHUD = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+			RoomHUDView roomHUD = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
 			roomHUD.UpdateData();
 		}
 	}

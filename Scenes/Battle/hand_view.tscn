@@ -36,6 +36,6 @@ rotationCurve = SubResource("Curve_lsb0r")
 xSep = -30.0
 yMin = 15.0
 yMax = -30.0
-viewID = &"hand"
+ID = 4
 
 [connection signal="child_order_changed" from="." to="." method="OnChildOrderChanged"]

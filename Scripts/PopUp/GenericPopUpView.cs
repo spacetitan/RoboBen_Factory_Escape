@@ -43,7 +43,7 @@ public partial class GenericPopUpView : UIView
 
         HBoxContainer buttonContainer = GetNode<HBoxContainer>("%ButtonContainer");
         this.closeButton = buttonContainer.GetNode<Button>("%CloseButton");
-        this.closeButton.Pressed += () => UIManager.instance.popUpModel.ClosePopup(this.viewID);
+        this.closeButton.Pressed += () => UIManager.instance.popUpModel.ClosePopup(this.ID);
         this.confirmButton = buttonContainer.GetNode<Button>("%ConfrimButton");
     }
     

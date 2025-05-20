@@ -36,7 +36,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_f4jiy")
 script = ExtResource("1_huvjm")
-viewID = &"runHUD"
+ID = 1
 
 [node name="LeftPanel" type="Panel" parent="."]
 unique_name_in_owner = true

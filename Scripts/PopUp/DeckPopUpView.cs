@@ -26,7 +26,7 @@ public partial class DeckPopUpView : UIView
         this.closeButton.SetData("Close");
         this.closeButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.ClosePopup("deck");
+            UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.DECK);
         };
         
         this.cardSize = new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f);

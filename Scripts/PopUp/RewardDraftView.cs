@@ -51,7 +51,7 @@ public partial class RewardDraftView : UIView
 
     public void ClosePopUp()
     {
-        UIManager.instance.popUpModel.ClosePopup("rewardDraft", this.isLayered);
+        UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.REWARD, this.isLayered);
     }
 
     public void SpawnRewards(Type type)
@@ -113,7 +113,7 @@ public partial class RewardDraftView : UIView
             RunManager.instance.AddPowerUp(displayUi.powerUp);
         }
         
-        UIManager.instance.popUpModel.ClosePopup("rewardDraft", this.isLayered);
+        UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.REWARD, this.isLayered);
     }
 
     public void ReRoll()

@@ -26,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_c0e83")
-viewID = &"shop"
+ID = 10
 
 [node name="PlayerSpawn" type="Control" parent="ShopView"]
 unique_name_in_owner = true

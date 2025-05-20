@@ -26,7 +26,7 @@ script = ExtResource("2_l8nym")
 treasure = ExtResource("2_rj8uv")
 treasureGlow = ExtResource("4_l2w8u")
 treasureOpen = ExtResource("5_qn55n")
-viewID = &"treasure"
+ID = 8
 
 [node name="TreasureTexture" type="TextureRect" parent="TreasureView"]
 unique_name_in_owner = true

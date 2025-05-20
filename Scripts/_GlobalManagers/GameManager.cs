@@ -1,4 +1,7 @@
+using System;
+using System.IO;
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class GameManager : Node
@@ -14,6 +17,11 @@ public partial class GameManager : Node
 	}
 	
 	private ConfigFile settings = new ConfigFile();
+	private string settingsPath = "res://settings.cfg";
+	
+	private string savePath = Path.Join(ProjectSettings.GlobalizePath("user://") + "RoboBen/");
+	private string loadPath = Path.Join(ProjectSettings.GlobalizePath("user://")+ "RoboBen/SaveData.json");
+	public Dictionary loadData { get; private set; } = null;
 
 	public override void _Ready()
 	{
@@ -23,7 +31,7 @@ public partial class GameManager : Node
 	
 	public void InitializeSettings()
 	{
-		Error error = settings.Load("res://settings.cfg");
+		Error error = settings.Load(this.settingsPath);
 
 		if (error != Error.Ok)
 		{
@@ -34,6 +42,11 @@ public partial class GameManager : Node
 		{
 			LoadSettings();
 		}
+
+		if (HasLoadFile())
+		{
+			LoadGame();
+		}
 	}
 
 	public void CreateNewSettingsFile()
@@ -41,7 +54,7 @@ public partial class GameManager : Node
 		settings.SetValue("Settings", "music", .8f);
 		settings.SetValue("Settings", "sfx", .8f);
 
-		settings.Save("res://settings.cfg");
+		settings.Save(this.settingsPath);
 	}
 
 	public void SaveSettings()
@@ -49,7 +62,7 @@ public partial class GameManager : Node
 		settings.SetValue("Settings", "music", AudioManager.instance.musicPlayer.volume);
 		settings.SetValue("Settings", "sfx", AudioManager.instance.sfxPlayer.volume);
 
-		settings.Save("res://settings.cfg");
+		settings.Save(this.settingsPath);
 	}
 
 	public void LoadSettings()
@@ -61,6 +74,78 @@ public partial class GameManager : Node
 	public void SaveGame()
 	{
 		string json = Json.Stringify(RunManager.instance.currentRun.saveRun(), "", false, true);
-		GD.Print("Save data: " + json);
+		GD.Print("saving to: " + this.savePath);
+
+		if (!Directory.Exists(savePath))
+		{
+			Directory.CreateDirectory(savePath);
+		}
+
+		try
+		{
+			File.WriteAllText(this.loadPath, json);
+		}
+		catch (Exception e)
+		{
+			GD.Print(e);
+			throw;
+		}
+	}
+
+	public bool HasLoadFile()
+	{
+		if (!Directory.Exists(savePath) || !Directory.Exists(loadPath))
+		{
+			return false;
+		}
+		
+		string data = File.ReadAllText(this.loadPath);
+		
+		Json loadGame = new Json();
+		Error err = loadGame.Parse(data);
+
+		if (err != Error.Ok)
+		{
+			GD.Print(err);
+			return false;
+		}
+		return true;
+	}
+
+	public void LoadGame()
+	{
+		string data = File.ReadAllText(this.loadPath);
+		
+		Json loadGame = new Json();
+		Error err = loadGame.Parse(data);
+
+		if (err != Error.Ok)
+		{
+			GD.Print(err);
+			return;
+		}
+
+		this.loadData = new Dictionary();
+		this.loadData = (Dictionary)loadGame.Data;
+	}
+
+	public Dictionary GetLoadData(string key = null)
+	{
+		if (key != null)
+		{
+			return (Dictionary) this.loadData[key];
+		}
+
+		return this.loadData;
+	}
+
+	public void DeleteSaveData()
+	{
+		if (!Directory.Exists(savePath))
+		{
+			return;
+		}
+
+		DirAccess.RemoveAbsolute(loadPath);
 	}
 }

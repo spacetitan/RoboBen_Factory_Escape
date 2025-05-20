@@ -6,7 +6,7 @@ public partial class ShopModel : UIModel
 {
     public override void Enter()
     {
-        ShopView view = this.views["shop"] as ShopView;
+        ShopView view = this.views[ViewID.SHOP] as ShopView;
         view.SetData();
         view.ShowView();
         
@@ -15,7 +15,7 @@ public partial class ShopModel : UIModel
     
     public override void Exit()
     {
-        foreach (KeyValuePair<string, UIView> view in this.views)
+        foreach (KeyValuePair<ViewID, UIView> view in this.views)
         {
             view.Value.Exit();
         }

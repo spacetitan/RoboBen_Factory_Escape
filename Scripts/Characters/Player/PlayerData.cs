@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class PlayerData : CharacterData
@@ -10,8 +11,15 @@ public partial class PlayerData : CharacterData
     [Export] public Ability ability { get; private set; }
     [Export] public PowerUp starterPowerUp { get; private set; }
     [Export] public CardPile startingDeck{ get; private set; }
-    
-    public PlayerData CreateInstance()
+
+    public void LoadData(Dictionary data)
+    {
+        this.maxHealth = (int)data["Max Health"];
+        this.health = (int)data["Health"];
+        this.handSize = (int)data["Hand Size"];
+    }
+
+    public override PlayerData CreateInstance()
     {
         PlayerData instance = (PlayerData)this.Duplicate();
         instance.id = id;
@@ -27,11 +35,10 @@ public partial class PlayerData : CharacterData
     {
         return new Godot.Collections.Dictionary<StringName, Variant>()
         {
-            {"id",(int) this.id},
-            {"texture", this.texture},
-            {"health", this.health},
-            {"maxHealth", this.maxHealth},
-            {"handSize", this.handSize},
+            {"ID",(int) this.id},
+            {"Health", this.health},
+            {"Max Health", this.maxHealth},
+            {"Hand Size", this.handSize},
         };
     }
 }

@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jtq21")
-viewID = &"battle"
+ID = 7
 
 [node name="PlayerSpawn" type="Control" parent="."]
 unique_name_in_owner = true

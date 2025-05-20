@@ -26,21 +26,21 @@ public partial class TitleView : UIView
         this.playButton.SetData("Play");
         this.playButton.button.Pressed += () =>
         {
-            this.owner.views["play"].ShowView();
+            this.owner.views[UIModel.ViewID.PLAY].ShowView();
         };
         
         this.collectionsButton = buttonContainer.GetNode<UIButton>("%CollectionsButton");
         this.collectionsButton.SetData("Collections");
         this.collectionsButton.button.Pressed += () =>
         {
-            
+            UIManager.instance.popUpModel.OpenPopUp(UIModel.ViewID.COLLECTIONS);
         };
         
         this.optionsButton = buttonContainer.GetNode<UIButton>("%OptionsButton");
         this.optionsButton.SetData("Options");
         this.optionsButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.OpenPopUp("options");
+            UIManager.instance.popUpModel.OpenPopUp(UIModel.ViewID.OPTIONS);
         };
         
         this.quitButton = buttonContainer.GetNode<UIButton>("%QuitButton");

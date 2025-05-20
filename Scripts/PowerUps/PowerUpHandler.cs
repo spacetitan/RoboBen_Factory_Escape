@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot.Collections;
 
 public partial class PowerUpHandler : Node
 {
@@ -161,5 +162,14 @@ public partial class PowerUpHandler : Node
             data.Add("Power up " + i, (int) powerUps[i].id);
         }
         return data;
+    }
+
+    public void LoadPowerUps(Dictionary data)
+    {
+        foreach (KeyValuePair<Variant, Variant> powerUpID in data)
+        {
+            int ID = (int)powerUpID.Value;
+            RunManager.instance.AddPowerUp(ResourceManager.instance.powerUps[(PowerUp.PowerUpID) ID].CreateInstance());
+        }
     }
 }

@@ -11,7 +11,7 @@ public partial class StartModel : UIModel
             {
                 UIView view = control as UIView;
                 view.InitializeView(this);
-                this.views.Add(view.viewID, view);
+                this.views.Add(view.ID, view);
             }
         }
     }

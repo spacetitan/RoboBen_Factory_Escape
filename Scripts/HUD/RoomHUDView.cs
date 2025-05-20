@@ -26,7 +26,7 @@ public partial class RoomHUDView : UIView
         this.moneyDisplay = topPanel.GetNode<UIDisplay>("%MoneyDisplay");
         this.optionsButton = topPanel.GetNode<UIButton>("%OptionsButton");
         this.optionsButton.SetData("Options");
-        this.optionsButton.button.Pressed += () => { UIManager.instance.popUpModel.OpenPopUp("options"); };
+        this.optionsButton.button.Pressed += () => { UIManager.instance.popUpModel.OpenPopUp(UIModel.ViewID.OPTIONS); };
         this.quitButton = topPanel.GetNode<UIButton>("%QuitButton");
         this.quitButton.SetData("Quit");
         this.quitButton.button.Pressed += () => { this.GetTree().Quit(); };

@@ -52,7 +52,7 @@ public partial class MapView : UIView
         this.closeButton.SetData("Close");
         this.closeButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.ClosePopup("map");
+            UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.MAP);
         };
         
         this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 7, this.mapScrollContainer.Size.X / 7);

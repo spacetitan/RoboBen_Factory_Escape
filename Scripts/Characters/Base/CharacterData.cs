@@ -3,7 +3,7 @@ using System;
 
 public partial class CharacterData : Resource
 {
-    public enum CharacterID { NONE, ROBOBEN, GRUBBOID, GRUBBIG, GRUBBFLY, TORTIGRUB, GRUBBMANTIS }
+    public enum CharacterID { NONE, ROBOBEN, ROBODEV, GRUBBOID, GRUBBIG, GRUBBFLY, TORTIGRUB, GRUBBMANTIS }
     
     [Export] public CharacterID id = CharacterID.NONE;
     [Export] public StringName name = "";

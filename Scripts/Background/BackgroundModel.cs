@@ -20,7 +20,7 @@ public partial class BackgroundModel : UIModel
             {
                 UIView view = control as UIView;
                 view.InitializeView(this);
-                this.views.Add(view.viewID, view);
+                this.views.Add(view.ID, view);
             }
         }
     }

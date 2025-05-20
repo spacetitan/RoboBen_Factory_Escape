@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Godot.Collections;
 
 public partial class Run
 {
@@ -12,6 +14,7 @@ public partial class Run
     public CardPile playerDeck { get; private set; } = new CardPile();
     public PowerUpHandler powerUpHandler { get; private set; } = new PowerUpHandler();
     public List<List<RoomData>> mapData { get; private set; } = new List<List<RoomData>>();
+    public RoomData lastRoom { get; private set; } = null;
 
     public Run(PlayerData playerData)
     {
@@ -36,9 +39,10 @@ public partial class Run
         this.mapData = mapData;
     }
 
-    public void ClimbFloor()
+    public void ClimbFloor(RoomData roomData)
     {
         this.floorsClimbed++;
+        this.lastRoom = roomData;
     }
 
     public void AddMoney(int amount)
@@ -107,15 +111,27 @@ public partial class Run
             {"Gold", gold},
             {"ReRolls", reRolls},
             {"Floors Climbed", floorsClimbed},
-            {"Seed", rng.GetSeed()}
+            {"Seed", rng.GetSeed()},
+            
         };
-        
+
+        if (this.lastRoom != null)
+        {
+            runData.Add("Last Room Row", this.lastRoom.row);
+            runData.Add("Last Room Column", this.lastRoom.column);
+        }
+        else
+        {
+            runData.Add("Last Room Row", -1);
+            runData.Add("Last Room Column", -1);
+        }
+
         Godot.Collections.Dictionary<StringName, Variant> roomData = new Godot.Collections.Dictionary<StringName, Variant>();
         for (int i = 0; i < this.mapData.Count; i++)
         {
             for (int j = 0; j < this.mapData[i].Count; j++)
             {
-                roomData.Add(this.mapData[i][j].ToString() + " - " + this.mapData[i][j].column, this.mapData[i][j].saveRoomData());
+                roomData.Add("Room " + this.mapData[i][j].row + " - " + this.mapData[i][j].column, this.mapData[i][j].saveRoomData());
             }
         }
 
@@ -123,9 +139,57 @@ public partial class Run
         data.Add("Run Data", runData);
         data.Add("Player Data",playerData.savePlayerData());
         data.Add("Player Deck",playerDeck.saveCardPile());
-        data.Add("Power ups",powerUpHandler.SavePowerUps());
+        data.Add("Power Ups",powerUpHandler.SavePowerUps());
         data.Add("Map Data", roomData);
         
         return data;
+    }
+
+    public void LoadRun(Dictionary data)
+    {
+        Dictionary runData = (Dictionary)data["Run Data"];
+        
+        this.gold = (int) runData["Gold"];
+        this.reRolls = (int) runData["ReRolls"];
+        this.floorsClimbed = (int) runData["Floors Climbed"];
+        this.rng.SetSeed((ulong)runData["Seed"]);
+        
+        Dictionary playerData = (Dictionary)data["Player Data"];
+        int id = (int) playerData["ID"];
+        this.playerData = ResourceManager.instance.characters[(CharacterData.CharacterID) id].CreateInstance();
+        this.playerData.LoadData(playerData);
+        
+        Dictionary deckData = (Dictionary)data["Player Deck"];
+        this.playerDeck = new CardPile();
+        this.playerDeck.LoadDeck(deckData);
+        
+        Dictionary powerUpData = (Dictionary)data["Power Ups"];
+        this.powerUpHandler = new PowerUpHandler();
+        this.powerUpHandler.LoadPowerUps(powerUpData);
+        
+        Dictionary mapData = (Dictionary)data["Map Data"];
+
+        int count = 0;
+        List<RoomData> floorData = new List<RoomData>();
+        foreach (KeyValuePair<Variant, Variant> roomData in mapData)
+        {
+            RoomData newRoomData = new RoomData();
+            newRoomData.LoadRoomData((Dictionary)roomData.Value);
+            
+            if (newRoomData.row > count)
+            {
+                this.mapData.Add(floorData);
+                floorData = new List<RoomData>();
+                count = newRoomData.row;
+            }
+            
+            floorData.Add(newRoomData);
+        }
+        this.mapData.Add(floorData);
+
+        if ((int) runData["Last Room Row"] != -1)
+        {
+            this.lastRoom = this.mapData[(int) runData["Last Room Row"]][(int) runData["Last Room Column"]];
+        }
     }
 }

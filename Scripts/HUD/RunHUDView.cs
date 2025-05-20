@@ -31,7 +31,7 @@ public partial class RunHUDView : UIView
         this.optionsButton.SetData("Options");
         this.optionsButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.OpenPopUp("options");
+            UIManager.instance.popUpModel.OpenPopUp(UIModel.ViewID.OPTIONS);
         };
         this.quitButton = rightPanel.GetNode<UIButton>("%QuitButton");
         this.quitButton.SetData("Quit");

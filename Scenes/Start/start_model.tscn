@@ -35,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_jmlli")
-viewID = &"title"
+ID = 5
 
 [node name="TitlePanel" type="Panel" parent="TitleView"]
 layout_mode = 1
@@ -114,7 +114,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1laj6")
 script = ExtResource("3_jmlli")
-viewID = &"play"
+ID = 6
 
 [node name="NewRunButton" parent="PlayView" instance=ExtResource("4_rh0x2")]
 unique_name_in_owner = true

@@ -6,7 +6,7 @@ public partial class TreasureModel : UIModel
 {
     public override void Enter()
     {
-        TreasureView view = this.views["treasure"] as TreasureView;
+        TreasureView view = this.views[ViewID.TREASURE] as TreasureView;
         view.ShowView();
         
         UIManager.instance.vfxModel.OpenCurtain();
@@ -14,7 +14,7 @@ public partial class TreasureModel : UIModel
     
     public override void Exit()
     {
-        foreach (KeyValuePair<string, UIView> view in this.views)
+        foreach (KeyValuePair<ViewID, UIView> view in this.views)
         {
             view.Value.Exit();
         }

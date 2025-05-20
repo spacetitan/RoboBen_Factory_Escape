@@ -34,7 +34,7 @@ public partial class EventModel : UIModel
         this.bodyLabel.Text = eventData.body;
         this.eventTexture.Texture = eventData.texture;
         
-        RoomHUDView roomHUD = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+        RoomHUDView roomHUD = UIManager.instance.hudModel.views[ViewID.ROOM_HUD] as RoomHUDView;
 
         foreach (EventChoice choice in this.eventData.choices)
         {
@@ -73,7 +73,7 @@ public partial class EventModel : UIModel
             }
         }
 
-        RoomHUDView roomHUD = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+        RoomHUDView roomHUD = UIManager.instance.hudModel.views[ViewID.ROOM_HUD] as RoomHUDView;
         roomHUD.ToggleLeaveButton(true);
     }
 

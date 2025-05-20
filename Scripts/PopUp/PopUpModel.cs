@@ -14,50 +14,50 @@ public partial class PopUpModel : UIModel
         
     }
 
-    public void OpenPopUp(string viewID)
+    public void OpenPopUp(ViewID ID)
     {
         this.ShowModel();
-        this.views[viewID].ShowView();
+        this.views[ID].ShowView();
     }
 
     public void OpenGenericPopUp(GenericPopUpView.GenericPopUpData data)
     {
         this.ShowModel();
-        GenericPopUpView popUpView = this.views["Generic"] as GenericPopUpView;
+        GenericPopUpView popUpView = this.views[ViewID.POP_UP] as GenericPopUpView;
         popUpView.OpenPopUp(data);
     }
 
     public void OpenDeckPopUp(CardPile deck, string title)
     {
         this.ShowModel();
-        DeckPopUpView popUpView = this.views["deck"] as DeckPopUpView;
+        DeckPopUpView popUpView = this.views[ViewID.DECK] as DeckPopUpView;
         popUpView.OpenPopUp(deck, title);
     }
 
     public void OpenBattleWinView(int money)
     {
         this.ShowModel();
-        BattleWinView battleWinView = this.views["battleWin"] as BattleWinView;
+        BattleWinView battleWinView = this.views[ViewID.WIN] as BattleWinView;
         battleWinView.OpenPopUp(money);
     }
 
     public void OpenRewardDraft(RewardDraftView.Type rewardType, bool isLayered = false)
     {
         this.ShowModel();
-        RewardDraftView rewardDraftView = this.views["rewardDraft"] as RewardDraftView;
+        RewardDraftView rewardDraftView = this.views[ViewID.REWARD] as RewardDraftView;
         rewardDraftView.OpenPopUp(rewardType, isLayered);
     }
 
     public void OpenMapPopUp()
     {
         this.ShowModel();
-        MapView view = this.views["map"] as MapView;
+        MapView view = this.views[ViewID.MAP] as MapView;
         view.OpenPopUp();
     }
 
-    public void ClosePopup(string popupName, bool isLayered = false)
+    public void ClosePopup(ViewID popupID, bool isLayered = false)
     {
-        this.views[popupName].HideView();
+        this.views[popupID].HideView();
         
         if (!isLayered)
         {
@@ -67,7 +67,7 @@ public partial class PopUpModel : UIModel
     
     public void CloseRewardDraft(bool isLayered = false)
     {
-        this.views["rewardDraft"].HideView();
+        this.views[ViewID.REWARD].HideView();
 
         if (!isLayered)
         {

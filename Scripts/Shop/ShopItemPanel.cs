@@ -39,7 +39,7 @@ public partial class ShopItemPanel : UIView
             RunManager.instance.AddCard(this.cardData);
         }
         
-        RoomHUDView hud = UIManager.instance.hudModel.views["roomHUD"] as RoomHUDView;
+        RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
         hud.UpdateData();
         
         this.buyButton.SetData("Purchased");

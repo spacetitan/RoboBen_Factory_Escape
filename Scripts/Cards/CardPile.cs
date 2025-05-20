@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class CardPile : Resource
@@ -72,7 +73,16 @@ public partial class CardPile : Resource
             this.cards.Add(data);
         }
     }
-    
+
+    public void LoadDeck(Dictionary data)
+    {
+        foreach (KeyValuePair<Variant, Variant> cardID in data)
+        {
+            int ID = (int)cardID.Value;
+            AddCard(ResourceManager.instance.cards[(CardData.CardID) ID].CreateInstance());
+        }
+    }
+
     public void SetDeck(CardPile cardPile)
     {
         foreach (CardData card in cardPile.cards)

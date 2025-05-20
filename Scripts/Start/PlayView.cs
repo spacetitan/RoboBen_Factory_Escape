@@ -24,24 +24,35 @@ public partial class PlayView : UIView
 
     public void GetSceneNodes()
     {
+        ButtonGroup buttonGroup = new ButtonGroup();
+        
         this.newRunButton = this.GetNode<UIButton>("%NewRunButton");
         this.newRunButton.SetData("New Run");
         this.newRunButton.button.ToggleMode = true;
         this.newRunButton.button.ButtonPressed = true;
+        this.newRunButton.button.ButtonGroup = buttonGroup;
         this.newRunButton.button.Pressed += () =>
         {
-            
+            this.playerData = null;
+            ResetInfoPanels();
         };
         
         this.continueButton = this.GetNode<UIButton>("%ContinueButton");
         this.continueButton.SetData("Continue");
         this.continueButton.button.ToggleMode = true;
+        this.continueButton.button.ButtonGroup = buttonGroup;
         this.continueButton.button.Pressed += () =>
         {
-            
+            this.startButton.button.SetDisabled(false);
+            this.playerData = null;
+            int id = (int) GameManager.instance.GetLoadData("Player Data")["ID"];
+            SetInfoPanels(ResourceManager.instance.characters[(CharacterData.CharacterID)id]);
         };
-        this.continueButton.button.SetDisabled(true);
-        
+        if (!GameManager.instance.HasLoadFile())
+        {
+            this.continueButton.button.SetDisabled(true);
+        }
+
         this.startButton = this.GetNode<UIButton>("%StartButton");
         this.startButton.SetData("Start!");
         this.startButton.button.Pressed += () =>
@@ -51,12 +62,11 @@ public partial class PlayView : UIView
                 if (this.playerData != null)
                 {
                     RunManager.instance.NewRun(this.playerData);
-                    UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
                 }
             }
             else if (this.continueButton.button.ButtonPressed)
             {
-                
+                RunManager.instance.ContinueRun(GameManager.instance.GetLoadData());
             }
         };
         this.startButton.button.SetDisabled(true);
@@ -177,8 +187,11 @@ public partial class PlayView : UIView
 
     public override void Exit()
     {
-        this.newRunButton.button.ButtonPressed = true;
-        this.startButton.button.SetDisabled(true);
-        ResetInfoPanels();
+        if (this.newRunButton != null && this.startButton != null)
+        {
+            this.newRunButton.button.ButtonPressed = true;
+            this.startButton.button.SetDisabled(true);
+            ResetInfoPanels();   
+        }
     }
 }

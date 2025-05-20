@@ -73,7 +73,7 @@ public partial class ShopView : UIView
         
     }
     
-    public void Exit()
+    public override void Exit()
     {
         if (this.playerSpawn.GetChildren().Count > 0)
         {

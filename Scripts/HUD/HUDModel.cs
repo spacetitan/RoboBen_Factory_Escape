@@ -12,7 +12,7 @@ public partial class HUDModel : UIModel
             {
                 UIView view = control as UIView;
                 view.InitializeView(this);
-                this.views.Add(view.viewID, view);
+                this.views.Add(view.ID, view);
             }
         }
         //HideModel();
@@ -23,28 +23,27 @@ public partial class HUDModel : UIModel
         switch (state)
         {
             case UIManager.UIState.RUN:
-                this.views["roomHUD"].HideView();
-                this.views["battleHUD"].HideView();
-                this.views["hand"].HideView();
+                this.views[ViewID.ROOM_HUD].HideView();
+                this.views[ViewID.BATTLE_HUD].HideView();
+                this.views[ViewID.HAND].HideView();
                 
-                this.views["runHUD"].ShowView();
+                this.views[ViewID.RUN_HUD].ShowView();
                 break;
             
             case UIManager.UIState.BATTLE:
-                this.views["roomHUD"].HideView();
-                this.views["runHUD"].HideView();
+                this.views[ViewID.RUN_HUD].HideView();
                 
-                this.views["hand"].ShowView();
-                this.views["battleHUD"].ShowView();
+                this.views[ViewID.HAND].ShowView();
+                this.views[ViewID.BATTLE_HUD].ShowView();
                 break;
             
             case UIManager.UIState.TREASURE:
             case UIManager.UIState.REST:
             case UIManager.UIState.SHOP:
             case UIManager.UIState.EVENT:
-                this.views["runHUD"].HideView();
+                this.views[ViewID.RUN_HUD].HideView();
                 
-                this.views["roomHUD"].ShowView();
+                this.views[ViewID.ROOM_HUD].ShowView();
                 break;
                 
             default:
@@ -54,10 +53,10 @@ public partial class HUDModel : UIModel
 
     public void SetPlayerData(Player player)
     {
-        BattleHUDView hud = this.views["battleHUD"] as BattleHUDView;
+        BattleHUDView hud = this.views[ViewID.BATTLE_HUD] as BattleHUDView;
         hud.SetData(player);
         
-        HandView hand = this.views["hand"] as HandView;
+        HandView hand = this.views[ViewID.HAND] as HandView;
         hand.SetData(player);
     }
 }

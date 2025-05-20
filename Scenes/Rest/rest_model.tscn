@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_0htjp")
 script = ExtResource("2_iu33a")
-viewID = &"rest"
+ID = 9
 
 [node name="RestButton" parent="RestView" instance=ExtResource("3_ddcqt")]
 unique_name_in_owner = true

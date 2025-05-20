@@ -58,7 +58,7 @@ public partial class OptionsPopUpView : UIView
         this.closeButton.SetData("Close");
         this.closeButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.ClosePopup("options");
+            UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.OPTIONS);
         };
     }
     

@@ -16,7 +16,7 @@ grow_vertical = 2
 theme = ExtResource("1_4jaxb")
 theme_override_styles/panel = ExtResource("2_fqrw8")
 script = ExtResource("1_jtvnw")
-viewID = &"battleWin"
+ID = 14
 
 [node name="TitlePanel" type="Panel" parent="."]
 unique_name_in_owner = true

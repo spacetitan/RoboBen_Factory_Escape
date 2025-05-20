@@ -46,7 +46,6 @@ public partial class CardData : Resource
             case 'I':
             case 'O':
                 return true;
-                break;
         }
 
         return false;

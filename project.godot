@@ -36,6 +36,7 @@ project/assembly_name="RoboBen_Factory_Escape"
 [editor]
 
 script/templates_search_path="res://Scripts/_Templates"
+export/convert_text_resources_to_binary=false
 
 [global_group]
 

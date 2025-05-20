@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dme6cvljdluco"]
+[gd_scene load_steps=6 format=3 uid="uid://dme6cvljdluco"]
 
 [ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_8moqm"]
 [ext_resource type="Script" uid="uid://6j1jaqywuifs" path="res://Scripts/PopUp/OptionsPopUpView.cs" id="1_cfkkt"]
+[ext_resource type="StyleBox" uid="uid://tu23vthlovps" path="res://Themes/UI/UIDisplayPanel.tres" id="2_iqbhb"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="3_08h5v"]
 [ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="4_wfdfo"]
 
@@ -14,8 +15,9 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_8moqm")
+theme_override_styles/panel = ExtResource("2_iqbhb")
 script = ExtResource("1_cfkkt")
-viewID = &"options"
+ID = 12
 
 [node name="TitlePanel" type="Panel" parent="."]
 layout_mode = 1

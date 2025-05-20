@@ -53,6 +53,7 @@ public partial class RunModel : UIModel
             tween.TweenProperty(this.mapScrollContainer, "scroll_vertical", num, 1f);
         }
         
+        GameManager.instance.SaveGame();
         UIManager.instance.vfxModel.OpenCurtain();
     }
     
@@ -154,11 +155,26 @@ public partial class RunModel : UIModel
         {
             if(room.data.row == whichFloor)
             {
-                room.SetAvailability(true);
+                if (RunManager.instance.currentRun.lastRoom != null)
+                {
+                    if (RunManager.instance.currentRun.lastRoom.nextRoomNumber.Contains(room.data.column))
+                    {
+                        room.SetAvailability(true);
+                    }
+                }
+                else
+                {
+                    room.SetAvailability(true);
+                }
             }
             else
             {
                 room.SetAvailability(false);
+            }
+            
+            if(room.data.selected)
+            {
+                room.ShowSelected();
             }
         }
     }

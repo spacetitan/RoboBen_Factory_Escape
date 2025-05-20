@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0kkisie7f3xc"]
+[gd_scene load_steps=9 format=3 uid="uid://b0kkisie7f3xc"]
 
 [ext_resource type="Script" uid="uid://xfxewfpqulcq" path="res://Scripts/PopUp/PopUpModel.cs" id="1_b5b85"]
 [ext_resource type="PackedScene" uid="uid://cb78614yrfdy0" path="res://Scenes/PopUp/generic_pop_up.tscn" id="2_mwesn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkw6nlgx5l7b2" path="res://Scenes/PopUp/battle_win_view.tscn" id="5_aisrh"]
 [ext_resource type="PackedScene" uid="uid://wuuks2rie0iy" path="res://Scenes/PopUp/reward_draft_view.tscn" id="6_guuhw"]
 [ext_resource type="PackedScene" uid="uid://dhoyxxnyhj7th" path="res://Scenes/Map/map_view.tscn" id="7_bm71x"]
+[ext_resource type="PackedScene" uid="uid://cnfbbhi4je1j7" path="res://Scenes/PopUp/collections_view.tscn" id="8_uhtjo"]
 
 [node name="PopUpModel" type="Control"]
 layout_mode = 3
@@ -51,7 +52,11 @@ visible = false
 layout_mode = 1
 
 [node name="MapView" parent="." instance=ExtResource("7_bm71x")]
+visible = false
 layout_mode = 1
 grow_horizontal = 1
 grow_vertical = 1
-viewID = &"map"
+
+[node name="CollectionsView" parent="." instance=ExtResource("8_uhtjo")]
+visible = false
+layout_mode = 1

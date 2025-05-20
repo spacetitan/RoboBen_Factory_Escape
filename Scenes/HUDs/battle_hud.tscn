@@ -54,7 +54,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_y5i83")
 script = ExtResource("2_sxrd0")
-viewID = &"battleHUD"
+ID = 3
 
 [node name="TopPanel" type="Panel" parent="."]
 unique_name_in_owner = true

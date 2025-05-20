@@ -17,7 +17,7 @@ grow_vertical = 2
 theme = ExtResource("1_gyuk2")
 theme_override_styles/panel = ExtResource("2_avbts")
 script = ExtResource("1_wrn5n")
-viewID = &"rewardDraft"
+ID = 15
 
 [node name="TitlePanel" type="Panel" parent="."]
 layout_mode = 1

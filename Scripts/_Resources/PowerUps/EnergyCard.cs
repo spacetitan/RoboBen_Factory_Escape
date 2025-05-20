@@ -4,7 +4,7 @@ using System;
 [GlobalClass]
 public partial class EnergyCard : PowerUp
 {
-	int value = 0;
+	int num = 0;
 	
 	public override void InitializePowerUp(PowerUpHandler owner)
 	{
@@ -18,12 +18,12 @@ public partial class EnergyCard : PowerUp
 	{
 		BattleModel model = UIManager.instance.currentModel as BattleModel;
 		
-		value++;
+		num++;
 		if (value >= 2)
 		{
 			model.player.AddEnergy(this.value);
             
-			value = 0;
+			num = 0;
 		}
 		
 		base.ActivatePowerUp();

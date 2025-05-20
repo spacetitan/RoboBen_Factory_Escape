@@ -20,7 +20,7 @@ public partial class BattleWinView : UIView
         this.continueButton.SetData("Continue");
         this.continueButton.button.Pressed += () =>
         {
-            UIManager.instance.popUpModel.ClosePopup(this.viewID);
+            UIManager.instance.popUpModel.ClosePopup(this.ID);
             UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
         };
         
@@ -47,7 +47,7 @@ public partial class BattleWinView : UIView
             RunManager.instance.currentRun.AddMoney(money);
             moneyButton.QueueFree();
             
-            BattleHUDView view = UIManager.instance.hudModel.views["battleHUD"] as BattleHUDView;
+            BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
             view.UpdateMoney();
         };
         

@@ -38,6 +38,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_0ljo3")
 script = ExtResource("1_w6byr")
+ID = 2
 
 [node name="TopPanel" type="Panel" parent="."]
 unique_name_in_owner = true

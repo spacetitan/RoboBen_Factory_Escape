@@ -2,6 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class RunManager : Node
@@ -31,7 +32,7 @@ public partial class RunManager : Node
 	const float BASE_UNCOMMON_WEIGHT = 3.0F;
 	const float BASE_RARE_WEIGHT = 1.0F;
 	private float rarityTotalWeight = 0;
-	private Dictionary<int, float> rarityWeight = new Dictionary<int, float>();
+	private System.Collections.Generic.Dictionary<int, float> rarityWeight = new System.Collections.Generic.Dictionary<int, float>();
 	private float rarityWeightCommon = 0;
 	private float rarityWeightUncommon = 0;
 	private float rarityWeightRare = 0;
@@ -50,6 +51,16 @@ public partial class RunManager : Node
 			this.eventDataPool.Add(data.Value);
 		}
 		
+		foreach (KeyValuePair<CardData.CardID, CardData> card in ResourceManager.instance.cards)
+		{
+			this.availableCards.Add(card.Value);
+		}
+		
+		foreach (KeyValuePair<PowerUp.PowerUpID, PowerUp> powerUp in ResourceManager.instance.powerUps)
+		{
+			this.availablePowerUps.Add(powerUp.Value);
+		}
+		
 		for (int i = 0; i < 3; i++)
 		{
 			SetupBattleWeightForTier(i);
@@ -64,25 +75,25 @@ public partial class RunManager : Node
 	public void NewRun(PlayerData playerData)
 	{
 		this.currentRun = new Run(playerData);
-
-		foreach (KeyValuePair<CardData.CardID, CardData> card in ResourceManager.instance.cards)
-		{
-			this.availableCards.Add(card.Value);
-		}
-		
-		foreach (KeyValuePair<PowerUp.PowerUpID, PowerUp> powerUp in ResourceManager.instance.powerUps)
-		{
-			this.availablePowerUps.Add(powerUp.Value);
-		}
 		
 		AddPowerUp(playerData.starterPowerUp);
 		this.currentRun.SetMapData(this.mapGenerator.GenerateNewMap());
-		//GameManager.instance.SaveGame();
+		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
+	}
+
+	public void ContinueRun(Dictionary data)
+	{
+		Dictionary playerData = (Dictionary)data["Player Data"];
+		int playerId = (int) playerData["ID"];
+		this.currentRun = new Run(ResourceManager.instance.characters[(CharacterData.CharacterID) playerId]);
+		this.currentRun.LoadRun(data);
+		
+		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
 	}
 
 	public void SelectRoom(RoomData roomData)
 	{
-		this.currentRun.ClimbFloor();
+		this.currentRun.ClimbFloor(roomData);
 		
 		RunModel runmodel = UIManager.instance.models[UIManager.UIState.RUN] as RunModel;
 		runmodel.SetLastRoom(roomData);

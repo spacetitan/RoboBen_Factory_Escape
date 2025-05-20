@@ -7,7 +7,7 @@ public partial class RestModel : UIModel
 
     public override void Enter()
     {
-        RestView view = this.views["rest"] as RestView;
+        RestView view = this.views[ViewID.REST] as RestView;
         view.ShowView();
         
         UIManager.instance.vfxModel.OpenCurtain();
@@ -15,7 +15,7 @@ public partial class RestModel : UIModel
     
     public override void Exit()
     {
-        foreach (KeyValuePair<string, UIView> view in this.views)
+        foreach (KeyValuePair<ViewID, UIView> view in this.views)
         {
             view.Value.Exit();
         }
