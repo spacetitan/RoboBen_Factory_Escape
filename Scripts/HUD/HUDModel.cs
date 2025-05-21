@@ -45,6 +45,13 @@ public partial class HUDModel : UIModel
                 
                 this.views[ViewID.ROOM_HUD].ShowView();
                 break;
+            
+            case UIManager.UIState.GAMEOVER:
+                this.views[ViewID.ROOM_HUD].HideView();
+                this.views[ViewID.BATTLE_HUD].HideView();
+                this.views[ViewID.HAND].HideView();
+                this.views[ViewID.RUN_HUD].HideView();
+                break;
                 
             default:
                 break;

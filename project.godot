@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Temp"
+config/name="RoboBen: Factory Escape"
 run/main_scene="uid://m7u6pnifu03m"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"

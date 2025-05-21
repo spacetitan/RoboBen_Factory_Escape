@@ -50,6 +50,10 @@ public partial class BackgroundModel : UIModel
                 this.backgroundTexture.Texture = backgroundTextures[2];
                 break;
             
+            case UIManager.UIState.GAMEOVER:
+                this.backgroundTexture.Texture = backgroundTextures[2];
+                break;
+            
             case UIManager.UIState.NONE:
             default:
                 

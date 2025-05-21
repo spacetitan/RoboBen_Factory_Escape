@@ -14,10 +14,7 @@ public partial class UIManager : Node
 		}
 	}
 
-	public enum UILayer { NONE, BACKGROUNDS, MENU, HUD, POPUP, VFX };
-	public Dictionary<UILayer, CanvasLayer> layers { get; private set; } = new Dictionary<UILayer, CanvasLayer>();
-
-	public enum UIState { NONE, START, RUN, BATTLE, TREASURE, SHOP, REST, EVENT};
+	public enum UIState { NONE, START, RUN, BATTLE, TREASURE, SHOP, REST, EVENT, GAMEOVER};
 	public Dictionary<UIState, UIModel> models { get; private set; } = new Dictionary<UIState, UIModel>();
 	
 	public UIModel currentModel { get; private set; } = null;
@@ -40,9 +37,6 @@ public partial class UIManager : Node
 		int count = 1;
 		foreach(CanvasLayer layer in this.GetChildren())
 		{
-			this.layers.Add((UILayer)count, layer);
-			count++;
-
 			foreach(UIModel model in layer.GetChildren())
 			{
 				model.InitializeModel();

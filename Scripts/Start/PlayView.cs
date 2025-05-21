@@ -6,8 +6,6 @@ public partial class PlayView : UIView
     private PackedScene playInfoPanelScene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/play_info_panel.tscn");
     private List<PlayInfoPanel> infoPanels = new List<PlayInfoPanel>();
     
-    private PackedScene charPickerPanelScene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/char_picker_panel.tscn");
-    
     private UIButton newRunButton;
     private UIButton continueButton;
     private UIButton startButton;
@@ -118,7 +116,7 @@ public partial class PlayView : UIView
         this.pickerContainer = this.GetNode<Panel>("%CharPickerPanel").GetNode<HBoxContainer>("%PickerContainer");
         foreach (KeyValuePair<CharacterData.CharacterID, PlayerData> kvp in ResourceManager.instance.characters)
         {
-            CharPickerPanel pickerPanel = charPickerPanelScene.Instantiate() as CharPickerPanel;
+            CharPickerPanel pickerPanel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
             pickerPanel.GetSceneNodes();
             pickerPanel.SetData(kvp.Value);
             pickerPanel.pickerButton.Pressed += () =>

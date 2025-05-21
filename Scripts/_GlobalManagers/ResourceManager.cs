@@ -16,6 +16,7 @@ public partial class ResourceManager : Node
 	
 	public Texture2D debugIcon = null;
 	public PackedScene uiButtonScene = null;
+	public PackedScene charPickerPanelScene = null;
 	
 	public Dictionary<CharacterData.CharacterID, PlayerData> characters = new Dictionary<CharacterData.CharacterID, PlayerData>();
 	public PackedScene playerScene = null;
@@ -55,6 +56,7 @@ public partial class ResourceManager : Node
 	{
 		this.debugIcon = ResourceLoader.Load<Texture2D>("res://icon.svg");
 		this.uiButtonScene = ResourceLoader.Load<PackedScene>("res://Scenes/HUDs/ui_button.tscn");
+		this.charPickerPanelScene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/char_picker_panel.tscn");
 	
 		string path = "res://Resources/Characters/";
 		foreach (string fileName in DirAccess.GetFilesAt(path))
