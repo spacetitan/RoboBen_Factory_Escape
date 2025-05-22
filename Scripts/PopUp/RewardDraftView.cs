@@ -106,6 +106,11 @@ public partial class RewardDraftView : UIView
                 BattleModel battleModel = UIManager.instance.currentModel as BattleModel;
                 battleModel.player.deck.AddCard(displayUi.cardData);
             }
+            else
+            {
+                RoomHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+                view.UpdateData();
+            }
             
         }
         else if(displayUi.powerUp != null)

@@ -59,6 +59,11 @@ public partial class Run
             this.reRolls = 0;
         }
     }
+    
+    public void BuyReRoll()
+    {
+        this.reRolls++;
+    }
 
     public void Rest()
     {

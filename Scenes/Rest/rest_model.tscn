@@ -52,7 +52,8 @@ grow_vertical = 2
 [node name="ShopItemPanel" parent="RestView" instance=ExtResource("5_ddcqt")]
 unique_name_in_owner = true
 layout_mode = 1
-anchor_bottom = 0.8
+anchor_top = 0.325
+anchor_bottom = 0.675
 
 [node name="PlayerSpawn" type="Control" parent="RestView"]
 unique_name_in_owner = true
@@ -61,5 +62,27 @@ anchor_left = 0.15
 anchor_top = 0.325
 anchor_right = 0.35
 anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReRollButton" parent="RestView" instance=ExtResource("3_ddcqt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.375
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RemoveCardButton" parent="RestView" instance=ExtResource("3_ddcqt")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.7
+anchor_right = 0.775
+anchor_bottom = 0.825
 grow_horizontal = 2
 grow_vertical = 2

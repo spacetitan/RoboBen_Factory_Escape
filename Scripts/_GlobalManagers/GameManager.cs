@@ -94,8 +94,9 @@ public partial class GameManager : Node
 
 	public bool HasLoadFile()
 	{
-		if (!Directory.Exists(savePath) || !Directory.Exists(loadPath))
+		if (!Directory.Exists(savePath) && !Directory.Exists(loadPath))
 		{
+			GD.Print("no data present");
 			return false;
 		}
 		

@@ -34,7 +34,7 @@ public partial class PowerUpUI : Control
         this.powerUpTexture.Texture = this.powerUp.texture;
         this.powerUpTexture.SetPivotOffset(new Vector2(this.powerUpTexture.Size.X/2 , this.powerUpTexture.Size.Y/2));
         this.isInv = inv;
-        if (this.powerUp.value > 0)
+        if (this.powerUp.showValue)
         {
             this.labelPanel.Show();
             this.powerUpLabel.Text = this.powerUp.value.ToString();

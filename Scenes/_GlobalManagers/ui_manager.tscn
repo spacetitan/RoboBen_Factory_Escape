@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bph1tfufn4nu2"]
+[gd_scene load_steps=14 format=3 uid="uid://bph1tfufn4nu2"]
 
 [ext_resource type="Script" uid="uid://b33ejphwxx2kb" path="res://Scripts/_GlobalManagers/UIManager.cs" id="1_c4t2g"]
 [ext_resource type="PackedScene" uid="uid://b0kkisie7f3xc" path="res://Scenes/PopUp/pop_up_model.tscn" id="1_nvxgx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dsemsnu67qsgd" path="res://Scenes/Treasure/treasure_model.tscn" id="6_t6h3n"]
 [ext_resource type="PackedScene" uid="uid://txtru12wbmsn" path="res://Scenes/Shop/shop_model.tscn" id="8_f4wdt"]
 [ext_resource type="PackedScene" uid="uid://blnc6le3dwr8y" path="res://Scenes/Event/event_model.tscn" id="9_5kpba"]
+[ext_resource type="PackedScene" uid="uid://cehsg4g65k5yy" path="res://Scenes/GameOver/game_over_model.tscn" id="10_22rpt"]
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_c4t2g")
@@ -36,6 +37,8 @@ state = 4
 [node name="ShopModel" parent="Menu" instance=ExtResource("8_f4wdt")]
 
 [node name="EventModel" parent="Menu" instance=ExtResource("9_5kpba")]
+
+[node name="GameOverModel" parent="Menu" instance=ExtResource("10_22rpt")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

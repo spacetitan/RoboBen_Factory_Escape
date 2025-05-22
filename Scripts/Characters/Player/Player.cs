@@ -94,7 +94,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
             }
         };
     }
@@ -120,7 +120,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
+                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
             }
         };
     }
@@ -142,11 +142,6 @@ public partial class Player : Character
         tween.Finished += ()=>
         {
             this.playerTexture.Material = null;
-
-            if(playerData.health <=0)
-            {
-                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
-            }
         };
     }
 

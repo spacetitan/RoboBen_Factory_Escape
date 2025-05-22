@@ -43,9 +43,17 @@ public partial class BattleModel : UIModel
 
     public override void Exit()
     {
+        this.activeEnemies.Clear();
+        this.enemies.Clear();
+        
         foreach (KeyValuePair<ViewID, UIView> view in this.views)
         {
             view.Value.Exit();
+        }
+
+        if (this.player != null)
+        {
+            this.player.DestroyPlayer();
         }
     }
 

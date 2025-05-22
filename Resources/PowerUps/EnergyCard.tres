@@ -11,5 +11,6 @@ description = "Generate 1 energy after burning 2 cards"
 texture = ExtResource("2_yqubx")
 rarity = 1
 activateType = 5
+showValue = true
 value = 1
 metadata/_custom_type_script = "uid://bbxhy4aapyjr4"

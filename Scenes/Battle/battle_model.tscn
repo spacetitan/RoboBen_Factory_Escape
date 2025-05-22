@@ -15,4 +15,3 @@ state = 3
 
 [node name="BattleView" parent="." instance=ExtResource("2_ft16u")]
 layout_mode = 1
-Id = 7

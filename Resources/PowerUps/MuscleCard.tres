@@ -11,5 +11,6 @@ description = "Generates 2 muscle after playing 3 cards"
 texture = ExtResource("2_gjckl")
 rarity = 3
 activateType = 5
-value = 2
+showValue = true
+value = 0
 metadata/_custom_type_script = "uid://dye68deyk0pi8"

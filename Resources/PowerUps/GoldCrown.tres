@@ -11,5 +11,6 @@ description = "15% increase to money obtained from monters"
 texture = ExtResource("2_ghl6h")
 rarity = 2
 activateType = 5
-value = 1
+showValue = false
+value = 0
 metadata/_custom_type_script = "uid://yi4fj6wc3c1n"

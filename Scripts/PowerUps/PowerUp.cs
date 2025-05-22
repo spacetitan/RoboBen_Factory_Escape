@@ -28,7 +28,8 @@ public partial class PowerUp : Resource
     [Export] public AudioStream playSFX { get; private set;}
     [Export] public Rarity rarity { get; private set; } = Rarity.NONE;
     [Export] public ActivateType activateType { get; private set; } = ActivateType.NONE;
-    [Export] public int value { get; private set; } = 1;
+    [Export] public bool showValue = false;
+    [Export] public int value { get; protected set; } = 0;
     protected PowerUpHandler owner = null;
 
     public virtual void InitializePowerUp(PowerUpHandler owner)
@@ -55,7 +56,12 @@ public partial class PowerUp : Resource
 
         return false;
     }
-    
+
+    public void ResetPowerUp()
+    {
+        this.value = 0;
+    }
+
     public virtual PowerUp CreateInstance()
     {
         PowerUp instance = (PowerUp)this.Duplicate();
@@ -66,6 +72,7 @@ public partial class PowerUp : Resource
         instance.playSFX = this.playSFX;
         instance.rarity = this.rarity;
         instance.activateType = this.activateType;
+        instance.showValue = this.showValue;
         instance.value = this.value;
         
         return instance;

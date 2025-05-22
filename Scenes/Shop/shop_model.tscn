@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://txtru12wbmsn"]
+[gd_scene load_steps=8 format=3 uid="uid://txtru12wbmsn"]
 
 [ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_dieus"]
 [ext_resource type="Script" uid="uid://u0wavjjexcro" path="res://Scripts/Shop/ShopModel.cs" id="1_qdfee"]
 [ext_resource type="Script" uid="uid://b4dm3wi4y480j" path="res://Scripts/Shop/ShopView.cs" id="2_c0e83"]
 [ext_resource type="PackedScene" uid="uid://qs6binjssm21" path="res://Scenes/Shop/shop_item_panel.tscn" id="3_c0e83"]
+[ext_resource type="Texture2D" uid="uid://cf1ul4vakhmh2" path="res://Art/Sprites/Shop/shoppile.png" id="4_0pkbh"]
 [ext_resource type="Texture2D" uid="uid://bjc26entwcfys" path="res://Art/Sprites/Shop/RoboDev2.png" id="4_562v3"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="5_68jpw"]
 
@@ -27,6 +28,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_c0e83")
 ID = 10
+
+[node name="TextureRect2" type="TextureRect" parent="ShopView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0pkbh")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="PlayerSpawn" type="Control" parent="ShopView"]
 unique_name_in_owner = true

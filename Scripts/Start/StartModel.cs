@@ -20,4 +20,9 @@ public partial class StartModel : UIModel
     {
         UIManager.instance.vfxModel.OpenCurtain();
     }
+
+    public override void Exit()
+    {
+        this.views[UIModel.ViewID.PLAY].HideView();
+    }
 }

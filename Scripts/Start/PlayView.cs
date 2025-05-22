@@ -189,7 +189,7 @@ public partial class PlayView : UIView
         {
             this.newRunButton.button.ButtonPressed = true;
             this.startButton.button.SetDisabled(true);
-            ResetInfoPanels();   
+            ResetInfoPanels();
         }
     }
 }

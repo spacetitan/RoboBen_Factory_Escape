@@ -11,5 +11,6 @@ description = "Generates armor when damaged"
 texture = ExtResource("2_8v3o5")
 rarity = 2
 activateType = 5
-value = 1
+showValue = false
+value = 4
 metadata/_custom_type_script = "uid://dq7desvj0ra7n"

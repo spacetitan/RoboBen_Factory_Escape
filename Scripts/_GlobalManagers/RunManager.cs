@@ -253,10 +253,23 @@ public partial class RunManager : Node
 		GD.Print("No data found. Returning null.");
 		return null;
 	}
-	
+
+	public bool CheckPowerUp(PowerUp.PowerUpID ID)
+	{
+		foreach (PowerUp powerUp in availablePowerUps)
+		{
+			if (ID == powerUp.id)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public void AddPowerUp(PowerUp powerUp)
 	{
-		if(!this.currentRun.ContainsPowerUp(powerUp.id) && this.availablePowerUps.Contains(powerUp))
+		if(!this.currentRun.ContainsPowerUp(powerUp.id) && CheckPowerUp(powerUp.id))
 		{
 			this.availablePowerUps.Remove(powerUp);
 			this.currentRun.powerUpHandler.AddPowerUp(powerUp);
@@ -264,6 +277,16 @@ public partial class RunManager : Node
 		}
 		else
 		{
+			if (this.currentRun.ContainsPowerUp(powerUp.id))
+			{
+				GD.Print("Power-Up already exists!");
+			}
+
+			if (!CheckPowerUp(powerUp.id))
+			{
+				GD.Print("Power-Up not in pool!");
+			}
+
 			GD.Print("Cannot add " + powerUp.name);
 		}
 	}

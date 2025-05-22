@@ -7,6 +7,8 @@ public partial class RestView : UIView
     private UIButton fullHealButton = null;
     private ShopItemPanel itemPanel = null;
     private Control playerSpawn = null;
+    private UIButton reRollButton = null;
+    private UIButton removeCardButton = null;
     
     public override void _Ready()
     {
@@ -21,8 +23,7 @@ public partial class RestView : UIView
         {
             RunManager.instance.Rest();
             this.restButton.button.Disabled = true;
-            RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
-            hud.UpdateData();
+            OnButtonPressed();
         };
 
         this.fullHealButton = this.GetNode<UIButton>("FullHealButton");
@@ -31,13 +32,31 @@ public partial class RestView : UIView
         {
             RunManager.instance.FullHeal();
             this.fullHealButton.button.Disabled = true;
-            RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
-            hud.UpdateData();
+            OnButtonPressed();
         };
         
         this.itemPanel = this.GetNode<ShopItemPanel>("%ShopItemPanel");
         
         this.playerSpawn = this.GetNode<Control>("PlayerSpawn");
+        
+        this.reRollButton = this.GetNode<UIButton>("%ReRollButton");
+        this.reRollButton.SetData("Re-Roll - 10 money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
+        this.reRollButton.button.Pressed += () =>
+        {
+            RunManager.instance.currentRun.TakeMoney(10);
+            this.reRollButton.button.Disabled = true;
+            RunManager.instance.currentRun.BuyReRoll();
+            OnButtonPressed();
+        };
+        
+        this.removeCardButton = this.GetNode<UIButton>("%RemoveCardButton");
+        this.removeCardButton.SetData("Remove a card - 10 money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.CARD]);
+        this.removeCardButton.button.Pressed += () =>
+        {
+            RunManager.instance.currentRun.TakeMoney(10);
+            //UIManager.instance.popUpModel.OpenDeckPopUp();
+            OnButtonPressed();
+        };
     }
 
     public override void Enter()
@@ -53,10 +72,34 @@ public partial class RestView : UIView
         if (RunManager.instance.currentRun.gold > 10)
         {
             this.fullHealButton.button.Disabled = false;
+            this.reRollButton.button.Disabled = false;
+            this.removeCardButton.button.Disabled = false;
         }
         else
         {
             this.fullHealButton.button.Disabled = true;
+            this.reRollButton.button.Disabled = true;
+            this.removeCardButton.button.Disabled = true;
+        }
+    }
+
+    private void OnButtonPressed()
+    {
+        RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+        hud.UpdateData();
+        
+        this.itemPanel.UpdateData();
+        if (RunManager.instance.currentRun.gold > 10)
+        {
+            this.fullHealButton.button.Disabled = false;
+            this.reRollButton.button.Disabled = false;
+            this.removeCardButton.button.Disabled = false;
+        }
+        else
+        {
+            this.fullHealButton.button.Disabled = true;
+            this.reRollButton.button.Disabled = true;
+            this.removeCardButton.button.Disabled = true;
         }
     }
 

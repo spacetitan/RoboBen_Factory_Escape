@@ -11,11 +11,11 @@ public partial class MapGenerator : Node
     public const int PLACEMENT_RANDOMNESS = 5;
     public const int MAP_WIDTH = 7;
     public const int PATHS = 5;
-    public const float MONSTER_ROOM_WEIGHT = 1.0F;
-    public const float EVENT_ROOM_WEIGHT = 3.0F;
-    public const float SHOP_ROOM_WEIGHT = 0.0F;
-    public const float RESTSTOP_ROOM_WEIGHT = 0.0F;
-    public const float TREASURE_ROOM_WEIGHT = 0.0F;
+    public const float MONSTER_ROOM_WEIGHT = 2.0F;
+    public const float EVENT_ROOM_WEIGHT = 1.0F;
+    public const float SHOP_ROOM_WEIGHT = 1.0F;
+    public const float RESTSTOP_ROOM_WEIGHT = 1.0F;
+    public const float TREASURE_ROOM_WEIGHT = 1.0F;
     
     public  List<List<RoomData>> mapData = new List<List<RoomData>>();
     

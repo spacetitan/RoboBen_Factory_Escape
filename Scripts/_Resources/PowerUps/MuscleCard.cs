@@ -4,7 +4,6 @@ using System;
 [GlobalClass]
 public partial class MuscleCard : PowerUp
 {
-	int num = 0;
 	public override void InitializePowerUp(PowerUpHandler owner)
 	{
 		EventManager.instance.CardPlayed -= ActivatePowerUp;
@@ -17,16 +16,16 @@ public partial class MuscleCard : PowerUp
 	{
 		BattleModel model = UIManager.instance.currentModel as BattleModel;
 
-		num++;
-		if (value >= 3)
+		this.value++;
+		if (this.value >= 3)
 		{
 			Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].Duplicate() as Muscle;
-			muscle.SetDuration(this.value);
+			muscle.SetDuration(2);
 
 			StatusEffect statusEffect = new StatusEffect(muscle, null);
 			statusEffect.Execute(model.player);
-            
-			num = 0;
+
+			this.value = 0;
 		}
 		base.ActivatePowerUp();
 	}

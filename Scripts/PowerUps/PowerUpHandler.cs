@@ -120,26 +120,34 @@ public partial class PowerUpHandler : Node
     
     public void SpawnAllUI()
     {
-        bool inv = UIManager.instance.currentModel.state == UIManager.UIState.RUN;
+        UIManager.UIState currentState = UIManager.instance.currentModel.state;
+        Vector2 size = Vector2.Zero;
         
         foreach (PowerUp powerUp in this.powerUps)
         {
             PowerUpUI powerUpUi = this.powerUpUIScene.Instantiate() as PowerUpUI;
             powerUpUi.GetSceneNodes();
             this.container.AddChild(powerUpUi);
-            powerUpUi.SetData(powerUp, inv);
 
-            Vector2 size = Vector2.Zero;
-            if (inv)
+            switch (currentState)
             {
-                size = new Vector2(this.container.GetRect().Size.X / 2, this.container.GetRect().Size.X / 2);
+                case UIManager.UIState.RUN:
+                    powerUpUi.SetData(powerUp, true);
+                    size = new Vector2(this.container.GetRect().Size.X / 2, this.container.GetRect().Size.X / 2);
+                    break;
+                    
+                case UIManager.UIState.GAMEOVER:
+                    powerUpUi.SetData(powerUp, true);
+                    size = new Vector2(this.container.GetRect().Size.X / 5 , this.container.GetRect().Size.X / 5);
+                    break;
+                
+                default:
+                    powerUpUi.SetData(powerUp, false);
+                    size = new Vector2(this.container.GetRect().Size.Y , this.container.GetRect().Size.Y);
+                    break;
             }
-            else
-            {
-                size = new Vector2(this.container.GetRect().Size.Y , this.container.GetRect().Size.Y);
-            }
+            GD.Print(size);
             powerUpUi.SetCustomMinimumSize(size);
-            
             powerUpUi.SetPosition(Vector2.Zero);
             this.powerUpUIs.Add(powerUpUi);
         }
@@ -152,6 +160,11 @@ public partial class PowerUpHandler : Node
             powerUp.QueueFree();
         }
         this.powerUpUIs.Clear();
+
+        foreach (PowerUp powerUp in this.powerUps)
+        {
+            powerUp.ResetPowerUp();
+        }
     }
 
     public Godot.Collections.Dictionary<StringName, Variant> SavePowerUps()

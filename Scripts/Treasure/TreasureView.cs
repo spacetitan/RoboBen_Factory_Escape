@@ -48,21 +48,12 @@ public partial class TreasureView : UIView
 
     public void OnGuiInput(InputEvent inputEvent)
     {
-        if (inputEvent.IsActionPressed("LeftMouse"))
+        if (inputEvent.IsActionPressed("LeftMouse") && this.isOpened == false)
         {
             this.isOpened = true;
             this.treasureTexture.Texture = this.treasureOpen;
             
-            float roll = RunManager.instance.currentRun.rng.RandfRange(0.0f, 1.0f);
-
-            if (roll < 0.3f)
-            {
-                UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.POWERUP, false);
-            }
-            else
-            {
-                UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.CARD, false);
-            }
+            UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.POWERUP, false);
         }
     }
 

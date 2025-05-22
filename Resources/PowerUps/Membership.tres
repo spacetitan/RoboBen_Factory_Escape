@@ -11,5 +11,6 @@ description = "Get a 20% discount at the shop!"
 texture = ExtResource("2_c1ttq")
 rarity = 2
 activateType = 5
-value = 1
+showValue = false
+value = 0
 metadata/_custom_type_script = "uid://rs24dpdiilti"

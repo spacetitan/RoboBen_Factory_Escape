@@ -86,7 +86,7 @@ _data = {
 }
 
 [node name="PowerUpUI" type="Control"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,10 +116,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_omika")
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(40, 40)
@@ -129,6 +127,7 @@ stretch_mode = 5
 
 [node name="LabelPanel" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6
@@ -161,6 +160,7 @@ libraries = {
 [node name="PowerUpInfoPanelInv" parent="." instance=ExtResource("3_pq5nq")]
 unique_name_in_owner = true
 visible = false
+z_index = 2
 layout_mode = 1
 anchor_left = -2.4
 anchor_bottom = 1.5
@@ -168,6 +168,7 @@ anchor_bottom = 1.5
 [node name="PowerUpInfoPanel" parent="." instance=ExtResource("3_pq5nq")]
 unique_name_in_owner = true
 visible = false
+z_index = 2
 layout_mode = 1
 anchor_left = 1.1
 anchor_right = 3.4
