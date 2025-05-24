@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleData" load_steps=3 format=3 uid="uid://bvqp5xaok18do"]
+
+[ext_resource type="Resource" uid="uid://dwf7hn3325ff3" path="res://Resources/Enemies/Grubboid.tres" id="1_llfju"]
+[ext_resource type="Script" uid="uid://d0k3xhyyekgcl" path="res://Scripts/Battle/BattleData.cs" id="1_ydig4"]
+
+[resource]
+script = ExtResource("1_ydig4")
+battleID = 6
+enemyList = Array[Object]([ExtResource("1_llfju"), ExtResource("1_llfju"), ExtResource("1_llfju")])
+tier = 1
+weight = 1.0
+money = 12
+metadata/_custom_type_script = "uid://d0k3xhyyekgcl"

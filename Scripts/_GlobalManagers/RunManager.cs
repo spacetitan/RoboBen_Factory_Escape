@@ -370,10 +370,23 @@ public partial class RunManager : Node
 
 	public void RemoveCard(CardData cardData)
 	{
-		if (this.currentRun.playerDeck.cards.Contains(cardData))
+		if (CheckCard(cardData.id))
 		{
 			this.currentRun.playerDeck.RemoveCard(cardData);
 		}
+	}
+
+	public bool CheckCard(CardData.CardID ID)
+	{
+		foreach (CardData card in this.currentRun.playerDeck.cards)
+		{
+			if (card.id == ID)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public virtual void RemoveRandomCard() { }

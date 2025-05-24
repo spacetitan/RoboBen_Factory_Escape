@@ -32,7 +32,7 @@ public partial class DeckPopUpView : UIView
         this.cardSize = new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f);
     }
 
-    public void OpenPopUp(CardPile data, string title)
+    public void OpenPopUp(CardPile data, string title, bool removeCard = false)
     {
         this.titleLabel.Text = title;
         this.cards = new List<CardDisplayUI>();
@@ -41,7 +41,24 @@ public partial class DeckPopUpView : UIView
         {
             CardDisplayUI display = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
             display.GetSceneNodes();
-            display.SetData(card);
+
+            if (removeCard)
+            {
+                display.SetData(card, () =>
+                {
+                    RunManager.instance.RemoveCard(card);
+                    UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.DECK);
+                    
+                    RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+                    hud.UpdateData();
+                });
+            }
+            else
+            {
+                display.SetData(card, null, true);
+            }
+
+            
             display.SetCustomMinimumSize(this.cardSize);
             this.cards.Add(display);
             this.cardContainer.AddChild(display);

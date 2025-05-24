@@ -65,6 +65,7 @@ public partial class Enemy : Character
         }
         
         this.currentAction.PerformAction(callback);
+        this.currentAction = null;
     }
     
     public void UpdateEnemy()
@@ -78,13 +79,27 @@ public partial class Enemy : Character
 
     public void UpdateUI()
     {
-        this.healthUI.SetData(this.data, true);
+        if (this.armor > 0)
+        {
+            this.healthUI.SetData(this, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.SHIELD]);
+        }
+        else
+        {
+            this.healthUI.SetData(this, null, true);
+        }
+
+        
 
         if (this.currentAction != null)
         {
-            this.intentTexture.Texture = ResourceManager.instance.intentIcons[this.currentAction.intentKey];
-            this.intentLabel.Text = GetModifiedAttack(this.currentAction.value).ToString();
+            this.intentTexture.Texture = ResourceManager.instance.intentIcons[this.currentAction.intent];
+            this.intentLabel.Text = this.currentAction.GetIntent();
         }
+    }
+
+    public void StartOfTurnReset()
+    {
+        this.armor = 0;
     }
 
     public void SetCurrentAction(EnemyAction value)
@@ -125,7 +140,7 @@ public partial class Enemy : Character
             this.texture.Material = ResourceManager.instance.shaders["damage"];
             modifiedAmount = Mathf.Clamp(modifiedAmount - armor, 0, modifiedAmount);
             this.armor = Mathf.Clamp(armor - initial_dmg, 0, armor);
-            this.data.health = Math.Clamp(this.data.health - modifiedAmount, 0, this.data.maxHealth);
+            this.data.SetHealth(Math.Clamp(this.data.health - modifiedAmount, 0, this.data.maxHealth));
             EmitSignal(SignalName.StatsChanged);
         }));
         tween.TweenInterval(0.17f); // this is the interval time
@@ -149,7 +164,7 @@ public partial class Enemy : Character
         tween.TweenCallback(Callable.From(() =>
         {
             this.texture.Material = ResourceManager.instance.shaders["damage"];
-            this.data.health = Math.Clamp(this.data.health - amount, 0, this.data.maxHealth);
+            this.data.SetHealth(Math.Clamp(this.data.health - amount, 0, this.data.maxHealth));
             EmitSignal(SignalName.StatsChanged);
         }));
         tween.TweenInterval(0.17f); // this is the interval time
@@ -172,7 +187,7 @@ public partial class Enemy : Character
         {
             this.texture.Material = ResourceManager.instance.shaders["heal"];
             int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
-            this.data.health = Math.Clamp(this.data.health + modifiedAmount, 0, this.data.maxHealth);
+            this.data.SetHealth(Math.Clamp(this.data.health + modifiedAmount, 0, this.data.maxHealth));
             EmitSignal(SignalName.StatsChanged);
         }));
         tween.TweenInterval(0.17f); // this is the interval time

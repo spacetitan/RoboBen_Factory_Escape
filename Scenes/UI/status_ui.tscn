@@ -52,19 +52,19 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchor_left = -0.2
-anchor_top = -1.1
-anchor_right = 1.2
+anchor_left = -1.0
+anchor_top = -2.0
+anchor_right = 2.0
 anchor_bottom = -0.1
 
 [node name="InfoPanelInv" parent="." instance=ExtResource("2_g66ud")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchor_left = -0.2
+anchor_left = -0.75
 anchor_top = 1.1
-anchor_right = 1.2
-anchor_bottom = 2.1
+anchor_right = 1.75
+anchor_bottom = 2.75
 
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="OnMouseExited"]

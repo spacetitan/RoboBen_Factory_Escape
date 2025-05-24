@@ -84,7 +84,7 @@ public partial class Player : Character
                 EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDamaged);
             }
             
-            this.playerData.health = Math.Clamp(this.playerData.health - modifiedAmount, 0, this.playerData.maxHealth);
+            this.playerData.SetHealth(Math.Clamp(this.playerData.health - modifiedAmount, 0, this.playerData.maxHealth));
             EmitSignal(SignalName.StatsChanged);
         }));
         tween.TweenInterval(0.17f); // this is the interval time
@@ -110,7 +110,7 @@ public partial class Player : Character
             this.playerTexture.Material = ResourceManager.instance.shaders["damage"];
             UIManager.instance.vfxModel.OnPlayerHit();
             EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDamaged);
-            this.playerData.health = Math.Clamp(this.playerData.health - amount, 0, this.playerData.maxHealth);
+            this.playerData.SetHealth(Math.Clamp(this.playerData.health - amount, 0, this.playerData.maxHealth));
             EmitSignal(SignalName.StatsChanged);
         }));
         tween.TweenInterval(0.17f); // this is the interval time
@@ -133,7 +133,7 @@ public partial class Player : Character
         {
             this.playerTexture.Material = ResourceManager.instance.shaders["heal"];
             int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
-            this.playerData.health = Math.Clamp(this.playerData.health + modifiedAmount, 0, this.playerData.maxHealth);
+            this.playerData.SetHealth(Math.Clamp(this.playerData.health + modifiedAmount, 0, this.playerData.maxHealth));
             EmitSignal(SignalName.StatsChanged);
             EventManager.instance.EmitSignal(EventManager.SignalName.PlayerHealed);
             GD.Print("Healed");
@@ -192,15 +192,18 @@ public partial class Player : Character
 
     public void UpdateUI()
     {
-        if (this.armor > 0)
-        {
-            this.armorLabel.Text = this.armor.ToString();
-            this.armorTexture.Show();
-        }
-        else
-        {
-            this.armorTexture.Hide();
-        }
+        // if (this.armor > 0)
+        // {
+        //     this.armorLabel.Text = this.armor.ToString();
+        //     this.armorTexture.Show();
+        // }
+        // else
+        // {
+        //     this.armorTexture.Hide();
+        // }
+        
+        BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
+        view.UpdateStats();
     }
 
     public override void ShowTargeted(bool show)

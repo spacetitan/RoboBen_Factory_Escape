@@ -43,7 +43,22 @@ public partial class CardPile : Resource
 
     public void RemoveCard(CardData card)
     {
-        this.cards.Remove(card);
+        CardData data = null;
+
+        foreach (CardData cardData in cards)
+        {
+            if (cardData.id == card.id)
+            {
+                data = cardData;
+                break;
+            }
+        }
+
+        if (data != null)
+        {
+            this.cards.Remove(data);
+        }
+        
         EmitSignal(SignalName.CardPileSizeChanged);
     }
 

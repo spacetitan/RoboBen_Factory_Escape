@@ -25,7 +25,7 @@ public partial class ResourceManager : Node
 	public PackedScene enemyScene = null;
 
 	public enum IntentID { NONE, }
-	public Dictionary<StringName, Texture2D> intentIcons = new Dictionary<StringName, Texture2D>();
+	public Dictionary<EnemyAction.IntentType, Texture2D> intentIcons = new Dictionary<EnemyAction.IntentType, Texture2D>();
 	
 	public Dictionary<BattleData.BattleID, BattleData> battles = new Dictionary<BattleData.BattleID,BattleData>();
 	
@@ -41,7 +41,7 @@ public partial class ResourceManager : Node
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
 	public Dictionary<RoomData.Type, Texture2D> runGlowIcons = new Dictionary<RoomData.Type, Texture2D>();
 	
-	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, }
+	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, SHIELD}
 	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
@@ -73,10 +73,12 @@ public partial class ResourceManager : Node
 			this.enemies.Add(data.id, data);
 		}
 		
-		this.intentIcons = new Dictionary<StringName, Texture2D>()
+		this.intentIcons = new Dictionary<EnemyAction.IntentType, Texture2D>()
 		{
-			{"attack", ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/sword-icon.png")},
-			{"armor", ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/armor-icon.png")},
+			{EnemyAction.IntentType.ATTACK, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/sword-icon.png")},
+			{EnemyAction.IntentType.GUARD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/armor-icon.png")},
+			{EnemyAction.IntentType.ATT_GUARD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/shieldBash.png")},
+			{EnemyAction.IntentType.POISON_ATT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Cards/poisonattack.png")},
 		};
 		this.enemyScene = ResourceLoader.Load<PackedScene>("res://Scenes/Battle/enemy.tscn");
 
@@ -143,6 +145,7 @@ public partial class ResourceManager : Node
 			{HUDIconID.MAP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/map-icon.png")},
 			{HUDIconID.POWERUP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/powerup-icon.png")},
 			{HUDIconID.CARD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/CardPile/card-icon.png")},
+			{HUDIconID.SHIELD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/shield-icon.png")},
 		};
 
 		this.shaders = new Dictionary<StringName, Material>()

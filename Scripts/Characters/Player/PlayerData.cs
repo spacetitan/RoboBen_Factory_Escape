@@ -6,7 +6,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PlayerData : CharacterData
 {
-    [Export] public int handSize = 1;
+    [Export] public int handSize { get; private set; } = 1;
     
     [Export] public Ability ability { get; private set; }
     [Export] public PowerUp starterPowerUp { get; private set; }

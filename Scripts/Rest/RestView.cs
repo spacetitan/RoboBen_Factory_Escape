@@ -54,7 +54,8 @@ public partial class RestView : UIView
         this.removeCardButton.button.Pressed += () =>
         {
             RunManager.instance.currentRun.TakeMoney(10);
-            //UIManager.instance.popUpModel.OpenDeckPopUp();
+            UIManager.instance.popUpModel.OpenDeckPopUp(RunManager.instance.currentRun.playerDeck, "Remove a card", true);
+            this.removeCardButton.button.Disabled = true;
             OnButtonPressed();
         };
     }
@@ -89,13 +90,7 @@ public partial class RestView : UIView
         hud.UpdateData();
         
         this.itemPanel.UpdateData();
-        if (RunManager.instance.currentRun.gold > 10)
-        {
-            this.fullHealButton.button.Disabled = false;
-            this.reRollButton.button.Disabled = false;
-            this.removeCardButton.button.Disabled = false;
-        }
-        else
+        if (RunManager.instance.currentRun.gold < 10)
         {
             this.fullHealButton.button.Disabled = true;
             this.reRollButton.button.Disabled = true;

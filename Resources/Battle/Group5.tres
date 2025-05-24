@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BattleData" load_steps=4 format=3 uid="uid://cufreukn8iya0"]
+
+[ext_resource type="Resource" uid="uid://o66oc0d71wet" path="res://Resources/Enemies/Tortigrubb.tres" id="1_f0ypn"]
+[ext_resource type="Script" uid="uid://d0k3xhyyekgcl" path="res://Scripts/Battle/BattleData.cs" id="1_nx584"]
+[ext_resource type="Resource" uid="uid://bxe10bjl0ijk5" path="res://Resources/Enemies/Grubbfly.tres" id="2_nbrjk"]
+
+[resource]
+script = ExtResource("1_nx584")
+battleID = 5
+enemyList = Array[Object]([ExtResource("1_f0ypn"), ExtResource("2_nbrjk"), ExtResource("2_nbrjk")])
+tier = 1
+weight = 1.0
+money = 12
+metadata/_custom_type_script = "uid://d0k3xhyyekgcl"

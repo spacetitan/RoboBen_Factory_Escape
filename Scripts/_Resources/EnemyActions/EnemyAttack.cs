@@ -15,7 +15,14 @@ public partial class EnemyAttack : EnemyAction
 	
 	public override string GetIntent()
 	{
-		return this.value.ToString() + " X " + numOfAtt.ToString();
+		if (this.numOfAtt > 1)
+		{
+			return this.owner.GetModifiedAttack(this.value).ToString() + " X " + numOfAtt.ToString();	
+		}
+		else
+		{
+			return this.owner.GetModifiedAttack(this.value).ToString();
+		}
 	}
 
 	public override bool IsPerformable()

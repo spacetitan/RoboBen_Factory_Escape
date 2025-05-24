@@ -49,6 +49,9 @@ public partial class StartPowerUpState : TurnOrderState
         }
         else if (character is Enemy)
         {
+            Enemy enemy = character as Enemy;
+            enemy.StartOfTurnReset();
+            
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.START_EFFECTS);
         }
         else
@@ -153,6 +156,9 @@ public partial class EndPowerUpState : TurnOrderState
         }
         else if (character is Enemy)
         {
+            Enemy enemy = character as Enemy;
+            enemy.UpdateEnemy();
+            enemy.UpdateUI();
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.END_EFFECTS);
         }
         else

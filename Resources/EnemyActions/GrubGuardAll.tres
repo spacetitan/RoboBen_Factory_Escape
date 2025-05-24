@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyGuardAll" load_steps=2 format=3 uid="uid://b6868vleq6udv"]
+
+[ext_resource type="Script" uid="uid://dy4ar05nw6f7o" path="res://Scripts/_Resources/EnemyActions/EnemyGuardAll.cs" id="1_68876"]
+
+[resource]
+script = ExtResource("1_68876")
+type = 2
+intent = 2
+value = 1
+chanceWeight = 1
+metadata/_custom_type_script = "uid://dy4ar05nw6f7o"

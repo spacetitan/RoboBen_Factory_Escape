@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyPoisonAtt" load_steps=2 format=3 uid="uid://ctt8t6mahl2go"]
+
+[ext_resource type="Script" uid="uid://by211t5mnbuw8" path="res://Scripts/_Resources/EnemyActions/EnemyPoisonAtt.cs" id="1_lbur1"]
+
+[resource]
+script = ExtResource("1_lbur1")
+numOfAtt = 2
+hpThreshold = 5
+stacks = 1
+type = 1
+intent = 4
+value = 1
+chanceWeight = 1
+metadata/_custom_type_script = "uid://by211t5mnbuw8"

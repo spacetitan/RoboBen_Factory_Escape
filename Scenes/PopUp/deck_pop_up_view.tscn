@@ -18,13 +18,23 @@ theme_override_styles/panel = ExtResource("2_hoqbe")
 script = ExtResource("1_yhi22")
 ID = 13
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.9
+anchor_bottom = 0.775
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TitlePanel" type="Panel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
+anchor_left = 0.35
 anchor_top = -0.05
-anchor_right = 0.6
+anchor_right = 0.65
 anchor_bottom = 0.1
 grow_horizontal = 2
 grow_vertical = 2
@@ -52,6 +62,10 @@ anchor_left = 0.1
 anchor_top = 0.15
 anchor_right = 0.9
 anchor_bottom = 0.775
+offset_left = 4.39999
+offset_top = 4.39999
+offset_right = -3.3999
+offset_bottom = -2.59998
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -61,7 +75,10 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 5
 
 [node name="CardContainer" type="GridContainer" parent="CardScrollContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -70,7 +87,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 30
-columns = 6
+columns = 5
 
 [node name="CloseButton" parent="." instance=ExtResource("3_qg6ux")]
 unique_name_in_owner = true

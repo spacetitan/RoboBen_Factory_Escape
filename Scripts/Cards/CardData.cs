@@ -14,11 +14,11 @@ public partial class CardData : Resource
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE};
 
-    [Export] public CardID id = CardID.NONE;
+    [Export] public CardID id { get; private set; } = CardID.NONE;
     [Export] public string cardName { get; private set; } = "";
     [Export(PropertyHint.MultilineText)] public string cardDesc { get; private set; } = "";
     
-    [Export] public Texture2D Texture = null;
+    [Export] public Texture2D Texture { get; private set; } = null;
     [Export] public AudioStream playSFX { get; private set;}
     [Export] public Rarity rarity { get; private set; } = Rarity.NONE;
     [Export] public Character.TargetType targetType { get; private set; } = Character.TargetType.NONE;

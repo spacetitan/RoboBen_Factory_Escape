@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStunAtt" load_steps=2 format=3 uid="uid://b6qdgcyyhxp14"]
+
+[ext_resource type="Script" uid="uid://evomm8v7cdkx" path="res://Scripts/_Resources/EnemyActions/EnemyStunAtt.cs" id="1_j0qd8"]
+
+[resource]
+script = ExtResource("1_j0qd8")
+numOfAtt = 1
+hpThreshold = 0
+stacks = 1
+type = 2
+intent = 1
+value = 0
+chanceWeight = 0
+metadata/_custom_type_script = "uid://evomm8v7cdkx"

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_ymcw2")
-battleID = 4
+battleID = 9
 enemyList = Array[Object]([ExtResource("1_fhro4")])
 tier = 2
 weight = 1.0

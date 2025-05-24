@@ -6,12 +6,13 @@ public partial class EnemyAction : Resource
     [Signal] public delegate void OnActionCompleteEventHandler();
 
     public enum ActionType { NONE, CONDITIONAL, CHANCE };
+    public enum IntentType { NONE, ATTACK, GUARD, ATT_GUARD, POISON_ATT, MUSCLE}
     
     //[Export] public EnemyIntent intent;
-    [Export] public ActionType type;
+    [Export] public ActionType type = ActionType.NONE;
+    [Export] public IntentType intent = IntentType.NONE;
     [Export] public int value = 0;
     [Export(PropertyHint.Range, "0,10")] public int chanceWeight = 0;
-    [Export] public StringName intentKey = "";
     [Export] public AudioStream sound;
     
     public float accumulatedweight = 0;
@@ -79,7 +80,7 @@ public partial class EnemyAction : Resource
         
         instance.type = this.type;
         instance.chanceWeight = this.chanceWeight;
-        instance.intentKey = this.intentKey;
+        instance.intent = this.intent;
         instance.sound = this.sound;
         instance.accumulatedweight = this.accumulatedweight;
 

@@ -27,11 +27,11 @@ public partial class PopUpModel : UIModel
         popUpView.OpenPopUp(data);
     }
 
-    public void OpenDeckPopUp(CardPile deck, string title)
+    public void OpenDeckPopUp(CardPile deck, string title, bool removeCard = false)
     {
         this.ShowModel();
         DeckPopUpView popUpView = this.views[ViewID.DECK] as DeckPopUpView;
-        popUpView.OpenPopUp(deck, title);
+        popUpView.OpenPopUp(deck, title, removeCard);
     }
 
     public void OpenBattleWinView(int money)

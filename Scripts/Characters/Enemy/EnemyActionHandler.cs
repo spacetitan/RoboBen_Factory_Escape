@@ -87,7 +87,7 @@ public partial class EnemyActionHandler : Node
 		{
 			action = enemyAction;
 
-			if((action == null) || action.type != EnemyAction.ActionType.CONDITIONAL)
+			if(action.type != EnemyAction.ActionType.CONDITIONAL)
 			{
 				continue;
 			}

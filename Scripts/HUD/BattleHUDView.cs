@@ -75,6 +75,8 @@ public partial class BattleHUDView : UIView
        
        this.genPanel = this.GetNode<Panel>("%GenPanel");
        this.energyLabel = this.genPanel.GetNode<RichTextLabel>("%EnergyLabel");
+       
+       this.statusContainer = this.GetNode<GridContainer>("%StatusContainer");
     }
     
     public void ConnectEventSignals()
@@ -113,7 +115,16 @@ public partial class BattleHUDView : UIView
 
     public void UpdateStats()
     {
-        this.healthUI.SetData(this.player.playerData);
+        if (this.player.armor > 0)
+        {
+            this.healthUI.SetData(this.player, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.SHIELD]);
+        }
+        else
+        {
+            this.healthUI.SetData(this.player);
+        }
+
+        
         this.abilityInfoPanel.SetData(this.player.playerData);
         this.energyLabel.Text = this.player.energy.ToString();
     }

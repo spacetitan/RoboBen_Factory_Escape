@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyAttackGuard" load_steps=2 format=3 uid="uid://8j27b4mjutr2"]
+
+[ext_resource type="Script" uid="uid://wx76abjprliq" path="res://Scripts/_Resources/EnemyActions/EnemyAttackGuard.cs" id="1_juowk"]
+
+[resource]
+script = ExtResource("1_juowk")
+guardValue = 3
+numOfAtt = 1
+hpThreshold = 7
+type = 2
+intent = 3
+value = 2
+chanceWeight = 1
+metadata/_custom_type_script = "uid://wx76abjprliq"

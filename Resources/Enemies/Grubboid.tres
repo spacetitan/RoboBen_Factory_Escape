@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://dwf7hn3325ff3"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://dwf7hn3325ff3"]
 
 [ext_resource type="Resource" uid="uid://uksuhsmohk0" path="res://Resources/EnemyActions/GrubAttack.tres" id="1_e11p7"]
 [ext_resource type="Script" uid="uid://b28o7rfd5su00" path="res://Scripts/Characters/Enemy/EnemyData.cs" id="1_fpwih"]
+[ext_resource type="Resource" uid="uid://bpjqtgma7xgdu" path="res://Resources/EnemyActions/GrubGuard.tres" id="2_ny8hs"]
 [ext_resource type="Texture2D" uid="uid://blwklf0qw7wkv" path="res://Art/Sprites/Enemies/grubboid.png" id="2_ooq2e"]
+[ext_resource type="Resource" uid="uid://ddpknaq02010y" path="res://Resources/EnemyActions/GrubSuper.tres" id="3_71t8s"]
 
 [resource]
 script = ExtResource("1_fpwih")
-actions = Array[Resource]([ExtResource("1_e11p7")])
+actions = Array[Resource]([ExtResource("1_e11p7"), ExtResource("2_ny8hs"), ExtResource("3_71t8s")])
 attack = 2
 defense = 2
 id = 2

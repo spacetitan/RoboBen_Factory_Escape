@@ -6,16 +6,16 @@ public partial class EventData : Resource
 {
     public enum EventID { NONE, MOVE_COMBAT, MOVE_TREASURE, MOVE_REST, MOVE_SHOP, WATERFALL};
     
-    [Export] public EventID id = EventID.NONE;
-    [Export] public int tier = 0;
-    [Export] public float weight = 0.0f;
-    [Export] public string title = "";
-    [Export] public string body = "";
-    [Export] public Texture2D texture = null;
-    [Export] public bool canRepeat = false;
-    [Export] public bool isTrapped = false;
+    [Export] public EventID id { get; private set; } = EventID.NONE;
+    [Export] public int tier { get; private set; } = 0;
+    [Export] public float weight { get; private set; } = 0.0f;
+    [Export] public string title { get; private set; } = "";
+    [Export] public string body { get; private set; } = "";
+    [Export] public Texture2D texture { get; private set; } = null;
+    [Export] public bool canRepeat { get; private set; } = false;
+    [Export] public bool isTrapped { get; private set; } = false;
     
-    public List<EventChoice> choices = new List<EventChoice>();
+    public List<EventChoice> choices { get; private set; } = new List<EventChoice>();
     
     public float accumilatedWeight = 0.0f;
     

@@ -9,18 +9,23 @@ public partial class _CLASS_ : EnemyAction
     {
         base.InitializeAction(enemy);
     }
+    
+    public override string GetIntent()
+    {
+        return this.value.ToString();
+    }
 
     public override bool IsPerformable()
     {
         return base.IsPerformable();
     }
 
-    public override void PerformAction(Character target)
+    public override void PerformAction(Action callback = null)
     {
         //GD.Print(enemy.data.name + " attacks!");
-        if(enemy == null || target == null || alreadyUsed)
+        if(this.owner == null || this.target == null)
         {
-            if(enemy == null)
+            if(this.owner == null)
             {
                 GD.Print("Enemy is null");
             }
@@ -35,11 +40,12 @@ public partial class _CLASS_ : EnemyAction
             return;
         }
 
-        if(this.type == EnemyActionType.CONDITIONAL)
+        if(this.type == ActionType.CONDITIONAL)
         {
-            alreadyUsed = true;
+            isUsed = true;
         }
         
+        callback?.Invoke();
         base.PerformAction();
     }
 }
