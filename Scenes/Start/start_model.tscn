@@ -55,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 48
 text = "RoboBen: Factory Escape!"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -186,7 +187,7 @@ grow_vertical = 2
 [node name="InfoContainer" type="HBoxContainer" parent="PlayView/PlayInfoPanel"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -212,4 +213,5 @@ anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.95
 anchor_bottom = 0.95
+theme_override_constants/separation = 10
 alignment = 1

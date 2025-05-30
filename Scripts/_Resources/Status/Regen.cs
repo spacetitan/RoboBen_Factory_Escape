@@ -14,8 +14,6 @@ public partial class Regen : Status
 	{
 		HealEffect healEffect = new HealEffect(this.stacks, this.sfx);
 		healEffect.Execute(target as Character);
-
-		this.SetStacks(this.stacks-1);
 		base.ApplyStatus(target);
 	}
 }

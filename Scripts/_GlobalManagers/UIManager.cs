@@ -21,6 +21,7 @@ public partial class UIManager : Node
 	public UIModel lastModel { get; private set; } = null;
 	public PopUpModel popUpModel { get; private set; } = null;
 	public VFXModel vfxModel { get; private set; } = null;
+	public TooltipModel tooltipModel { get; private set; } = null;
 	public BackgroundModel backgroundModel { get; private set; } = null;
 	public HUDModel hudModel { get; private set; } = null;
 	
@@ -64,6 +65,10 @@ public partial class UIManager : Node
 						case HUDModel:
 							this.hudModel = model as HUDModel;
 							break;
+						
+						case TooltipModel:
+							this.tooltipModel = model as TooltipModel;
+							break;
 					}
 				}
 			}
@@ -90,18 +95,21 @@ public partial class UIManager : Node
 				this.currentModel.HideModel();
 				this.lastModel = this.currentModel;
 			}
-
+			
 			this.currentModel = this.models[panelState];
 			this.backgroundModel.ChangeBackgroundTexture(panelState);
 			this.hudModel.ChangeHUDTo(panelState);
-
+		
 			if(tween != null && tween.IsRunning())
 			{
-				tween.Finished += () => { this.currentModel.ShowModel(); };
+				tween.Finished += () =>
+				{
+					this.currentModel.ShowModel();
+				};
 			}
 			else
 			{
-				this.currentModel.ShowModel();
+					this.currentModel.ShowModel();
 			}
 		});
 	}

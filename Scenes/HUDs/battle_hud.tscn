@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://gh8ljiv7ps7k"]
+[gd_scene load_steps=20 format=3 uid="uid://gh8ljiv7ps7k"]
 
 [ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_y5i83"]
 [ext_resource type="Script" uid="uid://wsolebailkly" path="res://Scripts/HUD/BattleHUDView.cs" id="2_sxrd0"]
@@ -27,6 +27,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 4
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rjmy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emp6f"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
@@ -77,16 +79,54 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_261qm")
 
-[node name="PowerUpContainer" type="HBoxContainer" parent="TopPanel"]
-unique_name_in_owner = true
+[node name="Panel2" type="Panel" parent="TopPanel"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.01
+anchor_left = 0.05
 anchor_top = 0.1
-anchor_right = 0.65
+anchor_right = 0.62
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0rjmy")
+
+[node name="PowerUpScrollContainer" type="ScrollContainer" parent="TopPanel/Panel2"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="TopPanel/Panel2/PowerUpScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftButton" parent="TopPanel" instance=ExtResource("8_1bodp")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.15
+anchor_right = 0.045
+anchor_bottom = 0.85
+offset_right = 1.99999
+
+[node name="RightButton" parent="TopPanel" instance=ExtResource("8_1bodp")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.15
+anchor_right = 0.65
+anchor_bottom = 0.85
+offset_right = 2.0
 
 [node name="MoneyDisplay" parent="TopPanel" instance=ExtResource("3_tbp6t")]
 unique_name_in_owner = true
@@ -255,7 +295,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 54
 text = "0"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

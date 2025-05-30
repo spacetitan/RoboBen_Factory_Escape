@@ -21,7 +21,7 @@ public partial class UIButton : Control
         this.label = uiContainer.GetNode<RichTextLabel>("ButtonLabel");
     }
 
-    public void SetData(string text, Texture2D texture = null)
+    public void SetData(string text, Texture2D texture = null, bool alignHeight = false)
     {
         if (text != null)
         {
@@ -34,6 +34,11 @@ public partial class UIButton : Control
             this.label.HorizontalAlignment = HorizontalAlignment.Left;
             this.texture.Texture = texture;
             this.texture.Show();
+        }
+
+        if (alignHeight)
+        {
+            this.texture.ExpandMode = TextureRect.ExpandModeEnum.FitHeightProportional;
         }
     }
 }

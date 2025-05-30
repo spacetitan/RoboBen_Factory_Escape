@@ -20,7 +20,15 @@ public partial class HeartBattery : PowerUp
 		{
 			model.player.Heal(this.value);
 		}
+		BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
+		view.UpdateStats();
+		
 		base.ActivatePowerUp();
+	}
+	
+	public override void DestroyPowerUp()
+	{
+		EventManager.instance.CardBurned -= ActivatePowerUp;
 	}
 }
 

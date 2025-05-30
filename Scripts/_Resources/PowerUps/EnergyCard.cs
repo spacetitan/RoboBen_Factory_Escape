@@ -26,5 +26,10 @@ public partial class EnergyCard : PowerUp
 		
 		base.ActivatePowerUp();
 	}
+
+	public override void DestroyPowerUp()
+	{
+		EventManager.instance.CardBurned -= ActivatePowerUp;
+	}
 }
 

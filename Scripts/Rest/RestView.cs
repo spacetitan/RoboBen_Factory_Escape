@@ -10,6 +10,8 @@ public partial class RestView : UIView
     private UIButton reRollButton = null;
     private UIButton removeCardButton = null;
     
+    public Vector2 playerSize { get; private set; } = Vector2.Zero;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -38,6 +40,7 @@ public partial class RestView : UIView
         this.itemPanel = this.GetNode<ShopItemPanel>("%ShopItemPanel");
         
         this.playerSpawn = this.GetNode<Control>("PlayerSpawn");
+        this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
         
         this.reRollButton = this.GetNode<UIButton>("%ReRollButton");
         this.reRollButton.SetData("Re-Roll - 10 money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
@@ -66,6 +69,7 @@ public partial class RestView : UIView
         player.GetSceneNodes();
         this.playerSpawn.AddChild(player);
         player.SetPlayerData(RunManager.instance.currentRun);
+        player.SetCustomMinimumSize(this.playerSize);
         
         this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT]);
 

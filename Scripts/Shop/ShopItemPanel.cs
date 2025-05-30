@@ -50,11 +50,7 @@ public partial class ShopItemPanel : UIView
 
     public void UpdateData()
     {
-        if (RunManager.instance.currentRun.gold >= this.cost)
-        {
-            this.buyButton.button.Disabled = false;
-        }
-        else
+        if (RunManager.instance.currentRun.gold < this.cost)
         {
             this.buyButton.button.Disabled = true;
         }

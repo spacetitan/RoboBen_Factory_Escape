@@ -41,7 +41,7 @@ public partial class ResourceManager : Node
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
 	public Dictionary<RoomData.Type, Texture2D> runGlowIcons = new Dictionary<RoomData.Type, Texture2D>();
 	
-	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, SHIELD}
+	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, SHIELD, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN}
 	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
@@ -126,6 +126,7 @@ public partial class ResourceManager : Node
 			{RoomData.Type.REST, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/rest-icon.png")},
 			{RoomData.Type.SHOP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/ShopIcon.png")},
 			{RoomData.Type.TREASURE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/TreasureCentered.png")},
+			{RoomData.Type.BOSS, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/bossIcon.png")},
 		};
 		
 		this.runGlowIcons = new Dictionary<RoomData.Type, Texture2D>()
@@ -135,6 +136,7 @@ public partial class ResourceManager : Node
 			{RoomData.Type.REST, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/restGlow.png")},
 			{RoomData.Type.SHOP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/shopHighlight.png")},
 			{RoomData.Type.TREASURE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/treasureCenteredHighlight.png")},
+			{RoomData.Type.BOSS, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/bossGlow.png")},
 		};
 
 		this.HUDIcons = new Dictionary<HUDIconID, Texture2D>()
@@ -146,6 +148,10 @@ public partial class ResourceManager : Node
 			{HUDIconID.POWERUP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/powerup-icon.png")},
 			{HUDIconID.CARD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/CardPile/card-icon.png")},
 			{HUDIconID.SHIELD, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/shield-icon.png")},
+			{HUDIconID.ARROW_DOWN, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_down.png")},
+			{HUDIconID.ARROW_LEFT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_left.png")},
+			{HUDIconID.ARROW_RIGHT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_right.png")},
+			{HUDIconID.ARROW_UP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_up.png")},
 		};
 
 		this.shaders = new Dictionary<StringName, Material>()

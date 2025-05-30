@@ -7,7 +7,7 @@ public partial class RoomPanel : Panel
     [Export] public TextureRect texture;
     [Export] public AnimationPlayer animationPlayer;
 
-    bool isAvailable = false;
+    public bool isAvailable { get; private set; } = false;
     private bool isDisplay = false;
     public RoomData data = null;
     
@@ -26,6 +26,7 @@ public partial class RoomPanel : Panel
     {
         if(inputEvent.IsActionPressed("LeftMouse") && this.isAvailable && !isDisplay)
         {
+            EmitSignal(SignalName.RoomSelected, this.data);
             this.data.selected = true;
             this.animationPlayer.Play("select");
             return;

@@ -80,7 +80,6 @@ public partial class Player : Character
 
             if (modifiedAmount > 0)
             {
-                UIManager.instance.vfxModel.OnPlayerHit();
                 EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDamaged);
             }
             
@@ -94,7 +93,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
             }
         };
     }
@@ -120,7 +119,7 @@ public partial class Player : Character
 
             if(playerData.health <=0)
             {
-                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+                EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDied);
             }
         };
     }
@@ -136,7 +135,6 @@ public partial class Player : Character
             this.playerData.SetHealth(Math.Clamp(this.playerData.health + modifiedAmount, 0, this.playerData.maxHealth));
             EmitSignal(SignalName.StatsChanged);
             EventManager.instance.EmitSignal(EventManager.SignalName.PlayerHealed);
-            GD.Print("Healed");
         }));
         tween.TweenInterval(0.17f); // this is the interval time
         tween.Finished += ()=>
@@ -311,7 +309,7 @@ public partial class Player : Character
             
 
             case TargetType.ALL:
-                foreach(Node node in tree.GetNodesInGroup("Enemies"))
+                foreach(Node node in tree.GetNodesInGroup("Enemy"))
                 {
                     temp.Add(node as Character);
                 }

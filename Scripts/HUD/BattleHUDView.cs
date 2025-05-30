@@ -6,7 +6,10 @@ public partial class BattleHUDView : UIView
     private StyleBox genPanelStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Battle/GenPanel.tres");
     private StyleBox genGlowPanelStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Battle/GenGlowPanel.tres");
     
+    private ScrollContainer scrollContainer = null;
     private HBoxContainer powerUpContainer = null;
+    private UIButton leftButton = null;
+    private UIButton rightButton = null;
     private UIDisplay moneyDisplay = null;
     private UIButton optionsButton = null;
     private UIButton quitButton = null;
@@ -29,6 +32,8 @@ public partial class BattleHUDView : UIView
     private Player player = null;
     private Action OnEndTurn = null;
     
+    private Vector2 powerUpSize = Vector2.Zero;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -38,7 +43,20 @@ public partial class BattleHUDView : UIView
     public void GetSceneNodes()
     {
        Panel topPanel = GetNode<Panel>("%TopPanel");
+       this.scrollContainer = topPanel.GetNode<ScrollContainer>("%PowerUpScrollContainer");
        this.powerUpContainer = topPanel.GetNode<HBoxContainer>("%PowerUpContainer");
+       this.leftButton = topPanel.GetNode<UIButton>("%LeftButton");
+       this.leftButton.button.Pressed += () =>
+       {
+           this.scrollContainer.SetHScroll(this.scrollContainer.GetHScroll() - (int)this.powerUpSize.X);
+       };
+       this.leftButton.button.Disabled = true;
+       this.rightButton = topPanel.GetNode<UIButton>("%RightButton");
+       this.rightButton.button.Pressed += () =>
+       {
+           this.scrollContainer.SetHScroll(this.scrollContainer.GetHScroll() + (int)this.powerUpSize.X);
+       };
+       this.rightButton.button.Disabled = true;
        this.moneyDisplay = topPanel.GetNode<UIDisplay>("%MoneyDisplay");
        this.optionsButton = topPanel.GetNode<UIButton>("%OptionsButton");
        this.optionsButton.SetData("Options");
@@ -127,6 +145,14 @@ public partial class BattleHUDView : UIView
         
         this.abilityInfoPanel.SetData(this.player.playerData);
         this.energyLabel.Text = this.player.energy.ToString();
+        
+        if (RunManager.instance.currentRun.powerUpHandler.powerUpUIs.Count > 8)
+        {
+            this.leftButton.button.Disabled = false;
+            this.leftButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_LEFT]);
+            this.rightButton.button.Disabled = false;
+            this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT]);
+        }
     }
 
     public void UpdateMoney()
@@ -149,6 +175,7 @@ public partial class BattleHUDView : UIView
         Run run = RunManager.instance.currentRun;
         run.powerUpHandler.SetContainer(this.powerUpContainer);
         run.powerUpHandler.SpawnAllUI();
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
     }
@@ -163,6 +190,11 @@ public partial class BattleHUDView : UIView
             this.player.deck.CardPileSizeChanged -= UpdateDeck;
             this.player.discard.CardPileSizeChanged -= UpdateDiscard;
             this.player = null;
+        }
+
+        foreach (Node child in this.statusContainer.GetChildren())
+        {
+            child.QueueFree();
         }
     }
 

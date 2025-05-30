@@ -11,6 +11,8 @@ public partial class ShopView : UIView
     
     private List<ShopItemPanel> itemPanels = new List<ShopItemPanel>();
     
+    public Vector2 playerSize { get; private set; } = Vector2.Zero;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -19,6 +21,7 @@ public partial class ShopView : UIView
     public void GetSceneNodes()
     {
         this.playerSpawn = this.GetNode<Control>("%PlayerSpawn");
+        this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
         this.reRollButton = this.GetNode<UIButton>("ReRollButton");
         this.reRollButton.button.Pressed += ReRoll;
         this.cardContainer = this.GetNode<HBoxContainer>("%CardContainer");
@@ -42,6 +45,7 @@ public partial class ShopView : UIView
         Player player = ResourceManager.instance.playerScene.Instantiate() as Player;
         player.GetSceneNodes();
         this.playerSpawn.AddChild(player);
+        player.SetCustomMinimumSize(this.playerSize);
         player.SetPlayerData(RunManager.instance.currentRun);
         
         List<PowerUp> powerUps = RunManager.instance.GetAvailablePowerUps(2);

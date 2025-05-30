@@ -15,6 +15,10 @@ public partial class PlayView : UIView
     private HBoxContainer pickerContainer = null;
     
     private PlayerData playerData = null;
+    
+    private Vector2 infoSize = Vector2.Zero;
+    private Vector2 pickerSize = Vector2.Zero;
+    
     public override void _Ready()
     {
         GetSceneNodes();
@@ -33,6 +37,7 @@ public partial class PlayView : UIView
         {
             this.playerData = null;
             ResetInfoPanels();
+            this.continueButton.button.SetPressed(false);
         };
         
         this.continueButton = this.GetNode<UIButton>("%ContinueButton");
@@ -45,6 +50,7 @@ public partial class PlayView : UIView
             this.playerData = null;
             int id = (int) GameManager.instance.GetLoadData("Player Data")["ID"];
             SetInfoPanels(ResourceManager.instance.characters[(CharacterData.CharacterID)id]);
+            this.startButton.button.SetPressed(false);
         };
         if (!GameManager.instance.HasLoadFile())
         {
@@ -77,8 +83,13 @@ public partial class PlayView : UIView
         };
         
         this.InfoContainer = this.GetNode<Panel>("%PlayInfoPanel").GetNode<HBoxContainer>("InfoContainer");
+        this.infoSize = new Vector2(this.InfoContainer.Size.X / 3.5f, this.InfoContainer.Size.Y * .8f);
+        //GD.Print(this.infoSize);
+        
         PlayInfoPanel infoPanel = this.playInfoPanelScene.Instantiate() as PlayInfoPanel;
         infoPanel.GetSceneNodes();
+        infoPanel.SetSize(this.infoSize);
+        infoPanel.SetCustomMinimumSize(this.infoSize);
         infoPanel.SetData(new PlayInfoPanel.InfoData()
         {
             texture = ResourceManager.instance.debugIcon,
@@ -91,6 +102,7 @@ public partial class PlayView : UIView
         
         infoPanel = this.playInfoPanelScene.Instantiate() as PlayInfoPanel;
         infoPanel.GetSceneNodes();
+        infoPanel.SetCustomMinimumSize(this.infoSize);
         infoPanel.SetData(new PlayInfoPanel.InfoData()
         {
             texture = ResourceManager.instance.debugIcon,
@@ -103,6 +115,7 @@ public partial class PlayView : UIView
         
         infoPanel = this.playInfoPanelScene.Instantiate() as PlayInfoPanel;
         infoPanel.GetSceneNodes();
+        infoPanel.SetCustomMinimumSize(this.infoSize);
         infoPanel.SetData(new PlayInfoPanel.InfoData()
         {
             texture = ResourceManager.instance.debugIcon,
@@ -114,11 +127,13 @@ public partial class PlayView : UIView
         this.infoPanels.Add(infoPanel);
         
         this.pickerContainer = this.GetNode<Panel>("%CharPickerPanel").GetNode<HBoxContainer>("%PickerContainer");
+        this.pickerSize = new Vector2(this.pickerContainer.Size.X / 4, this.pickerContainer.Size.X / 4);
         foreach (KeyValuePair<CharacterData.CharacterID, PlayerData> kvp in ResourceManager.instance.characters)
         {
             CharPickerPanel pickerPanel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
             pickerPanel.GetSceneNodes();
             pickerPanel.SetData(kvp.Value);
+            pickerPanel.SetCustomMinimumSize(this.pickerSize);
             pickerPanel.pickerButton.Pressed += () =>
             {
                 SetInfoPanels(kvp.Value);

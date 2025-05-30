@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deh2pldkcqf23"]
+[gd_scene load_steps=11 format=3 uid="uid://deh2pldkcqf23"]
 
 [ext_resource type="Theme" uid="uid://s7iy3xcd85v7" path="res://Themes/HUD/HUDTheme.tres" id="1_f4jiy"]
 [ext_resource type="Script" uid="uid://lruaxvlxp0ga" path="res://Scripts/HUD/RunHUDView.cs" id="1_huvjm"]
@@ -25,6 +25,9 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 4
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgahr"]
+bg_color = Color(0.6, 0.6, 0.6, 0.00392157)
 
 [node name="RunHUDView" type="Control"]
 layout_mode = 3
@@ -146,16 +149,56 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xce7t")
 
-[node name="PowerUpContainer" type="GridContainer" parent="RightPanel"]
+[node name="UpButton" parent="RightPanel" instance=ExtResource("6_hdixu")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.075
+anchor_right = 0.85
+anchor_bottom = 0.125
+offset_left = -4.95911e-05
+offset_right = -4.57764e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="RightPanel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.05
+anchor_top = 0.15
 anchor_right = 0.9
-anchor_bottom = 0.725
-offset_left = 4.76837e-05
-offset_right = 3.05176e-05
+anchor_bottom = 0.625
+theme_override_styles/panel = SubResource("StyleBoxFlat_xgahr")
+
+[node name="PowerUpScrollContainer" type="ScrollContainer" parent="RightPanel/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="PowerUpContainer" type="GridContainer" parent="RightPanel/Panel/PowerUpScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+columns = 2
+
+[node name="DownButton" parent="RightPanel" instance=ExtResource("6_hdixu")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.65
+anchor_right = 0.85
+anchor_bottom = 0.7
+offset_left = -4.95911e-05
+offset_right = -4.57764e-05
 grow_horizontal = 2
 grow_vertical = 2
 

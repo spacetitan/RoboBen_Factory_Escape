@@ -9,6 +9,8 @@ public partial class EventModel : UIModel
     public TextureRect eventTexture = null;
     public Control playerSpawn = null;
     public EventData eventData { get; private set; } = null;
+    
+    public Vector2 playerSize { get; private set; } = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -22,6 +24,7 @@ public partial class EventModel : UIModel
         this.bodyLabel = panel.GetNode<RichTextLabel>("%BodyLabel");
         this.eventTexture = this.GetNode<TextureRect>("%EventTexture");
         this.playerSpawn = this.GetNode<Control>("%PlayerSpawn");
+        this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
         this.choicesContainer = this.GetNode<VBoxContainer>("%ChoicesContainer");
     }
 
@@ -60,6 +63,7 @@ public partial class EventModel : UIModel
         Player player = ResourceManager.instance.playerScene.Instantiate() as Player;
         player.GetSceneNodes();
         playerSpawn.AddChild(player);
+        player.SetCustomMinimumSize(this.playerSize);
         player.SetPlayerData(RunManager.instance.currentRun);
     }
     

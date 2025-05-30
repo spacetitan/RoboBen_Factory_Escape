@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GoldCrown" load_steps=3 format=3 uid="uid://bhgh7rk05t5sa"]
 
 [ext_resource type="Script" uid="uid://yi4fj6wc3c1n" path="res://Scripts/_Resources/PowerUps/GoldCrown.cs" id="1_6wueg"]
-[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_ghl6h"]
+[ext_resource type="Texture2D" uid="uid://dqihjbdplle8e" path="res://Art/Sprites/PowerUps/goldCrown.png" id="2_ghl6h"]
 
 [resource]
 script = ExtResource("1_6wueg")

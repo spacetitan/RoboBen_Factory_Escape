@@ -11,6 +11,7 @@ public partial class TreasureView : UIView
     [Export] private Texture2D treasureOpen = null;
     
     private bool isOpened = false;
+    public Vector2 playerSize { get; private set; } = Vector2.Zero;
     
     public override void _Ready()
     {
@@ -21,6 +22,7 @@ public partial class TreasureView : UIView
     {
         this.treasureTexture = this.GetNode<TextureRect>("%TreasureTexture");
         this.playerSpawn = this.GetNode<Control>("PlayerSpawn");
+        this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
     }
 
     public override void Enter()
@@ -31,6 +33,7 @@ public partial class TreasureView : UIView
         Player player = ResourceManager.instance.playerScene.Instantiate() as Player;
         player.GetSceneNodes();
         this.playerSpawn.AddChild(player);
+        player.SetCustomMinimumSize(this.playerSize);
         player.SetPlayerData(RunManager.instance.currentRun);
     }
     

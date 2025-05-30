@@ -11,5 +11,6 @@ description = "Deals damage at the start of combat"
 texture = ExtResource("2_3080a")
 rarity = 3
 activateType = 1
-value = 0
+showValue = false
+value = 4
 metadata/_custom_type_script = "uid://ou22cs101vmg"

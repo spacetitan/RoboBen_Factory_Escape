@@ -29,6 +29,27 @@ theme = ExtResource("1_gaoi1")
 script = ExtResource("1_cn7no")
 state = 7
 
+[node name="PlayerSpawn" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.325
+anchor_right = 0.35
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EventTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.325
+anchor_right = 0.85
+anchor_bottom = 0.725
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TextPanel" type="Panel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -63,7 +84,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 42
 text = "Title"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -79,31 +99,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 24
 text = "Body"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PlayerSpawn" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchor_left = 0.15
-anchor_top = 0.325
-anchor_right = 0.35
-anchor_bottom = 0.725
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="EventTexture" type="TextureRect" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.65
-anchor_top = 0.325
-anchor_right = 0.85
-anchor_bottom = 0.725
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ChoicesContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

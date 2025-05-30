@@ -29,5 +29,10 @@ public partial class MuscleCard : PowerUp
 		}
 		base.ActivatePowerUp();
 	}
+	
+	public override void DestroyPowerUp()
+	{
+		EventManager.instance.CardPlayed -= ActivatePowerUp;
+	}
 }
 

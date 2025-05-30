@@ -31,4 +31,10 @@ public partial class SecondWind : PowerUp
     {
         this.ready = true;
     }
+
+    public override void DestroyPowerUp()
+    {
+        EventManager.instance.PlayerHealed -= ActivatePowerUp;
+        EventManager.instance.PlayerTurnStarted -= ReadyAbility;
+    }
 }

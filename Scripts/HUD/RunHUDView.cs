@@ -11,9 +11,15 @@ public partial class RunHUDView : UIView
     private UIDisplay reRollDisplay = null;
     private DeckButton deckButton = null;
 
+    private ScrollContainer scrollContainer = null;
     private GridContainer powerUpContainer = null;
+    private UIButton upButton = null;
+    private UIButton downButton = null;
+    
     private UIButton optionsButton = null;
     private UIButton quitButton = null;
+    
+    private Vector2 powerUpSize = Vector2.Zero;
     
     public override void _Ready()
     {
@@ -26,7 +32,20 @@ public partial class RunHUDView : UIView
         this.deckButton = leftPanel.GetNode<DeckButton>("%DeckButton");
         
         Panel rightPanel = GetNode<Panel>("%RightPanel");
+        this.scrollContainer = rightPanel.GetNode<ScrollContainer>("%PowerUpScrollContainer");
         this.powerUpContainer = rightPanel.GetNode<GridContainer>("%PowerUpContainer");
+        this.upButton = rightPanel.GetNode<UIButton>("%UpButton");
+        this.upButton.button.Pressed += () =>
+        {
+            this.scrollContainer.SetVScroll(this.scrollContainer.GetVScroll() - (int)this.powerUpSize.Y);
+        };
+        this.upButton.button.Disabled = true;
+        this.downButton = rightPanel.GetNode<UIButton>("%DownButton");
+        this.downButton.button.Pressed += () =>
+        {
+            this.scrollContainer.SetVScroll(this.scrollContainer.GetVScroll() + (int)this.powerUpSize.Y);
+        };
+        this.downButton.button.Disabled = true;
         this.optionsButton = rightPanel.GetNode<UIButton>("%OptionsButton");
         this.optionsButton.SetData("Options");
         this.optionsButton.button.Pressed += () =>
@@ -51,8 +70,18 @@ public partial class RunHUDView : UIView
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         this.deckButton.SetData(run.playerDeck);
+        
         run.powerUpHandler.SetContainer(this.powerUpContainer);
         run.powerUpHandler.SpawnAllUI();
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
+
+        if (run.powerUpHandler.powerUpUIs.Count > 8)
+        {
+            this.upButton.button.Disabled = false;
+            this.upButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_UP]);
+            this.downButton.button.Disabled = false;
+            this.downButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_DOWN]);
+        }
     }
 
     public override void Exit()

@@ -16,6 +16,7 @@ public partial class VFXModel : UIModel
         }
         
         GetSceneNodes();
+        EventManager.instance.PlayerDamaged += OnPlayerHit;
     }
     
     private void GetSceneNodes()
@@ -40,6 +41,7 @@ public partial class VFXModel : UIModel
     public void OnPlayerHit()
     {
         VignetteView view = this.views[ViewID.VIGNETTE] as VignetteView;
+        this.ShowModel();
         view.OnPlayerHit();
     }
 

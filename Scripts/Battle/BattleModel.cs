@@ -14,6 +14,7 @@ public partial class BattleModel : UIModel
     public override void _Ready()
     {
         ConnectEventSignals();
+        this.turnOrderStateMachine = new TurnOrderStateMachine();
     }
 
     public void ConnectEventSignals()
@@ -30,8 +31,6 @@ public partial class BattleModel : UIModel
 
     public override void Enter()
     {
-        this.turnOrderStateMachine = new TurnOrderStateMachine();
-        
         BattleView view = this.views[ViewID.BATTLE] as BattleView;
         view.SetData(battleData);
         this.player = view.player;
@@ -91,6 +90,7 @@ public partial class BattleModel : UIModel
 
     public void OnEnemyDeath(Enemy enemy)
     {
+        RunManager.instance.currentRun.stats.enemySlain++;
         if (this.activeEnemies.Contains(enemy))
         {
             this.activeEnemies.Remove(enemy);

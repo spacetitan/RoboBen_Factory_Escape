@@ -75,20 +75,22 @@ public partial class StatusUI : Panel
     
     public void OnMouseEntered()
     {
-        if (this.isInv)
-        {
-            this.infoPanelInv.ShowView();
-        }
-        else
-        {
-            this.infoPanel.ShowView();
-        }
+        UIManager.instance.tooltipModel.OpenTooltip(this.status);
+        // if (this.isInv)
+        // {
+        //     this.infoPanelInv.ShowView();
+        // }
+        // else
+        // {
+        //     this.infoPanel.ShowView();
+        // }
     }
 
     public void OnMouseExited()
     {
-        this.infoPanel.HideView();
-        this.infoPanelInv.HideView();
+        UIManager.instance.tooltipModel.CloseTooltip();
+        // this.infoPanel.HideView();
+        // this.infoPanelInv.HideView();
     }
 
     public void DestroyUI()

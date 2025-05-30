@@ -11,9 +11,11 @@ public partial class GameOverModel : UIModel
     private RichTextLabel summaryLabel = null;
     private ScrollContainer scrollContainer = null;
     private GridContainer gridContainer = null;
+    private UIButton upButton = null;
+    private UIButton downButton = null;
     private UIButton closeButton = null;
     
-    private Vector2 panelSize = Vector2.Zero;
+    private Vector2 powerUpSize = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -33,6 +35,18 @@ public partial class GameOverModel : UIModel
         };
         this.summaryLabel = this.GetNode<RichTextLabel>("%SummaryLabel");
         this.scrollContainer = this.GetNode<ScrollContainer>("%SumScrollContainer");
+        this.upButton = this.GetNode<UIButton>("%UpButton");
+        this.upButton.button.Pressed += () =>
+        {
+            this.scrollContainer.SetVScroll(this.scrollContainer.GetVScroll() - (int)this.powerUpSize.Y);
+        };
+        this.upButton.button.Disabled = true;
+        this.downButton = this.GetNode<UIButton>("%DownButton");
+        this.downButton.button.Pressed += () =>
+        {
+            this.scrollContainer.SetVScroll(this.scrollContainer.GetVScroll() + (int)this.powerUpSize.Y);
+        };
+        this.downButton.button.Disabled = true;
         this.gridContainer = this.GetNode<GridContainer>("%SumGridContainer");
         this.closeButton = this.GetNode<UIButton>("%CloseButton");
         this.closeButton.SetData("Back to Title menu ->");
@@ -53,10 +67,18 @@ public partial class GameOverModel : UIModel
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.deckButton.SetData("Deck", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.CARD]);
 
-        this.summaryLabel.Text = "Summary";
+        this.summaryLabel.Text = "Enemies slain: " + run.stats.enemySlain;
+        this.summaryLabel.Text += "\nMoney spent: " + run.stats.moneySpent;
+        this.summaryLabel.Text += "\nRe-Rolls used: " + run.stats.reRollsUsed; 
 
         run.powerUpHandler.SetContainer(this.gridContainer);
         run.powerUpHandler.SpawnAllUI();
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
+        
+        RunManager.instance.ClearRun();
+        
+        RunModel runModel = UIManager.instance.models[UIManager.UIState.RUN] as RunModel;
+        runModel.ClearRoomList();
     }
 
     public override void Exit()

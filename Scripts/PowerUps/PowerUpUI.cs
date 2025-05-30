@@ -51,19 +51,21 @@ public partial class PowerUpUI : Control
     
     void OnMouseEntered()
     {
-        if (this.isInv)
-        {
-            this.powerUpInfoInv.ShowView();
-        }
-        else
-        {
-            this.powerUpInfo.ShowView();
-        }
+        UIManager.instance.tooltipModel.OpenTooltip(this.powerUp);
+        // if (this.isInv)
+        // {
+        //     this.powerUpInfoInv.ShowView();
+        // }
+        // else
+        // {
+        //     this.powerUpInfo.ShowView();
+        // }
     }
 
     void OnMouseExited()
     {
-        this.powerUpInfo.HideView();
-        this.powerUpInfoInv.HideView();
+        UIManager.instance.tooltipModel.CloseTooltip();
+        // this.powerUpInfo.HideView();
+        // this.powerUpInfoInv.HideView();
     }
 }

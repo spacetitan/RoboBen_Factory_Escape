@@ -5,7 +5,7 @@ using Godot.Collections;
 
 public partial class RoomData : Node
 {
-    public enum Type{ NONE, COMBAT, SHOP, REST, EVENT, TREASURE };
+    public enum Type{ NONE, COMBAT, SHOP, REST, EVENT, TREASURE, BOSS };
     [Export] public Type type;
     [Export] public int row;
     [Export] public int column;

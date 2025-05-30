@@ -43,6 +43,11 @@ public partial class PowerUp : Resource
         //GD.Print("Activating power up: " + this.name);
     }
 
+    public virtual void DestroyPowerUp()
+    {
+        
+    }
+
     public bool startWithVowel()
     {
         switch (name[0])
@@ -59,7 +64,10 @@ public partial class PowerUp : Resource
 
     public void ResetPowerUp()
     {
-        this.value = 0;
+        if (this.showValue)
+        {
+            this.value = 0;   
+        }
     }
 
     public virtual PowerUp CreateInstance()

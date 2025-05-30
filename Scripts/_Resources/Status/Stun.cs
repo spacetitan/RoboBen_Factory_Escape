@@ -12,7 +12,6 @@ public partial class Stun : Status
 
 	public override void ApplyStatus(Character target)
 	{
-		this.SetStacks(this.stacks-1);
 		base.ApplyStatus(target);
 	}
 }

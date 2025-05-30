@@ -10,5 +10,5 @@ battleID = 3
 enemyList = Array[Object]([ExtResource("1_5ff1k"), ExtResource("2_d27ww")])
 tier = 0
 weight = 1.0
-money = 12
+money = 13
 metadata/_custom_type_script = "uid://d0k3xhyyekgcl"

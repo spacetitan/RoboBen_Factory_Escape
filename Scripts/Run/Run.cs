@@ -15,6 +15,7 @@ public partial class Run
     public PowerUpHandler powerUpHandler { get; private set; } = new PowerUpHandler();
     public List<List<RoomData>> mapData { get; private set; } = new List<List<RoomData>>();
     public RoomData lastRoom { get; private set; } = null;
+    public RunStats stats { get; private set; } = null;
 
     public Run(PlayerData playerData)
     {
@@ -30,6 +31,8 @@ public partial class Run
         this.playerDeck.SetDeck(this.playerData.startingDeck);
         
         this.powerUpHandler = new PowerUpHandler();
+        
+        this.stats = new RunStats();
 
         //GD.Print("Starting new run!");
     }
@@ -58,6 +61,8 @@ public partial class Run
         {
             this.reRolls = 0;
         }
+
+        this.stats.reRollsUsed++;
     }
     
     public void BuyReRoll()
@@ -93,6 +98,8 @@ public partial class Run
         {
             this.gold = 0;
         }
+        
+        this.stats.moneySpent += amount;
     }
 
     public bool ContainsPowerUp(PowerUp.PowerUpID id)
@@ -116,7 +123,7 @@ public partial class Run
             {"ReRolls", reRolls},
             {"Floors Climbed", floorsClimbed},
             {"Seed", rng.GetSeed()},
-            
+            {"Stats", this.stats.saveStats()}
         };
 
         if (this.lastRoom != null)
@@ -157,6 +164,7 @@ public partial class Run
         this.reRolls = (int) runData["ReRolls"];
         this.floorsClimbed = (int) runData["Floors Climbed"];
         this.rng.SetSeed((ulong)runData["Seed"]);
+        this.stats.loadStats((Dictionary) runData["Stats"]);
         
         Dictionary playerData = (Dictionary)data["Player Data"];
         int id = (int) playerData["ID"];

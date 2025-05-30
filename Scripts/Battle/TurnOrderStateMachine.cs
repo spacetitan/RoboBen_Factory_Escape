@@ -34,6 +34,7 @@ public partial class TurnOrderStateMachine : Node
         }
         
         this.OnTurnEnd = OnTurnEnd;
+        this.currentPhaseState = PhaseState.BATTLE_START;
 
         if(StartingCharacter is Player)
         {
@@ -87,11 +88,13 @@ public partial class TurnOrderStateMachine : Node
         {
             this.currentPhaseState = PhaseState.PLAYER;
             this.currentCharacter = character;
+            //GD.Print("Current character is Player.");
         }
         else if(character is Enemy)
         {
             this.currentPhaseState = PhaseState.ENEMY;
             this.currentCharacter = character;
+            //GD.Print("Current character is Enemy.");
         }
         else
         {
@@ -100,17 +103,22 @@ public partial class TurnOrderStateMachine : Node
 		
         if (this.currentState != null)
         {
+            //GD.Print("current state is not null.");
             this.currentState.EmitSignal(TurnOrderState.SignalName.ChangeState, this.currentState, (int) TurnState.START_POWERUPS);
         }
         else
         {
-            this.currentState = flowStates.Find(x => x.state == TurnState.START_POWERUPS);
-            this.currentState.Enter(this.currentCharacter);
+            RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.START_OF_COMBAT, () => 
+            {
+                //GD.Print("current state is null.");
+                this.currentState = flowStates.Find(x => x.state == TurnState.START_POWERUPS);
+                this.currentState.Enter(this.currentCharacter);
+            });
         }
     }
     
     public void EndTurn()
-    {  //GD.Print("Ending turn.");
+    {  
        this.OnTurnEnd?.Invoke();
     }
 
@@ -119,15 +127,26 @@ public partial class TurnOrderStateMachine : Node
         this.currentPhaseState = PhaseState.BATTLE_END;
         this.currentCharacter = null;
         this.currentState = null;
+        this.OnTurnEnd = null;
+        
+        RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_COMBAT, () => 
+        {
+            if (playerWin)
+            {
+                float money = data.money;
+                if (RunManager.instance.currentRun.ContainsPowerUp(PowerUp.PowerUpID.CROWN))
+                {
+                    money *= 1.2f;
+                    money = Mathf.RoundToInt(money);
+                }
 
-        if (playerWin)
-        {
-            UIManager.instance.popUpModel.OpenBattleWinView(data.money);
-        }
-        else
-        {
-            UIManager.instance.ChangeStateTo(UIManager.UIState.START);
-        }
+                UIManager.instance.popUpModel.OpenBattleWinView((int) money);
+            }
+            else
+            {
+                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+            }
+        });
 
         //GD.Print("Ending Battle!");
     }

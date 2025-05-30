@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://yr60qt57cjm8" path="res://Themes/Start/Model/StartModelButtonNormal.tres" id="5_6alj0"]
 
 [node name="DeckButton" type="Control"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,5 +67,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 text = "0"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

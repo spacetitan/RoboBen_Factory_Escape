@@ -31,12 +31,12 @@ public partial class RunModel : UIModel
 
         this.mapContainer = this.mapScrollContainer.GetNode<VBoxContainer>("%MapContainer");
         
-        this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 7, this.mapScrollContainer.Size.X / 7);
+        this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 6, this.mapScrollContainer.Size.X / 6);
     }
     
     public override void Enter()
     {
-        if (this.roomList == null || this.roomList.Count == 0)
+        if (this.roomList == null || !this.roomList.Any())
         {
             CreateMap();
             UnlockFloor(RunManager.instance.currentRun.floorsClimbed);
@@ -56,7 +56,12 @@ public partial class RunModel : UIModel
         GameManager.instance.SaveGame();
         UIManager.instance.vfxModel.OpenCurtain();
     }
-    
+
+    public override void Exit()
+    {
+        
+    }
+
     void CreateMap()
     {
         foreach(List<RoomData> floors in RunManager.instance.currentRun.mapData)
@@ -90,10 +95,22 @@ public partial class RunModel : UIModel
         roomPanel.SetCustomMinimumSize(this.panelSize);
         roomPanel.PivotOffset = new Vector2(this.panelSize.X/2, this.panelSize.Y/2);
         roomPanel.texture.PivotOffset = roomPanel.PivotOffset;
+        roomPanel.RoomSelected += RoomSelected;
         this.roomList.Add(roomPanel);
         floor.AddChild(roomPanel);
     }
-    
+
+    void RoomSelected(RoomData data)
+    {
+        foreach (var VARIABLE in this.roomList)
+        {
+            if (VARIABLE.data != data && VARIABLE.isAvailable)
+            {
+                VARIABLE.SetAvailability(false);
+            }
+        }
+    }
+
     void ConnectLines()
     {
         foreach(RoomPanel roomPanel in this.roomList)
@@ -211,5 +228,21 @@ public partial class RunModel : UIModel
     public float FloorToScroll()
     {
         return ((float)(RunManager.instance.mapGenerator.floors - RunManager.instance.currentRun.floorsClimbed) / (float)RunManager.instance.mapGenerator.floors);
+    }
+
+    public void ToggleActiveRooms()
+    {
+        
+    }
+
+    public void ClearRoomList()
+    {
+        foreach (var VARIABLE in roomList)
+        {
+            VARIABLE.RoomSelected -= RoomSelected;
+            VARIABLE.QueueFree();
+        }
+        
+        this.roomList.Clear();
     }
 }

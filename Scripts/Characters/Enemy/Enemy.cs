@@ -45,6 +45,23 @@ public partial class Enemy : Character
         this.actionHandler = new EnemyActionHandler(this);
         UpdateEnemy();
         UpdateUI();
+
+        switch (this.data.id)
+        {
+            case CharacterData.CharacterID.GRUBBFLY:
+            case CharacterData.CharacterID.TORTIGRUB:
+                this.Scale = new Vector2(0.9f, 0.9f);
+                    break;
+            
+            case CharacterData.CharacterID.GRUBBIG:
+            case CharacterData.CharacterID.GRUBBMANTIS:
+                this.Scale = new Vector2(1.1f, 1.1f);
+                    break;
+            
+            case CharacterData.CharacterID.GRUBBOID:
+            default:
+                break;
+        }
         
         SetTargetSize();
     }

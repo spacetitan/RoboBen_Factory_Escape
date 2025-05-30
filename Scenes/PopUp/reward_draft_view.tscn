@@ -38,7 +38,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 42
 text = "Choose a Reward!"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

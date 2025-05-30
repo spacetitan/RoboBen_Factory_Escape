@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgfwxq107anql"]
+[gd_scene load_steps=3 format=3 uid="uid://dgfwxq107anql"]
 
 [ext_resource type="Script" uid="uid://n8vmjb64jtyd" path="res://Scripts/Run/RunModel.cs" id="1_l5xdj"]
+[ext_resource type="Texture2D" uid="uid://ct02h1ka1rx0m" path="res://Art/Sprites/Backgrounds/runBlockout (1).png" id="2_blbib"]
 
 [node name="RunModel" type="Control"]
 layout_mode = 3
@@ -16,15 +17,24 @@ state = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
+anchor_left = 0.15
+anchor_right = 0.85
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
+[node name="TextureRect" type="TextureRect" parent="MapScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_blbib")
+expand_mode = 5
+
 [node name="MapContainer" type="VBoxContainer" parent="MapScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1

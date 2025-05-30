@@ -13,7 +13,7 @@ public partial class CurtainView : UIView
     public void CloseCurtain(Action callback = null)
     {
         this.onClosed = callback;
-        this.ShowView(1f);
+        this.ShowView(.6f);
     }
 
     public override void Enter()

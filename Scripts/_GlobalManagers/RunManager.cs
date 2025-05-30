@@ -40,7 +40,39 @@ public partial class RunManager : Node
 	public override void _Ready()
 	{
 		init();
+	}
 
+	public void NewRun(PlayerData playerData)
+	{
+		InitRun();
+		
+		this.currentRun = new Run(playerData);
+		
+		AddPowerUp(playerData.starterPowerUp);
+		this.currentRun.SetMapData(this.mapGenerator.GenerateNewMap());
+		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
+	}
+
+	public void ContinueRun(Dictionary loadData)
+	{
+		InitRun();
+		
+		Dictionary playerData = (Dictionary)loadData["Player Data"];
+		int playerId = (int) playerData["ID"];
+		this.currentRun = new Run(ResourceManager.instance.characters[(CharacterData.CharacterID) playerId]);
+		this.currentRun.LoadRun(loadData);
+		
+		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
+	}
+
+	public void ClearRun()
+	{
+		this.currentRun.powerUpHandler.ClearPowerUps();
+		this.currentRun.mapData.Clear();
+	}
+
+	public void InitRun()
+	{
 		foreach (KeyValuePair<BattleData.BattleID, BattleData> data in ResourceManager.instance.battles)
 		{
 			this.battleDataPool.Add(data.Value);
@@ -72,25 +104,6 @@ public partial class RunManager : Node
 		}
 	}
 
-	public void NewRun(PlayerData playerData)
-	{
-		this.currentRun = new Run(playerData);
-		
-		AddPowerUp(playerData.starterPowerUp);
-		this.currentRun.SetMapData(this.mapGenerator.GenerateNewMap());
-		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
-	}
-
-	public void ContinueRun(Dictionary data)
-	{
-		Dictionary playerData = (Dictionary)data["Player Data"];
-		int playerId = (int) playerData["ID"];
-		this.currentRun = new Run(ResourceManager.instance.characters[(CharacterData.CharacterID) playerId]);
-		this.currentRun.LoadRun(data);
-		
-		UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
-	}
-
 	public void SelectRoom(RoomData roomData)
 	{
 		this.currentRun.ClimbFloor(roomData);
@@ -101,6 +114,7 @@ public partial class RunManager : Node
 		switch (roomData.type)
 		{
 			case RoomData.Type.COMBAT:
+			case RoomData.Type.BOSS:
 				if (roomData.battleData != null)
 				{
 					BattleModel battleModel = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;

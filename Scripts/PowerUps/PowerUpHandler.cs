@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot.Collections;
 
-public partial class PowerUpHandler : Node
+public partial class PowerUpHandler
 {
     private PackedScene powerUpUIScene = ResourceLoader.Load<PackedScene>("res://Scenes/HUDs/power_up_ui.tscn");
 
     public List<PowerUp> powerUps { get; private set; } = new List<PowerUp>();
     public List<PowerUpUI> powerUpUIs { get; private set; } = new List<PowerUpUI>();
     
-    private float applyInterval = 1f;
-    
-    public Container container { get; private set; }
+    private float applyInterval = .15f;
+
+    public Container container { get; private set; } = null;
+    public Vector2 powerUpSize { get; set; } = Vector2.Zero;
     
     public void AddPowerUp(PowerUp powerUp)
     {
@@ -39,7 +40,7 @@ public partial class PowerUpHandler : Node
         {
             return;
         }
-
+        
         List<PowerUpUI> powerUpQueue = new List<PowerUpUI>();
 
         foreach(PowerUpUI powerUpUI in this.powerUpUIs)
@@ -56,7 +57,7 @@ public partial class PowerUpHandler : Node
             return;
         }
 
-        Tween tween = CreateTween();
+        Tween tween = this.container.CreateTween();
         foreach(PowerUpUI powerUpUI in powerUpQueue)
         {
             tween.TweenCallback(Callable.From(() =>
@@ -121,7 +122,6 @@ public partial class PowerUpHandler : Node
     public void SpawnAllUI()
     {
         UIManager.UIState currentState = UIManager.instance.currentModel.state;
-        Vector2 size = Vector2.Zero;
         
         foreach (PowerUp powerUp in this.powerUps)
         {
@@ -133,21 +133,21 @@ public partial class PowerUpHandler : Node
             {
                 case UIManager.UIState.RUN:
                     powerUpUi.SetData(powerUp, true);
-                    size = new Vector2(this.container.GetRect().Size.X / 2, this.container.GetRect().Size.X / 2);
+                    this.powerUpSize = new Vector2(this.container.GetRect().Size.X / 2, this.container.GetRect().Size.X / 2);
                     break;
                     
                 case UIManager.UIState.GAMEOVER:
                     powerUpUi.SetData(powerUp, true);
-                    size = new Vector2(this.container.GetRect().Size.X / 5 , this.container.GetRect().Size.X / 5);
+                    this.powerUpSize = new Vector2(this.container.GetRect().Size.X / 5 , this.container.GetRect().Size.X / 5);
                     break;
                 
                 default:
                     powerUpUi.SetData(powerUp, false);
-                    size = new Vector2(this.container.GetRect().Size.Y , this.container.GetRect().Size.Y);
+                    this.powerUpSize = new Vector2(this.container.GetRect().Size.Y , this.container.GetRect().Size.Y);
                     break;
             }
-            GD.Print(size);
-            powerUpUi.SetCustomMinimumSize(size);
+            //GD.Print(size);
+            powerUpUi.SetCustomMinimumSize(this.powerUpSize);
             powerUpUi.SetPosition(Vector2.Zero);
             this.powerUpUIs.Add(powerUpUi);
         }
@@ -165,6 +165,15 @@ public partial class PowerUpHandler : Node
         {
             powerUp.ResetPowerUp();
         }
+    }
+
+    public void ClearPowerUps()
+    {
+        foreach (PowerUp powerUp in this.powerUps)
+        {
+            powerUp.DestroyPowerUp();
+        }
+        this.powerUps.Clear();
     }
 
     public Godot.Collections.Dictionary<StringName, Variant> SavePowerUps()
