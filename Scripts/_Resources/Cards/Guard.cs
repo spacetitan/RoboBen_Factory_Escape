@@ -14,7 +14,14 @@ public partial class Guard : CardData
     public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
     {
         int guard = playerModifiers.GetModifiedValue(this.cardValue, Modifier.Type.ARMOR_GEN);
+        
+        string tooltip = this.cardDesc.Replace("{value}", guard.ToString());
 
-        return this.cardDesc.Replace("{value}", guard.ToString());
+        if (this.isExhaust)
+        {
+            tooltip += "\nExhaust.";
+        }
+
+        return tooltip;
     }
 }

@@ -145,3 +145,4 @@ mouse_filter = 1
 
 [connection signal="mouse_entered" from="." to="." method="OnMouseEntered"]
 [connection signal="mouse_exited" from="." to="." method="OnMouseExited"]
+[connection signal="pressed" from="CardButton" to="." method="OnClick"]

@@ -56,13 +56,25 @@ public partial class RewardDraftView : UIView
 
     public void SpawnRewards(Type type)
     {
+        int count = 3;
+        if (RunManager.instance.currentRun.ContainsPowerUp(PowerUp.PowerUpID.LUCKYPENNY))
+        {
+            float roll = RunManager.instance.currentRun.rng.Randf();
+            //GD.Print("Roll: " + roll);
+            if (roll >= .06f)
+            {
+                count++;
+            }
+        }
+
+
         List<PowerUp> powerUps = null;
         if (type == Type.POWERUP)
         {
-            powerUps = RunManager.instance.GetAvailablePowerUps(3);
+            powerUps = RunManager.instance.GetAvailablePowerUps(count);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < count; i++)
         {
             CardDisplayUI displayUi = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
             this.rewardContainer.AddChild(displayUi);

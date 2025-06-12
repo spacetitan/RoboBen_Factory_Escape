@@ -45,6 +45,9 @@ public partial class ResourceManager : Node
 	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
+	
+	public enum AudioID { NONE, BUTTON, GAME_START, ROOM_SELECTED, DRAW_CARD, CARD_BURNED, CARD_DISCARDED, CARD_GRABBED, POWERUP_ACTIVATE, GET_COIN, BATTLE_WIN, BATTLE_LOSE, ARMOR, MISS, INVIS_ON}
+	public Dictionary<AudioID, AudioStream> audio = new Dictionary<AudioID, AudioStream>();
 
 	public override void _Ready()
 	{
@@ -54,7 +57,7 @@ public partial class ResourceManager : Node
 
 	public void LoadResources()
 	{
-		this.debugIcon = ResourceLoader.Load<Texture2D>("res://icon.svg");
+		this.debugIcon = ResourceLoader.Load<Texture2D>("res://Art/Sprites/mysteryIcon.png");
 		this.uiButtonScene = ResourceLoader.Load<PackedScene>("res://Scenes/HUDs/ui_button.tscn");
 		this.charPickerPanelScene = ResourceLoader.Load<PackedScene>("res://Scenes/Start/char_picker_panel.tscn");
 	
@@ -158,6 +161,24 @@ public partial class ResourceManager : Node
 		{
 			{"heal", ResourceLoader.Load<Material>("res://Art/Materials/HealVFX/HealMaterial.tres")},
 			{"damage", ResourceLoader.Load<Material>("res://Art/Materials/DamageVFX/DamageMaterial.tres")},
+		};
+
+		this.audio = new Dictionary<AudioID, AudioStream>()
+		{
+			{ AudioID.BUTTON, ResourceLoader.Load<AudioStream>("res://Audio/drop_001.ogg")},
+			{ AudioID.GAME_START, ResourceLoader.Load<AudioStream>("res://Audio/confirmation_002.ogg")},
+			{ AudioID.ROOM_SELECTED, ResourceLoader.Load<AudioStream>("res://Audio/spaceTrash4.ogg")},
+			{ AudioID.DRAW_CARD, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-place-1.ogg")},
+			{ AudioID.CARD_BURNED, ResourceLoader.Load<AudioStream>("res://Audio/maximize_006.ogg")},
+			{ AudioID.CARD_DISCARDED, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-slide-6.ogg")},
+			{ AudioID.CARD_GRABBED, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-shove-1.ogg")},
+			{ AudioID.POWERUP_ACTIVATE, ResourceLoader.Load<AudioStream>("res://Audio/select_006.ogg")},
+			{ AudioID.GET_COIN, ResourceLoader.Load<AudioStream>("res://Audio/Run/handleCoins.ogg")},
+			{ AudioID.BATTLE_WIN, ResourceLoader.Load<AudioStream>("res://Audio/jingles_SAX10.ogg")},
+			{ AudioID.BATTLE_LOSE, ResourceLoader.Load<AudioStream>("res://Audio/jingles_SAX07.ogg")},
+			{ AudioID.ARMOR, ResourceLoader.Load<AudioStream>("res://Audio/Card/impactMetal_light_000.ogg")},
+			{ AudioID.MISS, ResourceLoader.Load<AudioStream>("res://Audio/Card/swing.wav")},
+			{ AudioID.INVIS_ON, ResourceLoader.Load<AudioStream>("res://Audio/Ability/8.wav")},
 		};
 	}
 }

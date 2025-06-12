@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LuckyPenny" load_steps=3 format=3 uid="uid://v0ib00kehobp"]
+
+[ext_resource type="Script" uid="uid://cajnfi83f68hp" path="res://Scripts/_Resources/PowerUps/LuckyPenny.cs" id="1_qc5d3"]
+[ext_resource type="Texture2D" uid="uid://bq71ohhmkge7f" path="res://Art/Sprites/PowerUps/luckyCoin2.png" id="2_6klh8"]
+
+[resource]
+script = ExtResource("1_qc5d3")
+id = 12
+name = "Lucky Penny"
+description = "Chance to increase the number of rewards!"
+texture = ExtResource("2_6klh8")
+rarity = 3
+activateType = 5
+showValue = false
+value = 0
+metadata/_custom_type_script = "uid://cajnfi83f68hp"

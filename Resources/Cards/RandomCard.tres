@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RandomCard" load_steps=3 format=3 uid="uid://xanghx2q4w5h"]
+
+[ext_resource type="Script" uid="uid://drx744l4u16dq" path="res://Scripts/_Resources/Cards/RandomCard.cs" id="1_4xb5f"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_t81bv"]
+
+[resource]
+script = ExtResource("1_4xb5f")
+id = 6
+cardName = "Loot"
+cardDesc = "Get a random card with 0 cost and exhaust."
+Texture = ExtResource("1_t81bv")
+rarity = 3
+targetType = 2
+cardValue = 1
+cardCost = 1
+cardGen = 1
+isExhaust = true
+metadata/_custom_type_script = "uid://drx744l4u16dq"

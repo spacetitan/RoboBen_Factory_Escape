@@ -44,9 +44,10 @@ public partial class EnemyStunAtt : EnemyAction
 		Vector2 end = this.target.GlobalPosition + new Vector2(this.target.Size.X/2, 0);
 		DamageEffect damage = new DamageEffect(this.owner.GetModifiedAttack(this.value), this.sound);
 		
-		Stun stun = ResourceManager.instance.statuses[Status.StatusID.STUN].Duplicate() as Stun;
+		Stun stun = ResourceManager.instance.statuses[Status.StatusID.STUN].CreateInstance() as Stun;
 		stun.SetStacks(this.stacks);
 		StatusEffect statusEffect = new StatusEffect(stun, null);
+		statusEffect.sender = this.owner;
 		
 		List<Character> targetList = new List<Character>(){this.target};
 

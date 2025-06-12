@@ -122,6 +122,7 @@ public partial class PowerUpHandler
     public void SpawnAllUI()
     {
         UIManager.UIState currentState = UIManager.instance.currentModel.state;
+        GD.Print("called");
         
         foreach (PowerUp powerUp in this.powerUps)
         {

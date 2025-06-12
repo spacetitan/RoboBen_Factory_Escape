@@ -116,6 +116,7 @@ public partial class BattleHUDView : UIView
         this.player.discard.CardPileSizeChanged += UpdateDiscard;
 
         this.OnEndTurn = this.player.EndTurn;
+        ToggleEndTurnButton(false);
 
         if (this.player.playerData.ability.targetType == Character.TargetType.SINGLE)
         {
@@ -144,6 +145,16 @@ public partial class BattleHUDView : UIView
 
         
         this.abilityInfoPanel.SetData(this.player.playerData);
+
+        if (this.player.playerData.ability.abilityUsed)
+        {
+            this.abilityButton.SetData("Ability CD:" + (this.player.playerData.ability.cooldown - this.player.playerData.ability.cooldownTimer));
+        }
+        else
+        {
+            this.abilityButton.SetData("Ability");
+        }
+
         this.energyLabel.Text = this.player.energy.ToString();
         
         if (RunManager.instance.currentRun.powerUpHandler.powerUpUIs.Count > 8)
@@ -153,6 +164,11 @@ public partial class BattleHUDView : UIView
             this.rightButton.button.Disabled = false;
             this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT]);
         }
+    }
+
+    public void ToggleEndTurnButton(bool toggle)
+    {
+        this.endTurnButton.button.Disabled = toggle;
     }
 
     public void UpdateMoney()
@@ -204,27 +220,36 @@ public partial class BattleHUDView : UIView
         {
             Ability ability = this.player.playerData.ability;
 
+            if (ability.abilityUsed)
+            {
+                return;
+            }
+
             if (ability.targetType != Character.TargetType.SINGLE)
             {
-                GD.Print("Activating ability");
                 ability.ApplyEffects(this.player.GetTargets(ability.targetType), this.player.playerData);
             }
             else
             {
                 EventManager.instance.EmitSignal(EventManager.SignalName.AbilityAimStarted, this.player);
             }
+            
+            GD.Print("Activating ability");
 
             this.abilityButton.button.Disabled = true;
+            this.abilityButton.SetData("Ability CD:" + (this.player.playerData.ability.cooldown - this.player.playerData.ability.cooldownTimer));
         }
     }
 
     public void ResetAbility()
     {
-        this.abilityButton.button.Disabled = false;
+        Ability ability = this.player.playerData.ability;
+        this.abilityButton.button.Disabled = ability.abilityUsed;   
     }
 
     public void EndTurn()
     {
+        this.endTurnButton.button.Disabled = true;
         this.OnEndTurn?.Invoke();
     }
 

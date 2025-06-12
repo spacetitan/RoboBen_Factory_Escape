@@ -120,7 +120,7 @@ public partial class CardUI : Panel
         this.player.AddEnergy(-this.data.cardCost);
         data.ApplyEffects(this.targets, this.player.playerData, player.modifierHandler);
         EventManager.instance.EmitSignal(EventManager.SignalName.CardPlayed);
-        this.player.DiscardCard(this);
+        this.player.PlayCard(this);
     }
 
     public void Burn()

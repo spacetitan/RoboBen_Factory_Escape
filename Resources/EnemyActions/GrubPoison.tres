@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyPoisonAtt" load_steps=2 format=3 uid="uid://jfo03axi8if2"]
+[gd_resource type="Resource" script_class="EnemyPoisonAtt" load_steps=3 format=3 uid="uid://jfo03axi8if2"]
 
 [ext_resource type="Script" uid="uid://by211t5mnbuw8" path="res://Scripts/_Resources/EnemyActions/EnemyPoisonAtt.cs" id="1_enlv6"]
+[ext_resource type="AudioStream" uid="uid://7l2s41rolqbx" path="res://Audio/Card/bubble.wav" id="2_k7415"]
 
 [resource]
 script = ExtResource("1_enlv6")
@@ -11,4 +12,5 @@ type = 2
 intent = 4
 value = 1
 chanceWeight = 1
+sound = ExtResource("2_k7415")
 metadata/_custom_type_script = "uid://by211t5mnbuw8"

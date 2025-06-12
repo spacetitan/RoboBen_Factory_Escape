@@ -131,7 +131,14 @@ public partial class TurnOrderStateMachine : Node
         
         RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_COMBAT, () => 
         {
-            if (playerWin)
+            GD.Print(data.tier);
+            if (data.tier == 2 && playerWin)
+            {
+                GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
+                model.SetData(true);
+                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+            }
+            else if (playerWin)
             {
                 float money = data.money;
                 if (RunManager.instance.currentRun.ContainsPowerUp(PowerUp.PowerUpID.CROWN))
@@ -140,10 +147,13 @@ public partial class TurnOrderStateMachine : Node
                     money = Mathf.RoundToInt(money);
                 }
 
+                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_WIN], true);
                 UIManager.instance.popUpModel.OpenBattleWinView((int) money);
             }
             else
             {
+                GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
+                model.SetData(false);
                 UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
             }
         });

@@ -66,6 +66,7 @@ public partial class EnemyAttackGuard : EnemyAction
 		GuardEffect guard = new GuardEffect(value + this.owner.data.defense, this.sound);
 		tween.TweenInterval(.35);
 		tween.TweenCallback(Callable.From(() => guard.Execute(this.owner)));
+		AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.ARMOR]);
 		
 		tween.TweenInterval(.25);
 

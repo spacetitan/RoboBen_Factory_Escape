@@ -25,7 +25,7 @@ public partial class TreasureView : UIView
         this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
     }
 
-    public override void Enter()
+    public void SetData()
     {
         this.isOpened = false;
         this.treasureTexture.Texture = this.treasure;
@@ -35,6 +35,11 @@ public partial class TreasureView : UIView
         this.playerSpawn.AddChild(player);
         player.SetCustomMinimumSize(this.playerSize);
         player.SetPlayerData(RunManager.instance.currentRun);
+    }
+
+    public override void Enter()
+    {
+        
     }
     
     public override void Exit()

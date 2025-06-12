@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="MuscleGen" load_steps=4 format=3 uid="uid://cvp1ukot5gkdt"]
+
+[ext_resource type="Script" uid="uid://cchtaf520efdt" path="res://Scripts/_Resources/Cards/MuscleGen.cs" id="1_0cug5"]
+[ext_resource type="Texture2D" uid="uid://dqw8xfuwnr47g" path="res://Art/Sprites/Cards/musclejuice.png" id="1_otwbr"]
+[ext_resource type="AudioStream" uid="uid://cw4ahrcd3mli1" path="res://Audio/PowerUp/power-up-1.wav" id="2_otwbr"]
+
+[resource]
+script = ExtResource("1_0cug5")
+id = 5
+cardName = "Muscle Juice"
+cardDesc = "Generates {value} muscle"
+Texture = ExtResource("1_otwbr")
+playSFX = ExtResource("2_otwbr")
+rarity = 3
+targetType = 2
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = true
+metadata/_custom_type_script = "uid://cchtaf520efdt"

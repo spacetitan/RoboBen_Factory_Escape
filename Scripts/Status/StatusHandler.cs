@@ -91,6 +91,7 @@ public partial class StatusHandler : RefCounted
 
 		if(!HasStatus(status.id))
 		{
+			status.InitializeStatus(this.owner);
             status.StatusApplied += OnStatusApplied;
             this.statuses.Add(status);
             SpawnUI(status);
@@ -144,12 +145,18 @@ public partial class StatusHandler : RefCounted
 			status.SetDuration(status.duration-1);
             status.SetStacks(status.stacks-1);
 
-            if((status.stackType == Status.StackType.INTENSITY && status.stacks < 0) 
-            || (status.stackType == Status.StackType.DURATION && status.duration < 0))
+            if((status.stackType == Status.StackType.INTENSITY && status.stacks <= 0) 
+            || (status.stackType == Status.StackType.DURATION && status.duration <= 0))
             {
                 status.StatusApplied -= OnStatusApplied;
-                this.statuses.Remove(status);
+                RemoveStatus(status.id);
             }
 		}
+	}
+
+	private void RemoveStatus(Status.StatusID id)
+	{
+		Status status = GetStatus(id);
+		this.statuses.Remove(status);
 	}
 }

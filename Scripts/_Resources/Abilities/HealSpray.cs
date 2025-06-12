@@ -8,7 +8,6 @@ public partial class HealSpray : Ability
     {
         HealEffect heal = new HealEffect(this.value, this.playSFX);
         heal.Execute(targets);
-        this.abilityUsed = true;
         base.ApplyEffects(targets, playerStats);
     }
 }

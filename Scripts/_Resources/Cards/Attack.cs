@@ -19,7 +19,14 @@ public partial class Attack : CardData
         {
             damage = enemyModifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_TAKEN);
         }
+        
+        string tooltip = this.cardDesc.Replace("{value}", damage.ToString());
 
-        return this.cardDesc.Replace("{value}", damage.ToString());
+        if (this.isExhaust)
+        {
+            tooltip += "\nExhaust.";
+        }
+
+        return tooltip;
     }
 }

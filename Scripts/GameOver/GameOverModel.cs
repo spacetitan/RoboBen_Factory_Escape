@@ -17,6 +17,8 @@ public partial class GameOverModel : UIModel
     
     private Vector2 powerUpSize = Vector2.Zero;
 
+    public bool win { get; private set; } = false;
+
     public override void _Ready()
     {
         GetSceneNodes();
@@ -56,10 +58,8 @@ public partial class GameOverModel : UIModel
         };
     }
 
-    public override void Enter()
+    public void SetData(bool win)
     {
-        UIManager.instance.vfxModel.OpenCurtain();
-
         Run run = RunManager.instance.currentRun;
 
         this.texture.Texture = run.playerData.texture;
@@ -72,13 +72,28 @@ public partial class GameOverModel : UIModel
         this.summaryLabel.Text += "\nRe-Rolls used: " + run.stats.reRollsUsed; 
 
         run.powerUpHandler.SetContainer(this.gridContainer);
-        run.powerUpHandler.SpawnAllUI();
         this.powerUpSize = run.powerUpHandler.powerUpSize;
+
+        this.win = win;
+        if (win)
+        {
+            this.titleLabel.Text = "You win!";
+        }
+        else
+        {
+            this.titleLabel.Text = "Try again!";
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_LOSE], true);
+        }
+    }
+
+    public override void Enter()
+    {
+        Run run = RunManager.instance.currentRun;
+        run.powerUpHandler.SpawnAllUI();
+        
+        UIManager.instance.vfxModel.OpenCurtain();
         
         RunManager.instance.ClearRun();
-        
-        RunModel runModel = UIManager.instance.models[UIManager.UIState.RUN] as RunModel;
-        runModel.ClearRoomList();
     }
 
     public override void Exit()

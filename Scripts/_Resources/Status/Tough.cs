@@ -27,13 +27,13 @@ public partial class Tough : Status
 		if(target is Enemy)
 		{
 			Enemy enemy = (Enemy)target;
-			modifier = enemy.modifierHandler.GetModifier(Modifier.Type.ARMOR_GEN);
+			modifier = enemy.modifierHandler.GetModifier(Modifier.Type.DMG_TAKEN);
 			modifierValue = modifier.GetValue("tough");
 		}
 		else if(target is Player)
 		{
 			Player player = (Player)target;
-			modifier = player.modifierHandler.GetModifier(Modifier.Type.ARMOR_GEN);
+			modifier = player.modifierHandler.GetModifier(Modifier.Type.DMG_TAKEN);
 			modifierValue = modifier.GetValue("tough");
 		}
 		else {GD.Print("Target not applicable"); return; }
@@ -50,5 +50,10 @@ public partial class Tough : Status
 		{
 			modifier.RemoveValue("tough");
 		}
+	}
+	
+	public override Tough CreateInstance()
+	{
+		return base.CreateInstance() as Tough;
 	}
 }

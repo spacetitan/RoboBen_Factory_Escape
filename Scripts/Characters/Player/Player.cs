@@ -51,6 +51,7 @@ public partial class Player : Character
         this.playerData = run.playerData;
         this.playerTexture.Texture = this.playerData.texture;
         this.energy = 0;
+        this.playerData.ability.Reset();
         
         this.deck.SetDeck(run.playerDeck);
         this.deck.Shuffle();
@@ -146,7 +147,11 @@ public partial class Player : Character
     public void StartTurn(Action onTurnEnd = null)
     {
         this.OnTurnEnd = onTurnEnd;
-        DrawCards(this.playerData.handSize);
+        DrawCards(this.playerData.handSize, () =>
+        {
+            BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
+            view.ToggleEndTurnButton(false);
+        });
     }
 
     public void EndTurn()
@@ -162,6 +167,7 @@ public partial class Player : Character
     {
         ResetArmor();
         ResetEnergy();
+        ResetAbility();
         EventManager.instance.EmitSignal(EventManager.SignalName.PlayerTurnStarted);
     }
 
@@ -183,9 +189,18 @@ public partial class Player : Character
         EmitSignal(SignalName.StatsChanged);
     }
     
+    
     public void ResetAbility()
     {
-        this.playerData.ability.abilityUsed = false;
+        if (this.playerData.ability.abilityUsed)
+        {
+            this.playerData.ability.cooldownTimer++;
+
+            if (this.playerData.ability.cooldownTimer >= this.playerData.ability.cooldown)
+            {
+                this.playerData.ability.Reset();
+            }
+        }
     }
 
     public void UpdateUI()
@@ -245,11 +260,28 @@ public partial class Player : Character
         };
     }
 
+    public void PlayCard(CardUI card)
+    {
+        ReshuffleDeck();
+        this.hand.DiscardCard(card);
+        if (!card.data.isExhaust)
+        {
+            this.discard.AddCard(card.data);
+        }
+        else
+        {
+            GD.Print("Destroying " + card.data.cardName);
+        }
+        
+        this.EmitSignal(SignalName.StatsChanged);	
+    }
+
     public void DiscardCard(CardUI card)
     {
         ReshuffleDeck();
-        this.discard.AddCard(card.data);
         this.hand.DiscardCard(card);
+        this.discard.AddCard(card.data);
+
         this.EmitSignal(SignalName.StatsChanged);	
     }
 
@@ -261,7 +293,11 @@ public partial class Player : Character
 
             foreach (CardUI card in cards)
             {
-                tween.TweenCallback(Callable.From(() => { DiscardCard(card); }));
+                tween.TweenCallback(Callable.From(() =>
+                {
+                    DiscardCard(card);
+                    AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.CARD_DISCARDED]);
+                }));
                 tween.TweenInterval(HAND_DRAW_INTERVAL);
             }
 

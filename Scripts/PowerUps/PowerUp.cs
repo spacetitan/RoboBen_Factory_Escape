@@ -18,6 +18,7 @@ public partial class PowerUp : Resource
         REINFARMOR,
         REPAIRTOOL,
         SECONDWIND,
+        LUCKYPENNY,
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE}
     public enum ActivateType { NONE, START_OF_COMBAT, END_OF_COMBAT, START_OF_TURN, END_OF_TURN, EVENT}

@@ -14,4 +14,9 @@ public partial class Stun : Status
 	{
 		base.ApplyStatus(target);
 	}
+	
+	public override Stun CreateInstance()
+	{
+		return base.CreateInstance() as Stun;
+	}
 }

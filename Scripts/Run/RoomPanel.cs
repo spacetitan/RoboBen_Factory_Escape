@@ -29,6 +29,8 @@ public partial class RoomPanel : Panel
             EmitSignal(SignalName.RoomSelected, this.data);
             this.data.selected = true;
             this.animationPlayer.Play("select");
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.ROOM_SELECTED], true);
+            this.isAvailable = false;
             return;
         }
     }

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Guard" load_steps=3 format=3 uid="uid://dhav2ud4lrm4s"]
+[gd_resource type="Resource" script_class="Guard" load_steps=4 format=3 uid="uid://dhav2ud4lrm4s"]
 
 [ext_resource type="Script" uid="uid://vtbjlokfqi8s" path="res://Scripts/_Resources/Cards/Guard.cs" id="1_56vyl"]
 [ext_resource type="Texture2D" uid="uid://bqi4j1reyg6y3" path="res://Art/Sprites/Cards/armor-icon.png" id="1_be2tn"]
+[ext_resource type="AudioStream" uid="uid://dwfa3l5iys2jj" path="res://Audio/Card/impactMetal_light_000.ogg" id="2_wsgoc"]
 
 [resource]
 script = ExtResource("1_56vyl")
@@ -9,6 +10,7 @@ id = 2
 cardName = "Guard"
 cardDesc = "Generates {value} armor"
 Texture = ExtResource("1_be2tn")
+playSFX = ExtResource("2_wsgoc")
 rarity = 1
 targetType = 2
 cardValue = 4

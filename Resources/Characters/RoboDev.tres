@@ -1,21 +1,21 @@
 [gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://dxwyvphgliiws"]
 
 [ext_resource type="Script" uid="uid://dml35riw5jfux" path="res://Scripts/Characters/Player/PlayerData.cs" id="1_1q3ho"]
-[ext_resource type="Resource" uid="uid://b84ri2r1nufos" path="res://Resources/Abilities/HealSpray.tres" id="1_737nf"]
+[ext_resource type="Resource" uid="uid://dfv44c7sg7pmo" path="res://Resources/Abilities/Invisofield.tres" id="1_737nf"]
 [ext_resource type="Texture2D" uid="uid://dtwvcn7vtob0n" path="res://Art/Sprites/Characters/robodev.png" id="2_7hctx"]
-[ext_resource type="Resource" uid="uid://dagoiqknm6u7i" path="res://Resources/PowerUps/Membership.tres" id="3_p2p3v"]
+[ext_resource type="Resource" uid="uid://v0ib00kehobp" path="res://Resources/PowerUps/LuckyPenny.tres" id="3_737nf"]
 [ext_resource type="Resource" uid="uid://drx2tovagschy" path="res://Resources/CardPiles/RoboDevStarter.tres" id="4_mrslp"]
 
 [resource]
 script = ExtResource("1_1q3ho")
-handSize = 4
+handSize = 5
 ability = ExtResource("1_737nf")
-starterPowerUp = ExtResource("3_p2p3v")
+starterPowerUp = ExtResource("3_737nf")
 startingDeck = ExtResource("4_mrslp")
-id = 0
+id = 2
 name = &"RoboDev"
-desc = ""
+desc = "A robo thats great at bartering! Starts with more money and re-rolls."
 texture = ExtResource("2_7hctx")
 health = 0
-maxHealth = 8
+maxHealth = 10
 metadata/_custom_type_script = "uid://dml35riw5jfux"

@@ -127,6 +127,7 @@ public partial class CardDraggingState : CardInteractState
 		this.minimumDragTimeElapsed = false;
 		SceneTreeTimer thresholdTimer = cardUI.GetTree().CreateTimer(DRAG_MINIMUM_THRESHOLD, false);
 		thresholdTimer.Timeout += () => {minimumDragTimeElapsed = true;};
+		AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.CARD_GRABBED]);
 	}
 
 	public override void Exit()

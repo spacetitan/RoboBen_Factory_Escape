@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyStunAtt" load_steps=2 format=3 uid="uid://b6qdgcyyhxp14"]
+[gd_resource type="Resource" script_class="EnemyStunAtt" load_steps=3 format=3 uid="uid://b6qdgcyyhxp14"]
 
 [ext_resource type="Script" uid="uid://evomm8v7cdkx" path="res://Scripts/_Resources/EnemyActions/EnemyStunAtt.cs" id="1_j0qd8"]
+[ext_resource type="AudioStream" uid="uid://buny7c8431gba" path="res://Audio/impactMining_001.ogg" id="2_xtct1"]
 
 [resource]
 script = ExtResource("1_j0qd8")
@@ -11,4 +12,5 @@ type = 2
 intent = 1
 value = 0
 chanceWeight = 0
+sound = ExtResource("2_xtct1")
 metadata/_custom_type_script = "uid://evomm8v7cdkx"

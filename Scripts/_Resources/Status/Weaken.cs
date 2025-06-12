@@ -60,4 +60,9 @@ public partial class Weaken : Status
 			modifier.RemoveValue("weaken");
 		}
 	}
+	
+	public override Weaken CreateInstance()
+	{
+		return base.CreateInstance() as Weaken;
+	}
 }

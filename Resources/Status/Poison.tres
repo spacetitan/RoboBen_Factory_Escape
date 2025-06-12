@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Poison" load_steps=3 format=3 uid="uid://3is56js27t4f"]
+[gd_resource type="Resource" script_class="Poison" load_steps=4 format=3 uid="uid://3is56js27t4f"]
 
 [ext_resource type="Script" uid="uid://d0gmh6bc8fmf3" path="res://Scripts/_Resources/Status/Poison.cs" id="1_a2x6o"]
+[ext_resource type="AudioStream" uid="uid://7l2s41rolqbx" path="res://Audio/Card/bubble.wav" id="2_8v308"]
 [ext_resource type="Texture2D" uid="uid://bponymnruoq3r" path="res://Art/Sprites/Status/poison-icon.png" id="2_nov8x"]
 
 [resource]
@@ -14,4 +15,5 @@ duration = 0
 stacks = 0
 statusIcon = ExtResource("2_nov8x")
 desc = "Deals 1 dmg per stack at the start of the turn"
+sfx = ExtResource("2_8v308")
 metadata/_custom_type_script = "uid://d0gmh6bc8fmf3"

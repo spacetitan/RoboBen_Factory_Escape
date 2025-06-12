@@ -19,10 +19,11 @@ public partial class MuscleCard : PowerUp
 		this.value++;
 		if (this.value >= 3)
 		{
-			Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].Duplicate() as Muscle;
+			Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].CreateInstance() as Muscle;
 			muscle.SetDuration(2);
 
 			StatusEffect statusEffect = new StatusEffect(muscle, null);
+			statusEffect.sender = model.player;
 			statusEffect.Execute(model.player);
 
 			this.value = 0;

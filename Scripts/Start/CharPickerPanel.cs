@@ -38,4 +38,9 @@ public partial class CharPickerPanel : Panel
         this.titleLabel.Text = enemyData.name;
         this.pickerTexture.Texture = enemyData.texture;
     }
+
+    public void OnClick()
+    {
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUTTON], true);
+    }
 }

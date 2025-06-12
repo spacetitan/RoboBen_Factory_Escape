@@ -67,6 +67,9 @@ public partial class RunManager : Node
 
 	public void ClearRun()
 	{
+		RunModel runModel = UIManager.instance.models[UIManager.UIState.RUN] as RunModel;
+		runModel.ClearRoomList();
+		
 		this.currentRun.powerUpHandler.ClearPowerUps();
 		this.currentRun.mapData.Clear();
 	}
@@ -285,7 +288,7 @@ public partial class RunManager : Node
 	{
 		if(!this.currentRun.ContainsPowerUp(powerUp.id) && CheckPowerUp(powerUp.id))
 		{
-			this.availablePowerUps.Remove(powerUp);
+			RemovePowerUp(powerUp.id);
 			this.currentRun.powerUpHandler.AddPowerUp(powerUp);
 			GD.Print("Adding " + powerUp.name + " to backpack!");
 		}
@@ -303,6 +306,21 @@ public partial class RunManager : Node
 
 			GD.Print("Cannot add " + powerUp.name);
 		}
+	}
+
+	public void RemovePowerUp(PowerUp.PowerUpID ID)
+	{
+		PowerUp temp = null;
+
+		foreach (PowerUp powerUp in this.availablePowerUps)
+		{
+			if (powerUp.id == ID)
+			{
+				temp = powerUp;
+			}
+		}
+		
+		this.availablePowerUps.Remove(temp);
 	}
 
 	public void AddRandomPowerUp()
@@ -381,6 +399,13 @@ public partial class RunManager : Node
 		CardData cardStats = GetAvailableCard();
 		this.currentRun.playerDeck.AddCard(cardStats);
 	}
+	
+	public CardData GetRandomCardWithExhaust()
+	{
+		CardData cardStats = GetAvailableCard();
+		cardStats.SetExhaust();
+		return cardStats;
+	}
 
 	public void RemoveCard(CardData cardData)
 	{
@@ -448,7 +473,7 @@ public partial class RunManager : Node
 		{
 			if(this.rarityWeight[(int)card.rarity] > roll)
 			{
-				return card;
+				return card.CreateInstance();
 			}
 		}
 

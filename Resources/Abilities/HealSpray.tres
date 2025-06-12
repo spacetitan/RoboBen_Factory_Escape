@@ -1,13 +1,17 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b84ri2r1nufos"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b84ri2r1nufos"]
 
 [ext_resource type="Texture2D" uid="uid://cbc8ion1w77xj" path="res://Art/Sprites/Abilities/healspray.png" id="1_cmrfd"]
+[ext_resource type="AudioStream" uid="uid://e257fxj2bew0" path="res://Audio/maximize_006.ogg" id="1_cp5dq"]
 [ext_resource type="Script" uid="uid://cejjtpxxnt3m0" path="res://Scripts/_Resources/Abilities/HealSpray.cs" id="1_yt8ee"]
 
 [resource]
 script = ExtResource("1_yt8ee")
 name = "Heal Spray"
-desc = "Heals {value} "
-value = 1
+desc = "Heals 3"
+value = 3
+cooldown = 1
+cooldownTimer = 0
 targetType = 2
 texture = ExtResource("1_cmrfd")
+playSFX = ExtResource("1_cp5dq")
 metadata/_custom_type_script = "uid://dqn4d1g70k1r3"

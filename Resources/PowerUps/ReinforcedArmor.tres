@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ReinforcedArmor" load_steps=3 format=3 uid="uid://chc824dy5xa74"]
+[gd_resource type="Resource" script_class="ReinforcedArmor" load_steps=4 format=3 uid="uid://chc824dy5xa74"]
 
 [ext_resource type="Script" uid="uid://6vgg8pk25va5" path="res://Scripts/_Resources/PowerUps/ReinforcedArmor.cs" id="1_4eepl"]
+[ext_resource type="AudioStream" uid="uid://dwfa3l5iys2jj" path="res://Audio/Card/impactMetal_light_000.ogg" id="1_fbpfm"]
 [ext_resource type="Texture2D" uid="uid://bf5r8o8dcmrcn" path="res://Art/Sprites/PowerUps/armorplate.png" id="2_pip7m"]
 
 [resource]
@@ -9,7 +10,9 @@ id = 9
 name = "Reinforced Armor"
 description = "Adds armor at the end of turn"
 texture = ExtResource("2_pip7m")
+playSFX = ExtResource("1_fbpfm")
 rarity = 1
 activateType = 4
+showValue = false
 value = 2
 metadata/_custom_type_script = "uid://6vgg8pk25va5"

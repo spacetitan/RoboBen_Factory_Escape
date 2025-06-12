@@ -7,7 +7,7 @@ public partial class CharacterData : Resource
     
     [Export] public CharacterID id { get; protected set; } = CharacterID.NONE;
     [Export] public StringName name { get; protected set; } = "";
-    [Export] public string desc { get; protected set; } = "";
+    [Export(PropertyHint.MultilineText)] public string desc { get; protected set; } = "";
     [Export] public Texture2D texture { get; protected set; } = null;
     [Export] public int health { get; protected set; } = 0;
     [Export] public int maxHealth { get; protected set; } = 1;

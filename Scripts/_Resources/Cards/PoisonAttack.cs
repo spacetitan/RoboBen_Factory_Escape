@@ -11,11 +11,12 @@ public partial class PoisonAttack : CardData
 		DamageEffect damageEffect = new DamageEffect(modifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT), this.playSFX);
 		damageEffect.Execute(targets);
 		
-		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].Duplicate() as Poison;
+		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].CreateInstance() as Poison;
 		poison.SetStacks(this.stacks);
 
-		StatusEffect statusEffect = new StatusEffect(poison, null);
-		statusEffect.status = poison;
+		BattleModel model = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;
+		StatusEffect statusEffect = new StatusEffect(poison, poison.sfx);
+		statusEffect.sender = model.player;
 		statusEffect.Execute(targets);
 	}
 	
@@ -32,7 +33,14 @@ public partial class PoisonAttack : CardData
 		{
 			damage = enemyModifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_TAKEN);
 		}
+		
+		string tooltip = this.cardDesc.Replace("{value}", damage.ToString()).Replace("{stacks}", this.stacks.ToString());
 
-		return this.cardDesc.Replace("{value}", damage.ToString()).Replace("{stacks}", this.stacks.ToString());
+		if (this.isExhaust)
+		{
+			tooltip += "\nExhaust.";
+		}
+
+		return tooltip;
 	}
 }

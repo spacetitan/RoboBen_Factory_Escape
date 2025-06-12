@@ -25,7 +25,11 @@ public partial class DamageEffect : Effect
         if(target is Enemy)
         {
             Enemy enemy = (Enemy)target;
-            if (isDirect)
+            if (enemy.statusHandler.HasStatus(Status.StatusID.INVIS))
+            {
+                this.sfx = ResourceManager.instance.audio[ResourceManager.AudioID.MISS];
+            }
+            else if (isDirect)
             {
                 enemy.TakeDirectDamage(amount, receivermodifierType);
             }
@@ -37,7 +41,12 @@ public partial class DamageEffect : Effect
         else if(target is Player)
         {
             Player player = target as Player;
-            if (isDirect)
+            
+            if (player.statusHandler.HasStatus(Status.StatusID.INVIS))
+            {
+                this.sfx = ResourceManager.instance.audio[ResourceManager.AudioID.MISS];
+            }
+            else if (isDirect)
             {
                 player.TakeDirectDamage(amount, receivermodifierType);
             }
@@ -62,7 +71,11 @@ public partial class DamageEffect : Effect
             if(target is Enemy)
             {
                 Enemy enemy = (Enemy)target;
-                if (isDirect)
+                if (enemy.statusHandler.HasStatus(Status.StatusID.INVIS))
+                {
+                    this.sfx = ResourceManager.instance.audio[ResourceManager.AudioID.MISS];
+                }
+                else if (isDirect)
                 {
                     enemy.TakeDirectDamage(amount, receivermodifierType);
                 }
@@ -74,7 +87,11 @@ public partial class DamageEffect : Effect
             else if(target is Player)
             {
                 Player player = target as Player;
-                if (isDirect)
+                if (player.statusHandler.HasStatus(Status.StatusID.INVIS))
+                {
+                    this.sfx = ResourceManager.instance.audio[ResourceManager.AudioID.MISS];
+                }
+                else if (isDirect)
                 {
                     player.TakeDirectDamage(amount, receivermodifierType);
                 }

@@ -7,6 +7,7 @@ public partial class TreasureModel : UIModel
     public override void Enter()
     {
         TreasureView view = this.views[ViewID.TREASURE] as TreasureView;
+        view.SetData();
         view.ShowView();
         
         UIManager.instance.vfxModel.OpenCurtain();

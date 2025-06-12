@@ -16,4 +16,9 @@ public partial class Regen : Status
 		healEffect.Execute(target as Character);
 		base.ApplyStatus(target);
 	}
+	
+	public override Regen CreateInstance()
+	{
+		return base.CreateInstance() as Regen;
+	}
 }

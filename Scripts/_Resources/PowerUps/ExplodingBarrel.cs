@@ -15,7 +15,6 @@ public partial class ExplodingBarrel : PowerUp
         
 		DamageEffect damage = new DamageEffect(this.value, this.playSFX);
 		damage.Execute(model.player.GetTargets(Character.TargetType.ALL));
-		GD.Print("Boom");
 		base.ActivatePowerUp();
 	}
 }

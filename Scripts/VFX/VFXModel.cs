@@ -28,12 +28,18 @@ public partial class VFXModel : UIModel
     {
         CurtainView view = this.views[ViewID.CURTAIN] as CurtainView;
         view.HideView(val);
-        this.HideModel(val+.2f);
+        if (this.Visible)
+        {
+            this.HideModel(val);   
+        }
     }
 
     public void CloseCurtain(Action callback = null)
     {
-        this.ShowModel();
+        if (!this.Visible)
+        {
+            this.ShowModel();   
+        }
         CurtainView view = this.views[ViewID.CURTAIN] as CurtainView;
         view.CloseCurtain(callback);
     }

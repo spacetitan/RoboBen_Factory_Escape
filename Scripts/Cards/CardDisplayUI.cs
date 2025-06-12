@@ -93,4 +93,9 @@ public partial class CardDisplayUI : Control
             this.AddThemeStyleboxOverride("panel", defaultStyleBox);   
         }
     }
+
+    public void OnClick()
+    {
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUTTON]);
+    }
 }

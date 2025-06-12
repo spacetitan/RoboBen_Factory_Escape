@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyAttackGuard" load_steps=2 format=3 uid="uid://8j27b4mjutr2"]
+[gd_resource type="Resource" script_class="EnemyAttackGuard" load_steps=3 format=3 uid="uid://8j27b4mjutr2"]
 
 [ext_resource type="Script" uid="uid://wx76abjprliq" path="res://Scripts/_Resources/EnemyActions/EnemyAttackGuard.cs" id="1_juowk"]
+[ext_resource type="AudioStream" uid="uid://dia6ibhj6wytw" path="res://Audio/Card/impactPlate_light_001.ogg" id="2_rnk0v"]
 
 [resource]
 script = ExtResource("1_juowk")
@@ -11,4 +12,5 @@ type = 2
 intent = 3
 value = 2
 chanceWeight = 1
+sound = ExtResource("2_rnk0v")
 metadata/_custom_type_script = "uid://wx76abjprliq"

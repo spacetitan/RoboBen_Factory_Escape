@@ -17,6 +17,13 @@ public partial class Heal : CardData
 	
 	public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
 	{
-		return this.cardDesc.ReplaceN("{value}", this.cardValue.ToString());
+		string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
+
+		if (this.isExhaust)
+		{
+			tooltip += "\nExhaust.";
+		}
+
+		return tooltip;
 	}
 }

@@ -74,6 +74,7 @@ public partial class PlayView : UIView
             }
         };
         this.startButton.button.SetDisabled(true);
+        this.startButton.clickSFX = ResourceManager.instance.audio[ResourceManager.AudioID.GAME_START];
         
         this.cancelButton = this.GetNode<UIButton>("%CancelButton");
         this.cancelButton.SetData("Cancel");

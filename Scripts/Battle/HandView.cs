@@ -48,6 +48,7 @@ public partial class HandView : UIView
         newCardUI.SetSize(new Vector2(size, size*1.4f));
         AddChild(newCardUI);
         this.cards.Add(newCardUI);
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.DRAW_CARD]);
         UpdateHand();
     }
 
@@ -56,6 +57,7 @@ public partial class HandView : UIView
         this.player.AddEnergy(card.data.cardGen);
         EventManager.instance.EmitSignal(EventManager.SignalName.CardBurned);
         this.player.DiscardCard(card);
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.CARD_BURNED]);
     }
 
     public void DiscardCard(CardUI card)

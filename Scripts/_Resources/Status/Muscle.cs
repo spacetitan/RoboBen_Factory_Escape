@@ -51,4 +51,9 @@ public partial class Muscle : Status
 			modifier.RemoveValue("muscle");
 		}
 	}
+	
+	public override Muscle CreateInstance()
+	{
+		return base.CreateInstance() as Muscle;
+	}
 }

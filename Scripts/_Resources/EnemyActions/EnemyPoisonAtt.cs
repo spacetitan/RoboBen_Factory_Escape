@@ -43,9 +43,10 @@ public partial class EnemyPoisonAtt : EnemyAction
 		Vector2 end = this.target.GlobalPosition + new Vector2(this.target.Size.X/2, 0);
 		DamageEffect damage = new DamageEffect(this.owner.GetModifiedAttack(this.value), this.sound);
 		
-		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].Duplicate() as Poison;
+		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].CreateInstance() as Poison;
 		poison.SetStacks(this.stacks);
 		StatusEffect statusEffect = new StatusEffect(poison, null);
+		statusEffect.sender = this.owner;
 		
 		List<Character> targetList = new List<Character>(){this.target};
 

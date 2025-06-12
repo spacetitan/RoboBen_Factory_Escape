@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgfwxq107anql"]
 
 [ext_resource type="Script" uid="uid://n8vmjb64jtyd" path="res://Scripts/Run/RunModel.cs" id="1_l5xdj"]
-[ext_resource type="Texture2D" uid="uid://ct02h1ka1rx0m" path="res://Art/Sprites/Backgrounds/runBlockout (1).png" id="2_blbib"]
+[ext_resource type="Texture2D" uid="uid://0yl255snfrj1" path="res://Art/Sprites/Backgrounds/runBackground.png" id="2_blbib"]
 
 [node name="RunModel" type="Control"]
 layout_mode = 3

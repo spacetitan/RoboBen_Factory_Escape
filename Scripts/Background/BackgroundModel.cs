@@ -51,7 +51,16 @@ public partial class BackgroundModel : UIModel
                 break;
             
             case UIManager.UIState.GAMEOVER:
-                this.backgroundTexture.Texture = backgroundTextures[3];
+                
+                GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
+                if (model.win)
+                {
+                    this.backgroundTexture.Texture = backgroundTextures[4];
+                }
+                else
+                {
+                    this.backgroundTexture.Texture = backgroundTextures[3];
+                }
                 break;
             
             case UIManager.UIState.NONE:

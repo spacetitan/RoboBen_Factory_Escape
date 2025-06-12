@@ -10,7 +10,9 @@ public partial class CardData : Resource
         ATTACK,
         GUARD,
         POISONATTACK,
-        REPAIRKIT
+        REPAIRKIT,
+        MUSCLEGEN,
+        RANDOMCARD
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE};
 
@@ -31,7 +33,13 @@ public partial class CardData : Resource
     {
         return this.targetType == Character.TargetType.SINGLE;
     }
-    
+
+    public void SetExhaust()
+    {
+        this.isExhaust = true;
+        this.cardCost = 0;
+    }
+
     public virtual void ApplyEffects(List<Character> targets, PlayerData playerData, ModifierHandler modifiers)
     {
         return;
@@ -53,12 +61,26 @@ public partial class CardData : Resource
     
     public virtual string GetDefaultToolip()
     {
-        return this.cardDesc.Replace("{value}", this.cardValue.ToString());
+        string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
+
+        if (this.isExhaust)
+        {
+            tooltip += "\nExhaust.";
+        }
+
+        return tooltip;
     }
     
     public virtual string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
     {
-        return this.cardDesc.Replace("{value}", this.cardValue.ToString());
+        string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
+
+        if (this.isExhaust)
+        {
+            tooltip += "\nExhaust.";
+        }
+
+        return tooltip;
     }
 
     public virtual CardData CreateInstance()

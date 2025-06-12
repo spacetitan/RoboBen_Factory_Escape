@@ -70,3 +70,5 @@ text = "0"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="OnClick"]

@@ -26,7 +26,13 @@ public partial class Run
         
         this.playerData = playerData.CreateInstance();
         this.playerData.startingDeck.LoadDataToDeck();
-        
+
+        if (this.playerData.id == CharacterData.CharacterID.ROBODEV)
+        {
+            this.gold += 10;
+            this.reRolls += 2;
+        }
+
         this.playerDeck = new CardPile();
         this.playerDeck.SetDeck(this.playerData.startingDeck);
         
@@ -51,6 +57,7 @@ public partial class Run
     public void AddMoney(int amount)
     {
         this.gold += amount;
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.GET_COIN], true);
     }
 
     public void SpendReRoll()

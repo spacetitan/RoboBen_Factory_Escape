@@ -44,9 +44,10 @@ public partial class EnemyMuscleGen : EnemyAction
 			isUsed = true;
 		}
 
-		Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].Duplicate() as Muscle;
+		Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].CreateInstance() as Muscle;
 		muscle.SetDuration(this.value);
 		StatusEffect status = new StatusEffect(muscle, this.sound);
+		status.sender = this.owner;
 		status.Execute(new List<Character>(){this.owner});
 
 		this.owner.GetTree().CreateTimer(0.6, false).Timeout += () => 

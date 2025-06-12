@@ -23,6 +23,8 @@ public partial class SecondWind : PowerUp
             BattleModel model = UIManager.instance.currentModel as BattleModel;
             model.player.DrawCard();
             
+            this.owner.GetPowerUpUI(this.id).Flash();
+            
             this.ready = false;
         }
     }

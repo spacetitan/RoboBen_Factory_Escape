@@ -50,12 +50,12 @@ public partial class Enemy : Character
         {
             case CharacterData.CharacterID.GRUBBFLY:
             case CharacterData.CharacterID.TORTIGRUB:
-                this.Scale = new Vector2(0.9f, 0.9f);
+                this.Scale = new Vector2(0.85f, 0.85f);
                     break;
             
             case CharacterData.CharacterID.GRUBBIG:
             case CharacterData.CharacterID.GRUBBMANTIS:
-                this.Scale = new Vector2(1.1f, 1.1f);
+                this.Scale = new Vector2(1.25f, 1.25f);
                     break;
             
             case CharacterData.CharacterID.GRUBBOID:
@@ -146,7 +146,6 @@ public partial class Enemy : Character
     {
         if(this.data.health <= 0 || amount <= 0) { return; }
         
-        GD.Print(amount);
         int modifiedAmount = this.modifierHandler.GetModifiedValue(amount, type);
         int initial_dmg = modifiedAmount;
         

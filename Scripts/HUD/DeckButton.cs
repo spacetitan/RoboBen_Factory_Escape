@@ -43,4 +43,9 @@ public partial class DeckButton : Control
         this.deckLabel.Text = this.cardPile.cards.Count.ToString();
         this.popUpTitle = popUpTitle;
     }
+
+    public void OnClick()
+    {
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUTTON]);
+    }
 }

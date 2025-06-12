@@ -9,7 +9,7 @@ public partial class AudioPlayer : Node
     {
         if(audio == null) {return;}
 
-        if(single) {Stop();}
+        if(single) { Stop();}
 
         foreach(AudioStreamPlayer player in GetChildren())
         {

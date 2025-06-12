@@ -63,7 +63,7 @@ public partial class RestView : UIView
         };
     }
 
-    public override void Enter()
+    public void SetData()
     {
         Player player = ResourceManager.instance.playerScene.Instantiate() as Player;
         player.GetSceneNodes();
@@ -86,6 +86,11 @@ public partial class RestView : UIView
             this.reRollButton.button.Disabled = true;
             this.removeCardButton.button.Disabled = true;
         }
+    }
+
+    public override void Enter()
+    {
+        
     }
 
     private void OnButtonPressed()

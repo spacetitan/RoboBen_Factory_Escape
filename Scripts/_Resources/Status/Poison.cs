@@ -17,4 +17,9 @@ public partial class Poison : Status
 		
 		base.ApplyStatus(target);
 	}
+	
+	public override Poison CreateInstance()
+	{
+		return base.CreateInstance() as Poison;
+	}
 }
