@@ -42,11 +42,11 @@ public partial class MapView : UIView
         {
             displayList.Add(display);
         }
-        displayList[0].SetData("- Battle", ResourceManager.instance.runIcons[RoomData.Type.COMBAT]);
-        displayList[1].SetData("- Treasure", ResourceManager.instance.runIcons[RoomData.Type.TREASURE]);
-        displayList[2].SetData("- Rest", ResourceManager.instance.runIcons[RoomData.Type.REST]);
-        displayList[3].SetData("- Shop", ResourceManager.instance.runIcons[RoomData.Type.SHOP]);
-        displayList[4].SetData("- Event", ResourceManager.instance.runIcons[RoomData.Type.EVENT]);
+        displayList[0].SetData("Battle", ResourceManager.instance.runIcons[RoomData.Type.COMBAT]);
+        displayList[1].SetData("Treasure", ResourceManager.instance.runIcons[RoomData.Type.TREASURE]);
+        displayList[2].SetData("Rest", ResourceManager.instance.runIcons[RoomData.Type.REST]);
+        displayList[3].SetData("Shop", ResourceManager.instance.runIcons[RoomData.Type.SHOP]);
+        displayList[4].SetData("Event", ResourceManager.instance.runIcons[RoomData.Type.EVENT]);
         
         this.closeButton = this.GetNode<UIButton>("%CloseButton");
         this.closeButton.SetData("Close");
@@ -55,7 +55,7 @@ public partial class MapView : UIView
             UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.MAP);
         };
         
-        this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 7, this.mapScrollContainer.Size.X / 7);
+        this.panelSize = new Vector2(this.mapScrollContainer.Size.X/ 6f, this.mapScrollContainer.Size.X / 6f);
     }
     
     public float FloorToScroll()

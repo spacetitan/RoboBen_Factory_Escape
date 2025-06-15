@@ -80,7 +80,13 @@ public partial class Enemy : Character
             GD.Print("Current Action is null");
             return;
         }
-        
+
+        BattleModel model = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;
+        if (model.turnOrderStateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END)
+        {
+            return;
+        }
+
         this.currentAction.PerformAction(callback);
         this.currentAction = null;
     }

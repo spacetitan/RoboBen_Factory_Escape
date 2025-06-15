@@ -41,7 +41,7 @@ public partial class RewardDraftView : UIView
 
     public void OpenPopUp(Type type, bool isLayered)
     {
-        this.reRollButton.SetData("Re-Roll (" + RunManager.instance.currentRun.reRolls + ")", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
+        this.reRollButton.SetData("Re-Rolls (" + RunManager.instance.currentRun.reRolls + ")", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         SpawnRewards(type);
         this.isLayered = isLayered;
         this.rewardType = type;

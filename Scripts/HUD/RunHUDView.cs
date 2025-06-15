@@ -56,7 +56,18 @@ public partial class RunHUDView : UIView
         this.quitButton.SetData("Quit");
         this.quitButton.button.Pressed += () =>
         {
-            this.GetTree().Quit();
+            UIManager.instance.popUpModel.OpenGenericPopUp(new GenericPopUpView.GenericPopUpData()
+            {
+                action = () =>
+                {
+                    UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
+                    RunManager.instance.ClearRun();
+                    UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                },
+                title = "Exit to Title Menu?",
+                body = "Are you sure you want to exit?",
+                buttonText = "Quit",
+            });
         };
 
     }
@@ -86,10 +97,14 @@ public partial class RunHUDView : UIView
 
     public override void Exit()
     {
-        Run run = RunManager.instance.currentRun;
-        if (run != null)
+        if (RunManager.instance.currentRun != null)
         {
-            run.powerUpHandler.ClearUI();
+            RunManager.instance.currentRun.powerUpHandler.ClearUI();   
         }
+        // Run run = RunManager.instance.currentRun;
+        // if (run != null)
+        // {
+        //     run.powerUpHandler.ClearUI();
+        // }
     }
 }

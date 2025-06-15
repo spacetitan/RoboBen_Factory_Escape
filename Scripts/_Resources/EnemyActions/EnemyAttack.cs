@@ -17,7 +17,7 @@ public partial class EnemyAttack : EnemyAction
 	{
 		if (this.numOfAtt > 1)
 		{
-			return this.owner.GetModifiedAttack(this.value).ToString() + " X " + numOfAtt.ToString();	
+			return this.owner.GetModifiedAttack(this.value).ToString() + " x " + numOfAtt.ToString();	
 		}
 		else
 		{

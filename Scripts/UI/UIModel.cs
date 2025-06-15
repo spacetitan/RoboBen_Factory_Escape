@@ -38,7 +38,7 @@ public partial class UIModel : Control
 
         tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
         tween.TweenCallback(Callable.From(this.Show));
-        tween.TweenProperty(this, "modulate", Colors.White, .15f);
+        //tween.TweenProperty(this, "modulate", Colors.White, .15f);
         tween.TweenCallback(Callable.From(this.Enter));
     }
 
@@ -52,7 +52,7 @@ public partial class UIModel : Control
 
         tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
         tween.TweenCallback(Callable.From(this.Show));
-        tween.TweenProperty(this, "modulate", Colors.White, time);
+        //tween.TweenProperty(this, "modulate", Colors.White, time);
         tween.TweenCallback(Callable.From(this.Enter));
     }
 
@@ -65,7 +65,7 @@ public partial class UIModel : Control
 		}
 
         tween = CreateTween().SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(this, "modulate", Colors.Transparent, .15f);
+		//tween.TweenProperty(this, "modulate", Colors.Transparent, .15f);
         tween.TweenCallback(Callable.From(this.Exit));
 		tween.TweenCallback(Callable.From(this.Hide));
     }
@@ -79,7 +79,7 @@ public partial class UIModel : Control
 		}
 
         tween = CreateTween().SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Cubic);
-		tween.TweenProperty(this, "modulate", Colors.Transparent, time);
+		//tween.TweenProperty(this, "modulate", Colors.Transparent, time);
         tween.TweenCallback(Callable.From(this.Exit));
 		tween.TweenCallback(Callable.From(this.Hide));
     }

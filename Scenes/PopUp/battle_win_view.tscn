@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkw6nlgx5l7b2"]
+[gd_scene load_steps=6 format=3 uid="uid://dkw6nlgx5l7b2"]
 
 [ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_4jaxb"]
 [ext_resource type="Script" uid="uid://c1tncs0ga3fy3" path="res://Scripts/PopUp/BattleWinView.cs" id="1_jtvnw"]
 [ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="2_fqrw8"]
+[ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="4_qnsui"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="4_seo5g"]
 
 [node name="BattleWinView" type="Panel"]
@@ -64,6 +65,7 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_qnsui")
 theme_override_constants/separation = 30
 
 [node name="ContinueButton" parent="." instance=ExtResource("4_seo5g")]

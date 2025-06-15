@@ -41,7 +41,7 @@ public partial class BattleWinView : UIView
         this.buttonContainer.AddChild(moneyButton);
         moneyButton.GetSceneNodes();
         moneyButton.SetCustomMinimumSize(this.buttonSize);
-        moneyButton.SetData("Money: " + money, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
+        moneyButton.SetData(money + " money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         moneyButton.button.Pressed += () =>
         {
             RunManager.instance.currentRun.AddMoney(money);

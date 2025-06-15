@@ -52,10 +52,6 @@ public partial class PlayView : UIView
             SetInfoPanels(ResourceManager.instance.characters[(CharacterData.CharacterID)id]);
             this.startButton.button.SetPressed(false);
         };
-        if (!GameManager.instance.HasLoadFile())
-        {
-            this.continueButton.button.SetDisabled(true);
-        }
 
         this.startButton = this.GetNode<UIButton>("%StartButton");
         this.startButton.SetData("Start!");
@@ -128,7 +124,7 @@ public partial class PlayView : UIView
         this.infoPanels.Add(infoPanel);
         
         this.pickerContainer = this.GetNode<Panel>("%CharPickerPanel").GetNode<HBoxContainer>("%PickerContainer");
-        this.pickerSize = new Vector2(this.pickerContainer.Size.X / 4, this.pickerContainer.Size.X / 4);
+        this.pickerSize = new Vector2(this.pickerContainer.Size.X / 3f, this.pickerContainer.Size.X / 3f);
         foreach (KeyValuePair<CharacterData.CharacterID, PlayerData> kvp in ResourceManager.instance.characters)
         {
             CharPickerPanel pickerPanel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
@@ -142,6 +138,18 @@ public partial class PlayView : UIView
                 this.startButton.button.SetDisabled(false);
             };
             this.pickerContainer.AddChild(pickerPanel);
+        }
+    }
+
+    public override void Enter()
+    {
+        if (GameManager.instance.HasLoadFile())
+        {
+            this.continueButton.button.SetDisabled(false);
+        }
+        else
+        {
+            this.continueButton.button.SetDisabled(true);
         }
     }
 

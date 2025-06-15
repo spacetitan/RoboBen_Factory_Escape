@@ -29,7 +29,7 @@ public partial class DeckPopUpView : UIView
             UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.DECK);
         };
         
-        this.cardSize = new Vector2(this.scrollContainer.Size.X/7, (this.scrollContainer.Size.X/7) * 1.4f);
+        this.cardSize = new Vector2(this.scrollContainer.Size.X/6, (this.scrollContainer.Size.X/6) * 1.4f);
     }
 
     public void OpenPopUp(CardPile data, string title, bool removeCard = false)
@@ -55,7 +55,7 @@ public partial class DeckPopUpView : UIView
             }
             else
             {
-                display.SetData(card, null, true);
+                display.SetData(card, null, true, false);
             }
 
             

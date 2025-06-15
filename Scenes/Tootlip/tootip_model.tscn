@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqnxsrvcrp5o5"]
+[gd_scene load_steps=5 format=3 uid="uid://cqnxsrvcrp5o5"]
 
 [ext_resource type="Script" uid="uid://fdxryxjk0ud0" path="res://Scripts/Tooltip/TooltipModel.cs" id="1_eshp1"]
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_kynmj"]
 [ext_resource type="StyleBox" uid="uid://tu23vthlovps" path="res://Themes/UI/UIDisplayPanel.tres" id="2_f5yf4"]
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="3_kynmj"]
 
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_kynmj")
 script = ExtResource("1_eshp1")
 
 [node name="Panel" type="Panel" parent="."]
@@ -33,26 +35,27 @@ anchors_preset = -1
 anchor_left = 0.4
 anchor_top = 0.21
 anchor_right = 0.6
-anchor_bottom = 0.23
+anchor_bottom = 0.25
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 36
 text = "Title"
 scroll_active = false
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="DescLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
-anchor_top = 0.24
+anchor_top = 0.25
 anchor_right = 0.69
 anchor_bottom = 0.35
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 36
 text = "Description"
 scroll_active = false
 

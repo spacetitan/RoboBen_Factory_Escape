@@ -71,9 +71,6 @@ public partial class GameOverModel : UIModel
         this.summaryLabel.Text += "\nMoney spent: " + run.stats.moneySpent;
         this.summaryLabel.Text += "\nRe-Rolls used: " + run.stats.reRollsUsed; 
 
-        run.powerUpHandler.SetContainer(this.gridContainer);
-        this.powerUpSize = run.powerUpHandler.powerUpSize;
-
         this.win = win;
         if (win)
         {
@@ -82,18 +79,26 @@ public partial class GameOverModel : UIModel
         else
         {
             this.titleLabel.Text = "Try again!";
-            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_LOSE], true);
         }
     }
 
     public override void Enter()
     {
         Run run = RunManager.instance.currentRun;
+        run.powerUpHandler.SetContainer(this.gridContainer);
         run.powerUpHandler.SpawnAllUI();
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
         
-        UIManager.instance.vfxModel.OpenCurtain();
+        UIManager.instance.vfxModel.OpenCurtain(() =>
+        {
+            if (!win)
+            {
+                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_LOSE], true);
+            }
+        });
         
         RunManager.instance.ClearRun();
+        GameManager.instance.DeleteSaveData();
     }
 
     public override void Exit()

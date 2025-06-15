@@ -74,9 +74,9 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 1
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
 [node name="CardContainer" type="GridContainer" parent="CardScrollContainer/MarginContainer"]

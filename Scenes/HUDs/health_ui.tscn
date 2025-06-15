@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhoqwn8106lqt"]
+[gd_scene load_steps=6 format=3 uid="uid://dhoqwn8106lqt"]
 
 [ext_resource type="Script" uid="uid://b2in3be2mqc2n" path="res://Scripts/HUD/HealthUI.cs" id="1_acsct"]
 [ext_resource type="Texture2D" uid="uid://b46uvarj5kv4o" path="res://Art/Sprites/HUD/healthIcon.png" id="1_jkgvo"]
 [ext_resource type="StyleBox" uid="uid://dtolaek8na6mo" path="res://Themes/HUD/HealthBackground.tres" id="2_g6836"]
 [ext_resource type="StyleBox" uid="uid://fx01v47q5rd8" path="res://Themes/HUD/HealthFill.tres" id="3_g6836"]
+[ext_resource type="FontFile" uid="uid://dk2st7qorsl3d" path="res://Themes/_Fonts/WDXLLubrifontJPN-Regular.ttf" id="5_bwvbr"]
 
 [node name="HealthUI" type="Control"]
 custom_minimum_size = Vector2(200, 50)
@@ -51,6 +52,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("5_bwvbr")
+theme_override_font_sizes/normal_font_size = 28
 text = "0 / 10"
 scroll_active = false
 horizontal_alignment = 1

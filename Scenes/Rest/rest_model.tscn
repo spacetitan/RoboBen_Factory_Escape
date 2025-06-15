@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://016u3ak3h7t"]
+[gd_scene load_steps=7 format=3 uid="uid://016u3ak3h7t"]
 
 [ext_resource type="Script" uid="uid://2ix06tenltds" path="res://Scripts/Rest/RestModel.cs" id="1_3cnl6"]
 [ext_resource type="Theme" uid="uid://5sb34o6tm732" path="res://Themes/Start/Model/StartModel.tres" id="2_0htjp"]
 [ext_resource type="Script" uid="uid://br1g40ck85vhb" path="res://Scripts/Rest/RestView.cs" id="2_iu33a"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="3_ddcqt"]
+[ext_resource type="Theme" uid="uid://bvwpo7ir0pxdr" path="res://Themes/Rest/RestTheme.tres" id="5_0htjp"]
 [ext_resource type="PackedScene" uid="uid://qs6binjssm21" path="res://Scenes/Shop/shop_item_panel.tscn" id="5_ddcqt"]
 
 [node name="RestModel" type="Control"]
@@ -37,6 +38,7 @@ anchor_right = 0.95
 anchor_bottom = 0.525
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_0htjp")
 
 [node name="FullHealButton" parent="RestView" instance=ExtResource("3_ddcqt")]
 unique_name_in_owner = true
@@ -48,12 +50,14 @@ anchor_right = 0.95
 anchor_bottom = 0.675
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_0htjp")
 
 [node name="ShopItemPanel" parent="RestView" instance=ExtResource("5_ddcqt")]
 unique_name_in_owner = true
 layout_mode = 1
 anchor_top = 0.325
 anchor_bottom = 0.675
+theme = ExtResource("5_0htjp")
 
 [node name="PlayerSpawn" type="Control" parent="RestView"]
 unique_name_in_owner = true
@@ -75,6 +79,7 @@ anchor_right = 0.95
 anchor_bottom = 0.375
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_0htjp")
 
 [node name="RemoveCardButton" parent="RestView" instance=ExtResource("3_ddcqt")]
 unique_name_in_owner = true
@@ -86,3 +91,4 @@ anchor_right = 0.775
 anchor_bottom = 0.825
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_0htjp")

@@ -22,8 +22,8 @@ public partial class GenericPopUpView : UIView
     private RichTextLabel titleLabel = null;
     private RichTextLabel bodyLabel = null;
     private TextureRect popUpTexture = null;
-    private Button closeButton = null;
-    private Button confirmButton = null;
+    private UIButton closeButton = null;
+    private UIButton confirmButton = null;
     
     private GenericPopUpData popUpData = new GenericPopUpData();
     
@@ -42,9 +42,10 @@ public partial class GenericPopUpView : UIView
         this.popUpTexture = bodyContainer.GetNode<TextureRect>("%PopUpTexture");
 
         HBoxContainer buttonContainer = GetNode<HBoxContainer>("%ButtonContainer");
-        this.closeButton = buttonContainer.GetNode<Button>("%CloseButton");
-        this.closeButton.Pressed += () => UIManager.instance.popUpModel.ClosePopup(this.ID);
-        this.confirmButton = buttonContainer.GetNode<Button>("%ConfrimButton");
+        this.closeButton = buttonContainer.GetNode<UIButton>("%CloseButton");
+        this.closeButton.SetData("Close");
+        this.closeButton.button.Pressed += () => UIManager.instance.popUpModel.ClosePopup(this.ID);
+        this.confirmButton = buttonContainer.GetNode<UIButton>("%ConfirmButton");
     }
     
     public void OpenPopUp(GenericPopUpData data)
@@ -62,11 +63,11 @@ public partial class GenericPopUpView : UIView
 
         if(this.popUpData.action != null)
         {
-            this.confirmButton.Pressed += this.popUpData.action;
+            this.confirmButton.button.Pressed += this.popUpData.action;
 			
             if(this.popUpData.buttonText != "")
             {
-                this.confirmButton.Text = this.popUpData.buttonText;
+                this.confirmButton.SetData(this.popUpData.buttonText);
             }
 
             this.confirmButton.Show();
@@ -85,10 +86,10 @@ public partial class GenericPopUpView : UIView
 
         if(this.popUpData.action != null)
         {
-            this.confirmButton.Pressed -= this.popUpData.action;
+            this.confirmButton.button.Pressed -= this.popUpData.action;
         }
 		
-        this.confirmButton.Text = "Continue";
+        this.confirmButton.label.Text = "Continue";
         this.confirmButton.Hide();
 
         this.popUpData = new GenericPopUpData();

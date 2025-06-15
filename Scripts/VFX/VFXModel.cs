@@ -24,22 +24,14 @@ public partial class VFXModel : UIModel
         
     }
 
-    public void OpenCurtain(float val = 1f)
+    public void OpenCurtain(Action callback = null, float val = .85f)
     {
         CurtainView view = this.views[ViewID.CURTAIN] as CurtainView;
-        view.HideView(val);
-        if (this.Visible)
-        {
-            this.HideModel(val);   
-        }
+        view.HideView(val, callback);
     }
 
     public void CloseCurtain(Action callback = null)
     {
-        if (!this.Visible)
-        {
-            this.ShowModel();   
-        }
         CurtainView view = this.views[ViewID.CURTAIN] as CurtainView;
         view.CloseCurtain(callback);
     }
@@ -47,7 +39,6 @@ public partial class VFXModel : UIModel
     public void OnPlayerHit()
     {
         VignetteView view = this.views[ViewID.VIGNETTE] as VignetteView;
-        this.ShowModel();
         view.OnPlayerHit();
     }
 

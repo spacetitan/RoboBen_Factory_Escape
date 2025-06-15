@@ -47,7 +47,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
+anchor_left = 0.45
 anchor_top = 0.15
 anchor_right = 0.9
 anchor_bottom = 0.925
@@ -67,8 +67,8 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="MapContainer" type="VBoxContainer" parent="MapPanel/MapScrollContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -80,26 +80,31 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.15
-anchor_right = 0.375
-anchor_bottom = 0.95
+anchor_right = 0.425
+anchor_bottom = 0.757
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
 [node name="UIDisplay" parent="LegendContainer" instance=ExtResource("3_byb7y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="UIDisplay2" parent="LegendContainer" instance=ExtResource("3_byb7y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="UIDisplay3" parent="LegendContainer" instance=ExtResource("3_byb7y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="UIDisplay4" parent="LegendContainer" instance=ExtResource("3_byb7y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="UIDisplay5" parent="LegendContainer" instance=ExtResource("3_byb7y")]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="CloseButton" parent="." instance=ExtResource("4_1r4r7")]
 unique_name_in_owner = true

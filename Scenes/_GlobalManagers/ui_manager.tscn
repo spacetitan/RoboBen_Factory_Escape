@@ -54,4 +54,3 @@ state = 4
 [node name="VFX" type="CanvasLayer" parent="."]
 
 [node name="VFXModel" parent="VFX" instance=ExtResource("2_rky0f")]
-mouse_filter = 2

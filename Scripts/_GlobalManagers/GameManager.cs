@@ -19,8 +19,8 @@ public partial class GameManager : Node
 	private ConfigFile settings = new ConfigFile();
 	private string settingsPath = "res://settings.cfg";
 	
-	private string savePath = Path.Join(ProjectSettings.GlobalizePath("user://") + "RoboBen/");
-	private string loadPath = Path.Join(ProjectSettings.GlobalizePath("user://")+ "RoboBen/SaveData.json");
+	private string savePath = Path.Join(ProjectSettings.GlobalizePath("user://") + "Saves/");
+	private string loadPath = Path.Join(ProjectSettings.GlobalizePath("user://")+ "Saves/SaveData.json");
 	public Dictionary loadData { get; private set; } = null;
 
 	public override void _Ready()
@@ -94,7 +94,7 @@ public partial class GameManager : Node
 
 	public bool HasLoadFile()
 	{
-		if (!Directory.Exists(savePath) && !Directory.Exists(loadPath))
+		if (!File.Exists(loadPath))
 		{
 			GD.Print("no data present");
 			return false;
@@ -142,7 +142,7 @@ public partial class GameManager : Node
 
 	public void DeleteSaveData()
 	{
-		if (!Directory.Exists(savePath))
+		if (!File.Exists(loadPath))
 		{
 			return;
 		}

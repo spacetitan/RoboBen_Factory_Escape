@@ -73,12 +73,19 @@ public partial class RunModel : UIModel
             this.mapContainer.AddChild(boxContainer);
             this.mapContainer.MoveChild(boxContainer, 0);
 
+            int count = 0;
             foreach(RoomData room in floors)
             {
                 if(room.nextRoomNumber.Any())
                 {
                     SpawnRoom(room, boxContainer);
+                    count++;
                 }
+            }
+
+            if (count > 4)
+            {
+                boxContainer.AddThemeConstantOverride("separation", 25); 
             }
         }
 

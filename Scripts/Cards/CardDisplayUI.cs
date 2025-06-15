@@ -42,14 +42,24 @@ public partial class CardDisplayUI : Control
         this.AddThemeStyleboxOverride("panel", defaultStyleBox);
     }
 
-    public void SetData(CardData data, Action onClick = null, bool glowDisabled = false)
+    public void SetData(CardData data, Action onClick = null, bool glowDisabled = false, bool showType = true)
     {
         this.textureRect.Texture = data.Texture;
         this.titleLabel.Text = data.cardName;
         this.descLabel.Text = data.GetDefaultToolip();
         this.costLabel.Text = "Cost: " + data.cardCost.ToString();
         this.genLabel.Text = "Gen: " + data.cardGen.ToString();
-        this.typeLabel.Text = "Card";
+
+        if (showType)
+        {
+            this.typeLabel.Text = "Card";
+        }
+        else
+        {
+            this.typeLabel.Text = "";
+        }
+
+        
 
         if (onClick != null)
         {

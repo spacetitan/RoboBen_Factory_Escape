@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cehsg4g65k5yy"]
+[gd_scene load_steps=9 format=3 uid="uid://cehsg4g65k5yy"]
 
 [ext_resource type="Script" uid="uid://bdnsepx1c2wv2" path="res://Scripts/GameOver/GameOverModel.cs" id="1_gyk08"]
 [ext_resource type="Theme" uid="uid://5sb34o6tm732" path="res://Themes/Start/Model/StartModel.tres" id="1_tsbv2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhoqwn8106lqt" path="res://Scenes/HUDs/health_ui.tscn" id="4_kysl6"]
 [ext_resource type="PackedScene" uid="uid://bmx06kd07h6md" path="res://Scenes/HUDs/ui_display.tscn" id="5_jp6oy"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="6_xcq51"]
+[ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="8_jp6oy"]
 
 [node name="GameOverModel" type="Control"]
 layout_mode = 3
@@ -137,6 +138,7 @@ anchor_right = 0.9
 anchor_bottom = 0.4
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_jp6oy")
 
 [node name="SummaryLabel" type="RichTextLabel" parent="SummaryPanel"]
 unique_name_in_owner = true
@@ -148,6 +150,7 @@ anchor_right = 0.875
 anchor_bottom = 0.59
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
 scroll_active = false
 
 [node name="SumScrollContainer" type="ScrollContainer" parent="SummaryPanel"]
@@ -179,7 +182,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
-columns = 5
+columns = 4
 
 [node name="UpButton" parent="SummaryPanel" instance=ExtResource("6_xcq51")]
 unique_name_in_owner = true
@@ -217,3 +220,4 @@ anchor_right = 0.8
 anchor_bottom = 1.1
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_jp6oy")

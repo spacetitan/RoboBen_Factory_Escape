@@ -68,7 +68,18 @@ public partial class BattleHUDView : UIView
        this.quitButton.SetData("Quit");
        this.quitButton.button.Pressed += () =>
        {
-           this.GetTree().Quit();
+           UIManager.instance.popUpModel.OpenGenericPopUp(new GenericPopUpView.GenericPopUpData()
+           {
+               action = () =>
+               {
+                   UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
+                   RunManager.instance.ClearRun();
+                   UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+               },
+               title = "Exit to Title Menu?",
+               body = "Are you sure you want to exit?",
+               buttonText = "Quit",
+           });
        };
        
        Panel leftPanel = GetNode<Panel>("%LeftPanel");

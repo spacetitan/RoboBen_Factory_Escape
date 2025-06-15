@@ -18,14 +18,12 @@ public partial class VignetteView : UIView
 
     public void OnPlayerHit()
     {
-        this.ShowView(0.1f);
+        this.ShowView(0.15f);
         timer.Start();
-        GD.Print("PlayerHit");
     }
 
     public void OnTimerTimeout()
     {
-        this.HideView(0.1f);
-        UIManager.instance.vfxModel.HideModel();
+        this.HideView(0.15f);
     }
 }

@@ -20,7 +20,7 @@ public partial class RestView : UIView
     public void GetSceneNodes()
     {
         this.restButton = this.GetNode<UIButton>("RestButton");
-        this.restButton.SetData("Rest - 30% heal");
+        this.restButton.SetData("Rest\n-Heal 30%-");
         this.restButton.button.Pressed += () =>
         {
             RunManager.instance.Rest();
@@ -29,7 +29,7 @@ public partial class RestView : UIView
         };
 
         this.fullHealButton = this.GetNode<UIButton>("FullHealButton");
-        this.fullHealButton.SetData("Full Heal - 10 money");
+        this.fullHealButton.SetData("Full Heal\nCost:10");
         this.fullHealButton.button.Pressed += () =>
         {
             RunManager.instance.FullHeal();
@@ -43,7 +43,7 @@ public partial class RestView : UIView
         this.playerSize = new Vector2(this.playerSpawn.Size.X, this.playerSpawn.Size.X);
         
         this.reRollButton = this.GetNode<UIButton>("%ReRollButton");
-        this.reRollButton.SetData("Re-Roll - 10 money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
+        this.reRollButton.SetData("Buy a Re-Roll\nCost: 10", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         this.reRollButton.button.Pressed += () =>
         {
             RunManager.instance.currentRun.TakeMoney(10);
@@ -53,7 +53,7 @@ public partial class RestView : UIView
         };
         
         this.removeCardButton = this.GetNode<UIButton>("%RemoveCardButton");
-        this.removeCardButton.SetData("Remove a card - 10 money", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.CARD]);
+        this.removeCardButton.SetData("Remove a card\nCost: 10", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.CARD]);
         this.removeCardButton.button.Pressed += () =>
         {
             RunManager.instance.currentRun.TakeMoney(10);

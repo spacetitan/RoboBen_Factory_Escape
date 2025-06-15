@@ -59,7 +59,7 @@ public partial class UIView : Control
         tween.TweenCallback(Callable.From(this.Hide));
     }
 
-    public void HideView(float time)
+    public void HideView(float time, Action callback = null)
     {
         Tween tween = UIManager.instance.tween;
         if(tween != null)
@@ -71,5 +71,9 @@ public partial class UIView : Control
         tween.TweenProperty(this, "modulate", Colors.Transparent, time);
         tween.TweenCallback(Callable.From(this.Exit));
         tween.TweenCallback(Callable.From(this.Hide));
+        tween.Finished += () =>
+        {
+            callback?.Invoke();
+        };
     }
 }

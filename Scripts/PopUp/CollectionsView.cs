@@ -50,7 +50,7 @@ public partial class CollectionsView : UIView
             foreach (var VARIABLE in ResourceManager.instance.characters)
             {
                 CharPickerPanel panel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
-                panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 5, this.panelSize.X / 5));
+                panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 4.5f, this.panelSize.X / 4.5f));
                 panel.GetSceneNodes();
                 panel.SetData(VARIABLE.Value);
                 panel.AddThemeStyleboxOverride("panel", this.charPickerStyleBox);
@@ -72,7 +72,7 @@ public partial class CollectionsView : UIView
             foreach (var VARIABLE in ResourceManager.instance.enemies)
             {
                 CharPickerPanel panel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
-                panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 5, this.panelSize.X / 5));
+                panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 4.5f, this.panelSize.X / 4.5f));
                 panel.GetSceneNodes();
                 panel.AddThemeStyleboxOverride("panel", this.charPickerStyleBox);
                 panel.SetData(VARIABLE.Value);
@@ -94,7 +94,7 @@ public partial class CollectionsView : UIView
             foreach (var VARIABLE in ResourceManager.instance.cards)
             {
                 CardDisplayUI cardUI = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
-                cardUI.SetCustomMinimumSize(new Vector2(this.panelSize.X / 5, (this.panelSize.X / 5) * 1.4f));
+                cardUI.SetCustomMinimumSize(new Vector2(this.panelSize.X / 4.5f, (this.panelSize.X / 4.5f) * 1.4f));
                 cardUI.GetSceneNodes();
                 cardUI.SetData(VARIABLE.Value, () =>
                 {
@@ -114,7 +114,7 @@ public partial class CollectionsView : UIView
             foreach (var VARIABLE in ResourceManager.instance.powerUps)
             {
                 CardDisplayUI cardUI = ResourceManager.instance.displayCard.Instantiate() as CardDisplayUI;
-                cardUI.SetCustomMinimumSize(new Vector2(this.panelSize.X / 5, (this.panelSize.X / 5) * 1.4f));
+                cardUI.SetCustomMinimumSize(new Vector2(this.panelSize.X / 4.5f, (this.panelSize.X / 4.5f) * 1.4f));
                 cardUI.GetSceneNodes();
                 cardUI.SetData(VARIABLE.Value, () =>
                 {
@@ -141,7 +141,7 @@ public partial class CollectionsView : UIView
         foreach (var VARIABLE in ResourceManager.instance.characters)
         {
             CharPickerPanel panel = ResourceManager.instance.charPickerPanelScene.Instantiate() as CharPickerPanel;
-            panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 5, this.panelSize.X / 5));
+            panel.SetCustomMinimumSize(new Vector2(this.panelSize.X / 4.5f, this.panelSize.X / 4.5f));
             panel.GetSceneNodes();
             panel.AddThemeStyleboxOverride("panel", this.charPickerStyleBox);
             panel.SetData(VARIABLE.Value);

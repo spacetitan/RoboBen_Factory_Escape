@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bv223uoj2p40q"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bv223uoj2p40q"]
 
 [ext_resource type="StyleBox" uid="uid://cngxul5l3k7rn" path="res://Themes/Start/PlayInfoPanel/PlayInfoPanel.tres" id="1_di4mu"]
+[ext_resource type="FontFile" uid="uid://dk2st7qorsl3d" path="res://Themes/_Fonts/WDXLLubrifontJPN-Regular.ttf" id="2_sc5b8"]
 
 [resource]
+default_font = ExtResource("2_sc5b8")
 Panel/styles/panel = ExtResource("1_di4mu")
+RichTextLabel/fonts/normal_font = ExtResource("2_sc5b8")

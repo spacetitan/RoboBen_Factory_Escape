@@ -49,7 +49,21 @@ public partial class RoomHUDView : UIView
         this.optionsButton.button.Pressed += () => { UIManager.instance.popUpModel.OpenPopUp(UIModel.ViewID.OPTIONS); };
         this.quitButton = topPanel.GetNode<UIButton>("%QuitButton");
         this.quitButton.SetData("Quit");
-        this.quitButton.button.Pressed += () => { this.GetTree().Quit(); };
+        this.quitButton.button.Pressed += () =>
+        {
+            UIManager.instance.popUpModel.OpenGenericPopUp(new GenericPopUpView.GenericPopUpData()
+            {
+                action = () =>
+                {
+                    UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
+                    RunManager.instance.ClearRun();
+                    UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                },
+                title = "Exit to Title Menu?",
+                body = "Are you sure you want to exit?",
+                buttonText = "Quit",
+            });
+        };
         
         Panel bottomPanel = GetNode<Panel>("%BottomPanel");
         this.healthUI = bottomPanel.GetNode<HealthUI>("%HealthUI");

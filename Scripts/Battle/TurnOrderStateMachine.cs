@@ -131,7 +131,6 @@ public partial class TurnOrderStateMachine : Node
         
         RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_COMBAT, () => 
         {
-            GD.Print(data.tier);
             if (data.tier == 2 && playerWin)
             {
                 GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;

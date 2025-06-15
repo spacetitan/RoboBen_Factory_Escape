@@ -104,12 +104,15 @@ public partial class UIManager : Node
 			{
 				tween.Finished += () =>
 				{
-					this.currentModel.ShowModel();
+					if (!this.currentModel.Visible)
+					{
+						this.currentModel.ShowModel();
+					}
 				};
 			}
 			else
 			{
-					this.currentModel.ShowModel();
+				this.currentModel.ShowModel();
 			}
 		});
 	}
