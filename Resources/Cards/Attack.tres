@@ -8,12 +8,12 @@
 script = ExtResource("1_rloft")
 id = 1
 cardName = "Attack"
-cardDesc = "Deals {value} dmg"
+cardDesc = "Deals {value} dmg to a single enemy"
 Texture = ExtResource("1_3sdka")
 playSFX = ExtResource("2_u4apx")
 rarity = 1
 targetType = 1
-cardValue = 10
+cardValue = 3
 cardCost = 1
 cardGen = 1
 isExhaust = false

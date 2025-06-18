@@ -119,17 +119,15 @@ public partial class PowerUpHandler
         this.powerUpUIs.Add(powerUpUi);
     }
     
-    public void SpawnAllUI()
+    public void SpawnAllUI(UIManager.UIState state)
     {
-        UIManager.UIState currentState = UIManager.instance.currentModel.state;
-        
         foreach (PowerUp powerUp in this.powerUps)
         {
             PowerUpUI powerUpUi = this.powerUpUIScene.Instantiate() as PowerUpUI;
             powerUpUi.GetSceneNodes();
             this.container.AddChild(powerUpUi);
 
-            switch (currentState)
+            switch (state)
             {
                 case UIManager.UIState.RUN:
                     powerUpUi.SetData(powerUp, true);

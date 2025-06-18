@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqltwrfb6nesi"]
 
 [ext_resource type="Script" uid="uid://bp8arhfmwywsq" path="res://Scripts/Background/BackgroundModel.cs" id="1_bk56l"]
-[ext_resource type="Texture2D" uid="uid://c4muhj3f7nqml" path="res://Art/Sprites/Backgrounds/Title.png" id="2_sbpxb"]
+[ext_resource type="Texture2D" uid="uid://j34at1werva8" path="res://Art/Sprites/Backgrounds/title.png" id="2_pu8kk"]
 [ext_resource type="Texture2D" uid="uid://c4gn4g1lk8bgs" path="res://Art/Sprites/Backgrounds/roombackgroundShaded.png" id="3_vt6p0"]
 [ext_resource type="Texture2D" uid="uid://dfjej5naabnpy" path="res://Art/Sprites/Backgrounds/gameoverBackground.png" id="4_vt6p0"]
 [ext_resource type="Texture2D" uid="uid://nmndcq1jj62t" path="res://Art/Sprites/Backgrounds/winBackground.png" id="5_pu8kk"]
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bk56l")
-backgroundTextures = Array[Texture2D]([ExtResource("2_sbpxb"), ExtResource("3_vt6p0"), SubResource("GradientTexture2D_vt6p0"), ExtResource("4_vt6p0"), ExtResource("5_pu8kk")])
+backgroundTextures = Array[Texture2D]([ExtResource("2_pu8kk"), ExtResource("3_vt6p0"), SubResource("GradientTexture2D_vt6p0"), ExtResource("4_vt6p0"), ExtResource("5_pu8kk")])
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 unique_name_in_owner = true

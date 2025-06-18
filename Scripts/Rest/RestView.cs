@@ -35,6 +35,7 @@ public partial class RestView : UIView
             RunManager.instance.FullHeal();
             this.fullHealButton.button.Disabled = true;
             OnButtonPressed();
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUY]);
         };
         
         this.itemPanel = this.GetNode<ShopItemPanel>("%ShopItemPanel");
@@ -50,6 +51,7 @@ public partial class RestView : UIView
             this.reRollButton.button.Disabled = true;
             RunManager.instance.currentRun.BuyReRoll();
             OnButtonPressed();
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUY]);
         };
         
         this.removeCardButton = this.GetNode<UIButton>("%RemoveCardButton");
@@ -60,6 +62,7 @@ public partial class RestView : UIView
             UIManager.instance.popUpModel.OpenDeckPopUp(RunManager.instance.currentRun.playerDeck, "Remove a card", true);
             this.removeCardButton.button.Disabled = true;
             OnButtonPressed();
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUY]);
         };
     }
 
@@ -86,6 +89,17 @@ public partial class RestView : UIView
             this.reRollButton.button.Disabled = true;
             this.removeCardButton.button.Disabled = true;
         }
+
+        if (RunManager.instance.currentRun.playerData.health == RunManager.instance.currentRun.playerData.maxHealth)
+        {
+            this.restButton.button.Disabled = true;
+            this.fullHealButton.button.Disabled = true;
+        }
+        else
+        {
+            this.restButton.button.Disabled = false;
+            this.fullHealButton.button.Disabled = false;
+        }
     }
 
     public override void Enter()
@@ -104,6 +118,12 @@ public partial class RestView : UIView
             this.fullHealButton.button.Disabled = true;
             this.reRollButton.button.Disabled = true;
             this.removeCardButton.button.Disabled = true;
+        }
+        
+        if (RunManager.instance.currentRun.playerData.health == RunManager.instance.currentRun.playerData.maxHealth)
+        {
+            this.restButton.button.Disabled = true;
+            this.fullHealButton.button.Disabled = true;
         }
     }
 

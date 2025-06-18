@@ -63,7 +63,7 @@ public partial class CardUI : Panel
     public void OnStatsChanged()
     {
         SetPlayable(this.player.CanPlayCard(this));
-        this.descLabel.Text = this.data.GetModifiedTooltip(this.player.modifierHandler, null);
+        this.descLabel.Text = this.data.GetModifiedTooltip(this.player, null);
     }
     
     public void SetPlayable(bool value)
@@ -118,7 +118,7 @@ public partial class CardUI : Panel
         }
     
         this.player.AddEnergy(-this.data.cardCost);
-        data.ApplyEffects(this.targets, this.player.playerData, player.modifierHandler);
+        data.ApplyEffects(this.targets, this.player);
         EventManager.instance.EmitSignal(EventManager.SignalName.CardPlayed);
         this.player.PlayCard(this);
     }

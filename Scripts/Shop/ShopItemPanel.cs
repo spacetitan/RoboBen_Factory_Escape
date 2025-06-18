@@ -28,6 +28,7 @@ public partial class ShopItemPanel : UIView
 
     public void OnClickBuyButton()
     {
+        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUY]);
         RunManager.instance.currentRun.TakeMoney((int)this.cost);
         
         if (this.powerUp != null)

@@ -73,8 +73,9 @@ public partial class BattleHUDView : UIView
                action = () =>
                {
                    UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
-                   RunManager.instance.ClearRun();
                    UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                   RunManager.instance.currentRun.powerUpHandler.ClearUI();
+                   RunManager.instance.ClearRun();
                },
                title = "Exit to Title Menu?",
                body = "Are you sure you want to exit?",
@@ -137,7 +138,12 @@ public partial class BattleHUDView : UIView
         {
             this.abilityButton.button.ToggleMode = false;
         }
-
+        
+        Run run = RunManager.instance.currentRun;
+        run.powerUpHandler.SetContainer(this.powerUpContainer);
+        run.powerUpHandler.SpawnAllUI(UIManager.UIState.BATTLE);
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
+        
         UpdateStats();
         UpdateDeck();
         UpdateDiscard();
@@ -199,12 +205,7 @@ public partial class BattleHUDView : UIView
 
     public override void Enter()
     {
-        Run run = RunManager.instance.currentRun;
-        run.powerUpHandler.SetContainer(this.powerUpContainer);
-        run.powerUpHandler.SpawnAllUI();
-        this.powerUpSize = run.powerUpHandler.powerUpSize;
-        this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
-        this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
+        
     }
 
     public override void Exit()

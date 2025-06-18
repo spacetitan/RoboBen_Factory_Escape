@@ -98,6 +98,7 @@ public partial class UIManager : Node
 			
 			this.currentModel = this.models[panelState];
 			this.backgroundModel.ChangeBackgroundTexture(panelState);
+			AudioManager.instance.SetBackgroundMusic(panelState);
 			this.hudModel.ChangeHUDTo(panelState);
 		
 			if(tween != null && tween.IsRunning())

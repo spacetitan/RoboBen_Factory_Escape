@@ -14,6 +14,7 @@ public partial class RoomHUDView : UIView
     private HealthUI healthUI = null;
     private DeckButton deckButton = null;
     private UIButton mapButton = null;
+    private UIDisplay reRollDisplay = null;
 
     public UIButton leaveButton { get; private set; } = null;
     
@@ -58,6 +59,7 @@ public partial class RoomHUDView : UIView
                     UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
                     RunManager.instance.ClearRun();
                     UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                    RunManager.instance.currentRun.powerUpHandler.ClearUI();
                 },
                 title = "Exit to Title Menu?",
                 body = "Are you sure you want to exit?",
@@ -71,23 +73,26 @@ public partial class RoomHUDView : UIView
         this.mapButton = bottomPanel.GetNode<UIButton>("%MapButton");
         this.mapButton.SetData("Map", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MAP]);
         this.mapButton.button.Pressed += () => { UIManager.instance.popUpModel.OpenMapPopUp(); };
+        this.reRollDisplay = bottomPanel.GetNode<UIDisplay>("%ReRollDisplay");
+        this.reRollDisplay.SetData("", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
 
         this.leaveButton = this.GetNode<UIButton>("%LeaveButton");
         this.leaveButton.SetData("Leave");
         this.leaveButton.button.Pressed += () => { UIManager.instance.ChangeStateTo(UIManager.UIState.RUN); };
     }
 
-    public override void Enter()
+    public void SetData()
     {
         Run run = RunManager.instance.currentRun;
         
         run.powerUpHandler.SetContainer(this.powerUpContainer);
-        run.powerUpHandler.SpawnAllUI();
+        run.powerUpHandler.SpawnAllUI(UIManager.UIState.NONE);
         this.powerUpSize = run.powerUpHandler.powerUpSize;
         
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.healthUI.SetData(run.playerData);
         this.deckButton.SetData(run.playerDeck);
+        this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         
         if (run.powerUpHandler.powerUpUIs.Count > 8)
         {
@@ -98,6 +103,11 @@ public partial class RoomHUDView : UIView
         }
     }
 
+    public override void Enter()
+    {
+       UpdateData();
+    }
+
     public void UpdateData()
     {
         Run run = RunManager.instance.currentRun;
@@ -105,6 +115,7 @@ public partial class RoomHUDView : UIView
         this.moneyDisplay.SetData(run.gold.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.MONEY]);
         this.healthUI.SetData(run.playerData);
         this.deckButton.SetData(run.playerDeck);
+        this.reRollDisplay.SetData(run.reRolls.ToString(), ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
         
         if (run.powerUpHandler.powerUpUIs.Count > 8)
         {

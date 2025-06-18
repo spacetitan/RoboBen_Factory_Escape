@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Guard" load_steps=4 format=3 uid="uid://dvcwmegkvracn"]
+
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_uribd"]
+[ext_resource type="AudioStream" uid="uid://dwfa3l5iys2jj" path="res://Audio/Card/impactMetal_light_000.ogg" id="2_o475g"]
+[ext_resource type="Script" uid="uid://vtbjlokfqi8s" path="res://Scripts/_Resources/Cards/Guard.cs" id="3_5gf4j"]
+
+[resource]
+script = ExtResource("3_5gf4j")
+id = 8
+cardName = "Armor Up"
+cardDesc = "Generates {value} armor"
+Texture = ExtResource("1_uribd")
+playSFX = ExtResource("2_o475g")
+rarity = 1
+targetType = 2
+cardValue = 6
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"

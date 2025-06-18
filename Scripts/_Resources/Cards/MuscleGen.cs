@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class MuscleGen : CardData
 {
-	public override void ApplyEffects(List<Character> targets, PlayerData playerStats, ModifierHandler modifiers)
+	public override void ApplyEffects(List<Character> targets, Player player)
 	{
 		Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].CreateInstance() as Muscle;
 		muscle.SetDuration(this.cardValue);
@@ -22,13 +22,13 @@ public partial class MuscleGen : CardData
 		return this.cardDesc.ReplaceN("{value}", this.cardValue.ToString());
 	}
 	
-	public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
+	public override string GetModifiedTooltip(Player player, ModifierHandler enemyModifiers)
 	{
 		string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nExhaust.";
+			tooltip += "\nRemove.";
 		}
 
 		return tooltip;

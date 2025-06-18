@@ -27,14 +27,16 @@ public partial class HUDModel : UIModel
                 this.views[ViewID.BATTLE_HUD].HideView();
                 this.views[ViewID.HAND].HideView();
                 
-                this.views[ViewID.RUN_HUD].ShowView();
+                RunHUDView runView = this.views[ViewID.RUN_HUD] as RunHUDView;
+                runView.SetData();
+                this.views[ViewID.RUN_HUD].ShowView(0.01f);
                 break;
             
             case UIManager.UIState.BATTLE:
                 this.views[ViewID.RUN_HUD].HideView();
                 
-                this.views[ViewID.HAND].ShowView();
-                this.views[ViewID.BATTLE_HUD].ShowView();
+                this.views[ViewID.HAND].ShowView(0.01f);
+                this.views[ViewID.BATTLE_HUD].ShowView(0.01f);
                 break;
             
             case UIManager.UIState.TREASURE:
@@ -43,7 +45,9 @@ public partial class HUDModel : UIModel
             case UIManager.UIState.EVENT:
                 this.views[ViewID.RUN_HUD].HideView();
                 
-                this.views[ViewID.ROOM_HUD].ShowView();
+                RoomHUDView roomHUD = views[ViewID.ROOM_HUD] as RoomHUDView;
+                roomHUD.SetData();
+                this.views[ViewID.ROOM_HUD].ShowView(0.01f);
                 break;
             
             case UIManager.UIState.START:

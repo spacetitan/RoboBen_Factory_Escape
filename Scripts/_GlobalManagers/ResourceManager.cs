@@ -46,8 +46,11 @@ public partial class ResourceManager : Node
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
 	
-	public enum AudioID { NONE, BUTTON, GAME_START, ROOM_SELECTED, DRAW_CARD, CARD_BURNED, CARD_DISCARDED, CARD_GRABBED, POWERUP_ACTIVATE, GET_COIN, BATTLE_WIN, BATTLE_LOSE, ARMOR, MISS, INVIS_ON}
+	public enum AudioID { NONE, BUTTON, GAME_START, ROOM_SELECTED, DRAW_CARD, CARD_BURNED, CARD_DISCARDED, CARD_GRABBED, POWERUP_ACTIVATE, GET_COIN, BATTLE_WIN, BATTLE_LOSE, ARMOR, MISS, INVIS_ON, TREASURE, DEATH, BUY}
 	public Dictionary<AudioID, AudioStream> audio = new Dictionary<AudioID, AudioStream>();
+	
+	public enum MusicID { NONE, START, RUN, BATTLE, SHOP, EVENT, WIN, BOSS}
+	public Dictionary<MusicID, AudioStream> music = new Dictionary<MusicID, AudioStream>();
 
 	public override void _Ready()
 	{
@@ -171,7 +174,7 @@ public partial class ResourceManager : Node
 			{ AudioID.DRAW_CARD, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-place-1.ogg")},
 			{ AudioID.CARD_BURNED, ResourceLoader.Load<AudioStream>("res://Audio/maximize_006.ogg")},
 			{ AudioID.CARD_DISCARDED, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-slide-6.ogg")},
-			{ AudioID.CARD_GRABBED, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-shove-1.ogg")},
+			{ AudioID.CARD_GRABBED, ResourceLoader.Load<AudioStream>("res://Audio/card-slide-1.ogg")},
 			{ AudioID.POWERUP_ACTIVATE, ResourceLoader.Load<AudioStream>("res://Audio/select_006.ogg")},
 			{ AudioID.GET_COIN, ResourceLoader.Load<AudioStream>("res://Audio/Run/handleCoins.ogg")},
 			{ AudioID.BATTLE_WIN, ResourceLoader.Load<AudioStream>("res://Audio/jingles_SAX10.ogg")},
@@ -179,6 +182,20 @@ public partial class ResourceManager : Node
 			{ AudioID.ARMOR, ResourceLoader.Load<AudioStream>("res://Audio/Card/impactMetal_light_000.ogg")},
 			{ AudioID.MISS, ResourceLoader.Load<AudioStream>("res://Audio/Card/swing.wav")},
 			{ AudioID.INVIS_ON, ResourceLoader.Load<AudioStream>("res://Audio/Ability/8.wav")},
+			{ AudioID.TREASURE, ResourceLoader.Load<AudioStream>("res://Audio/doorClose_4.ogg")},
+			{ AudioID.DEATH, ResourceLoader.Load<AudioStream>("res://Audio/dark-shoot.wav")},
+			{ AudioID.BUY, ResourceLoader.Load<AudioStream>("res://Audio/coin3.wav")},
+		};
+
+		this.music = new Dictionary<MusicID, AudioStream>()
+		{
+			{ MusicID.START, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 1. Stage 1.wav")},
+			{ MusicID.RUN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Dungeon Theme.mp3")},
+			{ MusicID.SHOP, ResourceLoader.Load<AudioStream>("res://Audio/_music/8bit Bossa.mp3")},
+			{ MusicID.BATTLE, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 2. Stage2.wav")},
+			{ MusicID.EVENT, ResourceLoader.Load<AudioStream>("res://Audio/_music/Mushroom Theme.mp3")},
+			{ MusicID.WIN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Grasslands Theme.mp3")},
+			{ MusicID.BOSS, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.wav")},
 		};
 	}
 }

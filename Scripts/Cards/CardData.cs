@@ -12,7 +12,10 @@ public partial class CardData : Resource
         POISONATTACK,
         REPAIRKIT,
         MUSCLEGEN,
-        RANDOMCARD
+        RANDOMCARD,
+        BONK,
+        ARMORUP,
+        SNEAKATTACK,
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE};
 
@@ -40,7 +43,7 @@ public partial class CardData : Resource
         this.cardCost = 0;
     }
 
-    public virtual void ApplyEffects(List<Character> targets, PlayerData playerData, ModifierHandler modifiers)
+    public virtual void ApplyEffects(List<Character> targets, Player player)
     {
         return;
     }
@@ -71,7 +74,7 @@ public partial class CardData : Resource
         return tooltip;
     }
     
-    public virtual string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
+    public virtual string GetModifiedTooltip(Player player, ModifierHandler enemyModifiers)
     {
         string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
 

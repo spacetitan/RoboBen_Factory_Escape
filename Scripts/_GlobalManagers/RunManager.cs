@@ -358,11 +358,22 @@ public partial class RunManager : Node
 		{
 			PowerUp powerUp = null;
 			int count = 0;
+			bool isCopy = false;
 
 			while (powerUps.Count < i+1 && count < 1000)
 			{
 				powerUp = GetAvailablePowerUp();
-				if (!powerUps.Contains(powerUp))
+				isCopy = false;
+
+				foreach (PowerUp p in powerUps)
+				{
+					if (p.id == powerUp.id)
+					{
+						isCopy = true;
+					}
+				}
+				
+				if (!this.currentRun.ContainsPowerUp(powerUp.id) && !isCopy)
 				{
 					powerUps.Add(powerUp);
 				}
@@ -448,11 +459,22 @@ public partial class RunManager : Node
 		{
 			CardData card = null;
 			int count = 0;
+			bool isCopy = false;
 
 			while (cards.Count < i+1 && count < 1000)
 			{
 				card = GetAvailableCard();
-				if (!cards.Contains(card))
+				isCopy = false;
+				
+				foreach (CardData c in cards)
+				{
+					if (c.id == card.id)
+					{
+						isCopy = true;
+					}
+				}
+				
+				if (!cards.Contains(card) && !isCopy)
 				{
 					cards.Add(card);
 				}

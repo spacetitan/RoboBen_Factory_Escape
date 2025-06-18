@@ -172,6 +172,7 @@ public partial class Enemy : Character
 
             if(data.health <=0)
             {
+                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.DEATH]);
                 EventManager.instance.EmitSignal(EventManager.SignalName.EnemyDied, this);
             }
         };

@@ -60,6 +60,7 @@ public partial class TreasureView : UIView
         {
             this.isOpened = true;
             this.treasureTexture.Texture = this.treasureOpen;
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.TREASURE]);
             
             UIManager.instance.popUpModel.OpenRewardDraft(RewardDraftView.Type.POWERUP, false);
         }

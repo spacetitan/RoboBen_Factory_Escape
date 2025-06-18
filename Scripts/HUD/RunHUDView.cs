@@ -63,6 +63,7 @@ public partial class RunHUDView : UIView
                     UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
                     RunManager.instance.ClearRun();
                     UIManager.instance.ChangeStateTo(UIManager.UIState.START);
+                    RunManager.instance.currentRun.powerUpHandler.ClearUI();
                 },
                 title = "Exit to Title Menu?",
                 body = "Are you sure you want to exit?",
@@ -72,7 +73,7 @@ public partial class RunHUDView : UIView
 
     }
 
-    public override void Enter()
+    public void SetData()
     {
         Run run = RunManager.instance.currentRun;
         this.nameDisplay.SetData(run.playerData.name);
@@ -83,7 +84,7 @@ public partial class RunHUDView : UIView
         this.deckButton.SetData(run.playerDeck);
         
         run.powerUpHandler.SetContainer(this.powerUpContainer);
-        run.powerUpHandler.SpawnAllUI();
+        run.powerUpHandler.SpawnAllUI(UIManager.UIState.RUN);
         this.powerUpSize = run.powerUpHandler.powerUpSize;
 
         if (run.powerUpHandler.powerUpUIs.Count > 8)
@@ -95,12 +96,17 @@ public partial class RunHUDView : UIView
         }
     }
 
+    public override void Enter()
+    {
+
+    }
+
     public override void Exit()
     {
-        if (RunManager.instance.currentRun != null)
-        {
-            RunManager.instance.currentRun.powerUpHandler.ClearUI();   
-        }
+        // if (RunManager.instance.currentRun != null)
+        // {
+        //     RunManager.instance.currentRun.powerUpHandler.ClearUI();   
+        // }
         // Run run = RunManager.instance.currentRun;
         // if (run != null)
         // {

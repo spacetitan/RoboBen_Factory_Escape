@@ -71,6 +71,9 @@ public partial class GameOverModel : UIModel
         this.summaryLabel.Text += "\nMoney spent: " + run.stats.moneySpent;
         this.summaryLabel.Text += "\nRe-Rolls used: " + run.stats.reRollsUsed; 
 
+        run.powerUpHandler.SetContainer(this.gridContainer);
+        run.powerUpHandler.SpawnAllUI(UIManager.UIState.GAMEOVER);
+        
         this.win = win;
         if (win)
         {
@@ -85,8 +88,6 @@ public partial class GameOverModel : UIModel
     public override void Enter()
     {
         Run run = RunManager.instance.currentRun;
-        run.powerUpHandler.SetContainer(this.gridContainer);
-        run.powerUpHandler.SpawnAllUI();
         this.powerUpSize = run.powerUpHandler.powerUpSize;
         
         UIManager.instance.vfxModel.OpenCurtain(() =>

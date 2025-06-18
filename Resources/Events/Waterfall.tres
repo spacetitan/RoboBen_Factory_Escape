@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Waterfall" load_steps=2 format=3 uid="uid://bwpbad3fuerkd"]
+[gd_resource type="Resource" script_class="Waterfall" load_steps=3 format=3 uid="uid://bwpbad3fuerkd"]
 
 [ext_resource type="Script" uid="uid://besa3d2fvu2n3" path="res://Scripts/_Resources/Events/Waterfall.cs" id="1_3cc03"]
+[ext_resource type="Texture2D" uid="uid://c4h364uis2ie7" path="res://Art/Sprites/Event/waterfall.png" id="2_y1rhi"]
 
 [resource]
 script = ExtResource("1_3cc03")
@@ -9,5 +10,7 @@ tier = 0
 weight = 30.0
 title = "Waterfall?!"
 body = "A mysterious waterfall! There might be something behind it!"
+texture = ExtResource("2_y1rhi")
 canRepeat = false
+isTrapped = false
 metadata/_custom_type_script = "uid://besa3d2fvu2n3"

@@ -69,9 +69,14 @@ public partial class RewardDraftView : UIView
 
 
         List<PowerUp> powerUps = null;
+        List<CardData> cards = null;
         if (type == Type.POWERUP)
         {
             powerUps = RunManager.instance.GetAvailablePowerUps(count);
+        }
+        else if (type == Type.CARD)
+        {
+            cards = RunManager.instance.GetAvailableCards(count);
         }
 
         for (int i = 0; i < count; i++)
@@ -91,7 +96,7 @@ public partial class RewardDraftView : UIView
                     break;
             
                 case Type.CARD:
-                    displayUi.SetData(RunManager.instance.GetAvailableCard(), () =>
+                    displayUi.SetData(cards[i], () =>
                     {
                         OnRewardButtonPressed(displayUi);
                     });

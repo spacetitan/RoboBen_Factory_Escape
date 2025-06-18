@@ -4,13 +4,9 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class RandomCard : CardData
 {
-	public override void ApplyEffects(List<Character> targets, PlayerData playerStats, ModifierHandler modifiers)
+	public override void ApplyEffects(List<Character> targets, Player player)
 	{
-		if (targets[0] is Player)
-		{
-			Player player = targets[0] as Player;
-			player.hand.AddCard(RunManager.instance.GetRandomCardWithExhaust());
-		}
+		player.hand.AddCard(RunManager.instance.GetRandomCardWithExhaust());
 	}
 	
 	public override string GetDefaultToolip()
@@ -19,19 +15,19 @@ public partial class RandomCard : CardData
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nExhaust.";
+			tooltip += "\nRemove.";
 		}
 
 		return tooltip;
 	}
 	
-	public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
+	public override string GetModifiedTooltip(Player player, ModifierHandler enemyModifiers)
 	{
 		string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nExhaust.";
+			tooltip += "\nRemove.";
 		}
 
 		return tooltip;

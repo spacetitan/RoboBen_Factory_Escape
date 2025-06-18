@@ -43,7 +43,7 @@ public partial class EnemyAttackGuard : EnemyAction
 	{
 		//GD.Print(enemy.data.name + " attacks!");
 		Vector2 start = this.owner.GlobalPosition;
-		Vector2 end = this.target.GlobalPosition + new Vector2(this.target.Size.X/2, 0);
+		Vector2 end = this.target.GlobalPosition + new Vector2(this.target.Size.X/2, this.target.Size.Y/4);
 		DamageEffect damage = new DamageEffect(this.owner.GetModifiedAttack(this.value), this.sound);
 		List<Character> targetList = new List<Character>(){this.target};
 

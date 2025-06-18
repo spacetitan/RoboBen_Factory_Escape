@@ -6,9 +6,9 @@ public partial class PoisonAttack : CardData
 {
 	[Export] private int stacks = 2;
 	
-	public override void ApplyEffects(List<Character> targets, PlayerData playerStats, ModifierHandler modifiers)
+	public override void ApplyEffects(List<Character> targets, Player player)
 	{
-		DamageEffect damageEffect = new DamageEffect(modifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT), this.playSFX);
+		DamageEffect damageEffect = new DamageEffect(player.modifierHandler.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT), this.playSFX);
 		damageEffect.Execute(targets);
 		
 		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].CreateInstance() as Poison;
@@ -25,9 +25,9 @@ public partial class PoisonAttack : CardData
 		return this.cardDesc.Replace("{value}", this.cardValue.ToString()).Replace("{stacks}", this.stacks.ToString());
 	}
 	
-	public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
+	public override string GetModifiedTooltip(Player player, ModifierHandler enemyModifiers)
 	{
-		int damage = playerModifiers.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT);
+		int damage = player.modifierHandler.GetModifiedValue(this.cardValue, Modifier.Type.DMG_DEALT);
 
 		if (enemyModifiers != null)
 		{
@@ -38,7 +38,7 @@ public partial class PoisonAttack : CardData
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nExhaust.";
+			tooltip += "\nRemove.";
 		}
 
 		return tooltip;

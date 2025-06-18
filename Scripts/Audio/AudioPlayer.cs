@@ -27,6 +27,7 @@ public partial class AudioPlayer : Node
         foreach(AudioStreamPlayer player in GetChildren())
         {
             player.Stop();
+            
         }
     }
 

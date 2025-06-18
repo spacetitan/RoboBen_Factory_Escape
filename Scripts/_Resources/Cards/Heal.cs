@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class Heal : CardData
 {
-	public override void ApplyEffects(List<Character> targets, PlayerData playerStats, ModifierHandler modifiers)
+	public override void ApplyEffects(List<Character> targets, Player player)
 	{
 		HealEffect heal = new HealEffect(this.cardValue, this.playSFX);
 		heal.Execute(targets);
@@ -15,13 +15,13 @@ public partial class Heal : CardData
 		return this.cardDesc.ReplaceN("{value}", this.cardValue.ToString());
 	}
 	
-	public override string GetModifiedTooltip(ModifierHandler playerModifiers, ModifierHandler enemyModifiers)
+	public override string GetModifiedTooltip(Player player, ModifierHandler enemyModifiers)
 	{
 		string tooltip = this.cardDesc.Replace("{value}", this.cardValue.ToString());
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nExhaust.";
+			tooltip += "\nRemove.";
 		}
 
 		return tooltip;
