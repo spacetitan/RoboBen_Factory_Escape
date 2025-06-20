@@ -71,13 +71,13 @@ public partial class CardUI : Panel
         this.isPlayable = value;
         if(!isPlayable)
         {
-            this.costLabel.AddThemeColorOverride("font_color", Colors.Red);
+            this.costLabel.Text = "Cost: " + "[color=#99001e]" + data.cardCost.ToString() + "[/color]";
             this.cardTexture.Modulate = new Color(1,1,1,.05f);
             this.AddThemeStyleboxOverride("panel", this.cardstyleDisabled);
         }
         else
         {
-            this.costLabel.RemoveThemeColorOverride("font_color");
+            this.costLabel.Text = "Cost: " + data.cardCost.ToString();
             this.cardTexture.Modulate = new Color(1,1,1,1);
             this.AddThemeStyleboxOverride("panel", this.cardstyleDefault);
         }

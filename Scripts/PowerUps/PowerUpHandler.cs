@@ -135,7 +135,7 @@ public partial class PowerUpHandler
                     break;
                     
                 case UIManager.UIState.GAMEOVER:
-                    powerUpUi.SetData(powerUp, true);
+                    powerUpUi.SetData(powerUp, true, true);
                     this.powerUpSize = new Vector2(this.container.GetRect().Size.X / 5 , this.container.GetRect().Size.X / 5);
                     break;
                 

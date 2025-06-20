@@ -73,5 +73,8 @@ public partial class DeckPopUpView : UIView
         {
             card.QueueFree();
         }
+        
+        Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
+        tween.TweenProperty(this.scrollContainer, "scroll_vertical", 0, .15f);
     }
 }

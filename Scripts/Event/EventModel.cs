@@ -32,6 +32,7 @@ public partial class EventModel : UIModel
     {
         this.eventData = new EventData();
         this.eventData.SetData(eventData);
+        this.eventData.Enter();
 
         this.titleLabel.Text = eventData.title;
         this.bodyLabel.Text = eventData.body;
@@ -69,16 +70,26 @@ public partial class EventModel : UIModel
     
     public void OnButtonPressed()
     {
-        if (!this.eventData.canRepeat)
+        int count = 0;
+        foreach (UIButton button in this.choicesContainer.GetChildren())
         {
-            foreach (UIButton button in this.choicesContainer.GetChildren())
+            if (!this.eventData.canRepeat)
             {
                 button.button.Disabled = true;
             }
+            else if (this.eventData.choices[count].isDisabled)
+            {
+                button.button.Disabled = true;
+            }
+
+            button.SetData(this.eventData.choices[count].body);
+
+            count++;
         }
 
         RoomHUDView roomHUD = UIManager.instance.hudModel.views[ViewID.ROOM_HUD] as RoomHUDView;
         roomHUD.ToggleLeaveButton(true);
+        roomHUD.UpdateData();
     }
 
     public override void Enter()

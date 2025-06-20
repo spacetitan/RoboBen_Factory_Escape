@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Shrine" load_steps=3 format=3 uid="uid://ct4p2odluypyo"]
+
+[ext_resource type="Script" uid="uid://cxebumlov1vfr" path="res://Scripts/_Resources/Events/Shrine.cs" id="1_qvw3m"]
+[ext_resource type="Texture2D" uid="uid://0tjoqthky5mi" path="res://Art/Sprites/Event/moneyShrine.png" id="2_bs658"]
+
+[resource]
+script = ExtResource("1_qvw3m")
+id = 6
+tier = 0
+weight = 15.0
+title = "A shrine!"
+body = "You come across a shiny shrine!"
+texture = ExtResource("2_bs658")
+canRepeat = true
+isTrapped = false
+metadata/_custom_type_script = "uid://cxebumlov1vfr"

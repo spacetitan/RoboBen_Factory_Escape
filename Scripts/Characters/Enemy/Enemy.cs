@@ -50,15 +50,15 @@ public partial class Enemy : Character
         {
             case CharacterData.CharacterID.GRUBBFLY:
             case CharacterData.CharacterID.TORTIGRUB:
+            case CharacterData.CharacterID.GRUBBOID:
                 this.Scale = new Vector2(0.85f, 0.85f);
                     break;
             
-            case CharacterData.CharacterID.GRUBBIG:
             case CharacterData.CharacterID.GRUBBMANTIS:
                 this.Scale = new Vector2(1.25f, 1.25f);
                     break;
             
-            case CharacterData.CharacterID.GRUBBOID:
+            case CharacterData.CharacterID.GRUBBIG:
             default:
                 break;
         }
@@ -123,6 +123,7 @@ public partial class Enemy : Character
     public void StartOfTurnReset()
     {
         this.armor = 0;
+        UpdateUI();
     }
 
     public void SetCurrentAction(EnemyAction value)

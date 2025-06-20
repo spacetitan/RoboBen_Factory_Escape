@@ -14,5 +14,5 @@ playSFX = ExtResource("1_r5mhj")
 rarity = 1
 activateType = 5
 showValue = true
-value = 1
+value = 0
 metadata/_custom_type_script = "uid://bbxhy4aapyjr4"

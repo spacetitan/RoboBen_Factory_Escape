@@ -20,6 +20,8 @@ public partial class BattleWinView : UIView
         this.continueButton.SetData("Continue");
         this.continueButton.button.Pressed += () =>
         {
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.ROOM_SELECTED]);
+            AudioManager.instance.musicPlayer.Stop();
             UIManager.instance.popUpModel.ClosePopup(this.ID);
             UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
         };

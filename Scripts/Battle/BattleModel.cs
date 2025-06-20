@@ -119,4 +119,12 @@ public partial class BattleModel : UIModel
             }
         }
     }
+
+    public void ResetEnemies()
+    {
+        foreach (Enemy enemy in this.enemies)
+        {
+            enemy.StartOfTurnReset();
+        }
+    }
 }

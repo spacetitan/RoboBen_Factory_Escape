@@ -55,6 +55,7 @@ public partial class BattleHUDView : UIView
        this.rightButton.button.Pressed += () =>
        {
            this.scrollContainer.SetHScroll(this.scrollContainer.GetHScroll() + (int)this.powerUpSize.X);
+           GD.Print("scrolling: " + (int)this.powerUpSize.X);
        };
        this.rightButton.button.Disabled = true;
        this.moneyDisplay = topPanel.GetNode<UIDisplay>("%MoneyDisplay");
@@ -177,15 +178,16 @@ public partial class BattleHUDView : UIView
         if (RunManager.instance.currentRun.powerUpHandler.powerUpUIs.Count > 8)
         {
             this.leftButton.button.Disabled = false;
-            this.leftButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_LEFT]);
+            this.leftButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_LEFT], true);
             this.rightButton.button.Disabled = false;
-            this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT]);
+            this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT], true);
         }
     }
 
     public void ToggleEndTurnButton(bool toggle)
     {
         this.endTurnButton.button.Disabled = toggle;
+        this.abilityButton.button.Disabled = toggle;
     }
 
     public void UpdateMoney()
@@ -262,6 +264,7 @@ public partial class BattleHUDView : UIView
     public void EndTurn()
     {
         this.endTurnButton.button.Disabled = true;
+        this.abilityButton.button.Disabled = true;
         this.OnEndTurn?.Invoke();
     }
 

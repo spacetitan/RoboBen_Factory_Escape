@@ -74,7 +74,7 @@ public partial class RestView : UIView
         player.SetPlayerData(RunManager.instance.currentRun);
         player.SetCustomMinimumSize(this.playerSize);
         
-        this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT]);
+        this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT], OnButtonPressed);
 
         this.restButton.button.Disabled = false;
         if (RunManager.instance.currentRun.gold > 10)

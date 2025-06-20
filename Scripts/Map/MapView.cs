@@ -133,6 +133,9 @@ public partial class MapView : UIView
                 mapLine.Width = 5;
                 roomPanel.AddChild(mapLine);
                 mapLine.AddPoint(roomPanel.PivotOffset);
+                mapLine.TextureMode = Line2D.LineTextureMode.Tile;
+                mapLine.Width = 5;
+                mapLine.Texture = ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.LINE];
 
                 RoomPanel nextMapRoom = GetRoomPanel(roomPanel.data.row+1, nextRoomNum);
 

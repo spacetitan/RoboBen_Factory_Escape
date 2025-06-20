@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="SneakAttack" load_steps=3 format=3 uid="uid://bxyrmepyx0mxa"]
+[gd_resource type="Resource" script_class="SneakAttack" load_steps=4 format=3 uid="uid://bxyrmepyx0mxa"]
 
 [ext_resource type="Texture2D" uid="uid://5eky37l6y0o6" path="res://Art/Sprites/Cards/sneakAttack.png" id="1_fq5n3"]
 [ext_resource type="Script" uid="uid://17q3ktok0nro" path="res://Scripts/_Resources/Cards/SneakAttack.cs" id="1_iopru"]
+[ext_resource type="AudioStream" uid="uid://c7ur7edm867vj" path="res://Audio/Card/flame-thrower.wav" id="2_05xux"]
 
 [resource]
 script = ExtResource("1_iopru")
-id = 0
+id = 9
 cardName = "Sneak Attack"
-cardDesc = "Deals {value} to a single enemy. 2x dmg when Invisible!"
+cardDesc = "Deals {value} to a single enemy.
+2x dmg when Invisible!"
 Texture = ExtResource("1_fq5n3")
+playSFX = ExtResource("2_05xux")
 rarity = 3
 targetType = 1
 cardValue = 4

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://016u3ak3h7t"]
+[gd_scene load_steps=9 format=3 uid="uid://016u3ak3h7t"]
 
 [ext_resource type="Script" uid="uid://2ix06tenltds" path="res://Scripts/Rest/RestModel.cs" id="1_3cnl6"]
 [ext_resource type="Theme" uid="uid://5sb34o6tm732" path="res://Themes/Start/Model/StartModel.tres" id="2_0htjp"]
 [ext_resource type="Script" uid="uid://br1g40ck85vhb" path="res://Scripts/Rest/RestView.cs" id="2_iu33a"]
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="3_ddcqt"]
+[ext_resource type="Texture2D" uid="uid://wvuub0hcetdd" path="res://Art/Sprites/Rest/restStuff.png" id="4_8wm0k"]
 [ext_resource type="Theme" uid="uid://bvwpo7ir0pxdr" path="res://Themes/Rest/RestTheme.tres" id="5_0htjp"]
+[ext_resource type="Texture2D" uid="uid://4ln2mqt83j4m" path="res://Art/Sprites/Rest/RoboDoc.png" id="5_ay6w5"]
 [ext_resource type="PackedScene" uid="uid://qs6binjssm21" path="res://Scenes/Shop/shop_item_panel.tscn" id="5_ddcqt"]
 
 [node name="RestModel" type="Control"]
@@ -27,6 +29,32 @@ grow_vertical = 2
 theme = ExtResource("2_0htjp")
 script = ExtResource("2_iu33a")
 ID = 9
+
+[node name="TextureRect" type="TextureRect" parent="RestView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.65
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_8wm0k")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="RestView"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.65
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ay6w5")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="RestButton" parent="RestView" instance=ExtResource("3_ddcqt")]
 unique_name_in_owner = true

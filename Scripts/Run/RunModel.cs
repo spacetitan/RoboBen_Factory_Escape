@@ -44,20 +44,25 @@ public partial class RunModel : UIModel
         else
         {
             UnlockNextRooms();
-            
-            double max = this.mapScrollContainer.GetVScrollBar().GetMax() - (this.mapScrollContainer.Size.Y);
-            int num = (int)(max * FloorToScroll());
-            this.mapScrollContainer.SetVScroll(num);
-            
-            Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
-            tween.TweenProperty(this.mapScrollContainer, "scroll_vertical", num, 1f);
         }
+        
+        double floor = this.mapScrollContainer.GetVScrollBar().GetMax() * FloorToScroll();
+        GD.Print("floor " + (floor/this.mapScrollContainer.GetVScrollBar().GetMax()));
+        //this.mapScrollContainer.SetVScroll((int)floor);
+            
+        Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
+        tween.TweenProperty(this.mapScrollContainer, "scroll_vertical", this.mapScrollContainer.GetVScrollBar().GetMax() * (FloorToScroll()-.2f), .01f);
         
         GameManager.instance.SaveGame();
         UIManager.instance.vfxModel.OpenCurtain();
     }
 
     public override void Exit()
+    {
+        
+    }
+
+    public void ResetScroll()
     {
         
     }
@@ -128,6 +133,9 @@ public partial class RunModel : UIModel
                 mapLine.SetZIndex(-1);
                 roomPanel.AddChild(mapLine);
                 mapLine.AddPoint(roomPanel.PivotOffset);
+                mapLine.TextureMode = Line2D.LineTextureMode.Tile;
+                mapLine.Width = 15;
+                mapLine.Texture = ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.LINE];
 
                 RoomPanel nextMapRoom = GetRoomPanel(roomPanel.data.row+1, nextRoomNum);
 

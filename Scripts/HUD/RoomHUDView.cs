@@ -78,7 +78,12 @@ public partial class RoomHUDView : UIView
 
         this.leaveButton = this.GetNode<UIButton>("%LeaveButton");
         this.leaveButton.SetData("Leave");
-        this.leaveButton.button.Pressed += () => { UIManager.instance.ChangeStateTo(UIManager.UIState.RUN); };
+        this.leaveButton.button.Pressed += () =>
+        {
+            AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.ROOM_SELECTED]);
+            AudioManager.instance.musicPlayer.Stop();
+            UIManager.instance.ChangeStateTo(UIManager.UIState.RUN);
+        };
     }
 
     public void SetData()
@@ -120,9 +125,9 @@ public partial class RoomHUDView : UIView
         if (run.powerUpHandler.powerUpUIs.Count > 8)
         {
             this.leftButton.button.Disabled = false;
-            this.leftButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_LEFT]);
+            this.leftButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_LEFT], true);
             this.rightButton.button.Disabled = false;
-            this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT]);
+            this.rightButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_RIGHT], true);
         }
     }
 

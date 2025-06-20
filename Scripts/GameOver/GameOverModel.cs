@@ -73,6 +73,14 @@ public partial class GameOverModel : UIModel
 
         run.powerUpHandler.SetContainer(this.gridContainer);
         run.powerUpHandler.SpawnAllUI(UIManager.UIState.GAMEOVER);
+        this.powerUpSize = run.powerUpHandler.powerUpSize;
+        if (run.powerUpHandler.powerUpUIs.Count > 8)
+        {
+            this.upButton.button.Disabled = false;
+            this.upButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_UP]);
+            this.downButton.button.Disabled = false;
+            this.downButton.SetData(null, ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.ARROW_DOWN]);
+        }
         
         this.win = win;
         if (win)
@@ -87,9 +95,6 @@ public partial class GameOverModel : UIModel
 
     public override void Enter()
     {
-        Run run = RunManager.instance.currentRun;
-        this.powerUpSize = run.powerUpHandler.powerUpSize;
-        
         UIManager.instance.vfxModel.OpenCurtain(() =>
         {
             if (!win)

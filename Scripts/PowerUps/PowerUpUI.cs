@@ -28,7 +28,7 @@ public partial class PowerUpUI : Control
         this.powerUpInfoInv.HideView();
     }
 
-    public void SetData(PowerUp powerUp, bool inv = false)
+    public void SetData(PowerUp powerUp, bool inv = false, bool isDisplay = false)
     {
         this.powerUp = powerUp;
         this.powerUpTexture.Texture = this.powerUp.texture;
@@ -42,6 +42,11 @@ public partial class PowerUpUI : Control
         
         powerUpInfo.SetData(this.powerUp);
         powerUpInfoInv.SetData(this.powerUp);
+
+        if (isDisplay)
+        {
+            this.labelPanel.Hide();
+        }
     }
     
     public void Flash()

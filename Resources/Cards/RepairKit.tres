@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5cyxav8m7pt0" path="res://Art/Sprites/Cards/repairKit.png" id="1_wv13h"]
 [ext_resource type="Script" uid="uid://bf0ckqrs0qb2r" path="res://Scripts/_Resources/Cards/Heal.cs" id="2_6naa7"]
-[ext_resource type="AudioStream" uid="uid://wmis1eeglmeg" path="res://Audio/powerUp7.ogg" id="2_lmhn8"]
+[ext_resource type="AudioStream" uid="uid://e257fxj2bew0" path="res://Audio/maximize_006.ogg" id="2_lmhn8"]
 
 [resource]
 script = ExtResource("2_6naa7")

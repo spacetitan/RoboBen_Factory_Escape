@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HealthShrine" load_steps=3 format=3 uid="uid://bvj44iu6bo5u0"]
+
+[ext_resource type="Script" uid="uid://dm10cyvdnyqo6" path="res://Scripts/_Resources/Events/HealthShrine.cs" id="1_5t7kt"]
+[ext_resource type="Texture2D" uid="uid://237pvbjytad1" path="res://Art/Sprites/Event/oilShrine.png" id="2_3jk35"]
+
+[resource]
+script = ExtResource("1_5t7kt")
+id = 0
+tier = 0
+weight = 15.0
+title = "A shrine?"
+body = "This shrine looks yucky!"
+texture = ExtResource("2_3jk35")
+canRepeat = true
+isTrapped = false
+metadata/_custom_type_script = "uid://dm10cyvdnyqo6"

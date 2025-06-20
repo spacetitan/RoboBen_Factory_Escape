@@ -126,5 +126,7 @@ public partial class ShopView : UIView
         }
         
         this.reRollButton.SetData("Re-Roll (" + RunManager.instance.currentRun.reRolls + ")", ResourceManager.instance.HUDIcons[ResourceManager.HUDIconID.REROLL]);
+        RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+        hud.UpdateData();
     }
 }

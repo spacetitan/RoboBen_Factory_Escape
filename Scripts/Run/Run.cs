@@ -109,6 +109,17 @@ public partial class Run
         this.stats.moneySpent += amount;
     }
 
+    public void TakeHealth(int amount)
+    {
+        if (amount > this.playerData.health)
+        {
+            amount = this.playerData.health;
+        }
+
+        this.playerData.SetHealth(this.playerData.health - amount);
+        EventManager.instance.EmitSignal(EventManager.SignalName.PlayerDamaged);
+    }
+
     public bool ContainsPowerUp(PowerUp.PowerUpID id)
     {
         foreach (PowerUp powerUp in this.powerUpHandler.powerUps)

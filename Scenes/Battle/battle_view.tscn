@@ -39,9 +39,9 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.6
-anchor_top = 0.2
+anchor_top = 0.225
 anchor_right = 0.775
-anchor_bottom = 0.575
+anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -49,9 +49,9 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.8
-anchor_top = 0.225
+anchor_top = 0.2
 anchor_right = 0.975
-anchor_bottom = 0.6
+anchor_bottom = 0.575
 grow_horizontal = 2
 grow_vertical = 2
 

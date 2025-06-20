@@ -128,34 +128,39 @@ public partial class TurnOrderStateMachine : Node
         this.currentCharacter = null;
         this.currentState = null;
         this.OnTurnEnd = null;
-        
-        RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_COMBAT, () => 
-        {
-            if (data.tier == 2 && playerWin)
-            {
-                GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
-                model.SetData(true);
-                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
-            }
-            else if (playerWin)
-            {
-                float money = data.money;
-                if (RunManager.instance.currentRun.ContainsPowerUp(PowerUp.PowerUpID.CROWN))
-                {
-                    money *= 1.2f;
-                    money = Mathf.RoundToInt(money);
-                }
 
-                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_WIN], true);
-                UIManager.instance.popUpModel.OpenBattleWinView((int) money);
-            }
-            else
+        if (playerWin)
+        {
+            RunManager.instance.currentRun.powerUpHandler.ActivatePowerUpsByType(PowerUp.ActivateType.END_OF_COMBAT, () => 
             {
-                GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
-                model.SetData(false);
-                UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
-            }
-        });
+                if (data.tier == 2)
+                {
+                    GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
+                    model.SetData(true);
+                    UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+                }
+                else
+                {
+                    float money = data.money;
+                    if (RunManager.instance.currentRun.ContainsPowerUp(PowerUp.PowerUpID.CROWN))
+                    {
+                        money *= 1.2f;
+                        money = Mathf.RoundToInt(money);
+                    }
+
+                    AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_WIN], true);
+                    UIManager.instance.popUpModel.OpenBattleWinView((int) money);
+                }
+            });
+        }
+        else
+        {
+            GameOverModel model = UIManager.instance.models[UIManager.UIState.GAMEOVER] as GameOverModel;
+            model.SetData(false);
+            UIManager.instance.ChangeStateTo(UIManager.UIState.GAMEOVER);
+        }
+
+        
 
         //GD.Print("Ending Battle!");
     }

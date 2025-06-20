@@ -7,7 +7,7 @@
 script = ExtResource("1_3cc03")
 id = 5
 tier = 0
-weight = 30.0
+weight = 1.0
 title = "Waterfall?!"
 body = "A mysterious waterfall! There might be something behind it!"
 texture = ExtResource("2_y1rhi")

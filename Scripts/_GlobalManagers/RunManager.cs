@@ -392,7 +392,7 @@ public partial class RunManager : Node
 
 		foreach (PowerUp powerUp in powerUps)
 		{
-			if(this.rarityWeight[(int)powerUp.rarity] > roll)
+			if(this.rarityWeight[(int)powerUp.rarity] > roll && !this.currentRun.ContainsPowerUp(powerUp.id))
 			{
 				return powerUp;
 			}

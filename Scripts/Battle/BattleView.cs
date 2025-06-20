@@ -39,15 +39,27 @@ public partial class BattleView : UIView
         this.player.SetPlayerData(RunManager.instance.currentRun);
 
         UIManager.instance.hudModel.SetPlayerData(player);
-        
-        for (int i = 0; i < battleData.enemyList.Length; i++)
+
+        if (battleData.tier == 2)
         {
             Enemy enemy = ResourceManager.instance.enemyScene.Instantiate() as Enemy;
             enemy.GetSceneNodes();
             enemy.SetCustomMinimumSize(this.EnemySize);
-            this.enemySpawns[i].AddChild(enemy);
-            enemy.SetData(battleData.enemyList[i].CreateInstance());
+            this.enemySpawns[1].AddChild(enemy);
+            enemy.SetData(battleData.enemyList[0].CreateInstance());
             this.enemies.Add(enemy);
+        }
+        else
+        {
+            for (int i = 0; i < battleData.enemyList.Length; i++)
+            {
+                Enemy enemy = ResourceManager.instance.enemyScene.Instantiate() as Enemy;
+                enemy.GetSceneNodes();
+                enemy.SetCustomMinimumSize(this.EnemySize);
+                this.enemySpawns[i].AddChild(enemy);
+                enemy.SetData(battleData.enemyList[i].CreateInstance());
+                this.enemies.Add(enemy);
+            }
         }
     }
 

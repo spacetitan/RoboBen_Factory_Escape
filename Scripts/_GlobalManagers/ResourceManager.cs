@@ -41,7 +41,7 @@ public partial class ResourceManager : Node
 	public Dictionary<RoomData.Type, Texture2D> runIcons = new Dictionary<RoomData.Type, Texture2D>();
 	public Dictionary<RoomData.Type, Texture2D> runGlowIcons = new Dictionary<RoomData.Type, Texture2D>();
 	
-	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, SHIELD, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN}
+	public enum HUDIconID { NONE, HEALTH, MONEY, REROLL, MAP, POWERUP, CARD, SHIELD, ARROW_LEFT, ARROW_RIGHT, ARROW_UP, ARROW_DOWN, LINE, LINE2,}
 	public Dictionary<HUDIconID, Texture2D> HUDIcons = new Dictionary<HUDIconID, Texture2D>();
 	
 	public Dictionary<StringName, Material> shaders = new Dictionary<StringName, Material>();
@@ -158,6 +158,8 @@ public partial class ResourceManager : Node
 			{HUDIconID.ARROW_LEFT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_left.png")},
 			{HUDIconID.ARROW_RIGHT, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_right.png")},
 			{HUDIconID.ARROW_UP, ResourceLoader.Load<Texture2D>("res://Art/Sprites/HUD/flair_arrows_up.png")},
+			{HUDIconID.LINE, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/line1.png")},
+			{HUDIconID.LINE2, ResourceLoader.Load<Texture2D>("res://Art/Sprites/Run/line2.png")},
 		};
 
 		this.shaders = new Dictionary<StringName, Material>()
@@ -189,13 +191,13 @@ public partial class ResourceManager : Node
 
 		this.music = new Dictionary<MusicID, AudioStream>()
 		{
-			{ MusicID.START, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 1. Stage 1.wav")},
+			{ MusicID.START, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 1. Stage 1_Mixed.wav")},
 			{ MusicID.RUN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Dungeon Theme.mp3")},
 			{ MusicID.SHOP, ResourceLoader.Load<AudioStream>("res://Audio/_music/8bit Bossa.mp3")},
-			{ MusicID.BATTLE, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 2. Stage2.wav")},
-			{ MusicID.EVENT, ResourceLoader.Load<AudioStream>("res://Audio/_music/Mushroom Theme.mp3")},
+			{ MusicID.BATTLE, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 2. Stage 2_Mixed.wav")},
+			{ MusicID.EVENT, ResourceLoader.Load<AudioStream>("res://Audio/_music/Iceland Theme.mp3")},
 			{ MusicID.WIN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Grasslands Theme.mp3")},
-			{ MusicID.BOSS, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 3. Boss Fight.wav")},
+			{ MusicID.BOSS, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 3. Stage 3_Mixed.wav")},
 		};
 	}
 }

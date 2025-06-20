@@ -5,6 +5,10 @@
 [resource]
 script = ExtResource("1_8fj6n")
 id = 2
-tier = 1
+tier = 0
 weight = 1.0
+title = ""
+body = ""
+canRepeat = false
+isTrapped = false
 metadata/_custom_type_script = "uid://dqk04pxjrrovf"

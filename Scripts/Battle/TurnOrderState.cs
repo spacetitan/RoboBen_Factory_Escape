@@ -49,9 +49,6 @@ public partial class StartPowerUpState : TurnOrderState
         }
         else if (character is Enemy)
         {
-            Enemy enemy = character as Enemy;
-            enemy.StartOfTurnReset();
-            
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.START_EFFECTS);
         }
         else
@@ -188,7 +185,13 @@ public partial class EndEffectState : TurnOrderState
     public override void Enter(Character character)
     {
         if (this.stateMachine.currentPhaseState == TurnOrderStateMachine.PhaseState.BATTLE_END) { return; }
-        
+
+        if (character is Player)
+        {
+            BattleModel battleModel = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;
+            battleModel.ResetEnemies();
+        }
+
         character.statusHandler.ApplyStatusByType(Status.TriggerType.END_OF_TURN, () =>
         {
             this.stateMachine.EndTurn();

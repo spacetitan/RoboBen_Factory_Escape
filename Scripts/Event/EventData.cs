@@ -4,13 +4,13 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class EventData : Resource
 {
-    public enum EventID { NONE, MOVE_COMBAT, MOVE_TREASURE, MOVE_REST, MOVE_SHOP, WATERFALL};
+    public enum EventID { NONE, MOVE_COMBAT, MOVE_TREASURE, MOVE_REST, MOVE_SHOP, WATERFALL, SHRINE, HEALTH_SHRINE};
     
     [Export] public EventID id { get; private set; } = EventID.NONE;
     [Export] public int tier { get; private set; } = 0;
     [Export] public float weight { get; private set; } = 0.0f;
     [Export] public string title { get; private set; } = "";
-    [Export] public string body { get; private set; } = "";
+    [Export(PropertyHint.MultilineText)] public string body { get; private set; } = "";
     [Export] public Texture2D texture { get; private set; } = null;
     [Export] public bool canRepeat { get; private set; } = false;
     [Export] public bool isTrapped { get; private set; } = false;
@@ -40,6 +40,14 @@ public partial class EventData : Resource
     
     public virtual void InitializeEvent() { }
 
+    public virtual void Enter()
+    {
+        foreach (EventChoice choice in this.choices)
+        {
+            choice.Enter();
+        }
+    }
+
     public virtual void Exit() { }
 }
 
@@ -55,6 +63,8 @@ public partial class EventChoice
         this.outcomeText = outcome;
         this.isDisabled = isDisabled;
     }
+    
+    public virtual void Enter() { }
 
     public virtual void Outcome() { }
 }
