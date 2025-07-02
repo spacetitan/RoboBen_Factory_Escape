@@ -14,6 +14,6 @@ canExpire = true
 duration = 0
 stacks = 0
 statusIcon = ExtResource("2_nov8x")
-desc = "Deals 1 dmg per stack at the start of the turn"
+desc = "Deals 1 dmg per stack at the start of the turn."
 sfx = ExtResource("2_8v308")
 metadata/_custom_type_script = "uid://d0gmh6bc8fmf3"

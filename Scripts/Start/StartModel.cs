@@ -18,6 +18,11 @@ public partial class StartModel : UIModel
 
     public override void Enter()
     {
+        if (GameManager.instance.HasLoadFile())
+        {
+            GameManager.instance.LoadGame();
+        }
+        
         UIManager.instance.vfxModel.OpenCurtain();
         AudioManager.instance.SetBackgroundMusic(UIManager.UIState.START);
     }

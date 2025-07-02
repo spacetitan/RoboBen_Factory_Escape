@@ -63,7 +63,6 @@ public partial class PowerUpHandler
             tween.TweenCallback(Callable.From(() =>
             {
                 powerUpUI.powerUp.ActivatePowerUp();
-                powerUpUI.Flash();
             }));
             tween.TweenInterval(this.applyInterval);
         }
@@ -151,11 +150,19 @@ public partial class PowerUpHandler
         }
     }
 
+    public void UpdateUI()
+    {
+        foreach (PowerUpUI UI in powerUpUIs)
+        {
+            UI.UpdateData();
+        }
+    }
+
     public void ClearUI()
     {
         foreach (PowerUpUI powerUp in this.powerUpUIs)
         {
-            powerUp.QueueFree();
+            powerUp.DestroyPowerUp();
         }
         this.powerUpUIs.Clear();
 

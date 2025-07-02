@@ -15,13 +15,16 @@ public partial class GameManager : Node
 			instance = this;
 		}
 	}
-	
+
 	private ConfigFile settings = new ConfigFile();
 	private string settingsPath = "res://settings.cfg";
 	
 	private string savePath = Path.Join(ProjectSettings.GlobalizePath("user://") + "Saves/");
 	private string loadPath = Path.Join(ProjectSettings.GlobalizePath("user://")+ "Saves/SaveData.json");
 	public Dictionary loadData { get; private set; } = null;
+	
+	public bool ftue { get; private set; } = true;
+	public DisplayServer.WindowMode windowMode { get; private set; } = DisplayServer.WindowMode.Fullscreen;
 
 	public override void _Ready()
 	{
@@ -42,33 +45,36 @@ public partial class GameManager : Node
 		{
 			LoadSettings();
 		}
-
-		if (HasLoadFile())
-		{
-			LoadGame();
-		}
 	}
 
 	public void CreateNewSettingsFile()
 	{
+		settings.SetValue("Settings", "FTUE", true);
 		settings.SetValue("Settings", "music", .8f);
 		settings.SetValue("Settings", "sfx", .8f);
+		settings.SetValue("Settings", "windowMode", (int) DisplayServer.WindowMode.Fullscreen);
 
 		settings.Save(this.settingsPath);
 	}
 
 	public void SaveSettings()
 	{
+		settings.SetValue("Settings", "FTUE", this.ftue);
 		settings.SetValue("Settings", "music", AudioManager.instance.musicPlayer.volume);
 		settings.SetValue("Settings", "sfx", AudioManager.instance.sfxPlayer.volume);
+		settings.SetValue("Settings", "windowMode", (int) this.windowMode);
 
 		settings.Save(this.settingsPath);
 	}
 
 	public void LoadSettings()
 	{
+		this.ftue = (bool)settings.GetValue("Settings", "FTUE");
 		AudioManager.instance.musicPlayer.SetVolume((double)settings.GetValue("Settings", "music")); 
 		AudioManager.instance.sfxPlayer.SetVolume((double)settings.GetValue("Settings", "sfx")); 
+		int mode = (int) settings.GetValue("Settings", "windowMode");
+		this.windowMode = (DisplayServer.WindowMode) mode;
+		DisplayServer.WindowSetMode(this.windowMode);
 	}
 
 	public void SaveGame()
@@ -110,6 +116,7 @@ public partial class GameManager : Node
 			GD.Print(err);
 			return false;
 		}
+
 		return true;
 	}
 
@@ -132,12 +139,19 @@ public partial class GameManager : Node
 
 	public Dictionary GetLoadData(string key = null)
 	{
-		if (key != null)
+		if (this.loadData != null)
 		{
-			return (Dictionary) this.loadData[key];
-		}
+			if (key != null)
+			{
+				return (Dictionary) this.loadData[key];
+			}
 
-		return this.loadData;
+			return this.loadData;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void DeleteSaveData()
@@ -148,5 +162,12 @@ public partial class GameManager : Node
 		}
 
 		DirAccess.RemoveAbsolute(loadPath);
+		this.loadData = null;
+	}
+
+	public void SetFTUE(bool val)
+	{
+		this.ftue = val;
+		SaveSettings();
 	}
 }

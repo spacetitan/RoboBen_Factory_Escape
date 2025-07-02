@@ -16,6 +16,10 @@ public partial class CardData : Resource
         BONK,
         ARMORUP,
         SNEAKATTACK,
+        NANOMECHGEL,
+        NUMBINGDART,
+        HEADBOP,
+        TOUGHENUP,
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE};
 

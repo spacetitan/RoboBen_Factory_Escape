@@ -47,8 +47,24 @@ public partial class PowerUpUI : Control
         {
             this.labelPanel.Hide();
         }
+
+        powerUp.PowerUpActivated += Flash;
     }
-    
+
+    public void UpdateData()
+    {
+        if (this.powerUp.showValue)
+        {
+            this.powerUpLabel.Text = this.powerUp.value.ToString();
+        }
+    }
+
+    public void DestroyPowerUp()
+    {
+        powerUp.PowerUpActivated -= Flash;
+        this.QueueFree();
+    }
+
     public void Flash()
     {
         this.powerUpAP.Play("flash");

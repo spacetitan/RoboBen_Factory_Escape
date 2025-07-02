@@ -105,6 +105,7 @@ public partial class CharacterTurnState : TurnOrderState
         {
             GD.Print("Character is stunned!");
             EmitSignal(TurnOrderState.SignalName.ChangeState, this, (int)TurnOrderStateMachine.TurnState.END_POWERUPS);
+            return;
         }
         
         if(character is Player)

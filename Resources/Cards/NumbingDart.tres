@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="NumbingDart" load_steps=3 format=3 uid="uid://c6ilysg4tlgok"]
+
+[ext_resource type="Texture2D" uid="uid://dbwaekrhq2nro" path="res://Art/Sprites/Cards/numbDart.png" id="1_7xu5s"]
+[ext_resource type="Script" uid="uid://dtnks3ehhc3l3" path="res://Scripts/_Resources/Cards/NumbingDart.cs" id="1_jjg2b"]
+
+[resource]
+script = ExtResource("1_jjg2b")
+stacks = 3
+id = 11
+cardName = "Numbing Dart"
+cardDesc = "Deals {value} dmg and adds {stacks} weaken to a single enemy."
+Texture = ExtResource("1_7xu5s")
+rarity = 2
+targetType = 1
+cardValue = 2
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dtnks3ehhc3l3"

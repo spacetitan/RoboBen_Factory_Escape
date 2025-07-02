@@ -104,7 +104,7 @@ metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
 [sub_resource type="Resource" id="Resource_6hacj"]
 script = ExtResource("8_u0hvi")
-id = 0
+id = 9
 cardName = "Sneak Attack"
 cardDesc = "Deals {value} to a single enemy. 2x dmg when Invisible!"
 Texture = ExtResource("7_7832x")
@@ -118,7 +118,7 @@ metadata/_custom_type_script = "uid://17q3ktok0nro"
 
 [sub_resource type="Resource" id="Resource_baugx"]
 script = ExtResource("8_u0hvi")
-id = 0
+id = 9
 cardName = "Sneak Attack"
 cardDesc = "Deals {value} to a single enemy. 2x dmg when Invisible!"
 Texture = ExtResource("7_7832x")

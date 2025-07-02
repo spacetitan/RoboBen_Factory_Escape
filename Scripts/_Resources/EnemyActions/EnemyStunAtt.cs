@@ -45,7 +45,7 @@ public partial class EnemyStunAtt : EnemyAction
 		DamageEffect damage = new DamageEffect(this.owner.GetModifiedAttack(this.value), this.sound);
 		
 		Stun stun = ResourceManager.instance.statuses[Status.StatusID.STUN].CreateInstance() as Stun;
-		stun.SetStacks(this.stacks);
+		stun.SetDuration(this.stacks);
 		StatusEffect statusEffect = new StatusEffect(stun, null);
 		statusEffect.sender = this.owner;
 		

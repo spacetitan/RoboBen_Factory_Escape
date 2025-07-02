@@ -7,11 +7,10 @@ public partial class MuscleGen : CardData
 	public override void ApplyEffects(List<Character> targets, Player player)
 	{
 		Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].CreateInstance() as Muscle;
-		muscle.SetDuration(this.cardValue);
-
-		BattleModel model = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;
+		muscle.SetStacks(this.cardValue);
+		
 		StatusEffect statusEffect = new StatusEffect(muscle, muscle.sfx);
-		statusEffect.sender = model.player;
+		statusEffect.sender = player;
 		statusEffect.Execute(targets);
 		
 		AudioManager.instance.sfxPlayer.Play(this.playSFX);

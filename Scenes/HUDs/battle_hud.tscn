@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="8_1bodp"]
 [ext_resource type="PackedScene" uid="uid://cmdl4q5mlvh53" path="res://Scenes/HUDs/ability_info_panel.tscn" id="9_a8n4k"]
 [ext_resource type="Theme" uid="uid://cqx0acj3dnur5" path="res://Themes/HUD/MapButtonTheme.tres" id="9_tbf4e"]
-[ext_resource type="StyleBox" uid="uid://bwbd2eulhbyub" path="res://Themes/Battle/GenPanel.tres" id="11_0rjmy"]
-[ext_resource type="Texture2D" uid="uid://veakbgeaanxy" path="res://Art/Sprites/Battle/energy-icon.png" id="11_6lrue"]
+[ext_resource type="StyleBox" uid="uid://dqy36vrd024vd" path="res://Themes/Card/CardPanel.tres" id="11_0rjmy"]
 [ext_resource type="PackedScene" uid="uid://cixa28ltgkd6e" path="res://Scenes/Battle/target_selector.tscn" id="11_tbf4e"]
+[ext_resource type="Texture2D" uid="uid://cowormt63e7r7" path="res://Art/Sprites/Battle/lightningBolt.png" id="12_1y3dm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxrd0"]
 bg_color = Color(0.384314, 0.529412, 0.686275, 1)
@@ -275,7 +275,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_6lrue")
+texture = ExtResource("12_1y3dm")
 expand_mode = 5
 stretch_mode = 5
 
@@ -288,13 +288,43 @@ shape = SubResource("CapsuleShape2D_0rjmy")
 [node name="EnergyLabel" type="RichTextLabel" parent="GenPanel"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.3
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 54
 text = "0"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyLabel2" type="RichTextLabel" parent="GenPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Drag here"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyLabel3" type="RichTextLabel" parent="GenPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Get energy!"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

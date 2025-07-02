@@ -21,6 +21,7 @@ public partial class RestView : UIView
     {
         this.restButton = this.GetNode<UIButton>("RestButton");
         this.restButton.SetData("Rest\n-Heal 30%-");
+        this.restButton.button.Disabled = true;
         this.restButton.button.Pressed += () =>
         {
             RunManager.instance.Rest();
@@ -30,6 +31,7 @@ public partial class RestView : UIView
 
         this.fullHealButton = this.GetNode<UIButton>("FullHealButton");
         this.fullHealButton.SetData("Full Heal\nCost:10");
+        this.fullHealButton.button.Disabled = true;
         this.fullHealButton.button.Pressed += () =>
         {
             RunManager.instance.FullHeal();
@@ -75,30 +77,27 @@ public partial class RestView : UIView
         player.SetCustomMinimumSize(this.playerSize);
         
         this.itemPanel.SetData(ResourceManager.instance.cards[CardData.CardID.REPAIRKIT], OnButtonPressed);
+        
+        if (RunManager.instance.currentRun.playerData.health < RunManager.instance.currentRun.playerData.maxHealth)
+        {
+            this.restButton.button.Disabled = false;
+        }
 
-        this.restButton.button.Disabled = false;
-        if (RunManager.instance.currentRun.gold > 10)
+        if (RunManager.instance.currentRun.playerData.health < RunManager.instance.currentRun.playerData.maxHealth && RunManager.instance.currentRun.gold > 10)
         {
             this.fullHealButton.button.Disabled = false;
+        }
+        
+        if (RunManager.instance.currentRun.gold > 10)
+        {
             this.reRollButton.button.Disabled = false;
             this.removeCardButton.button.Disabled = false;
         }
         else
         {
-            this.fullHealButton.button.Disabled = true;
+
             this.reRollButton.button.Disabled = true;
             this.removeCardButton.button.Disabled = true;
-        }
-
-        if (RunManager.instance.currentRun.playerData.health == RunManager.instance.currentRun.playerData.maxHealth)
-        {
-            this.restButton.button.Disabled = true;
-            this.fullHealButton.button.Disabled = true;
-        }
-        else
-        {
-            this.restButton.button.Disabled = false;
-            this.fullHealButton.button.Disabled = false;
         }
     }
 

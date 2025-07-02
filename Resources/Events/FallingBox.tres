@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FallingBox" load_steps=3 format=3 uid="uid://cimqcvwskh8tc"]
+
+[ext_resource type="Script" uid="uid://b1icog7ksgapg" path="res://Scripts/_Resources/Events/FallingBox.cs" id="1_emv4t"]
+[ext_resource type="Texture2D" uid="uid://dv3dw5swuv00r" path="res://Art/Sprites/Event/boxEvent.png" id="2_tak1y"]
+
+[resource]
+script = ExtResource("1_emv4t")
+id = 9
+tier = 0
+weight = 1.0
+title = "Falling boxes!!"
+body = "Oh no! boxes are falling of the shelves!"
+texture = ExtResource("2_tak1y")
+canRepeat = false
+isTrapped = true
+metadata/_custom_type_script = "uid://b1icog7ksgapg"

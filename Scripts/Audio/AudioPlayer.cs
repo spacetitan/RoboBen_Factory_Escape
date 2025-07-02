@@ -46,7 +46,7 @@ public partial class AudioPlayer : Node
         }
 
         //-23 <-> -1
-        double decibals = (this.volume * 22) - 23;
+        double decibals = (this.volume * 40) - 45;
         //GD.Print("Setting audio levels: " + decibals);
         foreach(AudioStreamPlayer player in GetChildren())
         {

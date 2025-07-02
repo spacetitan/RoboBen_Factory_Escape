@@ -7,7 +7,7 @@
 script = ExtResource("1_5t7kt")
 id = 0
 tier = 0
-weight = 15.0
+weight = 1.0
 title = "A shrine?"
 body = "This shrine looks yucky!"
 texture = ExtResource("2_3jk35")

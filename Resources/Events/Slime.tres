@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Slime" load_steps=3 format=3 uid="uid://bdn73btmnp2b1"]
+
+[ext_resource type="Script" uid="uid://c6pamfb48pd30" path="res://Scripts/_Resources/Events/Slime.cs" id="1_cpsy6"]
+[ext_resource type="Texture2D" uid="uid://bd6oi05jo4qbu" path="res://Art/Sprites/Event/slime.png" id="2_xsxu8"]
+
+[resource]
+script = ExtResource("1_cpsy6")
+id = 8
+tier = 0
+weight = 1.0
+title = "A slime?"
+body = "It looks hungry?"
+texture = ExtResource("2_xsxu8")
+canRepeat = false
+isTrapped = false
+metadata/_custom_type_script = "uid://c6pamfb48pd30"

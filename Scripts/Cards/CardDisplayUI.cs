@@ -14,6 +14,9 @@ public partial class CardDisplayUI : Control
     private RichTextLabel typeLabel = null;
     private Button cardButton = null;
     
+    private Panel costPanel = null;
+    private Panel genPanel = null;
+    
     private Action onClick = null;
     
     public CardData cardData = null;
@@ -40,6 +43,9 @@ public partial class CardDisplayUI : Control
             this.onClick?.Invoke();
         };
         this.AddThemeStyleboxOverride("panel", defaultStyleBox);
+        
+        this.costPanel = this.GetNode<Panel>("%CostPanel");
+        this.genPanel = this.GetNode<Panel>("%GenPanel");
     }
 
     public void SetData(CardData data, Action onClick = null, bool glowDisabled = false, bool showType = true)
@@ -78,6 +84,9 @@ public partial class CardDisplayUI : Control
         this.costLabel.Text = "";
         this.genLabel.Text = "";
         this.typeLabel.Text = "Power-Up";
+        
+        this.costPanel.Hide();
+        this.genPanel.Hide();
 
         if (onClick != null)
         {

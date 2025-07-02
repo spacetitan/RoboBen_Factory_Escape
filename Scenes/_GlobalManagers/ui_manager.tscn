@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bph1tfufn4nu2"]
+[gd_scene load_steps=16 format=3 uid="uid://bph1tfufn4nu2"]
 
 [ext_resource type="Script" uid="uid://b33ejphwxx2kb" path="res://Scripts/_GlobalManagers/UIManager.cs" id="1_c4t2g"]
 [ext_resource type="PackedScene" uid="uid://b0kkisie7f3xc" path="res://Scenes/PopUp/pop_up_model.tscn" id="1_nvxgx"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://blnc6le3dwr8y" path="res://Scenes/Event/event_model.tscn" id="9_5kpba"]
 [ext_resource type="PackedScene" uid="uid://cehsg4g65k5yy" path="res://Scenes/GameOver/game_over_model.tscn" id="10_22rpt"]
 [ext_resource type="PackedScene" uid="uid://cqnxsrvcrp5o5" path="res://Scenes/Tootlip/tootip_model.tscn" id="13_hv7oe"]
+[ext_resource type="PackedScene" uid="uid://c78dss6mdfp3v" path="res://Scenes/FTUE/ftue_model.tscn" id="14_ksvd5"]
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_c4t2g")
@@ -50,6 +51,8 @@ state = 4
 [node name="PopUpModel" parent="PopUp" instance=ExtResource("1_nvxgx")]
 
 [node name="TootipModel" parent="PopUp" instance=ExtResource("13_hv7oe")]
+
+[node name="FTUEModel" parent="PopUp" instance=ExtResource("14_ksvd5")]
 
 [node name="VFX" type="CanvasLayer" parent="."]
 

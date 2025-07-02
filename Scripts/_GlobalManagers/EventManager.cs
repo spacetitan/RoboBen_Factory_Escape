@@ -30,6 +30,7 @@ public partial class EventManager : Node
 	[Signal] public delegate void CardAimStartedEventHandler(CardUI card);
 	[Signal] public delegate void AbilityAimStartedEventHandler(Player player);
 	[Signal] public delegate void AimEndedEventHandler();
+	[Signal] public delegate void StatusAddedEventHandler();
 
 	public override void _Ready()
 	{

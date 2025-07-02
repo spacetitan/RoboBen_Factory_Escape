@@ -38,6 +38,7 @@ public partial class PlayView : UIView
             this.playerData = null;
             ResetInfoPanels();
             this.continueButton.button.SetPressed(false);
+            this.startButton.button.SetDisabled(true);
         };
         
         this.continueButton = this.GetNode<UIButton>("%ContinueButton");
@@ -50,7 +51,7 @@ public partial class PlayView : UIView
             this.playerData = null;
             int id = (int) GameManager.instance.GetLoadData("Player Data")["ID"];
             SetInfoPanels(ResourceManager.instance.characters[(CharacterData.CharacterID)id]);
-            this.startButton.button.SetPressed(false);
+            this.newRunButton.button.SetPressed(false);
         };
 
         this.startButton = this.GetNode<UIButton>("%StartButton");
@@ -61,16 +62,39 @@ public partial class PlayView : UIView
             {
                 if (this.playerData != null)
                 {
-                    RunManager.instance.NewRun(this.playerData);
+                    if (GameManager.instance.HasLoadFile())
+                    {
+                        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUTTON]);
+                        UIManager.instance.popUpModel.OpenGenericPopUp(new GenericPopUpView.GenericPopUpData()
+                        {
+                            action = () =>
+                            {
+                                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.GAME_START]);
+                                GameManager.instance.DeleteSaveData();
+                                UIManager.instance.popUpModel.ClosePopup(UIModel.ViewID.POP_UP);
+                                RunManager.instance.NewRun(this.playerData);
+                            },
+                            body = "Starting a new run will delete the old save.\nContinue?",
+                            buttonText = "Continue",
+                            texture = null,
+                            title = "Warning!"
+                        });
+                    }
+                    else
+                    {
+                        AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.GAME_START]);
+                        RunManager.instance.NewRun(this.playerData);
+                    }
                 }
             }
             else if (this.continueButton.button.ButtonPressed)
             {
+                AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.GAME_START]);
                 RunManager.instance.ContinueRun(GameManager.instance.GetLoadData());
             }
         };
         this.startButton.button.SetDisabled(true);
-        this.startButton.clickSFX = ResourceManager.instance.audio[ResourceManager.AudioID.GAME_START];
+        this.startButton.clickSFX = null;
         
         this.cancelButton = this.GetNode<UIButton>("%CancelButton");
         this.cancelButton.SetData("Cancel");
@@ -135,6 +159,8 @@ public partial class PlayView : UIView
             {
                 SetInfoPanels(kvp.Value);
                 this.playerData = kvp.Value;
+                this.continueButton.button.SetPressed(false);
+                this.newRunButton.button.SetPressed(true);
                 this.startButton.button.SetDisabled(false);
             };
             this.pickerContainer.AddChild(pickerPanel);
@@ -151,6 +177,10 @@ public partial class PlayView : UIView
         {
             this.continueButton.button.SetDisabled(true);
         }
+        
+        this.newRunButton.button.ButtonPressed = true;
+        this.continueButton.button.ButtonPressed = false;
+        this.startButton.button.SetDisabled(true);
     }
 
     public void SetInfoPanels(PlayerData data)
@@ -209,9 +239,11 @@ public partial class PlayView : UIView
 
     public override void Exit()
     {
-        if (this.newRunButton != null && this.startButton != null)
+        if (this.newRunButton != null && this.startButton != null && this.continueButton != null)
         {
             this.newRunButton.button.ButtonPressed = true;
+            this.continueButton.button.ButtonPressed = false;
+            this.continueButton.button.SetDisabled(true);
             this.startButton.button.SetDisabled(true);
             ResetInfoPanels();
         }

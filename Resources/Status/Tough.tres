@@ -13,5 +13,5 @@ canExpire = true
 duration = 0
 stacks = 0
 statusIcon = ExtResource("2_cje57")
-desc = ""
+desc = "Gain 10% defense per stack (max 80%)"
 metadata/_custom_type_script = "uid://dtsfaevkexvk"

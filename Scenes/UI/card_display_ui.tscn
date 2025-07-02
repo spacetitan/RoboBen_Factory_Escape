@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://nc5h26ien4xx"]
+[gd_scene load_steps=7 format=3 uid="uid://nc5h26ien4xx"]
 
 [ext_resource type="Theme" uid="uid://b8wu370uusg0u" path="res://Themes/Card/Card.tres" id="1_0xnsc"]
 [ext_resource type="Script" uid="uid://bwqfryai3clcl" path="res://Scripts/Cards/CardDisplayUI.cs" id="1_mvcct"]
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="2_mf84n"]
 [ext_resource type="StyleBox" uid="uid://bbjslqbl6nefl" path="res://Themes/Card/CardInfoPanel.tres" id="4_xq6pm"]
 [ext_resource type="StyleBox" uid="uid://c73ybb6sthfwc" path="res://Themes/Card/CardInfoDescPanel.tres" id="5_2e58d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xnsc"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="CardDisplayUI" type="Panel"]
 z_index = 1
@@ -16,8 +23,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
 offset_top = -70.0
-offset_right = 50.0
-offset_bottom = 70.0
+offset_right = 100.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0xnsc")
@@ -91,6 +98,18 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CostPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.1
+anchor_right = 0.34
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xnsc")
+
 [node name="CostLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -104,14 +123,26 @@ text = "Cost: 0"
 scroll_active = false
 vertical_alignment = 1
 
+[node name="GenPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.2
+anchor_right = 0.29
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xnsc")
+
 [node name="GenLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
-anchor_top = 0.2
+anchor_top = 0.15
 anchor_right = 0.65
-anchor_bottom = 0.3
+anchor_bottom = 0.25
 mouse_filter = 2
 text = "Gen: 0"
 scroll_active = false

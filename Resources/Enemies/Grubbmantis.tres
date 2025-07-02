@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://u4i30jhbd1hj"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://u4i30jhbd1hj"]
 
 [ext_resource type="Resource" uid="uid://uksuhsmohk0" path="res://Resources/EnemyActions/GrubAttack.tres" id="1_ii67t"]
 [ext_resource type="Script" uid="uid://b28o7rfd5su00" path="res://Scripts/Characters/Enemy/EnemyData.cs" id="1_k30v6"]
 [ext_resource type="Texture2D" uid="uid://budy3vsbsumqa" path="res://Art/Sprites/Enemies/GrubbmantisRex.png" id="2_6k1sv"]
-[ext_resource type="Resource" uid="uid://bpjqtgma7xgdu" path="res://Resources/EnemyActions/GrubGuard.tres" id="2_qm0ri"]
+[ext_resource type="Resource" uid="uid://8j27b4mjutr2" path="res://Resources/EnemyActions/GrubAttGuard.tres" id="2_qm0ri"]
+[ext_resource type="Resource" uid="uid://d246ix2vshsar" path="res://Resources/EnemyActions/GrubMultiAttack.tres" id="3_pxb47"]
 
 [resource]
 script = ExtResource("1_k30v6")
-actions = Array[Resource]([ExtResource("1_ii67t"), ExtResource("2_qm0ri")])
-attack = 3
-defense = 3
+actions = Array[Resource]([ExtResource("1_ii67t"), ExtResource("2_qm0ri"), ExtResource("3_pxb47")])
+attack = 6
+defense = 5
 id = 7
 name = &"Grubbmantis"
 desc = ""

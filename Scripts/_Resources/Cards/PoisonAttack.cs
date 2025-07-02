@@ -13,10 +13,9 @@ public partial class PoisonAttack : CardData
 		
 		Poison poison = ResourceManager.instance.statuses[Status.StatusID.POISON].CreateInstance() as Poison;
 		poison.SetStacks(this.stacks);
-
-		BattleModel model = UIManager.instance.models[UIManager.UIState.BATTLE] as BattleModel;
+		
 		StatusEffect statusEffect = new StatusEffect(poison, poison.sfx);
-		statusEffect.sender = model.player;
+		statusEffect.sender = player;
 		statusEffect.Execute(targets);
 	}
 	

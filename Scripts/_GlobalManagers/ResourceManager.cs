@@ -174,7 +174,7 @@ public partial class ResourceManager : Node
 			{ AudioID.GAME_START, ResourceLoader.Load<AudioStream>("res://Audio/confirmation_002.ogg")},
 			{ AudioID.ROOM_SELECTED, ResourceLoader.Load<AudioStream>("res://Audio/spaceTrash4.ogg")},
 			{ AudioID.DRAW_CARD, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-place-1.ogg")},
-			{ AudioID.CARD_BURNED, ResourceLoader.Load<AudioStream>("res://Audio/maximize_006.ogg")},
+			{ AudioID.CARD_BURNED, ResourceLoader.Load<AudioStream>("res://Audio/magic-1.ogg")},
 			{ AudioID.CARD_DISCARDED, ResourceLoader.Load<AudioStream>("res://Audio/Hand/card-slide-6.ogg")},
 			{ AudioID.CARD_GRABBED, ResourceLoader.Load<AudioStream>("res://Audio/card-slide-1.ogg")},
 			{ AudioID.POWERUP_ACTIVATE, ResourceLoader.Load<AudioStream>("res://Audio/select_006.ogg")},
@@ -191,10 +191,10 @@ public partial class ResourceManager : Node
 
 		this.music = new Dictionary<MusicID, AudioStream>()
 		{
-			{ MusicID.START, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 1. Stage 1_Mixed.wav")},
+			{ MusicID.START, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 1. Stage 1_Mixed2.wav")},
 			{ MusicID.RUN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Dungeon Theme.mp3")},
 			{ MusicID.SHOP, ResourceLoader.Load<AudioStream>("res://Audio/_music/8bit Bossa.mp3")},
-			{ MusicID.BATTLE, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 2. Stage 2_Mixed.wav")},
+			{ MusicID.BATTLE, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 2. Stage 2_Mixed2.wav")},
 			{ MusicID.EVENT, ResourceLoader.Load<AudioStream>("res://Audio/_music/Iceland Theme.mp3")},
 			{ MusicID.WIN, ResourceLoader.Load<AudioStream>("res://Audio/_music/Grasslands Theme.mp3")},
 			{ MusicID.BOSS, ResourceLoader.Load<AudioStream>("res://Audio/_music/Juhani Junkala [Chiptune Adventures] 3. Stage 3_Mixed.wav")},

@@ -51,7 +51,7 @@ public partial class GambleMoney : EventChoice
 			this.isDisabled = false;
 		}
 
-		this.body = "Make an offering: $" + cost + "?";
+		this.body = "Make an offering?\n$" + cost + "";
 	}
 
 	public override void Outcome()

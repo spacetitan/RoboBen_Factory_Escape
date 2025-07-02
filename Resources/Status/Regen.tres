@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Regen" load_steps=3 format=3 uid="uid://ckgj5574oa1e4"]
+[gd_resource type="Resource" script_class="Regen" load_steps=4 format=3 uid="uid://ckgj5574oa1e4"]
 
 [ext_resource type="Script" uid="uid://v8w6cymmvvqe" path="res://Scripts/_Resources/Status/Regen.cs" id="1_7hijc"]
+[ext_resource type="AudioStream" uid="uid://e257fxj2bew0" path="res://Audio/maximize_006.ogg" id="2_j2t6o"]
 [ext_resource type="Texture2D" uid="uid://d14vu2f7fwbi0" path="res://Art/Sprites/Status/regenIcon.png" id="2_lgquh"]
 
 [resource]
@@ -13,5 +14,6 @@ canExpire = true
 duration = 0
 stacks = 0
 statusIcon = ExtResource("2_lgquh")
-desc = " Heals 1 per stack at the start of the turn"
+desc = " Heals 1 per stack at the start of the turn."
+sfx = ExtResource("2_j2t6o")
 metadata/_custom_type_script = "uid://v8w6cymmvvqe"

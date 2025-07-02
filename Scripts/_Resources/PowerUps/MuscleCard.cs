@@ -4,6 +4,8 @@ using System;
 [GlobalClass]
 public partial class MuscleCard : PowerUp
 {
+	[Export] public int stacks = 2;
+
 	public override void InitializePowerUp(PowerUpHandler owner)
 	{
 		EventManager.instance.CardPlayed -= ActivatePowerUp;
@@ -20,7 +22,7 @@ public partial class MuscleCard : PowerUp
 		if (this.value >= 3)
 		{
 			Muscle muscle = ResourceManager.instance.statuses[Status.StatusID.MUSCLE].CreateInstance() as Muscle;
-			muscle.SetDuration(2);
+			muscle.SetStacks(this.stacks);
 
 			StatusEffect statusEffect = new StatusEffect(muscle, null);
 			statusEffect.sender = model.player;

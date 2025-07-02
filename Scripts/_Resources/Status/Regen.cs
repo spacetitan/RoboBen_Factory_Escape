@@ -13,7 +13,7 @@ public partial class Regen : Status
 	public override void ApplyStatus(Character target)
 	{
 		HealEffect healEffect = new HealEffect(this.stacks, this.sfx);
-		healEffect.Execute(target as Character);
+		healEffect.Execute(target);
 		base.ApplyStatus(target);
 	}
 	

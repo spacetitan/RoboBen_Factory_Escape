@@ -46,7 +46,7 @@ public partial class GambleHealth : EventChoice
 			this.isDisabled = false;
 		}
 
-		this.body = "Make an offering: " + cost + "Hp?";
+		this.body = "Make an offering?\n" + cost + "Hp";
 	}
 
 	public override void Outcome()

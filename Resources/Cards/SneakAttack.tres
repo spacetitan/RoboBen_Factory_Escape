@@ -12,7 +12,7 @@ cardDesc = "Deals {value} to a single enemy.
 2x dmg when Invisible!"
 Texture = ExtResource("1_fq5n3")
 playSFX = ExtResource("2_05xux")
-rarity = 3
+rarity = 2
 targetType = 1
 cardValue = 4
 cardCost = 1

@@ -94,6 +94,7 @@ public partial class CardPile : Resource
         foreach (KeyValuePair<Variant, Variant> cardID in data)
         {
             int ID = (int)cardID.Value;
+            //GD.Print(ID);
             AddCard(ResourceManager.instance.cards[(CardData.CardID) ID].CreateInstance());
         }
     }
@@ -112,6 +113,7 @@ public partial class CardPile : Resource
 
         for (int i = 0; i < this.cards.Count; i++)
         {
+            //GD.Print(cards[i].id);
             data.Add("Card " + i.ToString(),(int) cards[i].id);   
         }
         

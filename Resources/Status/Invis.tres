@@ -14,6 +14,6 @@ canExpire = true
 duration = 0
 stacks = 0
 statusIcon = ExtResource("3_hm1c8")
-desc = "All attacks miss!"
+desc = "All enemy attacks miss!"
 sfx = ExtResource("2_hm1c8")
 metadata/_custom_type_script = "uid://cdf04aedhf0u7"

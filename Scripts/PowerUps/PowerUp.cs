@@ -19,6 +19,7 @@ public partial class PowerUp : Resource
         REPAIRTOOL,
         SECONDWIND,
         LUCKYPENNY,
+        CHEMMIXTURE,
     }
     public enum Rarity { NONE, COMMON, UNCOMMON, RARE}
     public enum ActivateType { NONE, START_OF_COMBAT, END_OF_COMBAT, START_OF_TURN, END_OF_TURN, EVENT}
@@ -41,6 +42,7 @@ public partial class PowerUp : Resource
     public virtual void ActivatePowerUp()
     {
         EmitSignal(SignalName.PowerUpActivated);
+        RunManager.instance.currentRun.powerUpHandler.UpdateUI();
         //GD.Print("Activating power up: " + this.name);
     }
 

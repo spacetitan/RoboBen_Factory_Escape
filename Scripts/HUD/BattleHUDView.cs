@@ -264,7 +264,8 @@ public partial class BattleHUDView : UIView
     public void EndTurn()
     {
         this.endTurnButton.button.Disabled = true;
-        this.abilityButton.button.Disabled = true;
+
+        ResetAbility();
         this.OnEndTurn?.Invoke();
     }
 

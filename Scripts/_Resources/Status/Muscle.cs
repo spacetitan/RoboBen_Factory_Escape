@@ -43,7 +43,7 @@ public partial class Muscle : Status
 			modifierValue = ModifierValue.CreateModifierValue("muscle", ModifierValue.Type.FLAT);
 		}
 
-		modifierValue.flatVal = this.duration;
+		modifierValue.flatVal = this.stacks;
 		modifier.AddNewValue(modifierValue);
 
 		if(stacks <= 0 && duration <= 0 && modifier != null)

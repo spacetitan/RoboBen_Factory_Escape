@@ -36,8 +36,18 @@ public partial class BattleModel : UIModel
         this.player = view.player;
         this.enemies = view.enemies;
         view.ShowView();
-        
-        this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn);
+
+        if (!GameManager.instance.ftue)
+        {
+            this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn);
+        }
+        else
+        {
+            GD.Print("Setting Ftue");
+            GameManager.instance.SetFTUE(false);
+            UIManager.instance.ftueModel.SetData(() => { this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn); });
+            UIManager.instance.ftueModel.ShowModel();
+        }
     }
 
     public override void Exit()
@@ -99,7 +109,7 @@ public partial class BattleModel : UIModel
         this.enemies.Remove(enemy);
         enemy.DestroyEnemy();
 
-        if (this.enemies.Count <= 0)
+        if (this.enemies.Count <= 0 && this.turnOrderStateMachine.currentPhaseState != TurnOrderStateMachine.PhaseState.BATTLE_END)
         {
             this.turnOrderStateMachine.EndBattle(true, this.battleData);
         }

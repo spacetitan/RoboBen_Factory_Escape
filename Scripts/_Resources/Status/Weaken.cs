@@ -44,13 +44,13 @@ public partial class Weaken : Status
 			modifierValue = ModifierValue.CreateModifierValue("weaken", ModifierValue.Type.PERCENT);
 		}
 
-		if (this.duration >= 8)
+		if (this.stacks >= 8)
 		{
 			modifierValue.percentVal = -.8f;
 		}
 		else
 		{
-			modifierValue.percentVal = this.duration * -.1f;
+			modifierValue.percentVal = this.stacks * -.1f;
 		}
         
 		modifier.AddNewValue(modifierValue);

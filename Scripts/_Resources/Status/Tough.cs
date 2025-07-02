@@ -43,7 +43,15 @@ public partial class Tough : Status
 			modifierValue = ModifierValue.CreateModifierValue("tough", ModifierValue.Type.PERCENT);
 		}
 
-		modifierValue.percentVal = 0.2f;
+		if (this.stacks >= 8)
+		{
+			modifierValue.percentVal = -.8f;
+		}
+		else
+		{
+			modifierValue.percentVal = this.stacks * -.1f;
+		}
+		
 		modifier.AddNewValue(modifierValue);
 
 		if(stacks <= 0 && duration <= 0 && modifier != null)

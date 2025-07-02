@@ -1,0 +1,106 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=16 format=3 uid="uid://ba5mnwbltldqs"]
+
+[ext_resource type="Texture2D" uid="uid://dxjw0xydoaa3i" path="res://Art/Sprites/Cards/sword-icon.png" id="1_c57vn"]
+[ext_resource type="Script" uid="uid://b5xvqh7idv60t" path="res://Scripts/Cards/CardPile.cs" id="1_s1duh"]
+[ext_resource type="AudioStream" uid="uid://dia6ibhj6wytw" path="res://Audio/Card/impactPlate_light_001.ogg" id="2_tb376"]
+[ext_resource type="Script" uid="uid://dhpykw8im33u7" path="res://Scripts/_Resources/Cards/Attack.cs" id="3_rn62t"]
+[ext_resource type="Texture2D" uid="uid://bqi4j1reyg6y3" path="res://Art/Sprites/Cards/armor-icon.png" id="4_7fvvu"]
+[ext_resource type="AudioStream" uid="uid://dwfa3l5iys2jj" path="res://Audio/Card/impactMetal_light_000.ogg" id="5_5hlkc"]
+[ext_resource type="Script" uid="uid://vtbjlokfqi8s" path="res://Scripts/_Resources/Cards/Guard.cs" id="6_g5buk"]
+[ext_resource type="Resource" uid="uid://c6ilysg4tlgok" path="res://Resources/Cards/NumbingDart.tres" id="7_rn62t"]
+[ext_resource type="Resource" uid="uid://chxpm2ar8tlla" path="res://Resources/Cards/NanoMechGel.tres" id="8_7fvvu"]
+
+[sub_resource type="Resource" id="Resource_e1axf"]
+script = ExtResource("3_rn62t")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} dmg to a single enemy"
+Texture = ExtResource("1_c57vn")
+playSFX = ExtResource("2_tb376")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_6yw2m"]
+script = ExtResource("3_rn62t")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} dmg to a single enemy"
+Texture = ExtResource("1_c57vn")
+playSFX = ExtResource("2_tb376")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_ernws"]
+script = ExtResource("3_rn62t")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} dmg to a single enemy"
+Texture = ExtResource("1_c57vn")
+playSFX = ExtResource("2_tb376")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_g10o5"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor"
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[sub_resource type="Resource" id="Resource_p4idc"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor"
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[sub_resource type="Resource" id="Resource_7gu4m"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor"
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[resource]
+script = ExtResource("1_s1duh")
+cardData = Array[Object]([SubResource("Resource_e1axf"), SubResource("Resource_6yw2m"), SubResource("Resource_ernws"), SubResource("Resource_g10o5"), SubResource("Resource_p4idc"), SubResource("Resource_7gu4m"), ExtResource("7_rn62t"), ExtResource("7_rn62t"), ExtResource("8_7fvvu")])
+metadata/_custom_type_script = "uid://b5xvqh7idv60t"

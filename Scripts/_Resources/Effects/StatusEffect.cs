@@ -28,6 +28,13 @@ public partial class StatusEffect : Effect
 		    }
 		    else
 		    {
+			    BattleModel model = UIManager.instance.currentModel as BattleModel;
+			    if (sender == model.player)
+			    {
+				    EventManager.instance.EmitSignal(EventManager.SignalName.StatusAdded);
+				    //GD.Print("status sent by player");
+			    }
+
 			    enemy.statusHandler.AddStatus(status);
 		    }
 		}
@@ -44,6 +51,12 @@ public partial class StatusEffect : Effect
 		    else
 		    {
 			    player.statusHandler.AddStatus(status);
+
+			    if (sender == player)
+			    {
+				    //GD.Print("status sent by player");
+				    EventManager.instance.EmitSignal(EventManager.SignalName.StatusAdded);
+			    }
 		    }
 		}
 
@@ -70,6 +83,13 @@ public partial class StatusEffect : Effect
 				}
 				else
 				{
+					BattleModel model = UIManager.instance.currentModel as BattleModel;
+					if (sender == model.player)
+					{
+						EventManager.instance.EmitSignal(EventManager.SignalName.StatusAdded);
+						//GD.Print("status sent by player");
+					}
+					
 					enemy.statusHandler.AddStatus(status);
 				}
 			}
@@ -85,6 +105,12 @@ public partial class StatusEffect : Effect
 				}
 				else
 				{
+					if (sender == player)
+					{
+						//GD.Print("status sent by player");
+						EventManager.instance.EmitSignal(EventManager.SignalName.StatusAdded);
+					}
+					
 					player.statusHandler.AddStatus(status);
 				}
 			}

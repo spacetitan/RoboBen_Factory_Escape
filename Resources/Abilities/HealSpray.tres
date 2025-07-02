@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_yt8ee")
 name = "Heal Spray"
-desc = "Heals 3"
-value = 3
+desc = "Heals 2"
+value = 2
 cooldown = 1
 cooldownTimer = 0
 targetType = 2

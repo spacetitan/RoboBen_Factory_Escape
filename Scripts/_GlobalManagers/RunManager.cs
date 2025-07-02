@@ -439,7 +439,13 @@ public partial class RunManager : Node
 		return false;
 	}
 
-	public virtual void RemoveRandomCard() { }
+	public CardData GetRandomCardFromDeck()
+	{
+		Random rand = new Random();
+		List<CardData> cardStats = this.currentRun.playerDeck.cards.OrderBy(x => rand.Next()).ToList();
+
+		return cardStats[0];
+	}
 	
 	public CardData GetAvailableCard()
 	{

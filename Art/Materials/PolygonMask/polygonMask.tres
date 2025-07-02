@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cgw3m6r64ikcx"]
+
+[ext_resource type="Shader" uid="uid://broo25b8esu4r" path="res://Art/Materials/PolygonMask/polygon_mask.gdshader" id="1_x5lwt"]
+
+[resource]
+shader = ExtResource("1_x5lwt")
+shader_parameter/size = 0.355
+shader_parameter/sides = 4
+shader_parameter/rotation = 45.0
+shader_parameter/position_x = 0.415
+shader_parameter/position_y = 0.416
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Color(0, 0, 0, 0)
+shader_parameter/maintain_aspect_ratio = true

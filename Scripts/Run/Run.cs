@@ -113,7 +113,7 @@ public partial class Run
     {
         if (amount > this.playerData.health)
         {
-            amount = this.playerData.health;
+            amount = this.playerData.health-1;
         }
 
         this.playerData.SetHealth(this.playerData.health - amount);

@@ -32,7 +32,7 @@ public partial class Status : Resource
 
     [ExportGroup("Status External")]
     [Export] public Texture2D statusIcon { get; protected set; }
-    [Export] public String desc { get; protected set; }
+    [Export(PropertyHint.MultilineText)] public String desc { get; protected set; }
     [Export] public AudioStream sfx { get; protected set; }
 
     public int amount { get; protected set; } = 0;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7pjr85qavyui"]
+[gd_scene load_steps=9 format=3 uid="uid://7pjr85qavyui"]
 
 [ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="1_2jvo3"]
 [ext_resource type="Script" uid="uid://buet6524ta8o7" path="res://Scripts/Cards/CardUI.cs" id="1_ofwbo"]
@@ -6,8 +6,22 @@
 [ext_resource type="StyleBox" uid="uid://bbjslqbl6nefl" path="res://Themes/Card/CardInfoPanel.tres" id="4_rk44c"]
 [ext_resource type="StyleBox" uid="uid://c73ybb6sthfwc" path="res://Themes/Card/CardInfoDescPanel.tres" id="5_v6fwq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rk44c"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6fwq"]
+bg_color = Color(0.105205, 0.171276, 0.242047, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvo3"]
-size = Vector2(69, 126)
+size = Vector2(115, 126)
 
 [node name="CardUI" type="Panel"]
 visibility_layer = 2
@@ -19,6 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 100.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q2suf")
@@ -91,11 +109,22 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.1
+anchor_right = 0.39
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rk44c")
+
 [node name="CostLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
+anchor_left = 0.1
 anchor_top = 0.05
 anchor_right = 0.5
 anchor_bottom = 0.15
@@ -103,27 +132,37 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "Cost: 0"
 scroll_active = false
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.2
+anchor_right = 0.29
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6fwq")
 
 [node name="GenLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.175
+anchor_left = 0.05
+anchor_top = 0.15
 anchor_right = 0.4
-anchor_bottom = 0.275
+anchor_bottom = 0.25
 mouse_filter = 2
 text = "Gen: 0"
 scroll_active = false
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayArea2D" type="Area2D" parent="." groups=["Card"]]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea2D"]
-position = Vector2(50.5, 70)
+position = Vector2(73.5, 70)
 shape = SubResource("RectangleShape2D_2jvo3")
 
 [connection signal="gui_input" from="." to="." method="OnGuiInput"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MedShield" load_steps=4 format=3 uid="uid://b2lf364572une"]
+
+[ext_resource type="AudioStream" uid="uid://dwfa3l5iys2jj" path="res://Audio/Card/impactMetal_light_000.ogg" id="1_1bqve"]
+[ext_resource type="Script" uid="uid://cn86chumrplvc" path="res://Scripts/_Resources/Abilities/MedShield.cs" id="1_hbujm"]
+[ext_resource type="Texture2D" uid="uid://cqgj3wojxoffs" path="res://icon.svg" id="3_jkql8"]
+
+[resource]
+script = ExtResource("1_hbujm")
+name = "Med Shield"
+desc = "Adds 2 armor + 1 per stack of status on player"
+value = 2
+cooldown = 2
+cooldownTimer = 0
+targetType = 2
+texture = ExtResource("3_jkql8")
+playSFX = ExtResource("1_1bqve")
+metadata/_custom_type_script = "uid://cn86chumrplvc"

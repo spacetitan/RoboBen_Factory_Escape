@@ -1,0 +1,236 @@
+[gd_scene load_steps=15 format=3 uid="uid://c78dss6mdfp3v"]
+
+[ext_resource type="Texture2D" uid="uid://bvq3aqnqeubj2" path="res://Art/Sprites/FTUE/slimeKing.png" id="1_4hm7j"]
+[ext_resource type="Theme" uid="uid://k6e71v0sc4rc" path="res://Themes/PopUp/PopUpTheme.tres" id="1_57d2c"]
+[ext_resource type="Script" uid="uid://c0ivrslslr4un" path="res://Scripts/FTUE/FTUEModel.cs" id="1_586sw"]
+[ext_resource type="PackedScene" uid="uid://bw4n6u6lgdrng" path="res://Scenes/HUDs/ui_button.tscn" id="2_4hm7j"]
+[ext_resource type="Texture2D" uid="uid://qxnf5hw2cq3p" path="res://Art/Sprites/FTUE/TalkBubble.png" id="2_586sw"]
+[ext_resource type="Shader" uid="uid://d3l552ux2k3e4" path="res://Art/Materials/Cutout/cutout.gdshader" id="3_586sw"]
+[ext_resource type="Texture2D" uid="uid://0w8jmvhsp52i" path="res://Art/Sprites/FTUE/RoundSquare.png" id="4_wt40b"]
+[ext_resource type="PackedScene" uid="uid://nc5h26ien4xx" path="res://Scenes/UI/card_display_ui.tscn" id="6_g7e82"]
+[ext_resource type="Theme" uid="uid://d3tddmkol1k71" path="res://Themes/Start/Model/StartButtonTheme.tres" id="7_3navc"]
+[ext_resource type="Texture2D" uid="uid://0h8k2vnbwm7n" path="res://Art/Sprites/FTUE/arrow3.png" id="9_3navc"]
+[ext_resource type="Texture2D" uid="uid://cqgkncptfk7ep" path="res://Art/Sprites/FTUE/arrow2.png" id="9_ekybp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7e82"]
+shader = ExtResource("3_586sw")
+shader_parameter/fill_amount = 1.0
+shader_parameter/mask_rotation = 0.0
+shader_parameter/mask_offset = Vector2(0, 0)
+shader_parameter/mask_size = Vector2(1, 1)
+shader_parameter/mask_rotation_pivot = Vector2(0.5, 0.5)
+shader_parameter/mask_scale_pivot = Vector2(0.5, 0.5)
+shader_parameter/invert_mask = false
+shader_parameter/use_different_texture = false
+shader_parameter/mask_texture = ExtResource("4_wt40b")
+
+[sub_resource type="Gradient" id="Gradient_bsggl"]
+colors = PackedColorArray(0, 0, 0, 0.490196, 0, 0, 0, 0.490196)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_57d2c"]
+gradient = SubResource("Gradient_bsggl")
+
+[node name="FTUEModel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_57d2c")
+script = ExtResource("1_586sw")
+
+[node name="Mask" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_g7e82")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_57d2c")
+expand_mode = 5
+
+[node name="RightPanel" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RightPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4hm7j")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="RightPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.575
+anchor_top = 0.25
+anchor_right = 0.775
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_586sw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RightLabel" type="RichTextLabel" parent="RightPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.3
+anchor_right = 0.75
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.105205, 0.171276, 0.242047, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+text = "Bungle bingle bobble"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" parent="RightPanel" instance=ExtResource("2_4hm7j")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.525
+anchor_right = 0.675
+anchor_bottom = 0.625
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_3navc")
+
+[node name="LeftPanel" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.4
+anchor_right = 0.35
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4hm7j")
+expand_mode = 3
+stretch_mode = 5
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="LeftPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.25
+anchor_right = 0.475
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_586sw")
+expand_mode = 3
+stretch_mode = 5
+flip_h = true
+
+[node name="LeftLabel" type="RichTextLabel" parent="LeftPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.45
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.105205, 0.171276, 0.242047, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/normal_font_size = 24
+text = "Bungle bingle bobble"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftButton" parent="LeftPanel" instance=ExtResource("2_4hm7j")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.525
+anchor_right = 0.525
+anchor_bottom = 0.625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExampleCard" parent="." instance=ExtResource("6_g7e82")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.35
+anchor_right = 0.45
+anchor_bottom = 0.675
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+
+[node name="ArrowRect2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.275
+anchor_right = 0.375
+anchor_bottom = 0.375
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ekybp")
+expand_mode = 3
+stretch_mode = 5
+flip_v = true
+
+[node name="ArrowRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.35
+anchor_right = 0.35
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_3navc")
+expand_mode = 3
+stretch_mode = 5

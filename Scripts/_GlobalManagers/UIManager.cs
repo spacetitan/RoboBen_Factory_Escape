@@ -24,6 +24,7 @@ public partial class UIManager : Node
 	public TooltipModel tooltipModel { get; private set; } = null;
 	public BackgroundModel backgroundModel { get; private set; } = null;
 	public HUDModel hudModel { get; private set; } = null;
+	public FTUEModel ftueModel { get; private set; } = null;
 	
 	public Tween tween { get; private set; } = null;
 
@@ -68,6 +69,10 @@ public partial class UIManager : Node
 						
 						case TooltipModel:
 							this.tooltipModel = model as TooltipModel;
+							break;
+						
+						case FTUEModel:
+							this.ftueModel = model as FTUEModel;
 							break;
 					}
 				}
