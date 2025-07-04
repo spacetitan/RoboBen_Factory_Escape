@@ -72,9 +72,9 @@ public partial class Run
         this.stats.reRollsUsed++;
     }
     
-    public void BuyReRoll()
+    public void BuyReRoll(int val = 1)
     {
-        this.reRolls++;
+        this.reRolls += val;
     }
 
     public void Rest()

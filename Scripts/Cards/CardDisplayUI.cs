@@ -5,6 +5,7 @@ public partial class CardDisplayUI : Control
 {
     private StyleBox defaultStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Card/CardPanel.tres");
     private StyleBox hoverStyleBox = ResourceLoader.Load<StyleBox>("res://Themes/Card/CardPanelUIHover.tres");
+    public StyleBox cardstyleDisabled { get; private set;} = ResourceLoader.Load<StyleBox>("res://Themes/Card/CardPanelDisabled.tres");
     
     private TextureRect textureRect = null;
     private RichTextLabel titleLabel = null;
@@ -116,5 +117,12 @@ public partial class CardDisplayUI : Control
     public void OnClick()
     {
         AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BUTTON]);
+    }
+    
+    public void DisableCard()
+    {
+        this.costLabel.Text = "Cost: " + "[color=#99001e]" + this.cardData.cardCost.ToString() + "[/color]";
+        this.textureRect.Modulate = new Color(1,1,1,.05f);
+        this.AddThemeStyleboxOverride("panel", this.cardstyleDisabled);
     }
 }

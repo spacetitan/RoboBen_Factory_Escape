@@ -21,11 +21,11 @@ public partial class MapGenerator : Node
     
     Dictionary<RoomData.Type, float> randomRoomTypeWeights = new Dictionary<RoomData.Type, float>
     {
-        {RoomData.Type.COMBAT, 1.0f},
+        {RoomData.Type.COMBAT, 2.0f},
         {RoomData.Type.EVENT, 1.0f},
-        {RoomData.Type.REST, 1.0f},
-        {RoomData.Type.TREASURE, 1.0f},
-        {RoomData.Type.SHOP, 1.0f},
+        {RoomData.Type.REST, .5f},
+        {RoomData.Type.TREASURE, .5f},
+        {RoomData.Type.SHOP, .5f},
     };
     
     int randomRoomTypeTotalWeight = 0;

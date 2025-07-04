@@ -3,6 +3,8 @@ using System;
 
 public partial class PopUpModel : UIModel
 {
+    private ColorRect genericBackground = null;
+    
     public override void InitializeModel()
     {
         GetSceneNodes();
@@ -11,7 +13,7 @@ public partial class PopUpModel : UIModel
     
     private void GetSceneNodes()
     {
-        
+        this.genericBackground = this.GetNode<ColorRect>("%GenericBackground");
     }
 
     public void OpenPopUp(ViewID ID)
@@ -23,15 +25,16 @@ public partial class PopUpModel : UIModel
     public void OpenGenericPopUp(GenericPopUpView.GenericPopUpData data)
     {
         this.ShowModel();
+        this.genericBackground.Show();
         GenericPopUpView popUpView = this.views[ViewID.POP_UP] as GenericPopUpView;
         popUpView.OpenPopUp(data);
     }
 
-    public void OpenDeckPopUp(CardPile deck, string title, bool removeCard = false)
+    public void OpenDeckPopUp(CardPile deck, string title, bool removeCard = false, Action callback = null)
     {
         this.ShowModel();
         DeckPopUpView popUpView = this.views[ViewID.DECK] as DeckPopUpView;
-        popUpView.OpenPopUp(deck, title, removeCard);
+        popUpView.OpenPopUp(deck, title, removeCard, callback);
     }
 
     public void OpenBattleWinView(int money)
@@ -62,6 +65,11 @@ public partial class PopUpModel : UIModel
         if (!isLayered)
         {
             this.HideModel();
+        }
+
+        if (popupID == ViewID.POP_UP)
+        {
+            this.genericBackground.Hide();
         }
     }
     

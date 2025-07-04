@@ -165,6 +165,9 @@ public partial class CollectionsView : UIView
         this.titleLabel.Text = "";
         this.bodyLabel.Text = "";
         this.textureRect.Texture = ResourceManager.instance.debugIcon;
+        
+        Tween tween = CreateTween().SetEase(Tween.EaseType.InOut).SetTrans(Tween.TransitionType.Linear);
+        tween.TweenProperty(this.scrollContainer, "scroll_vertical", 0, .01f);
     }
 
     public override void Exit()

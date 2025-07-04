@@ -28,11 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.392157)
 
-[node name="GenericPopUp" parent="." instance=ExtResource("2_mwesn")]
-visible = false
-layout_mode = 1
-mouse_filter = 1
-
 [node name="OptionsPopUp" parent="." instance=ExtResource("3_mjcro")]
 visible = false
 layout_mode = 1
@@ -60,3 +55,19 @@ grow_vertical = 1
 [node name="CollectionsView" parent="." instance=ExtResource("8_uhtjo")]
 visible = false
 layout_mode = 1
+
+[node name="GenericBackground" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="GenericPopUp" parent="." instance=ExtResource("2_mwesn")]
+visible = false
+layout_mode = 1
+mouse_filter = 1

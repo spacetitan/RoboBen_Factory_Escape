@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [GlobalClass]
 public partial class EventData : Resource
 {
-    public enum EventID { NONE, MOVE_COMBAT, MOVE_TREASURE, MOVE_REST, MOVE_SHOP, WATERFALL, SHRINE, HEALTH_SHRINE, SLIME, FALLING_BOXES};
+    public enum EventID { NONE, MOVE_COMBAT, MOVE_TREASURE, MOVE_REST, MOVE_SHOP, WATERFALL, SHRINE, HEALTH_SHRINE, SLIME, FALLING_BOXES, KING_SLIME};
     
     [Export] public EventID id { get; private set; } = EventID.NONE;
     [Export] public int tier { get; private set; } = 0;

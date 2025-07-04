@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="KingSlime" load_steps=3 format=3 uid="uid://bkqsyjckk2vdm"]
+
+[ext_resource type="Script" uid="uid://c0cvxwx8cyfoo" path="res://Scripts/_Resources/Events/KingSlime.cs" id="1_ma0l5"]
+[ext_resource type="Texture2D" uid="uid://bvq3aqnqeubj2" path="res://Art/Sprites/FTUE/slimeKing.png" id="2_ckfo7"]
+
+[resource]
+script = ExtResource("1_ma0l5")
+id = 10
+tier = 0
+weight = 30.0
+title = "Woah! A slime with a crown!"
+body = "\"I've got some goodies if you have a card to spare.\" he bubbles."
+texture = ExtResource("2_ckfo7")
+canRepeat = false
+isTrapped = false
+metadata/_custom_type_script = "uid://c0cvxwx8cyfoo"

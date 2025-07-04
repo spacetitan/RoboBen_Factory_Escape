@@ -14,7 +14,11 @@ public partial class FTUEModel : UIModel
     private RichTextLabel leftLabel = null;
     private UIButton leftButton = null;
     
+    private Control cardPanel = null;
     private CardDisplayUI exampleCard = null;
+    private CardDisplayUI DisabledCard = null;
+
+    private Control playPanels = null;
 
     private TextureRect arrow = null;
     private TextureRect arrow2 = null;
@@ -24,7 +28,7 @@ public partial class FTUEModel : UIModel
     {
         "Welcome!",
         "Drag cards onto the energy tray to generate energy based on the cards Gen stat.",
-        "Use energy to play cards. Each card has its own energy cost.",
+        "Use energy to play cards. Cards will become clearer when you have enough energy to play them.",
         "Each Character has an ability that you can use on your turn!",
         "You also have power-ups that will activate passively on your turn.",
         "Good luck!"
@@ -61,9 +65,18 @@ public partial class FTUEModel : UIModel
         this.leftButton.SetData("Continue");
         this.leftButton.button.Pressed += OnButtonClicked;
         
+        this.cardPanel = this.GetNode<Control>("%CardPanel");
+        
         this.exampleCard = this.GetNode<CardDisplayUI>("%ExampleCard");
         this.exampleCard.GetSceneNodes();
         this.exampleCard.SetData(ResourceManager.instance.cards[CardData.CardID.SNEAKATTACK], null, true, false);
+        
+        this.DisabledCard = this.GetNode<CardDisplayUI>("%DisabledCard");
+        this.DisabledCard.GetSceneNodes();
+        this.DisabledCard.SetData(ResourceManager.instance.cards[CardData.CardID.SNEAKATTACK], null, true, false);
+        this.DisabledCard.DisableCard();
+        
+        this.playPanels = this.GetNode<Control>("%PlayPanels");
         
         this.arrow = this.GetNode<TextureRect>("%ArrowRect");
         this.arrow2 = this.GetNode<TextureRect>("%ArrowRect2");
@@ -98,8 +111,7 @@ public partial class FTUEModel : UIModel
         {
             case 1:
                 this.rightLabel.Text = this.textStep[this.currentStep];
-                this.exampleCard.Show();
-                this.arrow.Show();
+                this.cardPanel.Show();
                 
                 shader.SetShaderParameter("fill_amount", 0.75);
                 shader.SetShaderParameter("mask_offset", new Vector2(3.2f, -0.86f));
@@ -110,6 +122,8 @@ public partial class FTUEModel : UIModel
                 this.rightLabel.Text = this.textStep[this.currentStep];
                 this.arrow.Hide();
                 this.arrow2.Show();
+                this.DisabledCard.Show();
+                this.playPanels.Show();
                 
                 shader.SetShaderParameter("fill_amount", 1.0);
                 shader.SetShaderParameter("mask_offset", new Vector2(0f, 0f));
@@ -117,10 +131,9 @@ public partial class FTUEModel : UIModel
                 break;
             
             case 3:
-                this.arrow2.Hide();
                 this.rightPanel.Hide();
+                this.cardPanel.Hide();
                 this.leftPanel.Show();
-                this.exampleCard.Hide();
                 this.leftLabel.Text = this.textStep[this.currentStep];
                 
                 shader.SetShaderParameter("fill_amount", .85);
@@ -159,5 +172,14 @@ public partial class FTUEModel : UIModel
     {
         this.onComplete = null;
         this.currentStep = 0;
+        
+        this.leftPanel.Hide();
+        this.rightPanel.Show();
+        
+        this.arrow.Show();
+        this.arrow2.Hide();
+        this.DisabledCard.Hide();
+        this.playPanels.Hide();
+        
     }
 }

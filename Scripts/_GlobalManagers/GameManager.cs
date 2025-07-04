@@ -165,6 +165,28 @@ public partial class GameManager : Node
 		this.loadData = null;
 	}
 
+	public void SetWindowMode(long id)
+	{
+		switch (id)
+		{
+			case 0:
+				this.windowMode = DisplayServer.WindowMode.Fullscreen;
+				break;
+            
+			case 1:
+				this.windowMode = DisplayServer.WindowMode.Windowed;
+				break;
+            
+			case 2:
+				this.windowMode = DisplayServer.WindowMode.ExclusiveFullscreen;
+				break;
+            
+			default:
+				break;
+		}
+		DisplayServer.WindowSetMode(this.windowMode);
+	}
+
 	public void SetFTUE(bool val)
 	{
 		this.ftue = val;

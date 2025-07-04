@@ -188,9 +188,19 @@ anchor_bottom = 0.625
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExampleCard" parent="." instance=ExtResource("6_g7e82")]
+[node name="CardPanel" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ExampleCard" parent="CardPanel" instance=ExtResource("6_g7e82")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.325
@@ -203,7 +213,22 @@ offset_right = 0.0
 offset_bottom = 0.0
 mouse_filter = 2
 
-[node name="ArrowRect2" type="TextureRect" parent="."]
+[node name="DisabledCard" parent="CardPanel" instance=ExtResource("6_g7e82")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.35
+anchor_right = 0.25
+anchor_bottom = 0.675
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
+
+[node name="ArrowRect2" type="TextureRect" parent="CardPanel"]
 unique_name_in_owner = true
 visible = false
 z_index = 1
@@ -213,6 +238,7 @@ anchor_left = 0.325
 anchor_top = 0.275
 anchor_right = 0.375
 anchor_bottom = 0.375
+offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_ekybp")
@@ -220,9 +246,8 @@ expand_mode = 3
 stretch_mode = 5
 flip_v = true
 
-[node name="ArrowRect" type="TextureRect" parent="."]
+[node name="ArrowRect" type="TextureRect" parent="CardPanel"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.15
@@ -234,3 +259,56 @@ grow_vertical = 2
 texture = ExtResource("9_3navc")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="PlayPanels" type="Control" parent="CardPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="panel" type="Panel" parent="CardPanel/PlayPanels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.275
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CardPanel/PlayPanels/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Can't play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CardPanel/PlayPanels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.475
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CardPanel/PlayPanels/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Can play"
+horizontal_alignment = 1
+vertical_alignment = 1
