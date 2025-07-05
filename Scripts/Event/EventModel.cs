@@ -48,7 +48,7 @@ public partial class EventModel : UIModel
             button.button.Pressed += () =>
             {
                 choice.Outcome();
-                this.bodyLabel.Text += "\n\n" + choice.outcomeText;
+                this.bodyLabel.Text += "\n" + choice.outcomeText;
                 OnButtonPressed();
             };
             this.choicesContainer.AddChild(button);
@@ -109,5 +109,10 @@ public partial class EventModel : UIModel
         {
             node.QueueFree();
         }
+    }
+
+    public void AddBodyLabel(string value)
+    {
+        this.bodyLabel.Text += "\n" + value;
     }
 }

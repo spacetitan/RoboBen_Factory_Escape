@@ -24,7 +24,22 @@ public partial class TradePowerUp : EventChoice
 	{
 		UIManager.instance.popUpModel.OpenDeckPopUp(RunManager.instance.currentRun.playerDeck, "Remove a card", true, () =>
 		{
-			RunManager.instance.AddPowerUp(RunManager.instance.GetAvailablePowerUp());
+			PowerUp powerUp = RunManager.instance.GetAvailablePowerUp();
+			
+			if (powerUp.startWithVowel())
+			{
+				this.outcomeText = "You've obtained an " + powerUp.name;
+			}
+			else
+			{
+				this.outcomeText = "You've obtained a " + powerUp.name;
+			}
+
+			this.outcomeText += "\n\"Thanks!\" he gurgles and then slimes away.";
+			
+			EventModel model = UIManager.instance.models[UIManager.UIState.EVENT] as EventModel;
+			model.AddBodyLabel(this.outcomeText);
+			RunManager.instance.AddPowerUp(powerUp);
 		});
 	}
 }
@@ -42,6 +57,13 @@ public partial class TradeReroll : EventChoice
 		UIManager.instance.popUpModel.OpenDeckPopUp(RunManager.instance.currentRun.playerDeck, "Remove a card", true, () =>
 		{
 			RunManager.instance.currentRun.BuyReRoll(3);
+			this.outcomeText = "You got 3 re-rolls!\n\"Thanks!\" he gurgles and then slimes away.";
+			
+			EventModel model = UIManager.instance.models[UIManager.UIState.EVENT] as EventModel;
+			model.AddBodyLabel(this.outcomeText);
+			
+			RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+			hud.UpdateData();
 		});
 	}
 }

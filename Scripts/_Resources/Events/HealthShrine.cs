@@ -74,7 +74,7 @@ public partial class GambleHealth : EventChoice
 		}
 		else
 		{
-			this.outcomeText = "Nothing happens";
+			this.outcomeText = "Nothing happens. Try again?";
 		}
 
 		int cost = (int)(this.cost * (this.costPercent+1));

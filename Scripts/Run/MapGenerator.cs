@@ -11,21 +11,21 @@ public partial class MapGenerator : Node
     public const int PLACEMENT_RANDOMNESS = 5;
     public const int MAP_WIDTH = 7;
     public const int PATHS = 5;
-    public const float MONSTER_ROOM_WEIGHT = 2.5F;
-    public const float EVENT_ROOM_WEIGHT = 1.5F;
-    public const float SHOP_ROOM_WEIGHT = 1.0F;
+    public const float MONSTER_ROOM_WEIGHT = 2.25F;
+    public const float EVENT_ROOM_WEIGHT = 1.0F;
+    public const float SHOP_ROOM_WEIGHT = 0.75F;
     public const float RESTSTOP_ROOM_WEIGHT = 0.5F;
-    public const float TREASURE_ROOM_WEIGHT = 1.0F;
+    public const float TREASURE_ROOM_WEIGHT = 0.5F;
     
     public  List<List<RoomData>> mapData = new List<List<RoomData>>();
     
     Dictionary<RoomData.Type, float> randomRoomTypeWeights = new Dictionary<RoomData.Type, float>
     {
-        {RoomData.Type.COMBAT, 2.0f},
-        {RoomData.Type.EVENT, 1.0f},
-        {RoomData.Type.REST, .5f},
-        {RoomData.Type.TREASURE, .5f},
-        {RoomData.Type.SHOP, .5f},
+        {RoomData.Type.COMBAT, 0.0f},
+        {RoomData.Type.EVENT, 0.0f},
+        {RoomData.Type.REST, 0.0f},
+        {RoomData.Type.TREASURE, 0.0f},
+        {RoomData.Type.SHOP, 0.0f},
     };
     
     int randomRoomTypeTotalWeight = 0;

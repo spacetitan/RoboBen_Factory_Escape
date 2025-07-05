@@ -9,11 +9,6 @@ public partial class Shrine : EventData
 	{
 		this.choices.Add(new GambleMoney("", ""));
 	}
-
-	public override void Enter()
-	{
-		base.Enter();
-	}
 }
 
 public partial class GambleMoney : EventChoice
@@ -79,7 +74,7 @@ public partial class GambleMoney : EventChoice
 		}
 		else
 		{
-			this.outcomeText = "Nothing happens";
+			this.outcomeText = "Nothing happens. Try again?";
 		}
 
 		int cost = (int)(this.cost * (this.costPercent+1));

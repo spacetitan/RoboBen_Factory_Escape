@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="NumbingDart" load_steps=3 format=3 uid="uid://c6ilysg4tlgok"]
+[gd_resource type="Resource" script_class="NumbingDart" load_steps=4 format=3 uid="uid://c6ilysg4tlgok"]
 
 [ext_resource type="Texture2D" uid="uid://dbwaekrhq2nro" path="res://Art/Sprites/Cards/numbDart.png" id="1_7xu5s"]
 [ext_resource type="Script" uid="uid://dtnks3ehhc3l3" path="res://Scripts/_Resources/Cards/NumbingDart.cs" id="1_jjg2b"]
+[ext_resource type="AudioStream" uid="uid://7l2s41rolqbx" path="res://Audio/Card/bubble.wav" id="2_owo27"]
 
 [resource]
 script = ExtResource("1_jjg2b")
@@ -10,6 +11,7 @@ id = 11
 cardName = "Numbing Dart"
 cardDesc = "Deals {value} dmg and adds {stacks} weaken to a single enemy."
 Texture = ExtResource("1_7xu5s")
+playSFX = ExtResource("2_owo27")
 rarity = 2
 targetType = 1
 cardValue = 2

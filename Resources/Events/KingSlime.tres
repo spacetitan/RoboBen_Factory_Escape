@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_ma0l5")
 id = 10
-tier = 0
-weight = 30.0
-title = "Woah! A slime with a crown!"
+tier = 1
+weight = 1.0
+title = "A slime?!"
 body = "\"I've got some goodies if you have a card to spare.\" he bubbles."
 texture = ExtResource("2_ckfo7")
 canRepeat = false
