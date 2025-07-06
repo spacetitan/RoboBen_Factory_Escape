@@ -39,7 +39,11 @@ public partial class TradePowerUp : EventChoice
 			
 			EventModel model = UIManager.instance.models[UIManager.UIState.EVENT] as EventModel;
 			model.AddBodyLabel(this.outcomeText);
+			
 			RunManager.instance.AddPowerUp(powerUp);
+			
+			RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+			hud.UpdateData();
 		});
 	}
 }

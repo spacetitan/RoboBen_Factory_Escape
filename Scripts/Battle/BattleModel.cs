@@ -11,10 +11,15 @@ public partial class BattleModel : UIModel
     public BattleData battleData = null;
     public TurnOrderStateMachine turnOrderStateMachine = null;
 
+    public Timer timer;
+
     public override void _Ready()
     {
         ConnectEventSignals();
         this.turnOrderStateMachine = new TurnOrderStateMachine();
+        
+        this.timer = this.GetNode<Timer>("%Timer");
+        timer.Timeout += () => { this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn); };
     }
 
     public void ConnectEventSignals()
@@ -39,7 +44,7 @@ public partial class BattleModel : UIModel
 
         if (!GameManager.instance.ftue)
         {
-            this.turnOrderStateMachine.InitializeStateMachine(this.player, EndTurn);
+            timer.Start();
         }
         else
         {

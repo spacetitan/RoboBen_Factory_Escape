@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="RandomCard" load_steps=3 format=3 uid="uid://xanghx2q4w5h"]
+[gd_resource type="Resource" script_class="RandomCard" load_steps=4 format=3 uid="uid://xanghx2q4w5h"]
 
 [ext_resource type="Script" uid="uid://drx744l4u16dq" path="res://Scripts/_Resources/Cards/RandomCard.cs" id="1_4xb5f"]
 [ext_resource type="Texture2D" uid="uid://c4dv5rtx1d3u7" path="res://Art/Sprites/Cards/loot.png" id="1_t81bv"]
+[ext_resource type="AudioStream" uid="uid://dsfagafj0fyui" path="res://Audio/Ability/7.wav" id="2_y8c5x"]
 
 [resource]
 script = ExtResource("1_4xb5f")
@@ -9,6 +10,7 @@ id = 6
 cardName = "Loot"
 cardDesc = "Draw random card with 0 cost and Remove."
 Texture = ExtResource("1_t81bv")
+playSFX = ExtResource("2_y8c5x")
 rarity = 3
 targetType = 2
 cardValue = 1

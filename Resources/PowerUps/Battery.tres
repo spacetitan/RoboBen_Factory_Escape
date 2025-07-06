@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Battery" load_steps=3 format=3 uid="uid://u0l5si1hwcm2"]
+[gd_resource type="Resource" script_class="Battery" load_steps=4 format=3 uid="uid://u0l5si1hwcm2"]
 
+[ext_resource type="AudioStream" uid="uid://bbmwhx1qj7wjx" path="res://Audio/magic-1.ogg" id="1_fo2bq"]
 [ext_resource type="Script" uid="uid://ccruahsqhgqah" path="res://Scripts/_Resources/PowerUps/Battery.cs" id="1_jhyc7"]
 [ext_resource type="Texture2D" uid="uid://dyo1805rrgpaa" path="res://Art/Sprites/PowerUps/battery.png" id="2_tytcj"]
 
@@ -9,6 +10,7 @@ id = 1
 name = "Battery"
 description = "Add 1 energy at the start of turn"
 texture = ExtResource("2_tytcj")
+playSFX = ExtResource("1_fo2bq")
 rarity = 1
 activateType = 3
 showValue = false

@@ -71,6 +71,9 @@ public partial class GambleHealth : EventChoice
 
 			RunManager.instance.AddPowerUp(powerUp);
 			chance *= .5f;
+			
+			RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+			hud.UpdateData();
 		}
 		else
 		{

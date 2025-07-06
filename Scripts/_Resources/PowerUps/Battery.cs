@@ -16,6 +16,8 @@ public partial class Battery : PowerUp
 
 		BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
 		view.UpdateStats();
+		
+		AudioManager.instance.sfxPlayer.Play(this.playSFX);
 		base.ActivatePowerUp();
 	}
 }

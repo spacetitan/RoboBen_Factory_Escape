@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardPile" load_steps=21 format=3 uid="uid://drx2tovagschy"]
+[gd_resource type="Resource" script_class="CardPile" load_steps=22 format=3 uid="uid://drx2tovagschy"]
 
 [ext_resource type="Script" uid="uid://b5xvqh7idv60t" path="res://Scripts/Cards/CardPile.cs" id="1_hrg1a"]
 [ext_resource type="Texture2D" uid="uid://dxjw0xydoaa3i" path="res://Art/Sprites/Cards/sword-icon.png" id="1_tbdf6"]
@@ -11,6 +11,22 @@
 [ext_resource type="Script" uid="uid://drx744l4u16dq" path="res://Scripts/_Resources/Cards/RandomCard.cs" id="8_5i2le"]
 [ext_resource type="Script" uid="uid://17q3ktok0nro" path="res://Scripts/_Resources/Cards/SneakAttack.cs" id="8_u0hvi"]
 [ext_resource type="Texture2D" uid="uid://c4dv5rtx1d3u7" path="res://Art/Sprites/Cards/loot.png" id="9_1wqef"]
+[ext_resource type="AudioStream" uid="uid://dsfagafj0fyui" path="res://Audio/Ability/7.wav" id="10_u0hvi"]
+
+[sub_resource type="Resource" id="Resource_1wqef"]
+script = ExtResource("3_7832x")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} dmg to a single enemy"
+Texture = ExtResource("1_tbdf6")
+playSFX = ExtResource("2_6514x")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
 
 [sub_resource type="Resource" id="Resource_l4fef"]
 script = ExtResource("3_7832x")
@@ -43,19 +59,19 @@ isExhaust = false
 metadata/_custom_type_script = "uid://dhpykw8im33u7"
 
 [sub_resource type="Resource" id="Resource_5i2le"]
-script = ExtResource("3_7832x")
-id = 1
-cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
-Texture = ExtResource("1_tbdf6")
-playSFX = ExtResource("2_6514x")
+script = ExtResource("6_l4fef")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor"
+Texture = ExtResource("4_u0hvi")
+playSFX = ExtResource("5_1wqef")
 rarity = 1
-targetType = 1
-cardValue = 3
-cardCost = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
 cardGen = 1
 isExhaust = false
-metadata/_custom_type_script = "uid://dhpykw8im33u7"
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
 [sub_resource type="Resource" id="Resource_7syac"]
 script = ExtResource("6_l4fef")
@@ -88,27 +104,30 @@ isExhaust = false
 metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
 [sub_resource type="Resource" id="Resource_d2s8g"]
-script = ExtResource("6_l4fef")
-id = 2
-cardName = "Guard"
-cardDesc = "Generates {value} armor"
-Texture = ExtResource("4_u0hvi")
-playSFX = ExtResource("5_1wqef")
-rarity = 1
-targetType = 2
+script = ExtResource("8_u0hvi")
+id = 9
+cardName = "Sneak Attack"
+cardDesc = "Deals {value} to a single enemy.
+2x dmg when Invisible!"
+Texture = ExtResource("7_7832x")
+playSFX = ExtResource("2_6514x")
+rarity = 2
+targetType = 1
 cardValue = 4
-cardCost = 0
-cardGen = 1
+cardCost = 1
+cardGen = 0
 isExhaust = false
-metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+metadata/_custom_type_script = "uid://17q3ktok0nro"
 
 [sub_resource type="Resource" id="Resource_6hacj"]
 script = ExtResource("8_u0hvi")
 id = 9
 cardName = "Sneak Attack"
-cardDesc = "Deals {value} to a single enemy. 2x dmg when Invisible!"
+cardDesc = "Deals {value} to a single enemy.
+2x dmg when Invisible!"
 Texture = ExtResource("7_7832x")
-rarity = 3
+playSFX = ExtResource("2_6514x")
+rarity = 2
 targetType = 1
 cardValue = 4
 cardCost = 1
@@ -117,25 +136,12 @@ isExhaust = false
 metadata/_custom_type_script = "uid://17q3ktok0nro"
 
 [sub_resource type="Resource" id="Resource_baugx"]
-script = ExtResource("8_u0hvi")
-id = 9
-cardName = "Sneak Attack"
-cardDesc = "Deals {value} to a single enemy. 2x dmg when Invisible!"
-Texture = ExtResource("7_7832x")
-rarity = 3
-targetType = 1
-cardValue = 4
-cardCost = 1
-cardGen = 0
-isExhaust = false
-metadata/_custom_type_script = "uid://17q3ktok0nro"
-
-[sub_resource type="Resource" id="Resource_oi5kx"]
 script = ExtResource("8_5i2le")
 id = 6
 cardName = "Loot"
 cardDesc = "Draw random card with 0 cost and Remove."
 Texture = ExtResource("9_1wqef")
+playSFX = ExtResource("10_u0hvi")
 rarity = 3
 targetType = 2
 cardValue = 1
@@ -146,5 +152,5 @@ metadata/_custom_type_script = "uid://drx744l4u16dq"
 
 [resource]
 script = ExtResource("1_hrg1a")
-cardData = Array[Object]([SubResource("Resource_l4fef"), SubResource("Resource_f5lld"), SubResource("Resource_5i2le"), SubResource("Resource_7syac"), SubResource("Resource_w1jdd"), SubResource("Resource_d2s8g"), SubResource("Resource_6hacj"), SubResource("Resource_baugx"), SubResource("Resource_oi5kx")])
+cardData = Array[Object]([SubResource("Resource_1wqef"), SubResource("Resource_l4fef"), SubResource("Resource_f5lld"), SubResource("Resource_5i2le"), SubResource("Resource_7syac"), SubResource("Resource_w1jdd"), SubResource("Resource_d2s8g"), SubResource("Resource_6hacj"), SubResource("Resource_baugx")])
 metadata/_custom_type_script = "uid://b5xvqh7idv60t"

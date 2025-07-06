@@ -167,10 +167,12 @@ public partial class BattleHUDView : UIView
         if (this.player.playerData.ability.abilityUsed)
         {
             this.abilityButton.SetData("Ability CD:" + (this.player.playerData.ability.cooldown - this.player.playerData.ability.cooldownTimer));
+            this.abilityButton.button.Disabled = true;
         }
         else
         {
             this.abilityButton.SetData("Ability");
+            this.abilityButton.button.Disabled = false;
         }
 
         this.energyLabel.Text = this.player.energy.ToString();
@@ -187,7 +189,6 @@ public partial class BattleHUDView : UIView
     public void ToggleEndTurnButton(bool toggle)
     {
         this.endTurnButton.button.Disabled = toggle;
-        this.abilityButton.button.Disabled = toggle;
     }
 
     public void UpdateMoney()

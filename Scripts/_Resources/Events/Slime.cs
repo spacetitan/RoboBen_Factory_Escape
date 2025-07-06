@@ -45,10 +45,10 @@ public partial class FeedCard : EventChoice
 				{
 					RunManager.instance.currentRun.BuyReRoll(3);
 					this.outcomeText += "Something popped outta the slime!\nYou got 3 re-rolls!";
-			
-					RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
-					hud.UpdateData();
 				}
+				
+				RoomHUDView hud = UIManager.instance.hudModel.views[UIModel.ViewID.ROOM_HUD] as RoomHUDView;
+				hud.UpdateData();
 
 				this.outcomeText += " Let's leave.";
 				

@@ -27,6 +27,8 @@ public partial class MuscleCard : PowerUp
 			StatusEffect statusEffect = new StatusEffect(muscle, null);
 			statusEffect.sender = model.player;
 			statusEffect.Execute(model.player);
+			
+			AudioManager.instance.sfxPlayer.Play(this.playSFX);
 
 			this.value = 0;
 		}

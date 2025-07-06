@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="MuscleCard" load_steps=3 format=3 uid="uid://c7o2tevpo34y0"]
+[gd_resource type="Resource" script_class="MuscleCard" load_steps=4 format=3 uid="uid://c7o2tevpo34y0"]
 
+[ext_resource type="AudioStream" uid="uid://cw4ahrcd3mli1" path="res://Audio/PowerUp/power-up-1.wav" id="1_tt1lg"]
 [ext_resource type="Script" uid="uid://dye68deyk0pi8" path="res://Scripts/_Resources/PowerUps/MuscleCard.cs" id="1_xw5fl"]
 [ext_resource type="Texture2D" uid="uid://bkw2ndbgb4dp4" path="res://Art/Sprites/PowerUps/muscleCard.png" id="2_gjckl"]
 
 [resource]
 script = ExtResource("1_xw5fl")
+stacks = 2
 id = 7
 name = "Muscle Card"
 description = "Generates 2 muscle after playing 3 cards"
 texture = ExtResource("2_gjckl")
+playSFX = ExtResource("1_tt1lg")
 rarity = 3
 activateType = 5
 showValue = true

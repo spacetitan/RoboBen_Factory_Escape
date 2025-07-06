@@ -24,6 +24,7 @@ public partial class SecondWind : PowerUp
             model.player.DrawCard();
             
             this.owner.GetPowerUpUI(this.id).Flash();
+            AudioManager.instance.sfxPlayer.Play(this.playSFX);
             
             this.ready = false;
         }

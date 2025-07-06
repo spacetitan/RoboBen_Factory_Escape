@@ -51,11 +51,11 @@ public partial class Enemy : Character
             case CharacterData.CharacterID.GRUBBFLY:
             case CharacterData.CharacterID.TORTIGRUB:
             case CharacterData.CharacterID.GRUBBOID:
-                this.Scale = new Vector2(0.85f, 0.85f);
+                this.texture.Scale = new Vector2(0.85f, 0.85f);
                     break;
             
             case CharacterData.CharacterID.GRUBBMANTIS:
-                this.Scale = new Vector2(1.25f, 1.25f);
+                this.texture.Scale = new Vector2(1.25f, 1.25f);
                     break;
             
             case CharacterData.CharacterID.GRUBBIG:

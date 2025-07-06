@@ -16,6 +16,7 @@ public partial class RepairTool : PowerUp
 		{
 			HealEffect heal = new HealEffect(this.value, this.playSFX);
 			heal.Execute(model.player);   
+			AudioManager.instance.sfxPlayer.Play(this.playSFX);
 		}
 		base.ActivatePowerUp();
 	}

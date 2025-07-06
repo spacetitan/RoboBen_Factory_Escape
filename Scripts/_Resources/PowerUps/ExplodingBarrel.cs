@@ -15,6 +15,7 @@ public partial class ExplodingBarrel : PowerUp
         
 		DamageEffect damage = new DamageEffect(this.value, this.playSFX);
 		damage.Execute(model.player.GetTargets(Character.TargetType.ALL));
+		AudioManager.instance.sfxPlayer.Play(this.playSFX);
 		base.ActivatePowerUp();
 	}
 }

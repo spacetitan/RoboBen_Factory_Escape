@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="StunAttack" load_steps=3 format=3 uid="uid://cs3tga46yr78t"]
+[gd_resource type="Resource" script_class="StunAttack" load_steps=4 format=3 uid="uid://cs3tga46yr78t"]
 
 [ext_resource type="Texture2D" uid="uid://cj6rm3k6yyk15" path="res://Art/Sprites/Cards/headBop.png" id="1_cuu4l"]
 [ext_resource type="Script" uid="uid://btkrbltfq5doy" path="res://Scripts/_Resources/Cards/StunAttack.cs" id="1_ytrgx"]
+[ext_resource type="AudioStream" uid="uid://dia6ibhj6wytw" path="res://Audio/Card/impactPlate_light_001.ogg" id="2_wteg4"]
 
 [resource]
 script = ExtResource("1_ytrgx")
@@ -10,6 +11,7 @@ id = 12
 cardName = "Head Bop"
 cardDesc = "Deals {value} dmg and stun a single enemy."
 Texture = ExtResource("1_cuu4l")
+playSFX = ExtResource("2_wteg4")
 rarity = 2
 targetType = 1
 cardValue = 2

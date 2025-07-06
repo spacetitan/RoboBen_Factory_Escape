@@ -20,6 +20,7 @@ public partial class EnergyCard : PowerUp
 		if (this.value >= 2)
 		{
 			model.player.AddEnergy(1);
+			AudioManager.instance.sfxPlayer.Play(this.playSFX);
             
 			this.value = 0;
 		}

@@ -19,6 +19,7 @@ public partial class HeartBattery : PowerUp
 		if (roll < 2.0f)
 		{
 			model.player.Heal(this.value);
+			AudioManager.instance.sfxPlayer.Play(this.playSFX);
 		}
 		BattleHUDView view = UIManager.instance.hudModel.views[UIModel.ViewID.BATTLE_HUD] as BattleHUDView;
 		view.UpdateStats();

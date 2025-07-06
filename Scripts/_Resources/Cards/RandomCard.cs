@@ -7,6 +7,7 @@ public partial class RandomCard : CardData
 	public override void ApplyEffects(List<Character> targets, Player player)
 	{
 		player.hand.AddCard(RunManager.instance.GetRandomCardWithExhaust());
+		AudioManager.instance.sfxPlayer.Play(this.playSFX);
 	}
 	
 	public override string GetDefaultToolip()

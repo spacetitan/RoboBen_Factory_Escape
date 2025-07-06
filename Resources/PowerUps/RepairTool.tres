@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="RepairTool" load_steps=3 format=3 uid="uid://b7b8ugbknt3ms"]
+[gd_resource type="Resource" script_class="RepairTool" load_steps=4 format=3 uid="uid://b7b8ugbknt3ms"]
 
 [ext_resource type="Script" uid="uid://ck2df0k2yk0x8" path="res://Scripts/_Resources/PowerUps/RepairTool.cs" id="1_iggru"]
+[ext_resource type="AudioStream" uid="uid://e257fxj2bew0" path="res://Audio/maximize_006.ogg" id="1_tul1g"]
 [ext_resource type="Texture2D" uid="uid://dvthbbefsgjqu" path="res://Art/Sprites/PowerUps/repairtool.png" id="2_3ktc0"]
 
 [resource]
@@ -9,7 +10,9 @@ id = 10
 name = "Repair Tool"
 description = "Heals when combat ends"
 texture = ExtResource("2_3ktc0")
+playSFX = ExtResource("1_tul1g")
 rarity = 1
 activateType = 2
+showValue = false
 value = 4
 metadata/_custom_type_script = "uid://ck2df0k2yk0x8"

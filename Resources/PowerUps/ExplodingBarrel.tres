@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ExplodingBarrel" load_steps=3 format=3 uid="uid://b06cfwgq2ev6f"]
+[gd_resource type="Resource" script_class="ExplodingBarrel" load_steps=4 format=3 uid="uid://b06cfwgq2ev6f"]
 
+[ext_resource type="AudioStream" uid="uid://b1h3jb4j7evmg" path="res://Audio/explosion-1.ogg" id="1_mcu8m"]
 [ext_resource type="Script" uid="uid://ou22cs101vmg" path="res://Scripts/_Resources/PowerUps/ExplodingBarrel.cs" id="1_v4y0c"]
 [ext_resource type="Texture2D" uid="uid://c15bbnjjs02p4" path="res://Art/Sprites/PowerUps/barrel.png" id="2_3080a"]
 
@@ -9,6 +10,7 @@ id = 3
 name = "Exploding Barrel"
 description = "Deals damage at the start of combat"
 texture = ExtResource("2_3080a")
+playSFX = ExtResource("1_mcu8m")
 rarity = 3
 activateType = 1
 showValue = false
