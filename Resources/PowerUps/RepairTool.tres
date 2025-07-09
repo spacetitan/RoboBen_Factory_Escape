@@ -8,7 +8,7 @@
 script = ExtResource("1_iggru")
 id = 10
 name = "Repair Tool"
-description = "Heals when combat ends"
+description = "Heals 4 when combat ends."
 texture = ExtResource("2_3ktc0")
 playSFX = ExtResource("1_tul1g")
 rarity = 1

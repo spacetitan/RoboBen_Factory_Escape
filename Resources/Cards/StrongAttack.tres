@@ -8,12 +8,12 @@
 script = ExtResource("3_qtyis")
 id = 7
 cardName = "Bonk"
-cardDesc = "Deals {value} dmg to a single enemy"
+cardDesc = "Deals {value} damage to a single enemy."
 Texture = ExtResource("1_u5fts")
 playSFX = ExtResource("2_38hgk")
 rarity = 1
 targetType = 1
-cardValue = 7
+cardValue = 8
 cardCost = 2
 cardGen = 1
 isExhaust = false

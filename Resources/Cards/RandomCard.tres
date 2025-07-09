@@ -8,13 +8,13 @@
 script = ExtResource("1_4xb5f")
 id = 6
 cardName = "Loot"
-cardDesc = "Draw random card with 0 cost and Remove."
+cardDesc = "Draw random card with 0 cost that removes itself from play."
 Texture = ExtResource("1_t81bv")
 playSFX = ExtResource("2_y8c5x")
 rarity = 3
 targetType = 2
 cardValue = 1
 cardCost = 0
-cardGen = 1
+cardGen = 0
 isExhaust = true
 metadata/_custom_type_script = "uid://drx744l4u16dq"

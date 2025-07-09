@@ -37,7 +37,7 @@ public partial class PoisonAttack : CardData
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nRemove.";
+			tooltip += "\nRemove from play.";
 		}
 
 		return tooltip;

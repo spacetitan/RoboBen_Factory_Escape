@@ -148,7 +148,7 @@ public partial class TurnOrderStateMachine : Node
                         money = Mathf.RoundToInt(money);
                     }
 
-                    AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_WIN], true);
+                    AudioManager.instance.sfxPlayer.Play(ResourceManager.instance.audio[ResourceManager.AudioID.BATTLE_WIN]);
                     UIManager.instance.popUpModel.OpenBattleWinView((int) money);
                 }
             });

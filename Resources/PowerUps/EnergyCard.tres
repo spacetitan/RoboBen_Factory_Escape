@@ -8,7 +8,7 @@
 script = ExtResource("1_afqom")
 id = 2
 name = "Energy Card"
-description = "Generate 1 energy after burning 2 cards"
+description = "Generate 1 energy after burning 2 cards."
 texture = ExtResource("2_yqubx")
 playSFX = ExtResource("1_r5mhj")
 rarity = 1

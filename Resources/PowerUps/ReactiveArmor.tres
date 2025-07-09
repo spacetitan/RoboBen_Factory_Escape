@@ -8,7 +8,7 @@
 script = ExtResource("1_ekyb6")
 id = 8
 name = "Reactive Armor"
-description = "Generates armor when damaged"
+description = "Generates 3 armor when damaged."
 texture = ExtResource("3_04hlc")
 playSFX = ExtResource("1_04hlc")
 rarity = 2

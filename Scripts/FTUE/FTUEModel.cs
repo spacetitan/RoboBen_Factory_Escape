@@ -29,8 +29,8 @@ public partial class FTUEModel : UIModel
         "Welcome!",
         "Drag cards onto the energy tray to generate energy based on the cards Gen stat.",
         "Use energy to play cards. Cards will become clearer when you have enough energy to play them.",
-        "Each Character has an ability that you can use on your turn!",
-        "You also have power-ups that will activate passively on your turn.",
+        "Each Robo has an ability that you can use on your turn!",
+        "You also have power-ups that will activate passively as you play.",
         "Good luck!"
     };
 

@@ -8,7 +8,7 @@
 script = ExtResource("1_v4y0c")
 id = 3
 name = "Exploding Barrel"
-description = "Deals damage at the start of combat"
+description = "Deals damage at the start of combat."
 texture = ExtResource("2_3080a")
 playSFX = ExtResource("1_mcu8m")
 rarity = 3

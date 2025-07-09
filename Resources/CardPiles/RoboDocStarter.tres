@@ -14,11 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://cw4ahrcd3mli1" path="res://Audio/PowerUp/power-up-1.wav" id="11_p4idc"]
 [ext_resource type="Script" uid="uid://dtnpbt03hhktv" path="res://Scripts/_Resources/Cards/NanoMechGel.cs" id="12_7gu4m"]
 
-[sub_resource type="Resource" id="Resource_ckv8q"]
+[sub_resource type="Resource" id="Resource_e1axf"]
 script = ExtResource("3_rn62t")
 id = 1
 cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
+cardDesc = "Deals {value} damage to a single enemy."
 Texture = ExtResource("1_c57vn")
 playSFX = ExtResource("2_tb376")
 rarity = 1
@@ -28,119 +28,119 @@ cardCost = 1
 cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_6yw2m"]
+script = ExtResource("3_rn62t")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} damage to a single enemy."
+Texture = ExtResource("1_c57vn")
+playSFX = ExtResource("2_tb376")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_ernws"]
+script = ExtResource("3_rn62t")
+id = 1
+cardName = "Attack"
+cardDesc = "Deals {value} damage to a single enemy."
+Texture = ExtResource("1_c57vn")
+playSFX = ExtResource("2_tb376")
+rarity = 1
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dhpykw8im33u7"
+
+[sub_resource type="Resource" id="Resource_g10o5"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor."
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[sub_resource type="Resource" id="Resource_p4idc"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor."
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[sub_resource type="Resource" id="Resource_7gu4m"]
+script = ExtResource("6_g5buk")
+id = 2
+cardName = "Guard"
+cardDesc = "Generates {value} armor."
+Texture = ExtResource("4_7fvvu")
+playSFX = ExtResource("5_5hlkc")
+rarity = 1
+targetType = 2
+cardValue = 4
+cardCost = 0
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://vtbjlokfqi8s"
+
+[sub_resource type="Resource" id="Resource_ckv8q"]
+script = ExtResource("9_ernws")
+stacks = 3
+id = 11
+cardName = "Numbing Dart"
+cardDesc = "Deals {value} damage and apply {stacks} weaken to a single enemy."
+Texture = ExtResource("7_e1axf")
+playSFX = ExtResource("8_6yw2m")
+rarity = 2
+targetType = 1
+cardValue = 3
+cardCost = 1
+cardGen = 1
+isExhaust = false
+metadata/_custom_type_script = "uid://dtnks3ehhc3l3"
 
 [sub_resource type="Resource" id="Resource_qy01q"]
-script = ExtResource("3_rn62t")
-id = 1
-cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
-Texture = ExtResource("1_c57vn")
-playSFX = ExtResource("2_tb376")
-rarity = 1
+script = ExtResource("9_ernws")
+stacks = 3
+id = 11
+cardName = "Numbing Dart"
+cardDesc = "Deals {value} damage and apply {stacks} weaken to a single enemy."
+Texture = ExtResource("7_e1axf")
+playSFX = ExtResource("8_6yw2m")
+rarity = 2
 targetType = 1
 cardValue = 3
 cardCost = 1
 cardGen = 1
 isExhaust = false
-metadata/_custom_type_script = "uid://dhpykw8im33u7"
+metadata/_custom_type_script = "uid://dtnks3ehhc3l3"
 
 [sub_resource type="Resource" id="Resource_gm51o"]
-script = ExtResource("3_rn62t")
-id = 1
-cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
-Texture = ExtResource("1_c57vn")
-playSFX = ExtResource("2_tb376")
-rarity = 1
-targetType = 1
-cardValue = 3
-cardCost = 1
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://dhpykw8im33u7"
-
-[sub_resource type="Resource" id="Resource_dsweg"]
-script = ExtResource("6_g5buk")
-id = 2
-cardName = "Guard"
-cardDesc = "Generates {value} armor"
-Texture = ExtResource("4_7fvvu")
-playSFX = ExtResource("5_5hlkc")
-rarity = 1
-targetType = 2
-cardValue = 4
-cardCost = 0
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://vtbjlokfqi8s"
-
-[sub_resource type="Resource" id="Resource_j0pil"]
-script = ExtResource("6_g5buk")
-id = 2
-cardName = "Guard"
-cardDesc = "Generates {value} armor"
-Texture = ExtResource("4_7fvvu")
-playSFX = ExtResource("5_5hlkc")
-rarity = 1
-targetType = 2
-cardValue = 4
-cardCost = 0
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://vtbjlokfqi8s"
-
-[sub_resource type="Resource" id="Resource_16117"]
-script = ExtResource("6_g5buk")
-id = 2
-cardName = "Guard"
-cardDesc = "Generates {value} armor"
-Texture = ExtResource("4_7fvvu")
-playSFX = ExtResource("5_5hlkc")
-rarity = 1
-targetType = 2
-cardValue = 4
-cardCost = 0
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://vtbjlokfqi8s"
-
-[sub_resource type="Resource" id="Resource_ujhhp"]
-script = ExtResource("9_ernws")
-stacks = 3
-id = 11
-cardName = "Numbing Dart"
-cardDesc = "Deals {value} dmg and adds {stacks} weaken to a single enemy."
-Texture = ExtResource("7_e1axf")
-playSFX = ExtResource("8_6yw2m")
-rarity = 2
-targetType = 1
-cardValue = 2
-cardCost = 1
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://dtnks3ehhc3l3"
-
-[sub_resource type="Resource" id="Resource_m74hr"]
-script = ExtResource("9_ernws")
-stacks = 3
-id = 11
-cardName = "Numbing Dart"
-cardDesc = "Deals {value} dmg and adds {stacks} weaken to a single enemy."
-Texture = ExtResource("7_e1axf")
-playSFX = ExtResource("8_6yw2m")
-rarity = 2
-targetType = 1
-cardValue = 2
-cardCost = 1
-cardGen = 1
-isExhaust = false
-metadata/_custom_type_script = "uid://dtnks3ehhc3l3"
-
-[sub_resource type="Resource" id="Resource_dodde"]
 script = ExtResource("12_7gu4m")
 id = 10
 cardName = "Nano Mech Gel"
-cardDesc = "Generates {value} regen"
+cardDesc = "Generates {value} regen and removes poison."
 Texture = ExtResource("10_g10o5")
 playSFX = ExtResource("11_p4idc")
 rarity = 3
@@ -148,10 +148,10 @@ targetType = 2
 cardValue = 4
 cardCost = 1
 cardGen = 0
-isExhaust = true
+isExhaust = false
 metadata/_custom_type_script = "uid://dtnpbt03hhktv"
 
 [resource]
 script = ExtResource("1_s1duh")
-cardData = Array[Object]([SubResource("Resource_ckv8q"), SubResource("Resource_qy01q"), SubResource("Resource_gm51o"), SubResource("Resource_dsweg"), SubResource("Resource_j0pil"), SubResource("Resource_16117"), SubResource("Resource_ujhhp"), SubResource("Resource_m74hr"), SubResource("Resource_dodde")])
+cardData = Array[Object]([SubResource("Resource_e1axf"), SubResource("Resource_6yw2m"), SubResource("Resource_ernws"), SubResource("Resource_g10o5"), SubResource("Resource_p4idc"), SubResource("Resource_7gu4m"), SubResource("Resource_ckv8q"), SubResource("Resource_qy01q"), SubResource("Resource_gm51o")])
 metadata/_custom_type_script = "uid://b5xvqh7idv60t"

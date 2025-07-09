@@ -35,6 +35,19 @@ public partial class StatusHandler : RefCounted
 
 		return false;
 	}
+    
+	public bool HasStatusUI(Status.StatusID id)
+	{
+		foreach(StatusUI status in this.statusUIs)
+		{
+			if(status.status.id == id)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	private Status GetStatus(Status.StatusID id)
 	{
@@ -43,6 +56,20 @@ public partial class StatusHandler : RefCounted
 			if(status.id == id)
 			{
 				return status;
+			}
+		}
+
+		GD.Print("No Status Present");
+		return null;
+	}
+	
+	private StatusUI GetStatusUI(Status.StatusID id)
+	{
+		foreach(StatusUI UI in this.statusUIs)
+		{
+			if(UI.status.id == id)
+			{
+				return UI;
 			}
 		}
 
@@ -154,9 +181,15 @@ public partial class StatusHandler : RefCounted
 		}
 	}
 
-	private void RemoveStatus(Status.StatusID id)
+	public void RemoveStatus(Status.StatusID id)
 	{
-		Status status = GetStatus(id);
-		this.statuses.Remove(status);
+		if (HasStatus(id))
+		{
+			Status status = GetStatus(id);
+			StatusUI ui = GetStatusUI(id);
+			
+			this.statuses.Remove(status);
+			ui.DestroyUI();
+		}
 	}
 }

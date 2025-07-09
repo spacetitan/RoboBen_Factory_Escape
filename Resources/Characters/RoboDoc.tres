@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://ccj2q5pd4fg7"]
+
+[ext_resource type="Resource" uid="uid://b2lf364572une" path="res://Resources/Abilities/MedShield.tres" id="1_534mh"]
+[ext_resource type="Script" uid="uid://dml35riw5jfux" path="res://Scripts/Characters/Player/PlayerData.cs" id="1_momul"]
+[ext_resource type="Resource" uid="uid://fujy828t26vb" path="res://Resources/PowerUps/PotionFlask.tres" id="3_534mh"]
+[ext_resource type="Resource" uid="uid://ba5mnwbltldqs" path="res://Resources/CardPiles/RoboDocStarter.tres" id="4_khts2"]
+[ext_resource type="Texture2D" uid="uid://uplqgho7hwhc" path="res://Art/Sprites/Characters/robodoc.png" id="5_ly6g4"]
+
+[resource]
+script = ExtResource("1_momul")
+handSize = 5
+ability = ExtResource("1_534mh")
+starterPowerUp = ExtResource("3_534mh")
+startingDeck = ExtResource("4_khts2")
+id = 8
+name = &"RoboDoc"
+desc = "A robo skilled in machines and medicine. Starts with more re-rolls."
+texture = ExtResource("5_ly6g4")
+health = 0
+maxHealth = 12
+metadata/_custom_type_script = "uid://dml35riw5jfux"

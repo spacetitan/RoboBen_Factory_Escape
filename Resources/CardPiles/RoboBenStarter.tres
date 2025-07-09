@@ -13,11 +13,11 @@
 [ext_resource type="AudioStream" uid="uid://cw4ahrcd3mli1" path="res://Audio/PowerUp/power-up-1.wav" id="10_aeu1h"]
 [ext_resource type="Script" uid="uid://cchtaf520efdt" path="res://Scripts/_Resources/Cards/MuscleGen.cs" id="11_oewjp"]
 
-[sub_resource type="Resource" id="Resource_np8uw"]
+[sub_resource type="Resource" id="Resource_fg7fs"]
 script = ExtResource("3_d45pd")
 id = 1
 cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
+cardDesc = "Deals {value} damage to a single enemy."
 Texture = ExtResource("1_fg7fs")
 playSFX = ExtResource("2_f2ugr")
 rarity = 1
@@ -28,11 +28,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://dhpykw8im33u7"
 
-[sub_resource type="Resource" id="Resource_8ovac"]
+[sub_resource type="Resource" id="Resource_f2ugr"]
 script = ExtResource("3_d45pd")
 id = 1
 cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
+cardDesc = "Deals {value} damage to a single enemy."
 Texture = ExtResource("1_fg7fs")
 playSFX = ExtResource("2_f2ugr")
 rarity = 1
@@ -43,11 +43,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://dhpykw8im33u7"
 
-[sub_resource type="Resource" id="Resource_yyf6j"]
+[sub_resource type="Resource" id="Resource_d45pd"]
 script = ExtResource("3_d45pd")
 id = 1
 cardName = "Attack"
-cardDesc = "Deals {value} dmg to a single enemy"
+cardDesc = "Deals {value} damage to a single enemy."
 Texture = ExtResource("1_fg7fs")
 playSFX = ExtResource("2_f2ugr")
 rarity = 1
@@ -58,11 +58,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://dhpykw8im33u7"
 
-[sub_resource type="Resource" id="Resource_ji8jf"]
+[sub_resource type="Resource" id="Resource_8wk4u"]
 script = ExtResource("6_fpoxf")
 id = 2
 cardName = "Guard"
-cardDesc = "Generates {value} armor"
+cardDesc = "Generates {value} armor."
 Texture = ExtResource("4_8wk4u")
 playSFX = ExtResource("5_7gx0l")
 rarity = 1
@@ -73,11 +73,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
-[sub_resource type="Resource" id="Resource_bd0ft"]
+[sub_resource type="Resource" id="Resource_7gx0l"]
 script = ExtResource("6_fpoxf")
 id = 2
 cardName = "Guard"
-cardDesc = "Generates {value} armor"
+cardDesc = "Generates {value} armor."
 Texture = ExtResource("4_8wk4u")
 playSFX = ExtResource("5_7gx0l")
 rarity = 1
@@ -88,11 +88,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
-[sub_resource type="Resource" id="Resource_24axm"]
+[sub_resource type="Resource" id="Resource_fpoxf"]
 script = ExtResource("6_fpoxf")
 id = 2
 cardName = "Guard"
-cardDesc = "Generates {value} armor"
+cardDesc = "Generates {value} armor."
 Texture = ExtResource("4_8wk4u")
 playSFX = ExtResource("5_7gx0l")
 rarity = 1
@@ -103,12 +103,12 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://vtbjlokfqi8s"
 
-[sub_resource type="Resource" id="Resource_trsrj"]
+[sub_resource type="Resource" id="Resource_ged8r"]
 script = ExtResource("8_p3dx6")
 stacks = 3
 id = 3
 cardName = "Poison Attack"
-cardDesc = "Deal {value} dmg and apply {stacks} poison to a single enemy"
+cardDesc = "Deal {value} damage and apply {stacks} poison to a single enemy"
 Texture = ExtResource("7_ged8r")
 playSFX = ExtResource("2_f2ugr")
 rarity = 2
@@ -119,12 +119,12 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://d1gon03bixa4r"
 
-[sub_resource type="Resource" id="Resource_e5ecv"]
+[sub_resource type="Resource" id="Resource_p3dx6"]
 script = ExtResource("8_p3dx6")
 stacks = 3
 id = 3
 cardName = "Poison Attack"
-cardDesc = "Deal {value} dmg and apply {stacks} poison to a single enemy"
+cardDesc = "Deal {value} damage and apply {stacks} poison to a single enemy"
 Texture = ExtResource("7_ged8r")
 playSFX = ExtResource("2_f2ugr")
 rarity = 2
@@ -135,11 +135,11 @@ cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://d1gon03bixa4r"
 
-[sub_resource type="Resource" id="Resource_8kwif"]
+[sub_resource type="Resource" id="Resource_l0bno"]
 script = ExtResource("11_oewjp")
 id = 5
 cardName = "Muscle Juice"
-cardDesc = "Generates {value} muscle"
+cardDesc = "Generates {value} muscle."
 Texture = ExtResource("9_l0bno")
 playSFX = ExtResource("10_aeu1h")
 rarity = 3
@@ -152,5 +152,5 @@ metadata/_custom_type_script = "uid://cchtaf520efdt"
 
 [resource]
 script = ExtResource("1_5npvd")
-cardData = Array[Object]([SubResource("Resource_np8uw"), SubResource("Resource_8ovac"), SubResource("Resource_yyf6j"), SubResource("Resource_ji8jf"), SubResource("Resource_bd0ft"), SubResource("Resource_24axm"), SubResource("Resource_trsrj"), SubResource("Resource_e5ecv"), SubResource("Resource_8kwif")])
+cardData = Array[Object]([SubResource("Resource_fg7fs"), SubResource("Resource_f2ugr"), SubResource("Resource_d45pd"), SubResource("Resource_8wk4u"), SubResource("Resource_7gx0l"), SubResource("Resource_fpoxf"), SubResource("Resource_ged8r"), SubResource("Resource_p3dx6"), SubResource("Resource_l0bno")])
 metadata/_custom_type_script = "uid://b5xvqh7idv60t"

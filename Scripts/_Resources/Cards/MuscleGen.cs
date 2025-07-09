@@ -27,7 +27,7 @@ public partial class MuscleGen : CardData
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nRemove.";
+			tooltip += "\nRemove from play.";
 		}
 
 		return tooltip;

@@ -12,7 +12,9 @@ public partial class NanoMechGel : CardData
 		StatusEffect statusEffect = new StatusEffect(regen, regen.sfx);
 		statusEffect.sender = player;
 		statusEffect.Execute(targets);
-		
+
+		player.statusHandler.RemoveStatus(Status.StatusID.POISON);
+
 		AudioManager.instance.sfxPlayer.Play(this.playSFX);
 	}
 	
@@ -27,7 +29,7 @@ public partial class NanoMechGel : CardData
 		
 		if (this.isExhaust)
 		{
-			tooltip += "\nRemove.";
+			tooltip += "\nRemove from play.";
 		}
 
 		return tooltip;

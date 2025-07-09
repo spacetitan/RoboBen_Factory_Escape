@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ChemMixture" load_steps=4 format=3 uid="uid://fujy828t26vb"]
+
+[ext_resource type="AudioStream" uid="uid://b1h3jb4j7evmg" path="res://Audio/explosion-1.ogg" id="1_e3bam"]
+[ext_resource type="Script" uid="uid://fd3yjqgtjeob" path="res://Scripts/_Resources/PowerUps/ChemMixture.cs" id="1_f3312"]
+[ext_resource type="Texture2D" uid="uid://delnrr6gwjgrs" path="res://Art/Sprites/PowerUps/potionFlask.png" id="3_kqbu6"]
+
+[resource]
+script = ExtResource("1_f3312")
+damage = 8
+id = 13
+name = "Potion Flask"
+description = "Deals 8 dmg to all enemies after inflicting 3 statuses."
+texture = ExtResource("3_kqbu6")
+playSFX = ExtResource("1_e3bam")
+rarity = 3
+activateType = 5
+showValue = true
+value = 0
+metadata/_custom_type_script = "uid://fd3yjqgtjeob"

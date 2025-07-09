@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public partial class Ability : Resource
 {
     [Export] public String name = "";
-    [Export] public String desc = "";
+    [Export(PropertyHint.MultilineText)] public String desc = "";
     [Export] public int value { get; private set; } = 0;
     [Export] public int cooldown { get; private set; } = 0;
     [Export] public int cooldownTimer  = 0;

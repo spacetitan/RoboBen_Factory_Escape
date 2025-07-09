@@ -8,7 +8,7 @@
 script = ExtResource("1_4eepl")
 id = 9
 name = "Reinforced Armor"
-description = "Adds armor at the end of turn"
+description = "Adds 2 armor at the end of turn."
 texture = ExtResource("2_pip7m")
 playSFX = ExtResource("1_fbpfm")
 rarity = 1

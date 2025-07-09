@@ -37,7 +37,7 @@ public partial class SneakAttack : CardData
 
 		if (this.isExhaust)
 		{
-			tooltip += "\nRemove.";
+			tooltip += "\nRemove from play.";
 		}
 
 		return tooltip;

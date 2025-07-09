@@ -8,7 +8,7 @@
 script = ExtResource("1_jhyc7")
 id = 1
 name = "Battery"
-description = "Add 1 energy at the start of turn"
+description = "Add 1 energy at the start of turn."
 texture = ExtResource("2_tytcj")
 playSFX = ExtResource("1_fo2bq")
 rarity = 1

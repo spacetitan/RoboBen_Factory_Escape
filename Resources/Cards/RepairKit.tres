@@ -8,13 +8,13 @@
 script = ExtResource("2_6naa7")
 id = 4
 cardName = "Repair Kit"
-cardDesc = "heals {value}"
+cardDesc = "Heals {value}."
 Texture = ExtResource("1_wv13h")
 playSFX = ExtResource("2_lmhn8")
 rarity = 1
 targetType = 2
 cardValue = 2
 cardCost = 0
-cardGen = 0
+cardGen = 1
 isExhaust = false
 metadata/_custom_type_script = "uid://bf0ckqrs0qb2r"
